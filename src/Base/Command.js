@@ -63,7 +63,7 @@ module.exports = class Command {
     /**
      * @param {{ 
      * name: string; 
-     * aliases: string[]; 
+     * aliases?: string[]; 
      * description: string; 
      * details: string; 
      * minArgs: number; 
@@ -74,11 +74,11 @@ module.exports = class Command {
      * dmOnly: boolean;  
      * nsfw: boolean;
      * devOnly: boolean;
-     * cooldown: string | number;
-     * globalCooldown: string | number;
+     * cooldown?: string | number;
+     * globalCooldown?: string | number;
      * noDisable: boolean;
-     * userPermissions: import("discord.js").PermissionResolvable[];
-     * botPermissions: import("discord.js").PermissionResolvable[];
+     * userPermissions?: import("discord.js").PermissionResolvable[];
+     * botPermissions?: import("discord.js").PermissionResolvable[];
      * category: string;
      * run: ({ message, args, client, prefix }: { message: Message, args: string[]; client: CDClient; prefix: string }) => Promise<any>;
      *}} CommandOptions 
@@ -104,6 +104,13 @@ module.exports = class Command {
         category,
         run,
     }) {
+
+        if (!aliases) aliases = [];
+        if (!userPermissions) userPermissions = [];
+        if (!botPermissions) botPermissions = [];
+        if (!cooldown) cooldown = 0;
+        if (!globalCooldown) globalCooldown = 0;
+
         this.aliases = aliases;
         this.botPermissions = botPermissions;
         this.cooldown = cooldown;

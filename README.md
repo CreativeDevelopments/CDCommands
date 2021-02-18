@@ -18,7 +18,7 @@ client.on('ready', () => {
         devs: [],
         defaultPrefix: '',
         mongoURI: '',
-        cacheUpdateSpped: Number,
+        cacheUpdateSpped: Number, 
         customHelpCommand: false,
         customMessageEvent: false,
     })
@@ -33,25 +33,25 @@ const { Command } = require('cdcommands');
 
 module.exports = new Command({
     name: 'ping',
-    aliases: ['pong'],
+    aliases: ['pong'], // Optional
     description: 'Tells you the bots ping',
     details: 'More information',
     minArgs: 0,
-    maxArgs: 0, //Use Infinity for infinite
+    maxArgs: 0, // Use Infinity for infinite
     usage: '{prefix}ping',
     guildOnly: false,
     dmOnly: false,
     testOnly: false,
     devOnly: false,
     nsfw: false,
-    cooldown: 0, //In MS
-    globalCooldown: 0,
+    cooldown: 0, // Optional -Defaults to 0 - In ms
+    globalCooldown: 0, // Optional - Defaults to 0 - In ms
     noDisable: true,
-    userPermissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    userPermissions: ['MANAGE_MESSAGES'], // Optional
+    botPermissions: ['SEND_MESSAGES'], // Optional
     category: 'Misc',
     run: async({ message, args, client, prefix }) => {
         message.channel.send("", { embed: client.success({ msg: message, data: 'Pong' }) })
     }
 })
-
+```
