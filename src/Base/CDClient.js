@@ -27,6 +27,8 @@ class CDClient extends Client {
     load;
     /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
     success;
+    /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
+    info;
 }
 
 module.exports.CDClient = CDClient;
