@@ -19,7 +19,7 @@ module.exports = new Command({
     testOnly: false,
     usage: "{prefix}category [enable/disable] [category]",
     userPermissions: ["MANAGE_GUILD"],
-    category: "defaultCommands",
+    category: "configuration",
     run: ({ args, client, message, prefix }) => {
         let DisabledDoc = client.databaseCache.getDocument("command", message.guild.id);
         if (!DisabledDoc) DisabledDoc = new DisabledCommands({

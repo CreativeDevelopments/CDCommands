@@ -19,7 +19,7 @@ module.exports = new Command({
     testOnly: false,
     usage: "{prefix}requiredroles [add/remove] [role] [command]",
     userPermissions: ["MANAGE_ROLES"],
-    category: "defaultCommands",
+    category: "configuration",
     run: async ({ args, client, message, prefix }) => {
 
         let reqRolesDoc = client.databaseCache.getDocument("roles", message.guild.id);

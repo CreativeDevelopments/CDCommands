@@ -19,7 +19,7 @@ module.exports = new Command({
     testOnly: false,
     usage: "{prefix}setprefix [new prefix]",
     userPermissions: ["MANAGE_GUILD"],
-    category: "defaultCommands",
+    category: "configuration",
     run: async ({ args, client, message, prefix }) => {
         let prefixDoc = client.databaseCache.getDocument("prefix", message.guild.id);
         if (!prefixDoc) prefixDoc = new prefixes({ gId: message.guild.id, prefix });
