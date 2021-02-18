@@ -182,7 +182,7 @@ class CDCommands {
             totalEvents++;
         }
 
-        console.log(`CDCommands >> Loaded ${this._client.listenerCount()} events`);
+        console.log(`CDCommands >> Loaded ${totalEvents} events`);
     }
 
 
