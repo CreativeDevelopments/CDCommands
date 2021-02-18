@@ -128,8 +128,7 @@ class CDCommands {
         this._client.info = ({ msg, data }) => {
             const embed = new MessageEmbed()
                 .setColor('#00DCFF')
-                .setDescription(`${data}`)
-                .setFooter(`Order request by ${msg.author.tag}`);
+                .setDescription(`${data}`);
             return embed;
         };
 
