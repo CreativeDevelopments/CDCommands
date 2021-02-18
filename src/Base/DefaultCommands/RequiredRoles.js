@@ -32,19 +32,19 @@ module.exports = new Command({
         const command = args[2];
 
         if (addRemove !== "add" && addRemove !== "remove") 
-            return message.channel.send(`Invaled Syntax; Please use \`${prefix}requiredroles [add/remove] [role] [command]\` instead.`);
+            return message.channel.send("", { embed: client.error({ msg: message, data: `Invalid Arguments! Please use \`${prefix}requiredroles [add/remove] [role] [command]\` instead.` })});
 
         if (!role)
-            return message.channel.send(`Please provide a valid role to ${addRemove}.`);
+            return message.channel.send("", { embed: client.error({ msg: message, data: `Please provide a valid role to ${addRemove}.` })});
 
         if (!client.commands.get(command))
-            return message.channel.send("That command does not exist. Please provide a valid command.");
+            return message.channel.send("", { embed: client.error({ msg: message, data: "That command does not exist. Please provide a valid command." })});
 
         const reqRolesObject = reqRolesDoc.requiredRoles.find((ob) => ob.command === command);
         if (addRemove === "add") {
             if (reqRolesObject) {
                 if (reqRolesObject.roles.find((s) => s === role.id))
-                    return message.channel.send(`**${role.name}** is already on the required roles list of **${command}**`)
+                    return message.channel.send("", { embed: client.error({ msg: message, data: `**${role.name}** is already on the required roles list of **${command}**` })})
                 reqRolesObject.roles.push(role.id);
             } else {
                 reqRolesDoc.requiredRoles.push({
@@ -55,11 +55,11 @@ module.exports = new Command({
         } else if (addRemove === "remove") {
             if (reqRolesObject) {
                 if (!reqRolesObject.roles.find((s) => s === role.id))
-                    return message.channel.send(`**${role.name}** already doesn't exist in the required roles list for **${command}**`);
+                    return message.channel.send("", { embed: client.error({ msg: message, data: `**${role.name}** is not on the required roles list for **${command}**` })});
                 const i = reqRolesObject.roles.findIndex((s) => s === role.id);
                 reqRolesObject.roles.splice(i, 1);
                 // English is hard
-            } else return message.channel.send(`**${role.name}** already doesn't exist in the required roles list for **${command}**`);
+            } else return message.channel.send("", { embed: client.error({ msg: message, data: `**${role.name}** is not on the required roles list for **${command}**` })});
         } 
 
 
@@ -67,6 +67,6 @@ module.exports = new Command({
             client.databaseCache.insertDocument("roles", reqRolesDoc);
         else client.databaseCache.updateDocument("roles", message.guild.id, reqRolesDoc);
 
-        return message.channel.send(`Successfully ${addRemove === "add" ? "added" : "removed"} **${role.name}** ${addRemove === "add" ? "to" : "from"} the required roles list of **${command}**`);
+        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully ${addRemove === "add" ? "added" : "removed"} **${role.name}** ${addRemove === "add" ? "to" : "from"} the required roles list of **${command}**` })});
     }
 });

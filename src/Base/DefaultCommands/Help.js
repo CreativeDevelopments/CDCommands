@@ -29,10 +29,10 @@ module.exports = new Command({
         const category = client.commands.filter((c) => c.category === command_category);
 
         if (!command && category.size < 1 && command_category)
-            return message.channel.send(`${ProperCase(command_category)} is not a valid command or category. Use \`${prefix}help\` to view all command categories.`);
+            return message.channel.send("", { embed: client.error({ msg: message, data: `${ProperCase(command_category)} is not a valid command or category. Use \`${prefix}help\` to view all command categories.` })});
 
         const helpEmbed = new MessageEmbed()
-            .setColor("BLUE")
+            .setColor("00DCFF")
             .setAuthor(client.user.username, client.user.displayAvatarURL({ format: "png" }))
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ format: "png", dynamic: true }))
             .setTimestamp();

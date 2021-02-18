@@ -33,20 +33,20 @@ module.exports = new Command({
         const categories = new Set(client.commands.map(c => c.category));
 
         if (enabledDisabled !== "enabled" && enabledDisabled !== "disable")
-            return message.channel.send(`Invaled Syntax; Please use \`${prefix}command [enable/disable] [category]\` instead.`);
+            return message.channel.send("", { embed: client.error({ msg: message, data: `Invalid Arguments! Please use \`${prefix}command [enable/disable] [category]\` instead.` })});
 
         if (!categories.has(categoryName))
-            return message.channel.send("That category does not exist.");
+            return message.channel.send("", { embed: client.error({ msg: message, data: "That category does not exist." })});
 
         if (enabledDisabled === "enable") {
             if (!DisabledDoc.categories.includes(categoryName))
-                return message.channel.send("That category is already enabled.");
+                return message.channel.send("", { embed: client.error({ msg: message, data: "That category is already enabled." })});
             const i = DisabledDoc.categories.findIndex((v) => v === categoryName);
             DisabledDoc.categories.splice(i, 1);
 
         } else if (enabledDisabled === "disable") {
             if (DisabledDoc.categories.includes(categoryName))
-                return message.channel.send("That category is already disabled");
+                return message.channel.send("", { embed: client.error({ msg: message, data: "That category is already disabled" })});
             DisabledDoc.categories.push(categoryName);
         }
 
@@ -54,6 +54,6 @@ module.exports = new Command({
             client.databaseCache.insertDocument("command", DisabledDoc);
         else client.databaseCache.updateDocument("command", message.guild.id, DisabledDoc);
 
-        return message.channel.send(`Successfully ${enabledDisabled}d the **${categoryName}** category`);
+        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully ${enabledDisabled}d the **${categoryName}** category` })});
     }
 });

@@ -26,7 +26,7 @@ module.exports = new Command({
 
         const updatedPrefix = args.join(" ").trim();
         if (updatedPrefix === prefixDoc.prefix)
-            return message.channel.send("Please choose a **new** prefix to set.");
+            return message.channel.send("", { embed: client.error({ msg: message, data: "Please choose a **new** prefix to set."})});
 
         prefixDoc.prefix = updatedPrefix;
 
@@ -35,6 +35,6 @@ module.exports = new Command({
         else 
             client.databaseCache.insertDocument("prefix", prefixDoc);
 
-        return message.channel.send(`Successfully updated ${message.guild.name}'s prefix to \`${updatedPrefix}\``);
+        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully updated ${message.guild.name}'s prefix to \`${updatedPrefix}\`` })});
     }
 });
