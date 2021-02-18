@@ -1,6 +1,6 @@
 {
   "name": "cdcommands",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Advanced command handler made by The Duck Max#6669",
   "main": "./src/index.js",
   "scripts": {
