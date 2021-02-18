@@ -20,7 +20,7 @@ module.exports = new Command({
     testOnly: false,
     usage: "{prefix}help [command]",
     userPermissions: ["SEND_MESSAGES"],
-    category: "defaultCommands",
+    category: "configuration",
     run: async ({ args, prefix, message, client }) => {
         const command_category = args[0] ? args[0] : undefined;
         
