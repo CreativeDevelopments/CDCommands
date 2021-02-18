@@ -173,12 +173,14 @@ class CDCommands {
 
     /** @private */
     _events() {
-        Events(this._eventsDir, this._client, this._customMessageEvent);
+        let totalEvents = Events(this._eventsDir, this._client, this._customMessageEvent);
 
         // Default message event
         const MsgEvent = require("./Base/Message");
-        if (!this._customMessageEvent) 
+        if (!this._customMessageEvent) { 
             this._client.on(MsgEvent.name, MsgEvent.run.bind(null, this._client));
+            totalEvents++;
+        }
 
         console.log(`CDCommands >> Loaded ${this._client.listenerCount()} events`);
     }
