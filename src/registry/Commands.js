@@ -17,10 +17,13 @@ function Commands(commandsDir, client, customHelpCommand) {
             /** @type {Command} */
             const command = require(`${require.main.path}\\${commandsDir}\\${folder}`);
             if (command.name === "help" && !customHelpCommand) continue; 
+            if (client.commands.get(command.name)) throw new Error(`Command ${command.name} has occured more than once. Please make sure you have unique "name" properties.`);
             client.commands.set(command.name, command);
             if (command.aliases && command.aliases.length > 0) 
-                for (const alias of command.aliases)
+                for (const alias of command.aliases) {
+                    if (client.aliases.get(alias)) throw new Error(`Alias ${alias} has occured more than once. Please make sure you have unique "aliases" properties.`);
                     client.aliases.set(alias, command.name);
+                }
         }
     }
     return client;

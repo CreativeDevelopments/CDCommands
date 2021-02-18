@@ -167,6 +167,8 @@ class CDCommands {
                     this._client.aliases.set(alias, command.name);
             }
         }
+
+        console.log(`CDCommands >> Loaded ${this._client.commands.size} commands`);
     }
 
     /** @private */
@@ -178,6 +180,7 @@ class CDCommands {
         if (!this._customMessageEvent) 
             this._client.on(MsgEvent.name, MsgEvent.run.bind(null, this._client));
 
+        console.log(`CDCommands >> Loaded ${this._client.listenerCount()} events`);
     }
 
 
