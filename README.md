@@ -74,7 +74,7 @@ module.exports = new Event('guildMemberAdd', (client, member) => {
 ```
 <br></br>
 
-## Default Embeds
+# Default Embeds
 There are 4 different embeds - load, error, success, info:
 
 Example:
@@ -97,4 +97,29 @@ message.channel.send("", { embed: client.success({ msg: message, data: 'Successf
 <img src="https://tom.creativedevelopments.org/NCW_Discord_RXhMQeJ2EV.png">
 <img src="https://tom.creativedevelopments.org/DUV_Discord_w5nstRebUr.png">
 <img src="https://tom.creativedevelopments.org/IKM_Discord_kHl2IfnSvY.png">
+<br></br>
+
+# Functions
+
+There is currently only one main function but more will be added in the future. 
+
+```js
+// File name: test.js
+// Directory: ./commands/general/test.js
+// This will be changed so you can do const { ProperCase } = require('cdcommands') soon.
+
+const { Command } = require('cdcommands')
+const { ProperCase } = require('../../node_modules/cdcommands/src/Functions')
+
+module.exports = new Command({
+    name: 'test',  // Fill out the rest as normal
+    run: ({ message }) = { 
+        console.log(ProperCase('hello there')) 
+    }
+})
+
+// Console Log:
+Hello There
+```
+
 

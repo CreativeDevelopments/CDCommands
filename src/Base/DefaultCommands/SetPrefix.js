@@ -4,7 +4,7 @@ const prefixes = require("../../Database/models/prefixes");
 module.exports = new Command({
     aliases: ["updateprefix"],
     botPermissions: ["SEND_MESSAGES"],
-    cooldown: 500,
+    cooldown: 3000,
     description: "Set the Prefix of the bot",
     details: "Update or reset the prefix of the bot in the current server",
     devOnly: false,
@@ -17,7 +17,7 @@ module.exports = new Command({
     noDisable: true,
     nsfw: false,
     testOnly: false,
-    usage: "{prefix}setprefix [new prefix]",
+    usage: "{prefix}setprefix <new prefix>",
     userPermissions: ["MANAGE_GUILD"],
     category: "configuration",
     run: async ({ args, client, message, prefix }) => {
@@ -26,7 +26,7 @@ module.exports = new Command({
 
         const updatedPrefix = args.join(" ").trim();
         if (updatedPrefix === prefixDoc.prefix)
-            return message.channel.send("", { embed: client.error({ msg: message, data: "Please choose a **new** prefix to set."})});
+            return message.channel.send("", { embed: client.error({ msg: message, data: "Please choose a **new** prefix to set."})}).catch(err => message.channel.send("Please choose a **new** prefix to set."));
 
         prefixDoc.prefix = updatedPrefix;
 
@@ -35,6 +35,6 @@ module.exports = new Command({
         else 
             client.databaseCache.insertDocument("prefix", prefixDoc);
 
-        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully updated ${message.guild.name}'s prefix to \`${updatedPrefix}\`` })});
+        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully updated ${message.guild.name}'s prefix to \`${updatedPrefix}\`` })}).catch(err => message.channel.send(`Successfully updated ${message.guild.name}'s prefix to \`${updatedPrefix}\``));
     }
 });
