@@ -19,6 +19,9 @@ module.exports = new Event("message", async (client, message) => {
         // DM only    
         if (command.dmOnly && message.guild)
         return message.channel.send("", { embed: client.error({ msg: message, data: `${ProperCase(command.name)} can only be used in my DMs.`})}).catch(err => message.channel.send(`${ProperCase(command.name)} can only be used in my DMs.`));
+        // NSFW Channel
+        if (!message.channel.nsfw && command.nsfw) 
+        return message.channel.send("", { embed: client.error({ msg: message, data: `This command is locked to NSFW channels only!`})}).catch(err => message.channel.send(`This command is locked to NSFW channels only!`));
         // Category/Command Disabled
         const DisabledDoc = client.databaseCache.getDocument("command", message.guild.id);
         if (DisabledDoc && DisabledDoc.commands.includes(command.name))
@@ -58,7 +61,6 @@ module.exports = new Event("message", async (client, message) => {
             if (remainingTime !== undefined)
             return message.channel.send("", { embed: client.error({ msg: message, data: `${ProperCase(command.name)} is on global cooldown! Please wait ${FormatCooldown(remainingTime)} before using it again.`})}).catch(err => message.channel.send(`${ProperCase(command.name)} is on global cooldown! Please wait ${FormatCooldown(remainingTime)} before using it again.`));
         }
-
         // Cooldown
         if (client.cooldowns.isOnCooldown(message.author, commandName, "local")) {
             const remainingTime = client.cooldowns.getRemainingCooldown(message.author, commandName, "local");

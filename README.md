@@ -18,7 +18,7 @@ client.on('ready', () => {
         devs: [],
         defaultPrefix: '',
         mongoURI: '',
-        cacheUpdateSpped: Number, 
+        cacheUpdateSpeed: Number, 
         customHelpCommand: false,
         customMessageEvent: false,
     })
