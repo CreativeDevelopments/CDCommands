@@ -40,7 +40,7 @@ module.exports = new Command({
         if (command) {
             helpEmbed
                 .setTitle(`${ProperCase(command.name)} Help Menu`)
-                .setDescription(`*${command.details}*\n\nUsage: **${command.usage.replace(/{prefix}/gi, prefix)}**\nRequired Member Permissions: **${FormatPerms(command.userPermissions)}**\nRequired Bot Permissions: **${FormatPerms(command.botPermissions)}**\nCooldown: **${FormatCooldown(command.cooldown)}**\nGlobal Cooldown: **${FormatCooldown(command.globalCooldown)}**`);
+                .setDescription(`*${command.details || 'No extra details provided!'}*\n\n**Usage:** ${command.usage.replace(/{prefix}/gi, prefix)}\n**Required Member Permissions:** ${FormatPerms(command.userPermissions) || 'None'}\n**Required Bot Permissions:** ${FormatPerms(command.botPermissions) || 'None'}\n**Cooldown:** ${FormatCooldown(command.cooldown) || 'None'}\n**Global Cooldown** ${FormatCooldown(command.globalCooldown) || 'None'}`);
             return message.channel.send(helpEmbed);
         } else if (category.size > 0) {
             helpEmbed
@@ -57,7 +57,7 @@ module.exports = new Command({
             const page1 = pages[curPage];
             pages.length > 1 ? helpEmbed.setAuthor(`Page: 1/${pages.length}`, client.user.displayAvatarURL({ format: "png" })) : null;
             helpEmbed
-                .setDescription(page1.map((c) => `**${c.name}** → ${c.description}\nAliases: ${c.aliases.join(" ")}\nUsage: ${c.usage.replace(/{prefix}/gi, prefix)}`).join("\n\n"))
+                .setDescription(page1.map((c) => `**${c.name}** → ${c.description}\n**Aliases:** ${c.aliases.join(", ")}\n**Usage:** ${c.usage.replace(/{prefix}/gi, prefix)}`).join("\n\n"))
                 .setFooter(`Use ${prefix}help [command] for more info`, message.author.displayAvatarURL({ format: "png" }));
 
             const helpMessage = await message.channel.send(helpEmbed);
@@ -91,7 +91,7 @@ module.exports = new Command({
 
                     helpEmbed
                         .setAuthor(`Page: ${curPage + 1}/${pages.length}`, client.user.displayAvatarURL({ format: "png" }))
-                        .setDescription(pages[curPage].map((c) => `**${c.name}** → ${c.description}\nAliases: ${c.aliases.join(" ")}\nUsage: ${c.usage.replace(/{prefix}/gi, prefix)}`).join("\n\n"))
+                        .setDescription(pages[curPage].map((c) => `**${c.name}** → ${c.description}\n**Aliases:** ${c.aliases.join(", ")}\n**Usage:** ${c.usage.replace(/{prefix}/gi, prefix)}`).join("\n\n"))
                     await reaction.users.remove(user);
                     await helpMessage.edit(helpEmbed);
                 });
