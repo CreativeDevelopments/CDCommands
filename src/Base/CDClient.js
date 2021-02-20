@@ -29,12 +29,7 @@ class CDClient extends Client {
     success;
     /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
     info;
-    /**
-     * @param {import("discord.js").ClientOptions} options 
-     */
-    constructor(options) {
-        super(options);
-    }
+    
 }
 
 module.exports.CDClient = CDClient;

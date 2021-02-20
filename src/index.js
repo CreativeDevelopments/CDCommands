@@ -85,7 +85,7 @@ class CDCommands {
         if (!options.testServers) options.testServers = [];
         if (!options.devs) options.devs = [];
 
-        this._client = new CDClient(client.options);
+        this._client = client;
         this._commandsDir = options.commandsDir;
         this._eventsDir = options.eventsDir;
         this._testServers = options.testServers;
