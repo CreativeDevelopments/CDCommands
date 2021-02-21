@@ -1,7 +1,10 @@
+[Support Server](https://discord.gg/jUNbV5u)
+
 # Installation
 ```
 npm install cdcommands
 ```
+
 
 # Setup
 ```js

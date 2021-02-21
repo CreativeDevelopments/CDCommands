@@ -12,5 +12,9 @@
     "discord.js": "^12.5.1",
     "mongoose": "^5.11.15",
     "parse-ms": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Exxonnnnnn/CDCommands"
   }
 }

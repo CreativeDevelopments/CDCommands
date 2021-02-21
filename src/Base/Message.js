@@ -32,10 +32,10 @@ module.exports = new Event("message", async (client, message) => {
         const clientPermCheck = ValidatePermissions(message.guild.me.permissions.toArray(), command.botPermissions);
         // Client Permissions
         if (clientPermCheck.perms !== null)
-            return message.channel.send("", { embed: client.error({ msg: message, data: `Woah there! I'm missing ${clientPermCheck.perms}! Please give me ${clientPermCheck.length > 1 ? "these" : "this"} ${clientPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`})}).catch(err => message.channel.send(`Woah there! I'm missing ${clientPermCheck.perms}! Please give me ${clientPermCheck.length > 1 ? "these" : "this"} ${clientPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`));
+            return message.channel.send("", { embed: client.error({ msg: message, data: `Woah there! I'm missing ${clientPermCheck.perms} permissions! Please give me ${clientPermCheck.length > 1 ? "these" : "this"} ${clientPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`})}).catch(err => message.channel.send(`Woah there! I'm missing ${clientPermCheck.perms}! Please give me ${clientPermCheck.length > 1 ? "these" : "this"} ${clientPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`));
         // Member Permissions
         if (memberPermCheck.perms !== null)
-            return message.channel.send("", { embed: client.error({ msg: message, data: `Woah there! You're missing ${memberPermCheck.perms}! Please get ${memberPermCheck.length > 1 ? "those" : "that"} ${memberPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`})}).catch(err => message.channel.send(`Woah there! You're missing ${memberPermCheck.perms}! Please get ${memberPermCheck.length > 1 ? "those" : "that"} ${memberPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`));
+            return message.channel.send("", { embed: client.error({ msg: message, data: `Woah there! You're missing ${memberPermCheck.perms} permissions! Please get ${memberPermCheck.length > 1 ? "those" : "that"} ${memberPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`})}).catch(err => message.channel.send(`Woah there! You're missing ${memberPermCheck.perms}! Please get ${memberPermCheck.length > 1 ? "those" : "that"} ${memberPermCheck.length > 1 ? "permissions" : "permission"} before using that command!`));
         // Required Roles
         const reqRolesDoc = client.databaseCache.getDocument("roles", message.guild.id);
         if (reqRolesDoc) {
@@ -54,7 +54,7 @@ module.exports = new Event("message", async (client, message) => {
             return message.channel.send("", { embed: client.error({ msg: message, data: `Invalid Arguments [Too Many Arguments]! Please use \`${command.usage.replace(/{prefix}/gi, prefix)}\` instead`})}).catch(err => message.channel.send(`Invalid Arguments [Too Many Arguments]; Please use \`${command.usage.replace(/{prefix}/gi, prefix)}\` instead`));
         // Min args
         if (command.minArgs !== -1 && args.length < command.minArgs)
-            return message.channel.send("", { embed: client.error({ msg: message, data: `Invalid Arguments [Too Few Arguments]! Please use \`${command.usage.replace(/{prefix}/gi, prefix)}\` intead`})}).catch(err => message.channel.send(`Invalid Arguments [Too Few Arguments]; Please use \`${command.usage.replace(/{prefix}/gi, prefix)}\` instead`));
+            return message.channel.send("", { embed: client.error({ msg: message, data: `Invalid Arguments [Too Few Arguments]! Please use \`${command.usage.replace(/{prefix}/gi, prefix)}\` instead`})}).catch(err => message.channel.send(`Invalid Arguments [Too Few Arguments]; Please use \`${command.usage.replace(/{prefix}/gi, prefix)}\` instead`));
         // Global Cooldown
         if (client.cooldowns.isOnCooldown(message.author, commandName, "global")) {
             const remainingTime = client.cooldowns.getRemainingCooldown(message.author, commandName, "global");
