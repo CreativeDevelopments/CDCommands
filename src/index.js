@@ -2,6 +2,7 @@ const { Client, Collection, MessageEmbed } = require("discord.js");
 const { readdirSync, existsSync } = require("fs");
 const { CDClient } = require("./Base/CDClient");
 const { categories, requiredroles, commands, help, setprefix } = require("./Base/DefaultCommands");
+const { log } = require('mustang-log')
 
 const Event = require("./Base/Event");
 const Commands = require("./registry/Commands");
@@ -138,7 +139,7 @@ class CDCommands {
     /** @private */
     async _init() {
         if (this._mongoURI) await database(this._mongoURI);
-        else throw new Error("Using mongoose with CDCommands is required, as some features will not function properly.");
+        else log("Using mongoose with CDCommands is required, as some features will not function properly.", 'ERROR', true);
         
         this._client.databaseCache = new Cache({
             cooldowns: await cooldown.find(),
@@ -175,7 +176,7 @@ class CDCommands {
             }
         }
 
-        console.log(`CDCommands >> Loaded ${this._client.commands.size} commands`);
+        log(`CDCommands >> Loaded ${this._client.commands.size} commands`, 'INFO', true);
     }
 
     /** @private */
@@ -189,7 +190,7 @@ class CDCommands {
             totalEvents++;
         }
 
-        console.log(`CDCommands >> Loaded ${totalEvents} events`);
+        log(`CDCommands >> Loaded ${totalEvents} events`, 'INFO', true);
     }
 
 
