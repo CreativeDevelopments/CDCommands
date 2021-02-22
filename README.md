@@ -1,7 +1,5 @@
 <center><a href="https://discord.gg/jUNbV5u"><img src ="https://nodei.co/npm/cdcommands.png"></a></center>
-
-
-# [Support Server](https://discord.gg/jUNbV5u)
+<br></br>
 
 # Installation
 ```
@@ -127,5 +125,5 @@ module.exports = new Command({
 // Console Log:
 Hello There
 ```
-
-
+<br></br>
+## [Support Server](https://discord.gg/jUNbV5u)
