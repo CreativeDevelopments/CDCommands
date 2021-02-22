@@ -1,4 +1,7 @@
-[Support Server](https://discord.gg/jUNbV5u)
+<center><a href="https://discord.gg/jUNbV5u"><img src ="https://nodei.co/npm/cdcommands.png"></a></center>
+
+
+# [Support Server](https://discord.gg/jUNbV5u)
 
 # Installation
 ```
