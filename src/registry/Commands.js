@@ -1,5 +1,4 @@
-// const { CDClient } = require("../index");
-const { existsSync, readdirSync, statSync, lstatSync } = require("fs");
+const { existsSync, readdirSync, lstatSync } = require("fs");
 const Command = require("../Base/Command");
 /**
  * @param {string} commandsDir 
@@ -17,7 +16,14 @@ function Commands(commandsDir, client, customHelpCommand) {
             /** @type {Command} */
             const command = require(`${require.main.path}\\${commandsDir}\\${folder}`);
             if (command.name === "help" && !customHelpCommand) continue; 
-            if (client.commands.get(command.name)) client.logError({ data: `Command ${command.name} has occured more than once. Please make sure you have unique "name" properties.` });
+            if (client.commands.get(command.name)) {
+                client.logError({ data: `Command ${command.name} has occured more than once. Please make sure you have unique "name" properties.` });
+                continue;
+            }
+            if (!(command instanceof Command)) {
+                client.logError({ data: `Command file ${require.main.path}\\${commandsDir}\\${folder} is an invalid command. Please make sure all files are set up correctly.` });
+                continue;
+            }
             client.commands.set(command.name, command);
             if (command.aliases && command.aliases.length > 0) 
                 for (const alias of command.aliases) {

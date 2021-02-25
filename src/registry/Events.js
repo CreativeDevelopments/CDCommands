@@ -19,6 +19,10 @@ function Events(eventsDir, client, customMessageEvent) {
             const event = require(`${require.main.path}\\${eventsDir}\\${file}`);
             if (event.name === "message" && !customMessageEvent) continue;
             if (event.name === "ready") continue;
+            if (!(event instanceof Event)) {
+                client.logError({ data: `Event file ${require.main.path}\\${eventsDir}\\${file} is an invalid event. Please make sure all files are setup correctly`})
+                continue;
+            }
             totalEvents += 1;
             client.on(event.name, event.run.bind(null, client));
         }
