@@ -29,6 +29,16 @@ class CDClient extends Client {
     success;
     /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
     info;
+    /** @type {({ data }: { data: string }) => console.log;} */
+    logReady;
+    /** @type {({ data }: { data: string }) => console.log;} */
+    logInfo;
+    /** @type {({ data }: { data: string }) => console.log;} */
+    logError;
+    /** @type {({ data }: { data: string }) => console.log;} */
+    logWarn;
+    /** @type {({ data }: { data: string }) => console.log;} */
+    logDatabase;
     
 }
 
