@@ -2,7 +2,7 @@ const { Client, Collection, MessageEmbed } = require("discord.js");
 const { readdirSync, existsSync } = require("fs");
 const { CDClient } = require("./Base/CDClient");
 const { categories, requiredroles, commands, help, setprefix } = require("./Base/DefaultCommands");
-const { log } = require('mustang-log')
+const colors = require('colors')
 
 const Event = require("./Base/Event");
 const Commands = require("./registry/Commands");
@@ -133,13 +133,33 @@ class CDCommands {
             return embed;
         };
 
+        this._client.logReady = ({ data }) => {
+            console.log(`${colors.brightGreen('[READY]')}`.white + colors.white(` ${data}`))
+        };
+
+        this._client.logError = ({ data }) => {
+            console.log(`${colors.brightRed('[ERROR]')}`.white + colors.white(` ${data}`))
+        };
+
+        this._client.logWarn = ({ data }) => {
+            console.log(`${colors.yellow('[WARN]')}`.white + colors.white(` ${data}`))
+        };
+
+        this._client.logInfo = ({ data }) => {
+            console.log(`${colors.brightCyan('[INFO]')}`.white + colors.white(` ${data}`))
+        };
+
+        this._client.logDatabase = ({ data }) => {
+            console.log(`${colors.brightGreen('[DATABASE]')}`.white + colors.white(` ${data}`))
+        };
+
         this._init();
     }
 
     /** @private */
     async _init() {
         if (this._mongoURI) await database(this._mongoURI);
-        else log("Using mongoose with CDCommands is required, as some features will not function properly.", 'ERROR', true);
+        else this._client.logError({ data: "Using mongoose with CDCommands is required, as some features will not function properly." });
         
         this._client.databaseCache = new Cache({
             cooldowns: await cooldown.find(),
@@ -176,7 +196,7 @@ class CDCommands {
             }
         }
 
-        log(`CDCommands >> Loaded ${this._client.commands.size} commands`, 'INFO', true);
+        this._client.logInfo({ data: `CDCommands >> Loaded ${this._client.commands.size} commands` });
     }
 
     /** @private */
@@ -190,7 +210,7 @@ class CDCommands {
             totalEvents++;
         }
 
-        log(`CDCommands >> Loaded ${totalEvents} events`, 'INFO', true);
+        this._client.logInfo({ data: `CDCommands >> Loaded ${totalEvents} events`});
     }
 
 
