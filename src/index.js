@@ -221,7 +221,7 @@ class CDCommands {
 
     /** @public */
     get testServers() {
-
+        return this._testServers;
     }
 }
 
