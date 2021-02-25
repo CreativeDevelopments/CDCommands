@@ -1,12 +1,17 @@
 {
   "name": "cdcommands",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Advanced command handler made by That Duck Max#6669 and Exxon#0293 (Mainly Max)",
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["discord.js", "handler", "eventhandler", "commandhandler"],
+  "keywords": [
+    "discord.js",
+    "handler",
+    "eventhandler",
+    "commandhandler"
+  ],
   "author": "Exxon#0293",
   "license": "MIT License",
   "dependencies": {
