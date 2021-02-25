@@ -38,41 +38,41 @@ Commands can have as many subfolders as you want.
 
 Properties:
 ```
-name --> Name of command --> String  
+name --> Name of command | String  
 
-aliases --> Different names the command can be run by --> Array 
+aliases --> Different names the command can be run by | Array 
 
-description --> Brief description of what the command does -->  String  
+description --> Brief description of what the command does | String  
 
-details --> More detailed description of the command, this appears on the "{prefix}help CommandName" help menu --> String 
+details --> More detailed description of the command, this appears on the "{prefix}help CommandName" help menu | String 
 
-minArgs --> Minimum Arguments Required --> Number 
+minArgs --> Minimum Arguments Required | Number 
 
-maxArgs --> Maximum Arguments for a command --> Number, use Infinite for no limit
+maxArgs --> Maximum Arguments for a command | Number, use Infinite for no limit
 
-usage: --> How to use the command, add "{prefix}" to the start --> String 
+usage: --> How to use the command, add "{prefix}" to the start | String 
 
-guildOnly: --> If the command should only work in guilds --> Boolean  
+guildOnly: --> If the command should only work in guilds | Boolean  
 
-dmOnly --> If the command should only work in Direct Messages --> Boolean  
+dmOnly --> If the command should only work in Direct Messages | Boolean  
 
-testOnly --> If the command should only work in the test servers specified in your main file --> Boolean  
+testOnly --> If the command should only work in the test servers specified in your main file | Boolean  
 
-devOnly --> If the command should be restricted to only the developers specified in your main file --> Boolean  
+devOnly --> If the command should be restricted to only the developers specified in your main file | Boolean  
 
-nsfw --> If the command should only work in NSFW channels --> Boolean  
+nsfw --> If the command should only work in NSFW channels | Boolean  
 
-cooldown --> If the user running the command should have a cooldown --> Number 
+cooldown --> If the user running the command should have a cooldown | Number 
 
-globalCooldown --> If the server running the command should have a cooldown --> Number  
+globalCooldown --> If the server running the command should have a cooldown | Number  
 
-noDisable --> If the command should not be able to be disabled --> Boolean  
+noDisable --> If the command should not be able to be disabled | Boolean  
 
-userPermissions --> Array of permissions a user needs to run a command --> Array  
+userPermissions --> Array of permissions a user needs to run a command | Array  
 
-botPermissions --> Array of permissions the client needs to run the command --> Array  
+botPermissions --> Array of permissions the client needs to run the command | Array  
 
-category --> Category of the command --> String  
+category --> Category of the command | String  
 ```
 
 ```js
@@ -84,7 +84,7 @@ module.exports = new Command({
     name: 'ping',
     aliases: ['pong'], // Optional
     description: 'Tells you the bots ping',
-    details: 'More information', //This will be displayed when doing {prefix}help <Command Name>
+    details: 'More information', // This will be displayed when doing {prefix}help <Command Name>
     minArgs: 0,
     maxArgs: 0, // Use Infinity for infinite
     usage: '{prefix}ping',
@@ -93,7 +93,7 @@ module.exports = new Command({
     testOnly: false,
     devOnly: false,
     nsfw: false,
-    cooldown: 0, // Optional -Defaults to 0 - In ms
+    cooldown: 0, // Optional - Defaults to 0 - In ms
     globalCooldown: 0, // Optional - Defaults to 0 - In ms
     noDisable: true,
     userPermissions: ['MANAGE_MESSAGES'], // Optional
@@ -157,11 +157,11 @@ There are 5 different defualt logs - ready, info, load, database, error and warn
 
 Example:
 ```js
-client.logReady({ data: 'Logged in as Test Bot#8673'})
-client.logInfo({ data: 'CDCommands >> Loaded 71 commands'})
-client.logWarn({ data: 'You have not set your MongoURI'})
-client.logError({ data: 'Failed to connect to the database'})
-client.logDatabase({ data: 'Successfully connected to the database'})
+client.logReady({ data: 'Logged in as Test Bot#8673' })
+client.logInfo({ data: 'CDCommands >> Loaded 71 commands' })
+client.logWarn({ data: 'You have not set your MongoURI' })
+client.logError({ data: 'Failed to connect to the database' })
+client.logDatabase({ data: 'Successfully connected to the database' })
 ```
 <img src="https://tom.creativedevelopments.org/GDQ_cmd_Ucmvrpl3Ur.png">
 
