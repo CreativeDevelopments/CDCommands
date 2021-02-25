@@ -64,7 +64,7 @@ nsfw --> If the command should only work in NSFW channels | Boolean
 
 cooldown --> If the user running the command should have a cooldown | Number 
 
-globalCooldown --> If the server running the command should have a cooldown | Number  
+globalCooldown --> A cooldown across all servers | Number  
 
 noDisable --> If the command should not be able to be disabled | Boolean  
 
