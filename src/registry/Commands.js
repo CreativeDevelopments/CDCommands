@@ -1,4 +1,5 @@
 const { existsSync, readdirSync, lstatSync } = require("fs");
+const { join } = require("path");
 const Command = require("../Base/Command");
 /**
  * @param {string} commandsDir 
@@ -7,14 +8,14 @@ const Command = require("../Base/Command");
  * @returns {import("../Base/CDClient").CDClient}
  */
 function Commands(commandsDir, client, customHelpCommand) {
-    if (!existsSync(`${require.main.path}\\${commandsDir}`)) client.logError({ data: 'Please make sure your commands directory exists.'});
-    const folders = readdirSync(`${require.main.path}\\${commandsDir}`);
+    if (!existsSync(join(require.main.path, commandsDir))) client.logError({ data: 'Please make sure your commands directory exists.'});
+    const folders = readdirSync(join(require.main.path, commandsDir));
     for (const folder of folders) {
-        if (lstatSync(`${require.main.path}\\${commandsDir}\\${folder}`).isDirectory())
+        if (lstatSync(join(require.main.path, commandsDir, folder)).isDirectory())
             Commands(`${commandsDir}\\${folder}`, client, customHelpCommand)
         else {
             /** @type {Command} */
-            const command = require(`${require.main.path}\\${commandsDir}\\${folder}`);
+            const command = require(join(require.main.path, commandsDir, folder));
             if (command.name === "help" && !customHelpCommand) continue; 
             if (client.commands.get(command.name)) {
                 client.logError({ data: `Command ${command.name} has occured more than once. Please make sure you have unique "name" properties.` });
