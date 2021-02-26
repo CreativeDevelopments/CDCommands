@@ -1,6 +1,8 @@
 <center><a href="https://www.npmjs.com/package/cdcommands"><img src ="https://nodei.co/npm/cdcommands.png"></a></center>
 <br></br>
 
+### ⚠️ Only for windows users since we didn't use `path.join`
+
 # Installation
 ```
 npm i cdcommands --save
