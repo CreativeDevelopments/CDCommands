@@ -1,9 +1,13 @@
-<center><a href="https://www.npmjs.com/package/cdcommands"><img src ="https://nodei.co/npm/cdcommands.png"></a></center>
+<div style="text-align:center"><a href="https://discord.gg/jUNbV5u"><img src="./cdcommands.png"></a>
+<br></br>
+<div style="text-align:center"><a href="https://www.npmjs.com/package/cdcommands"><img src ="https://nodei.co/npm/cdcommands.png"></a></div>
 <br></br>
 
 # Installation
+We recommend that if you are going to use the mongoose package to install version 5.11.15, you can do this with this command below:
 ```
 npm i cdcommands --save
+npm i mongoose@5.11.15 --save
 ```
 
 
