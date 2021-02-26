@@ -1,8 +1,31 @@
-<div style="text-align:center"><a href="https://discord.gg/jUNbV5u"><img src="./cdcommands.png"></a>
+<div style="text-align:center"><a href="https://discord.gg/jUNbV5u"><img src="./images/cdcommands.png"></a></div>
 
 <br></br>
 
-<div style="text-align:center"><a href="https://www.npmjs.com/package/cdcommands"><img src ="https://nodei.co/npm/cdcommands.png"></a></div>
+<div style="text-align:center">
+<a href="https://discord.com/invite/jUNbV5u"><img src="https://img.shields.io/discord/769710808435261490.svg"></a>
+<a href="https://www.npmjs.com/package/cdcommands"><img src="https://img.shields.io/npm/dt/cdcommands.svg"></a>
+<a href="https://www.npmjs.com/package/cdcommands"><img src="https://img.shields.io/npm/dm/cdcommands.svg?style=color=blue"></a>
+<a href="https://www.npmjs.com/package/cdcommands"><img src="https://img.shields.io/npm/v/cdcommands.svg?style=color=blue"></a>
+<a href="https://github.com/CreativeDevelopments/CDCommands"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square"></a>
+</div>
+
+<br></br>
+
+# Contents
+- [Installation](#installation)
+- [Setup](#setup)
+- [Creating a Command](#creating-a-command)
+
+    - [Properties](##properties)
+    - [Command](##command)
+
+- [Creating an Event](#creating-an-event)
+- [Defaults](#defaults)
+    - [Embeds](##embeds)
+    - [Logging](##logging)
+- [Functions](#functions)
+- [Other](#other)
 
 <br></br>
 
@@ -28,7 +51,7 @@ client.on('ready', () => {
         eventsDir: 'events',
         testServers: [],
         devs: [],
-        defaultPrefix: '-',
+        defaultPrefix: 'prefix',
         mongoURI: process.env.MONGO_URI,
         cacheUpdateSpeed: Number, 
         customHelpCommand: false,
@@ -43,7 +66,7 @@ client.login(process.env.TOKEN)
 
 Commands can have as many subfolders as you want.
 
-Properties:
+## Properties:
 ```
 name --> Name of command | String  
 
@@ -80,7 +103,9 @@ userPermissions --> Array of permissions a user needs to run a command | Array
 botPermissions --> Array of permissions the client needs to run the command | Array  
 
 category --> Category of the command | String  
-```
+```  
+
+## Command  
 
 ```js
 // File name: "ping.js"
@@ -115,7 +140,7 @@ module.exports = new Command({
 
 # Creating an Event
 
-Events can have as many subfolders as you want
+Events can have as many subfolders as you want. If you want to create a message event you need to enable "customMessageEvent" when 
 
 ```js
 // File name: guildMemberAdd.js
@@ -130,7 +155,9 @@ module.exports = new Event('guildMemberAdd', (client, member) => {
 ```
 <br></br>
 
-# Default Embeds
+# Defaults
+
+## Embeds
 There are 4 different embeds - load, error, success and info:
 
 Example:
@@ -147,19 +174,13 @@ run: ({ message, client }) => {
     message.channel.send("", { embed: client.success({ msg: message, data: 'Successfully banned Exxon#0293' })})
 }
 ```
-<img src="https://tom.creativedevelopments.org/TRH_Discord_LfYaBkTeFt.png">
-<img src="https://tom.creativedevelopments.org/XWE_Discord_67xrVcLyYb.png">
-<img src="https://tom.creativedevelopments.org/HKO_Discord_kc1rgwMZgh.png">
-<img src="https://tom.creativedevelopments.org/HIO_Discord_mfbpVKWQmo.png">
+<div style="text-align:center">
+<img src="./images/embeds.png">
+</div>
+
 <br></br>
 
-### You can change the default embeds if you go to node_modules/cdcommands/src/index.js --> You can also add emotes so it can show like this (The bot must be in the server the emotes are from.):
-<img src="https://tom.creativedevelopments.org/NCW_Discord_RXhMQeJ2EV.png">
-<img src="https://tom.creativedevelopments.org/DUV_Discord_w5nstRebUr.png">
-<img src="https://tom.creativedevelopments.org/IKM_Discord_kHl2IfnSvY.png">
-<br></br>
-
-# Default Logging
+## Logging
 There are 5 different defualt logs - ready, info, load, database, error and warn:
 
 Example:
@@ -170,7 +191,9 @@ client.logWarn({ data: 'You have not set your MongoURI' })
 client.logError({ data: 'Failed to connect to the database' })
 client.logDatabase({ data: 'Successfully connected to the database' })
 ```
+<div style="text-align:center">
 <img src="https://tom.creativedevelopments.org/GDQ_cmd_Ucmvrpl3Ur.png">
+</div>
 
 <br></br>
 
