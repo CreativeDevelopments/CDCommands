@@ -1,6 +1,9 @@
 <div style="text-align:center"><a href="https://discord.gg/jUNbV5u"><img src="./cdcommands.png"></a>
+
 <br></br>
+
 <div style="text-align:center"><a href="https://www.npmjs.com/package/cdcommands"><img src ="https://nodei.co/npm/cdcommands.png"></a></div>
+
 <br></br>
 
 # Installation
