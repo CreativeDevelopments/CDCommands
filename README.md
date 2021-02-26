@@ -207,7 +207,7 @@ There is currently only one main function but more will be added in the future.
 // This will be changed so you can do const { ProperCase } = require('cdcommands') soon.
 
 const { Command } = require('cdcommands')
-const { ProperCase } = require('../../node_modules/cdcommands/src/Functions')
+const { ProperCase } = require('cdcommands/src/Functions')
 
 module.exports = new Command({
     name: 'test',  // Fill out the rest as normal
