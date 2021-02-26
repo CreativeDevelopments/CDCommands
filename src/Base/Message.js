@@ -7,7 +7,7 @@ module.exports = new Event("message", async (client, message) => {
     const prefix = message.guild ? client.databaseCache.getDocument("prefix", message.guild.id) ? client.databaseCache.getDocument("prefix", message.guild.id).prefix : client.defaultPrefix : client.defaultPrefix;
 
     const args = message.content.trim().slice(prefix.length).split(" ");
-    const commandName = args.shift();
+    const commandName = args.shift().toLowerCase();
 
     if (!message.content.startsWith(prefix)) return;
 
