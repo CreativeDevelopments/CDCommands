@@ -17,13 +17,13 @@
 - [Setup](#setup)
 - [Creating a Command](#creating-a-command)
 
-    - [Properties](##properties)
-    - [Command](##command)
+    - [Properties](#properties)
+    - [Command](#command)
 
 - [Creating an Event](#creating-an-event)
 - [Defaults](#defaults)
-    - [Embeds](##embeds)
-    - [Logging](##logging)
+    - [Embeds](#embeds)
+    - [Logging](#logging)
 - [Functions](#functions)
 - [Other](#other)
 
