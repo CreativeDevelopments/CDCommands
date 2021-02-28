@@ -251,7 +251,21 @@
     },
     "PREFIX_COMMAND": {
       "type": "object",
-      "properties": {}
+      "properties": {
+        "SAME_PREFIX": {
+          "type": "string",
+          "examples": [
+            "Please choose a **new** prefix to set."
+          ]
+        },
+        "SUCCESS": {
+          "type": "string",
+          "examples": [
+            "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+          ],
+          "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix."
+        }
+      }
     }
   }
 }
