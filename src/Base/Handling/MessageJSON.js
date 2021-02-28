@@ -3,7 +3,7 @@ const { join } = require("path");
 const fs = require("fs");
 
 /**
- * @template {{}} T
+ * @template {import("../message.json")} T
  */
 class MessageJSON {
 
@@ -63,4 +63,7 @@ const test = new MessageJSON()
 
 test.setValue("GUILD_ONLY", "hey there")
 
-console.log(test.getValue("GUILD_ONLY"));
+console.log(test.getValue(""));
+
+//C:/Users/orion/Documents/npm-packages/CDCommands/src/Base/json-schema/message.json
+//c:\Users\orion\Documents\npm-packages\src\Base\json-schema\message.json

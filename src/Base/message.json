@@ -6,5 +6,6 @@
   "DISABLED_CATEGORY": "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category.",
   "MISSING_CLIENT_PERMISSION": "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!",
   "MISSING_MEMBER_PERMISSION": "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!",
-  "": ""
+  "MISSING_ROLES": "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}.",
+  "DEVELOPER_ONLY": "You can't use {COMMAND}. It is locked to developers only."
 }
