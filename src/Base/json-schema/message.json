@@ -204,7 +204,50 @@
     },
     "ROLES_COMMAND": {
       "type": "object",
-      "properties": {}
+      "properties": {
+        "INVALED_ARGUMENTS": {
+          "type": "string",
+          "examples": [
+            "Invalid Arguments! Please use {USAGE} instead."
+          ],
+          "description": "\"{USAGE}\" represents the correct usage of the command."
+        },
+        "INVALED_ROLE": {
+          "type": "string",
+          "examples": [
+            "Please provide a valid role to {ACTION}."
+          ],
+          "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\""
+        },
+        "INVALED_COMMAND": {
+          "type": "string",
+          "examples": [
+            "That command does not exist. Please provide a valid command."
+          ],
+          "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to."
+        },
+        "ALREADY_ADDED": {
+          "type": "string",
+          "examples": [
+            "{ROLE} is already on the required roles list of {COMMAND}"
+          ],
+          "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to."
+        },
+        "ALREADY_REMOVED": {
+          "type": "string",
+          "examples": [
+            "{ROLE} is not on the required roles list for {COMMAND}"
+          ],
+          "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
+        },
+        "SUCCESS": {
+          "type": "string",
+          "examples": [
+            "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+          ],
+          "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
+        }
+      }
     },
     "PREFIX_COMMAND": {
       "type": "object",
