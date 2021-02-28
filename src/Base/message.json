@@ -20,7 +20,14 @@
     "NON_EXISTANT_CATEGORY": "That category does not exist.",
     "SUCCESS": "Successfully {ACTION} the {CATEGORY} category."
   },
-  "COMMANDS_COMMAND": {},
+  "COMMANDS_COMMAND": {
+    "ALREADY_DISABLED": "That command is already disabled.",
+    "ALREADY_ENABLED": "That command is already enabled.",
+    "INVALED_ARGS_ERROR": "Invalid Arguments! Please use {USAGE} instead.",
+    "NO_DISABLE": "{COMMAND} can not be disabled",
+    "NON_EXISTANT_COMMAND": "That command does not exist.",
+    "SUCCESS": "Successfully {ACTION} the {COMMAND} command."
+  },
   "HELP_COMMAND": {},
   "PREFIX_COMMAND": {},
   "ROLES_COMMAND": {}

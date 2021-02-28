@@ -58,6 +58,6 @@ class MessageJSON {
 
 }
 
-new MessageJSON().getValue("ROLES_COMMAND");
+console.log(new MessageJSON().getValue("CATEGORY_COMMAND"));
 
 module.exports = MessageJSON;

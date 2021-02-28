@@ -145,7 +145,50 @@
     },
     "COMMANDS_COMMAND": {
       "type": "object",
-      "properties": {}
+      "properties": {
+        "INVALED_ARGS_ERROR": {
+          "type": "string",
+          "examples": [
+            "Invalid Arguments! Please use {USAGE} instead."
+          ],
+          "description": "\"{USAGE}\" represents the correct usage of the command"
+        },
+        "NON_EXISTANT_COMMAND": {
+          "type": "string",
+          "examples": [
+            "That command does not exist."
+          ],
+          "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+        },
+        "ALREADY_ENABLED": {
+          "type": "string",
+          "examples": [
+            "That command is already enabled."
+          ],
+          "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+        },
+        "NO_DISABLE": {
+          "type": "string",
+          "examples": [
+            "{COMMAND} can not be disabled"
+          ],
+          "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+        },
+        "ALREADY_DISABLED": {
+          "type": "string",
+          "examples": [
+            "That command is already disabled."
+          ],
+          "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable"
+        },
+        "SUCCESS": {
+          "type": "string",
+          "examples": [
+            "Successfully {ACTION} the {COMMAND} command."
+          ],
+          "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable"
+        }
+      }
     },
     "HELP_COMMAND": {
       "type": "object",
