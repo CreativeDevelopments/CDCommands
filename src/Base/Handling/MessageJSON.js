@@ -33,8 +33,9 @@ class MessageJSON {
     this._fileData = require(this._path);
   }
   /**
-   * @param {keyof T} key
-   * @returns {string} 
+   * @template {keyof T} V
+   * @param {V} key
+   * @returns {import("../message.json")[V]} 
    */
   getValue(key) {
     return this._fileData[key];
@@ -56,5 +57,7 @@ class MessageJSON {
 
 
 }
+
+new MessageJSON().getValue("ROLES_COMMAND");
 
 module.exports = MessageJSON;

@@ -102,6 +102,62 @@
         "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
       ],
       "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
+    },
+    "CATEGORY_COMMAND": {
+      "type": "object",
+      "properties": {
+        "INVALED_ARGS_ERROR": {
+          "type": "string",
+          "examples": [
+            "Invalid Arguments! Please use {USAGE} instead."
+          ],
+          "description": "\"{USAGE}\" represents the correct usage of the command"
+        },
+        "NON_EXISTANT_CATEGORY": {
+          "type": "string",
+          "examples": [
+            "That category does not exist."
+          ],
+          "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+        },
+        "ALREADY_ENABLED": {
+          "type": "string",
+          "examples": [
+            "That category is already enabled."
+          ],
+          "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+        },
+        "ALREADY_DISABLED": {
+          "type": "string",
+          "examples": [
+            "That category is already disabled."
+          ],
+          "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+        },
+        "SUCCESS": {
+          "type": "string",
+          "examples": [
+            "Successfully {ACTION} the {CATEGORY} category."
+          ],
+          "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+        }
+      }
+    },
+    "COMMANDS_COMMAND": {
+      "type": "object",
+      "properties": {}
+    },
+    "HELP_COMMAND": {
+      "type": "object",
+      "properties": {}
+    },
+    "ROLES_COMMAND": {
+      "type": "object",
+      "properties": {}
+    },
+    "PREFIX_COMMAND": {
+      "type": "object",
+      "properties": {}
     }
   }
 }

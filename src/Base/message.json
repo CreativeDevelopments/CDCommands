@@ -12,5 +12,16 @@
   "TOO_FEW_ARGS": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead",
   "TOO_MANY_ARGS": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead",
   "GLOBAL_COOLDOWN": "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again.",
-  "USER_COOLDOWN": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
+  "USER_COOLDOWN": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again.",
+  "CATEGORY_COMMAND": {
+    "ALREADY_DISABLED": "That category is already disabled.",
+    "ALREADY_ENABLED": "That category is already enabled.",
+    "INVALED_ARGS_ERROR": "Invalid Arguments! Please use {USAGE} instead.",
+    "NON_EXISTANT_CATEGORY": "That category does not exist.",
+    "SUCCESS": "Successfully {ACTION} the {CATEGORY} category."
+  },
+  "COMMANDS_COMMAND": {},
+  "HELP_COMMAND": {},
+  "PREFIX_COMMAND": {},
+  "ROLES_COMMAND": {}
 }
