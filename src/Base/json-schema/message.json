@@ -67,6 +67,41 @@
         "You can't use {COMMAND}. It is locked to developers only."
       ],
       "description": "\"{COMMAND}\" represents the command that was used"
+    },
+    "TEST_SERVER": {
+      "type": "string",
+      "examples": [
+        "{COMMAND} is locked to test servers only and this server is not one."
+      ],
+      "description": "\"{COMMAND}\" represents the command that was used"
+    },
+    "TOO_MANY_ARGS": {
+      "type": "string",
+      "examples": [
+        "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
+      ],
+      "description": "\"{USAGE}\" represents the correct usage of the command"
+    },
+    "TOO_FEW_ARGS": {
+      "type": "string",
+      "examples": [
+        "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
+      ],
+      "description": "\"{USAGE}\" represents the correct usage of the command"
+    },
+    "GLOBAL_COOLDOWN": {
+      "type": "string",
+      "examples": [
+        "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
+      ],
+      "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
+    },
+    "USER_COOLDOWN": {
+      "type": "string",
+      "examples": [
+        "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
+      ],
+      "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
     }
   }
 }
