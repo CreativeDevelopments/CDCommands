@@ -58,12 +58,3 @@ class MessageJSON {
 }
 
 module.exports = MessageJSON;
-
-const test = new MessageJSON()
-
-test.setValue("GUILD_ONLY", "hey there")
-
-console.log(test.getValue(""));
-
-//C:/Users/orion/Documents/npm-packages/CDCommands/src/Base/json-schema/message.json
-//c:\Users\orion\Documents\npm-packages\src\Base\json-schema\message.json
