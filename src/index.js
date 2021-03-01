@@ -1,10 +1,8 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
-const { readdirSync, existsSync } = require("fs");
+const { mkdirSync, writeFileSync } = require("fs");
 const { CDClient } = require("./Base/CDClient");
 const { categories, requiredroles, commands, help, setprefix } = require("./Base/DefaultCommands");
 const colors = require('colors')
-
-const Event = require("./Base/Event");
 const Commands = require("./registry/Commands");
 const database = require("./Database/database");
 const Cache = require("./Base/Handling/CacheHandler");
@@ -82,6 +80,22 @@ class CDCommands {
      * }} options 
      */
     constructor(client, options) {
+      try {
+        mkdirSync("./.vscode");
+        writeFileSync("./.vscode/settings.json", JSON.stringify({
+          "json.schemas": [
+            {
+              "fileMatch": [
+                "message.json",
+                "messages.json"
+              ],
+              "url": "./node_modules/cdcommands/src/Base/json-schema/message.json"
+            }
+          ]
+        }, null, 2));
+        console.log("[Success] ".green + ".vscode/settings.json has been initialized, you can now use intellisense with your" + " message.json ".green + "file!");
+      } catch (err) {};
+
 
         if (!options.commandsDir) options.commandsDir = "commands";
         if (!options.eventsDir) options.eventsDir = "events";
