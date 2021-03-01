@@ -16,10 +16,8 @@
 - [Installation](#installation)
 - [Setup](#setup)
 - [Creating a Command](#creating-a-command)
-
     - [Properties](#properties)
     - [Command](#command)
-
 - [Creating an Event](#creating-an-event)
 - [Message.json](#messagejson)
 - [Defaults](#defaults)
@@ -37,12 +35,13 @@ npm i cdcommands --save
 npm i mongoose@5.11.15 --save
 ```
 
+<br></br>
 
 # Setup
 ```js
 const Discord = require('discord.js');
 const CDCommands = require('cdcommands');
-require('dotenv').config()
+require('dotenv').config() // If you a using dotenv you need to install it with "npm i dotenv --save"
 
 const client = new Discord.Client();
 
@@ -63,6 +62,22 @@ client.on('ready', () => {
 
 client.login(process.env.TOKEN)
 ```
+
+<br></br>
+
+# Message JSON
+Setting up your message.json file is as easy as creating the file in your directory and adding the relative path in the MessageJsonPath property. On the first start of the project, a directory and file will be created, "~.vscode/settings.json". This is created to allow for autocomplete in your message.json files. You can get the default message.json file [here, from our github.](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/message.json)
+
+```js
+client.on("ready", () => {
+  new CDCommands(client, {
+    MessageJSONPath: "./path/to/message.json",
+    ...
+  });
+});
+```
+
+<br></br>
 
 # Creating a Command
 
@@ -140,16 +155,6 @@ module.exports = new Command({
 ```
 <br></br>
 
-# Message JSON
-Setting up your message.json file is as easy as creating the file in your directory and adding the relative path in the MessageJsonPath property. On the first start of the project, a directory and file will be created, "~.vscode/settings.json". This is created to allow for autocomplete in your message.json files.
-```js
-client.on("ready", () => {
-  new CDCommands(client, {
-    MessageJSONPath: "./path/to/message.json",
-    ...
-  });
-});
-```
 # Creating an Event
 
 Events can have as many subfolders as you want. If you want to create a message event you need to enable "customMessageEvent" when 
@@ -231,6 +236,7 @@ module.exports = new Command({
 // Console Log:
 Hello World
 ```
+
 <br></br>
 
 # Other
