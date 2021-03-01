@@ -43,19 +43,34 @@ module.exports = new Command({
     }
 
     if (!categories.has(categoryName)) {
-      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "NON_EXISTANT_CATEGORY", []);
+      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "NON_EXISTANT_CATEGORY", [
+        {
+          key: "CATEGORY",
+          replace: categoryName,
+        },
+      ]);
       return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
     }
 
     if (enabledDisabled === "enable") {
-      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "ALREADY_ENABLED", []);
+      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "ALREADY_ENABLED", [
+        {
+          key: "CATEGORY",
+          replace: categoryName,
+        },
+      ]);
       if (!DisabledDoc.categories.includes(categoryName))
         return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
       const i = DisabledDoc.categories.findIndex((v) => v === categoryName);
       DisabledDoc.categories.splice(i, 1);
 
     } else if (enabledDisabled === "disable") {
-      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "ALREADY_DISABLED", []);
+      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "ALREADY_DISABLED", [
+        {
+          key: "CATEGORY",
+          replace: categoryName,
+        },
+      ]);
       if (DisabledDoc.categories.includes(categoryName))
         return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
       DisabledDoc.categories.push(categoryName);
