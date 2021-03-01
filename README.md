@@ -19,7 +19,7 @@
     - [Properties](#properties)
     - [Command](#command)
 - [Creating an Event](#creating-an-event)
-- [Message.json](#messagejson)
+- [Message.json](#message-json)
 - [Defaults](#defaults)
     - [Embeds](#embeds)
     - [Logging](#logging)
