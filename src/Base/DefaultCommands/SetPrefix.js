@@ -9,7 +9,7 @@ module.exports = new Command({
     details: "Update or reset the prefix of the bot in the current server",
     devOnly: false,
     dmOnly: false,
-    globalCooldown: 500,
+    globalCooldown: 0,
     guildOnly: true,
     maxArgs: Infinity,
     minArgs: 1,

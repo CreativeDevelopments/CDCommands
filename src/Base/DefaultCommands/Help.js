@@ -9,7 +9,7 @@ module.exports = new Command({
     details: "A help command to recieve help",
     devOnly: false,
     dmOnly: false,
-    globalCooldown: 500,
+    globalCooldown: 0,
     guildOnly: false,
     maxArgs: 1,
     minArgs: 0,
