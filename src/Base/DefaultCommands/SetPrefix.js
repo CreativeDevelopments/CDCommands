@@ -25,8 +25,10 @@ module.exports = new Command({
         if (!prefixDoc) prefixDoc = new prefixes({ gId: message.guild.id, prefix });
 
         const updatedPrefix = args.join(" ").trim();
-        if (updatedPrefix === prefixDoc.prefix)
-            return message.channel.send("", { embed: client.error({ msg: message, data: "Please choose a **new** prefix to set."})}).catch(err => message.channel.send("Please choose a **new** prefix to set."));
+        if (updatedPrefix === prefixDoc.prefix) {
+            const res = client.defaultResponses.getValue("PREFIX_COMMAND", "SAME_PREFIX", []);
+            return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+        }
 
         prefixDoc.prefix = updatedPrefix;
 
@@ -35,6 +37,16 @@ module.exports = new Command({
         else 
             client.databaseCache.insertDocument("prefix", prefixDoc);
 
-        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully updated ${message.guild.name}'s prefix to \`${updatedPrefix}\`` })}).catch(err => message.channel.send(`Successfully updated ${message.guild.name}'s prefix to \`${updatedPrefix}\``));
+        const successRes = client.defaultResponses.getValue("PREFIX_COMMAND", "SUCCESS", [
+            {
+                key: "GUILD_NAME",
+                replace: message.guild.name,
+            },
+            {
+                key: "PREFIX",
+                replace: `\`${updatedPrefix}\``,
+            }
+        ]);
+        return message.channel.send("", { embed: client.success({ msg: message, data: successRes })}).catch(_ => message.channel.send(successRes));
     }
 });

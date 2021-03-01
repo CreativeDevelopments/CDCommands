@@ -21,6 +21,7 @@
     - [Command](#command)
 
 - [Creating an Event](#creating-an-event)
+- [Message.json](#messagejson)
 - [Defaults](#defaults)
     - [Embeds](#embeds)
     - [Logging](#logging)
@@ -49,6 +50,7 @@ client.on('ready', () => {
     new CDCommands(client, {
         commandsDir: 'commands',
         eventsDir: 'events',
+        MessageJSONPath: "./path/to/message.json",
         testServers: [],
         devs: [],
         defaultPrefix: 'prefix',
@@ -138,6 +140,16 @@ module.exports = new Command({
 ```
 <br></br>
 
+# Message JSON
+Setting up your message.json file is as easy as creating the file in your directory and adding the relative path in the MessageJsonPath property. On the first start of the project, a directory and file will be created, "~.vscode/settings.json". This is created to allow for autocomplete in your message.json files.
+```js
+client.on("ready", () => {
+  new CDCommands(client, {
+    MessageJSONPath: "./path/to/message.json",
+    ...
+  });
+});
+```
 # Creating an Event
 
 Events can have as many subfolders as you want. If you want to create a message event you need to enable "customMessageEvent" when 

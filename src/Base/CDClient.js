@@ -1,6 +1,7 @@
 const { Collection, Client, Message, MessageEmbed } = require("discord.js");
 const Cache = require("./Handling/CacheHandler");
 const Cooldowns = require("./Handling/CooldownHandler");
+const MessageJSON = require("./Handling/MessageJSON");
 
 /**
  * @extends {Client}
@@ -14,6 +15,8 @@ class CDClient extends Client {
     defaultPrefix;
     /** @type {Cache} */
     databaseCache;
+    /** @type {MessageJSON<import("./message.json")>} */
+    defaultResponses;
     /** @type {Cooldowns} */
     cooldowns;
     /** @type {string[]} */

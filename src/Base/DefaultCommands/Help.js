@@ -28,8 +28,19 @@ module.exports = new Command({
         const command = client.commands.get(command_category) || client.commands.get(client.aliases.get(command_category));
         const category = client.commands.filter((c) => c.category === command_category);
 
-        if (!command && category.size < 1 && command_category)
-            return message.channel.send("", { embed: client.error({ msg: message, data: `${ProperCase(command_category)} is not a valid command or category. Use \`${prefix}help\` to view all command categories.` })}).catch(err => message.channel.send(`${ProperCase(command_category)} is not a valid command or category. Use \`${prefix}help\` to view all command categories.`));
+        if (!command && category.size < 1 && command_category) {
+            const res = client.defaultResponses.getValue("HELP_COMMAND", "INVALED_COMMAND_CATEGORY", [
+                {
+                    key: "COMMAND_CATEGORY",
+                    replace: `${ProperCase(command_category)}`
+                },
+                {
+                    key: "PREFIX",
+                    replace: prefix,
+                }
+            ]);
+            return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => msg.channel.send(res))
+        }
 
         const helpEmbed = new MessageEmbed()
             .setColor("00DCFF")

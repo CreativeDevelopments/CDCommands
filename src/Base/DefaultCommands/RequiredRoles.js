@@ -31,20 +31,47 @@ module.exports = new Command({
         const role = message.mentions.roles.first() || message.guild.roles.cache.get(args[1]);
         const command = args[2];
 
-        if (addRemove !== "add" && addRemove !== "remove") 
-            return message.channel.send("", { embed: client.error({ msg: message, data: `Invalid Arguments! Please use \`${prefix}requiredroles [add/remove] [role] [command]\` instead.` })}).catch(err => message.channel.send(`Invalid Arguments! Please use \`${prefix}requiredroles [add/remove] [role] [command]\` instead.`));
+        if (addRemove !== "add" && addRemove !== "remove")  {
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_ARGUMENTS", [
+                {
+                    key: "USAGE",
+                    replace: this.usage.replace(/{prefix}/g, prefix),
+                }
+            ]);
+            return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => msg.channel.send(res))
+        }
 
-        if (!role)
-            return message.channel.send("", { embed: client.error({ msg: message, data: `Please provide a valid role to ${addRemove}.` })}).catch(err => message.channel.send(`Please provide a valid role to ${addRemove}.`));
+        if (!role) {
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_ROLE", [
+                {
+                    key: "ACTION",
+                    replace: addRemove,
+                }
+            ]);
+            return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+        }
 
-        if (!client.commands.get(command))
-            return message.channel.send("", { embed: client.error({ msg: message, data: "That command does not exist. Please provide a valid command." })}).catch(err => message.channel.send("That command does not exist. Please provide a valid command."));
+        if (!client.commands.get(command)) {
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_COMMAND", []);
+            return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+        }
 
         const reqRolesObject = reqRolesDoc.requiredRoles.find((ob) => ob.command === command);
         if (addRemove === "add") {
             if (reqRolesObject) {
-                if (reqRolesObject.roles.find((s) => s === role.id))
-                    return message.channel.send("", { embed: client.error({ msg: message, data: `**${role.name}** is already on the required roles list of **${command}**` })}).catch(err => message.channel.send(`**${role.name}** is already on the required roles list of **${command}**`));
+                if (reqRolesObject.roles.find((s) => s === role.id)) {
+                    const res = client.defaultResponses.getValue("ROLES_COMMAND", "ALREADY_ADDED", [
+                        {
+                            key: "ROLE",
+                            replace: `**${role.name}**`,
+                        },
+                        {
+                            key: "COMMAND",
+                            replace: `**${role.name}**`,
+                        }
+                    ]);
+                    return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+                }
                 reqRolesObject.roles.push(role.id);
             } else {
                 reqRolesDoc.requiredRoles.push({
@@ -54,12 +81,34 @@ module.exports = new Command({
             }
         } else if (addRemove === "remove") {
             if (reqRolesObject) {
-                if (!reqRolesObject.roles.find((s) => s === role.id))
-                    return message.channel.send("", { embed: client.error({ msg: message, data: `**${role.name}** is not on the required roles list for **${command}**` })}).catch(err => message.channel.send(`**${role.name}** is not on the required roles list for **${command}**`));
+                if (!reqRolesObject.roles.find((s) => s === role.id)) {
+                    const res = client.defaultResponses.getValue("ROLES_COMMAND", "ALREADY_REMOVED", [
+                        {
+                            key: "ROLE",
+                            replace: `**${role.name}**`,
+                        },
+                        {
+                            key: "COMMAND",
+                            replace: `**${command}**`,
+                        }
+                    ]);
+                    return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+                }
                 const i = reqRolesObject.roles.findIndex((s) => s === role.id);
                 reqRolesObject.roles.splice(i, 1);
-                // English is hard
-            } else return message.channel.send("", { embed: client.error({ msg: message, data: `**${role.name}** is not on the required roles list for **${command}**` })}).catch(err => message.channel.send(`**${role.name}** is not on the required roles list for **${command}**`));
+            } else {
+                const res = client.defaultResponses.getValue("ROLES_COMMAND", "ALREADY_REMOVED", [
+                    {
+                        key: "ROLE",
+                        replace: `**${role.name}**`,
+                    },
+                    {
+                        key: "COMMAND",
+                        replace: `**${command}**`,
+                    }
+                ]);
+                return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+            }
         } 
 
 
@@ -67,6 +116,16 @@ module.exports = new Command({
             client.databaseCache.insertDocument("roles", reqRolesDoc);
         else client.databaseCache.updateDocument("roles", message.guild.id, reqRolesDoc);
 
-        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully ${addRemove === "add" ? "added" : "removed"} **${role.name}** ${addRemove === "add" ? "to" : "from"} the required roles list of **${command}**` })}).catch(err => message.channel.send(`Successfully ${addRemove === "add" ? "added" : "removed"} **${role.name}** ${addRemove === "add" ? "to" : "from"} the required roles list of **${command}**`));
+        const successRes = client.defaultResponses.getValue("ROLES_COMMAND", "SUCCESS", [
+            {
+                key: "ACTION",
+                replace: `${addRemove === "add" ? "added" : "removed"}`,
+            },
+            {
+                key: "ROLE",
+                replace: `**${role.name}**`,
+            }
+        ]);
+        return message.channel.send("", { embed: client.success({ msg: message, data: successRes })}).catch(_ => message.channel.send(successRes));
     }
 });

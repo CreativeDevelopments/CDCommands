@@ -1,10 +1,8 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
-const { readdirSync, existsSync } = require("fs");
+const { mkdirSync, writeFileSync } = require("fs");
 const { CDClient } = require("./Base/CDClient");
 const { categories, requiredroles, commands, help, setprefix } = require("./Base/DefaultCommands");
 const colors = require('colors')
-
-const Event = require("./Base/Event");
 const Commands = require("./registry/Commands");
 const database = require("./Database/database");
 const Cache = require("./Base/Handling/CacheHandler");
@@ -14,6 +12,7 @@ const disabledCommands = require("./Database/models/disabled-commands");
 const requiredRoles = require("./Database/models/required-roles");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const Events = require("./registry/Events");
+const MessageJSON = require("./Base/Handling/MessageJSON");
 
 class CDCommands {
 
@@ -77,14 +76,32 @@ class CDCommands {
      * defaultPrefix: string; 
      * mongoURI: string;
      * cacheUpdateSpeed?: number;
+     * MessageJSONPath?: string;
      * }} options 
      */
     constructor(client, options) {
+      try {
+        mkdirSync("./.vscode");
+        writeFileSync("./.vscode/settings.json", JSON.stringify({
+          "json.schemas": [
+            {
+              "fileMatch": [
+                "message.json",
+                "messages.json"
+              ],
+              "url": "./node_modules/cdcommands/src/Base/json-schema/message.json"
+            }
+          ]
+        }, null, 2));
+        console.log("[Success] ".green + ".vscode/settings.json has been initialized, you can now use intellisense with your" + " message.json ".green + "file!");
+      } catch (err) {};
+
 
         if (!options.commandsDir) options.commandsDir = "commands";
         if (!options.eventsDir) options.eventsDir = "events";
         if (!options.testServers) options.testServers = [];
         if (!options.devs) options.devs = [];
+        if (!options.MessageJSONPath) options.MessageJSONPath = "";
 
         this._client = client;
         this._commandsDir = options.commandsDir;
@@ -103,6 +120,7 @@ class CDCommands {
         this._client.defaultPrefix = options.defaultPrefix;
         this._client.developers = this._devs;
         this._client.testservers = this._testServers;
+        this._client.defaultResponses = new MessageJSON(options.MessageJSONPath);
 
         this._client.success = ({ msg, data }) => {
             const embed = new MessageEmbed()
