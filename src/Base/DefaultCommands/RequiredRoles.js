@@ -52,7 +52,7 @@ module.exports = new Command({
         }
 
         if (!client.commands.get(command)) {
-            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_COMMAND", [])
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_COMMAND", []);
             return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
         }
 

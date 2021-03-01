@@ -66,7 +66,7 @@ module.exports = new Command({
             }
 
             if (DisabledDoc.commands.includes(commandName)) {
-                const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_DISABLED", [])
+                const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_DISABLED", []);
                 return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
             }
             DisabledDoc.commands.push(commandName);
