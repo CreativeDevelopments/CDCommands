@@ -50,6 +50,7 @@ client.on('ready', () => {
     new CDCommands(client, {
         commandsDir: 'commands',
         eventsDir: 'events',
+        MessageJSONPath: "./path/to/message.json",
         testServers: [],
         devs: [],
         defaultPrefix: 'prefix',
