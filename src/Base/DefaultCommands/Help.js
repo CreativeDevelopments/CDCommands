@@ -29,7 +29,7 @@ module.exports = new Command({
         const category = client.commands.filter((c) => c.category === command_category);
 
         if (!command && category.size < 1 && command_category) {
-            const res = client.defaultResponses.getValue("HELP_COMMAND", "INVALED_COMMAND_CATEGORY", [
+            const res = client.defaultResponses.getValue("HELP_COMMAND", "INVALID_COMMAND_CATEGORY", [
                 {
                     key: "COMMAND_CATEGORY",
                     replace: `${ProperCase(command_category)}`

@@ -32,7 +32,7 @@ module.exports = new Command({
         const command = args[2];
 
         if (addRemove !== "add" && addRemove !== "remove")  {
-            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_ARGUMENTS", [
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALID_ARGUMENTS", [
                 {
                     key: "USAGE",
                     replace: this.usage.replace(/{prefix}/g, prefix),
@@ -42,7 +42,7 @@ module.exports = new Command({
         }
 
         if (!role) {
-            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_ROLE", [
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALID_ROLE", [
                 {
                     key: "ACTION",
                     replace: addRemove,
@@ -52,7 +52,7 @@ module.exports = new Command({
         }
 
         if (!client.commands.get(command)) {
-            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALED_COMMAND", []);
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALID_COMMAND", []);
             return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
         }
 

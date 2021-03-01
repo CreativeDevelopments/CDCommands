@@ -33,7 +33,7 @@ module.exports = new Command({
     const categories = new Set(client.commands.map(c => c.category));
 
     if (enabledDisabled !== "enabled" && enabledDisabled !== "disable") {
-      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "INVALED_ARGS_ERROR", [
+      const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "INVALID_ARGS_ERROR", [
         {
           key: "USAGE",
           replace: this.usage.replace(/{prefix}/g, prefix),

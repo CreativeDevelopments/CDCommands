@@ -106,7 +106,7 @@
     "CATEGORY_COMMAND": {
       "type": "object",
       "properties": {
-        "INVALED_ARGS_ERROR": {
+        "INVALID_ARGS_ERROR": {
           "type": "string",
           "examples": [
             "Invalid Arguments! Please use {USAGE} instead."
@@ -146,7 +146,7 @@
     "COMMANDS_COMMAND": {
       "type": "object",
       "properties": {
-        "INVALED_ARGS_ERROR": {
+        "INVALID_ARGS_ERROR": {
           "type": "string",
           "examples": [
             "Invalid Arguments! Please use {USAGE} instead."
@@ -193,7 +193,7 @@
     "HELP_COMMAND": {
       "type": "object",
       "properties": {
-        "INVALED_COMMAND_CATEGORY": {
+        "INVALID_COMMAND_CATEGORY": {
           "type": "string",
           "examples": [
             "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
@@ -205,21 +205,21 @@
     "ROLES_COMMAND": {
       "type": "object",
       "properties": {
-        "INVALED_ARGUMENTS": {
+        "INVALID_ARGUMENTS": {
           "type": "string",
           "examples": [
             "Invalid Arguments! Please use {USAGE} instead."
           ],
           "description": "\"{USAGE}\" represents the correct usage of the command."
         },
-        "INVALED_ROLE": {
+        "INVALID_ROLE": {
           "type": "string",
           "examples": [
             "Please provide a valid role to {ACTION}."
           ],
           "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\""
         },
-        "INVALED_COMMAND": {
+        "INVALID_COMMAND": {
           "type": "string",
           "examples": [
             "That command does not exist. Please provide a valid command."
