@@ -32,23 +32,43 @@ module.exports = new Command({
         const commandName = args[1];
         const commands = new Set(client.commands.map(c => c.name));
 
-        if (enabledDisabled !== "enable" && enabledDisabled !== "disable")
-            return message.channel.send("", { embed: client.error({ msg: message, data: `Invalid Arguments! Please use \`${prefix}command [enable/disable] [command]\` instead.` })}).catch(err => message.channel.send(`Invalid Arguments! Please use \`${prefix}command [enable/disable] [command]\` instead.`));
+        if (enabledDisabled !== "enable" && enabledDisabled !== "disable") {
+            const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "INVALED_ARGS_ERROR", [
+                {
+                    key: "USAGE",
+                    replace: this.usage.replace(/{prefix}/g, prefix),
+                }
+            ]);
+            return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+        }
 
-        if (!commands.has(commandName))
-            return message.channel.send("", { embed: client.error({ msg: message, data: "That command does not exist." })}).catch(err => message.channel.send("That command does not exist."));
+        if (!commands.has(commandName)) {
+            const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "NON_EXISTANT_COMMAND", []);
+            return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+        }
 
         if (enabledDisabled === "enable") {
+            const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_ENABLED", []);
             if (!DisabledDoc.commands.includes(commandName))
-                return message.channel.send("", { embed: client.error({ msg: message, data: "That command is already enabled." })}).catch(err => message.channel.send("That command is already enabled."));
+                return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
             const i = DisabledDoc.commands.findIndex((v) => v === commandName);
             DisabledDoc.commands.splice(i, 1);
 
         } else if (enabledDisabled === "disable") {
-            if (client.commands.get(commandName).noDisable)
-                return message.channel.send("", { embed: client.error({ msg: message, data: `**${commandName}** can not be disabled.` })}).catch(err => message.channel.send(`**${commandName}** can not be disabled.`));
-            if (DisabledDoc.commands.includes(commandName))
-                return message.channel.send("", { embed: client.error({ msg: message, data: "That command is already disabled" })}).catch(err => message.channel.send("That command is already disabled"));
+            if (client.commands.get(commandName).noDisable) {
+                const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "NO_DISABLE", [
+                    {
+                        key: "COMMAND",
+                        replace: commandName,
+                    }
+                ]);
+                return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => msg.channel.send(res));
+            }
+
+            if (DisabledDoc.commands.includes(commandName)) {
+                const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_DISABLED", [])
+                return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
+            }
             DisabledDoc.commands.push(commandName);
         }
 
@@ -56,6 +76,17 @@ module.exports = new Command({
             client.databaseCache.insertDocument("command", DisabledDoc);
         else client.databaseCache.updateDocument("command", message.guild.id, DisabledDoc);
 
-        return message.channel.send("", { embed: client.success({ msg: message, data: `Successfully ${enabledDisabled}d the **${commandName}** command` })}).catch(err => message.channel.send(`Successfully ${enabledDisabled}d the **${commandName}** command`));
+        const successRes = client.defaultResponses.getValue("COMMANDS_COMMAND", "SUCCESS", [
+            {
+                key: "ACTION",
+                replace: `${enabledDisabled}d`,
+            },
+            {
+                key: "COMMAND",
+                replace: commandName,
+            }
+        ])
+
+        return message.channel.send("", { embed: client.success({ msg: message, data: successRes })}).catch(err => message.channel.send(successRes));
     }
 });
