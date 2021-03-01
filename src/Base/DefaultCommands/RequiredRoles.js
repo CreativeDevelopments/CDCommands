@@ -52,7 +52,12 @@ module.exports = new Command({
         }
 
         if (!client.commands.get(command)) {
-            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALID_COMMAND", []);
+            const res = client.defaultResponses.getValue("ROLES_COMMAND", "INVALID_COMMAND", [
+              {
+                key: "COMMAND",
+                replace: command,
+              }
+            ]);
             return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
         }
 
@@ -124,7 +129,11 @@ module.exports = new Command({
             {
                 key: "ROLE",
                 replace: `**${role.name}**`,
-            }
+            },
+            {
+              key: "COMMAND",
+              replace: command,
+            },
         ]);
         return message.channel.send("", { embed: client.success({ msg: message, data: successRes })}).catch(_ => message.channel.send(successRes));
     }
