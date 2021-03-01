@@ -23,7 +23,7 @@ class MessageJSON {
    * @param {string=} messagePath 
    */
   constructor(messagePath) {
-    if (messagePath && messagePath !== "") this._path = join(require.main.path, this._path, "message.json");
+    if (messagePath && messagePath !== "") this._path = join(require.main.path, messagePath);
     try {
         require(this._path);
     } catch (err) {
