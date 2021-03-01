@@ -43,12 +43,22 @@ module.exports = new Command({
         }
 
         if (!commands.has(commandName)) {
-            const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "NON_EXISTANT_COMMAND", []);
+            const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "NON_EXISTANT_COMMAND", [
+              {
+                key: "COMMAND",
+                replace: commandName,
+              },
+            ]);
             return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
         }
 
         if (enabledDisabled === "enable") {
-            const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_ENABLED", []);
+            const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_ENABLED", [
+              {
+                key: "COMMAND",
+                replace: commandName,
+              },
+            ]);
             if (!DisabledDoc.commands.includes(commandName))
                 return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
             const i = DisabledDoc.commands.findIndex((v) => v === commandName);
@@ -66,7 +76,12 @@ module.exports = new Command({
             }
 
             if (DisabledDoc.commands.includes(commandName)) {
-                const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_DISABLED", []);
+                const res = client.defaultResponses.getValue("COMMANDS_COMMAND", "ALREADY_DISABLED", [
+                  {
+                    key: "COMMAND",
+                    replace: commandName,
+                  },
+                ]);
                 return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
             }
             DisabledDoc.commands.push(commandName);
@@ -84,8 +99,8 @@ module.exports = new Command({
             {
                 key: "COMMAND",
                 replace: commandName,
-            }
-        ])
+            },
+        ]);
 
         return message.channel.send("", { embed: client.success({ msg: message, data: successRes })}).catch(_ => message.channel.send(successRes));
     }
