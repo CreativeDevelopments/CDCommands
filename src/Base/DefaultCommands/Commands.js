@@ -87,6 +87,6 @@ module.exports = new Command({
             }
         ])
 
-        return message.channel.send("", { embed: client.success({ msg: message, data: successRes })}).catch(err => message.channel.send(successRes));
+        return message.channel.send("", { embed: client.success({ msg: message, data: successRes })}).catch(_ => message.channel.send(successRes));
     }
 });
