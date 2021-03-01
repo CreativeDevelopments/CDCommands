@@ -34,11 +34,23 @@ class MessageJSON {
   }
   /**
    * @template {keyof T} V
+   * @template {keyof import("../message.json")[V] extends keyof string ? "" : keyof import("../message.json")[V]} S
    * @param {V} key
-   * @returns {import("../message.json")[V]} 
+   * @param {S} secondary_key
+   * @param {[{ key: keyof import("../json-schema/replacers.json"), replace: string }]} args
+   * @returns {import("../message.json")[V] extends keyof string ? import("../message.json")[V] : import("../message.json")[V][S]} 
    */
-  getValue(key) {
-    return this._fileData[key];
+  getValue(key, secondary_key, args) {
+    let value = this._fileData[key];
+    if (typeof value === "object")
+      value = value[secondary_key];
+
+    for (const replacer of args) {
+      const regex = new RegExp(`{${replacer.key}}`, "g")
+      value = value.replace(regex, replacer.replace);
+    }
+
+    return value;
   }
 
   /**
@@ -49,15 +61,11 @@ class MessageJSON {
    * @returns {K}
    */
   setValue(key, value) {
-    if (!this._fileData[key]) throw new ReferenceError("Unknown key value.");
+    if (!this._fileData[key]) throw new ReferenceError(`Unknown key: \"${key}\"`);
     this._fileData[key] = value;
     fs.writeFileSync(this._path, this._fileData);
     return value;
   }
 
-
 }
-
-console.log(new MessageJSON().getValue("CATEGORY_COMMAND"));
-
 module.exports = MessageJSON;

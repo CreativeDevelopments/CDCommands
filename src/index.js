@@ -14,6 +14,7 @@ const disabledCommands = require("./Database/models/disabled-commands");
 const requiredRoles = require("./Database/models/required-roles");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const Events = require("./registry/Events");
+const MessageJSON = require("./Base/Handling/MessageJSON");
 
 class CDCommands {
 
@@ -77,6 +78,7 @@ class CDCommands {
      * defaultPrefix: string; 
      * mongoURI: string;
      * cacheUpdateSpeed?: number;
+     * MessageJSONPath?: string;
      * }} options 
      */
     constructor(client, options) {
@@ -85,6 +87,7 @@ class CDCommands {
         if (!options.eventsDir) options.eventsDir = "events";
         if (!options.testServers) options.testServers = [];
         if (!options.devs) options.devs = [];
+        if (!options.MessageJSONPath) options.MessageJSONPath = "";
 
         this._client = client;
         this._commandsDir = options.commandsDir;
@@ -103,6 +106,7 @@ class CDCommands {
         this._client.defaultPrefix = options.defaultPrefix;
         this._client.developers = this._devs;
         this._client.testservers = this._testServers;
+        this._client.defaultResponses = new MessageJSON(options.MessageJSONPath);
 
         this._client.success = ({ msg, data }) => {
             const embed = new MessageEmbed()
