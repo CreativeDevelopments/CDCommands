@@ -67,7 +67,7 @@ module.exports = new Command({
                         },
                         {
                             key: "COMMAND",
-                            replace: `**${role.name}**`,
+                            replace: `**${command}**`,
                         }
                     ]);
                     return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(_ => message.channel.send(res));
