@@ -28,11 +28,11 @@ module.exports = new Command({
       categories: [],
     });
 
-    const enabledDisabled = args[0];
+    const enabledDisabled = args[0].toLowerCase();
     const categoryName = args[1];
     const categories = new Set(client.commands.map(c => c.category));
 
-    if (enabledDisabled !== "enabled" && enabledDisabled !== "disable") {
+    if (enabledDisabled !== "enable" && enabledDisabled !== "disable") {
       const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "INVALID_ARGS_ERROR", [
         {
           key: "USAGE",
