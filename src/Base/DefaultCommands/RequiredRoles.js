@@ -119,7 +119,7 @@ module.exports = new Command({
 
         if (!client.databaseCache.getDocument("requriedroles", message.guild.id))
             client.databaseCache.insertDocument("requriedroles", reqRolesDoc);
-        else client.databaseCache.updateDocument("requriedroles", message.guild.id, reqRolesDoc);
+        else client.databaseCache.updateDocument("requriedroles", reqRolesDoc);
 
         const successRes = client.defaultResponses.getValue("ROLES_COMMAND", "SUCCESS", [
             {

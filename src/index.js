@@ -163,30 +163,30 @@ class CDCommands {
      * @private 
      * @param {{ [key: string]: { model: Model<any>; getBy: string } }} models 
      */
-    async _init(models) {
+    async _init() {
       if (this._mongoURI) await database(this._mongoURI);
       else this._client.logError({ data: "Using mongoose with CDCommands is required, as some features will not function properly." });
       
 
       this._client.databaseCache = new Cache({
         models: {
-        cooldowns: {
-          model: cooldown,
-          getBy: "uId",
+          cooldowns: {
+            model: cooldown,
+            getBy: "uId",
+          },
+          disabledcommands: {
+            model: disabledCommands,
+            getBy: "gId",
+          },
+          prefixes: {
+            model: prefixes,
+            getBy: "gId"
+          },
+          requriedroles: {
+            model: requiredRoles,
+            getBy: "gId",
+          },
         },
-        disabledcommands: {
-          model: disabledCommands,
-          getBy: "gId",
-        },
-        prefixes: {
-          model: prefixes,
-          getBy: "gId"
-        },
-        requriedroles: {
-          model: requiredRoles,
-          getBy: "gId",
-        },
-      },
         updateSpeed: this._cacheUpdateSpeed,
       });
 

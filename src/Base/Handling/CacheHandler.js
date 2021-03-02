@@ -66,7 +66,6 @@ module.exports = class Cache {
         else this._cache.set(doc[this._options.models[modelName].getBy], doc);
       }
     }
-
     this._startUpdateCycle();
   }
 

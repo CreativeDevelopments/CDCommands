@@ -78,7 +78,7 @@ module.exports = new Command({
 
     if (!client.databaseCache.getDocument("disabledcommands", message.guild.id))
       client.databaseCache.insertDocument("disabledcommands", DisabledDoc);
-    else client.databaseCache.updateDocument("disabledcommands", message.guild.id, DisabledDoc);
+    else client.databaseCache.updateDocument("disabledcommands", DisabledDoc);
 
     const successRes = client.defaultResponses.getValue("CATEGORY_COMMAND", "SUCCESS", [
       {

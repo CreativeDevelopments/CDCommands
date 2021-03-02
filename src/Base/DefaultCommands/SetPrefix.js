@@ -33,7 +33,7 @@ module.exports = new Command({
         prefixDoc.prefix = updatedPrefix;
 
         if (client.databaseCache.getDocument("prefixes", message.guild.id))
-            client.databaseCache.updateDocument("prefixes", message.guild.id, prefixDoc);
+            client.databaseCache.updateDocument("prefixes", prefixDoc);
         else 
             client.databaseCache.insertDocument("prefixes", prefixDoc);
 
