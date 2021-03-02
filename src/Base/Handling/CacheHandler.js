@@ -87,7 +87,6 @@ module.exports = class Cache {
   insertDocument(type, doc) {
     if (!this._cache.get(type)) this._cache.set(type, new Collection().set(doc[this._options.models[type].getBy], doc))
     else this._cache.get(type).set(doc[this._options.models[type].getBy], doc);
-    console.log(this._cache.get(type));
   }
 
   /** 
