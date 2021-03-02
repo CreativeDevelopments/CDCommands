@@ -1,5 +1,6 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const { mkdirSync, writeFileSync } = require("fs");
+const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
 const { categories, requiredroles, commands, help, setprefix } = require("./Base/DefaultCommands");
 const colors = require('colors')
@@ -15,12 +16,11 @@ const Events = require("./registry/Events");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 
 class CDCommands {
-
-    /** 
-     * @private
-     * @type {CDClient} 
-     */
-    _client;
+  /** 
+   * @private
+   * @type {CDClient}
+   */
+  _client;
     /** 
      * @private
      * @type {string} 
@@ -77,7 +77,7 @@ class CDCommands {
      * mongoURI: string;
      * cacheUpdateSpeed?: number;
      * MessageJSONPath?: string;
-     * }} options 
+     * }} options
      */
     constructor(client, options) {
       try {
@@ -96,104 +96,103 @@ class CDCommands {
         console.log("[Success] ".green + ".vscode/settings.json has been initialized, you can now use intellisense with your" + " message.json ".green + "file!");
       } catch (err) {};
 
+      if (!options.commandsDir) options.commandsDir = "commands";
+      if (!options.eventsDir) options.eventsDir = "events";
+      if (!options.testServers) options.testServers = [];
+      if (!options.devs) options.devs = [];
+      if (!options.MessageJSONPath) options.MessageJSONPath = "";
 
-        if (!options.commandsDir) options.commandsDir = "commands";
-        if (!options.eventsDir) options.eventsDir = "events";
-        if (!options.testServers) options.testServers = [];
-        if (!options.devs) options.devs = [];
-        if (!options.MessageJSONPath) options.MessageJSONPath = "";
+      this._client = client;
+      this._commandsDir = options.commandsDir;
+      this._eventsDir = options.eventsDir;
+      this._testServers = options.testServers;
+      this._defaultPrefix = options.defaultPrefix;
+      this._mongoURI = options.mongoURI;
+      this._customMessageEvent = options.customMessageEvent;
+      this._customHelpCommand = options.customHelpCommand;
+      this._devs = options.devs;
+      if (options.cacheUpdateSpeed && options.cacheUpdateSpeed > 0)
+        this._cacheUpdateSpeed = options.cacheUpdateSpeed;
 
-        this._client = client;
-        this._commandsDir = options.commandsDir;
-        this._eventsDir = options.eventsDir;
-        this._testServers = options.testServers;
-        this._defaultPrefix = options.defaultPrefix;
-        this._mongoURI = options.mongoURI;
-        this._customMessageEvent = options.customMessageEvent;
-        this._customHelpCommand = options.customHelpCommand;
-        this._devs = options.devs;
-        if (options.cacheUpdateSpeed && options.cacheUpdateSpeed > 0)
-            this._cacheUpdateSpeed = options.cacheUpdateSpeed;
+      this._client.commands = new Collection();
+      this._client.aliases = new Collection();
+      this._client.defaultPrefix = options.defaultPrefix;
+      this._client.developers = this._devs;
+      this._client.testservers = this._testServers;
+      this._client.defaultResponses = new MessageJSON(options.MessageJSONPath);
 
-        this._client.commands = new Collection();
-        this._client.aliases = new Collection();
-        this._client.defaultPrefix = options.defaultPrefix;
-        this._client.developers = this._devs;
-        this._client.testservers = this._testServers;
-        this._client.defaultResponses = new MessageJSON(options.MessageJSONPath);
+      this._client.success = ({ msg, data }) => {
+        const embed = new MessageEmbed()
+          .setColor('#2FDD2C')
+          .setDescription(`${data}`)
+          .setFooter(`Order request by ${msg.author.tag}`);
+        return embed;
+      };
 
-        this._client.success = ({ msg, data }) => {
-            const embed = new MessageEmbed()
-                .setColor('#2FDD2C')
-                .setDescription(`${data}`)
-                .setFooter(`Order request by ${msg.author.tag}`);
-            return embed;
-        };
+      this._client.error = ({ msg, data }) => {
+        const embed = new MessageEmbed()
+          .setColor('#C93131')
+          .setDescription(`${data}`);
+        return embed;
+      };
 
-        this._client.error = ({ msg, data }) => {
-            const embed = new MessageEmbed()
-                .setColor('#C93131')
-                .setDescription(`${data}`);
-            return embed;
-        };
+      this._client.load = ({ msg, data }) => {
+        const embed = new MessageEmbed()
+          .setColor('#00DCFF')
+          .setDescription(`${data}`);
+        return embed;
+      };
 
-        this._client.load = ({ msg, data }) => {
-            const embed = new MessageEmbed()
-                .setColor('#00DCFF')
-                .setDescription(`${data}`);
-            return embed;
-        };
+      this._client.info = ({ msg, data }) => {
+        const embed = new MessageEmbed()
+          .setColor('#00DCFF')
+          .setDescription(`${data}`);
+        return embed;
+      };
 
-        this._client.info = ({ msg, data }) => {
-            const embed = new MessageEmbed()
-                .setColor('#00DCFF')
-                .setDescription(`${data}`);
-            return embed;
-        };
+      this._client.logReady = ({ data }) => console.log(`${colors.brightGreen('[READY]')}`.white + colors.white(` ${data}`))
+      this._client.logError = ({ data }) => console.log(`${colors.brightRed('[ERROR]')}`.white + colors.white(` ${data}`))
+      this._client.logWarn = ({ data }) => console.log(`${colors.yellow('[WARN]')}`.white + colors.white(` ${data}`))
+      this._client.logInfo = ({ data }) => console.log(`${colors.brightCyan('[INFO]')}`.white + colors.white(` ${data}`))
+      this._client.logDatabase = ({ data }) => console.log(`${colors.brightGreen('[DATABASE]')}`.white + colors.white(` ${data}`))
 
-        this._client.logReady = ({ data }) => {
-            console.log(`${colors.brightGreen('[READY]')}`.white + colors.white(` ${data}`))
-        };
-
-        this._client.logError = ({ data }) => {
-            console.log(`${colors.brightRed('[ERROR]')}`.white + colors.white(` ${data}`))
-        };
-
-        this._client.logWarn = ({ data }) => {
-            console.log(`${colors.yellow('[WARN]')}`.white + colors.white(` ${data}`))
-        };
-
-        this._client.logInfo = ({ data }) => {
-            console.log(`${colors.brightCyan('[INFO]')}`.white + colors.white(` ${data}`))
-        };
-
-        this._client.logDatabase = ({ data }) => {
-            console.log(`${colors.brightGreen('[DATABASE]')}`.white + colors.white(` ${data}`))
-        };
-
-        this._init();
+      this._init();
     }
 
-    /** @private */
-    async _init() {
-        if (this._mongoURI) await database(this._mongoURI);
-        else this._client.logError({ data: "Using mongoose with CDCommands is required, as some features will not function properly." });
-        
-        this._client.databaseCache = new Cache({
-            cooldowns: await cooldown.find(),
-            disabledcommands: await disabledCommands.find(),
-            prefixes: await prefixes.find(),
-            requiredroles: await requiredRoles.find(),
-            updateSpeed: this._cacheUpdateSpeed,
-        });
+    /** 
+     * @private 
+     * @param {{ [key: string]: { model: Model<any>; getBy: string } }} models 
+     */
+    async _init(models) {
+      if (this._mongoURI) await database(this._mongoURI);
+      else this._client.logError({ data: "Using mongoose with CDCommands is required, as some features will not function properly." });
+      
 
-        this._client.cooldowns = new Cooldowns(
-            await cooldown.find(),
-            this._client,
-        );
+      this._client.databaseCache = new Cache({
+        models: {
+        cooldowns: {
+          model: cooldown,
+          getBy: "uId",
+        },
+        disabledcommands: {
+          model: disabledCommands,
+          getBy: "gId",
+        },
+        prefixes: {
+          model: prefixes,
+          getBy: "gId"
+        },
+        requriedroles: {
+          model: requiredRoles,
+          getBy: "gId",
+        },
+      },
+        updateSpeed: this._cacheUpdateSpeed,
+      });
 
-        this._commands();
-        this._events();
+      this._client.cooldowns = new Cooldowns(await cooldown.find(), this._client);
+      this._commands();
+      this._events();
     }
 
     /** @private */
@@ -242,7 +241,6 @@ class CDCommands {
         return this._testServers;
     }
 }
-
 
 module.exports = CDCommands;
 module.exports.Event = require("./Base/Event");
