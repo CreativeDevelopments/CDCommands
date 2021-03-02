@@ -13,7 +13,7 @@ module.exports = new Command({
     guildOnly: true,
     maxArgs: 2,
     minArgs: 2,
-    name: "disabledcommands",
+    name: "command",
     noDisable: true,
     nsfw: false,
     testOnly: false,
