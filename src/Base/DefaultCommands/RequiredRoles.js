@@ -22,7 +22,7 @@ module.exports = new Command({
     category: "configuration",
     run: async ({ args, client, message, prefix }) => {
 
-        let reqRolesDoc = client.databaseCache.getDocument("roles", message.guild.id);
+        let reqRolesDoc = client.databaseCache.getDocument("requriedroles", message.guild.id);
         if (!reqRolesDoc) reqRolesDoc = new requiredRoles({
             gId: message.guild.id,
         });
@@ -117,9 +117,9 @@ module.exports = new Command({
         } 
 
 
-        if (!client.databaseCache.getDocument("roles", message.guild.id))
-            client.databaseCache.insertDocument("roles", reqRolesDoc);
-        else client.databaseCache.updateDocument("roles", message.guild.id, reqRolesDoc);
+        if (!client.databaseCache.getDocument("requriedroles", message.guild.id))
+            client.databaseCache.insertDocument("requriedroles", reqRolesDoc);
+        else client.databaseCache.updateDocument("requriedroles", reqRolesDoc);
 
         const successRes = client.defaultResponses.getValue("ROLES_COMMAND", "SUCCESS", [
             {

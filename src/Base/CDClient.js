@@ -1,4 +1,5 @@
 const { Collection, Client, Message, MessageEmbed } = require("discord.js");
+const { Model } = require("mongoose");
 const Cache = require("./Handling/CacheHandler");
 const Cooldowns = require("./Handling/CooldownHandler");
 const MessageJSON = require("./Handling/MessageJSON");
@@ -13,7 +14,26 @@ class CDClient extends Client {
     aliases;
     /** @type {string} */
     defaultPrefix;
-    /** @type {Cache} */
+    /**
+     * @type {Cache<{
+     * cooldowns: {
+     *   model: Model<any>,
+     *   getBy: string,
+     * };
+     * disabledcommands: {
+     *   model: Model<any>,
+     *   getBy: string,
+     * };
+     * prefixes: {
+     *   model: Model<any>,
+     *   getBy: string,
+     * };
+     * requriedroles: {
+     *   model: Model<any>,
+     *   getBy: string,
+     * };
+     * }>}
+     */
     databaseCache;
     /** @type {MessageJSON<import("./message.json")>} */
     defaultResponses;

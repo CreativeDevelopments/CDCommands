@@ -21,18 +21,18 @@ module.exports = new Command({
   userPermissions: ["MANAGE_GUILD"],
   category: "configuration",
   run: function ({ args, client, message, prefix }) {
-    let DisabledDoc = client.databaseCache.getDocument("command", message.guild.id);
+    let DisabledDoc = client.databaseCache.getDocument("disabledcommands", message.guild.id);
     if (!DisabledDoc) DisabledDoc = new DisabledCommands({
       gId: message.guild.id,
       commands: [],
       categories: [],
     });
 
-    const enabledDisabled = args[0];
+    const enabledDisabled = args[0].toLowerCase();
     const categoryName = args[1];
     const categories = new Set(client.commands.map(c => c.category));
 
-    if (enabledDisabled !== "enabled" && enabledDisabled !== "disable") {
+    if (enabledDisabled !== "enable" && enabledDisabled !== "disable") {
       const res = client.defaultResponses.getValue("CATEGORY_COMMAND", "INVALID_ARGS_ERROR", [
         {
           key: "USAGE",
@@ -76,9 +76,9 @@ module.exports = new Command({
       DisabledDoc.categories.push(categoryName);
     }
 
-    if (!client.databaseCache.getDocument("command", message.guild.id))
-      client.databaseCache.insertDocument("command", DisabledDoc);
-    else client.databaseCache.updateDocument("command", message.guild.id, DisabledDoc);
+    if (!client.databaseCache.getDocument("disabledcommands", message.guild.id))
+      client.databaseCache.insertDocument("disabledcommands", DisabledDoc);
+    else client.databaseCache.updateDocument("disabledcommands", DisabledDoc);
 
     const successRes = client.defaultResponses.getValue("CATEGORY_COMMAND", "SUCCESS", [
       {

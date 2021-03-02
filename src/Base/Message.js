@@ -4,7 +4,7 @@ const { ValidatePermissions, ProperCase, ValidateRoles, FormatCooldown } = requi
 
 module.exports = new Event("message", async (client, message) => {
 
-    const prefix = message.guild ? client.databaseCache.getDocument("prefix", message.guild.id) ? client.databaseCache.getDocument("prefix", message.guild.id).prefix : client.defaultPrefix : client.defaultPrefix;
+    const prefix = message.guild ? client.databaseCache.getDocument("prefixes", message.guild.id) ? client.databaseCache.getDocument("prefixes", message.guild.id).prefix : client.defaultPrefix : client.defaultPrefix;
 
     const args = message.content.trim().slice(prefix.length).split(" ");
     const commandName = args.shift().toLowerCase();
@@ -44,7 +44,7 @@ module.exports = new Event("message", async (client, message) => {
           return message.channel.send("", { embed: client.error({ msg: message, data: res})}).catch(err => message.channel.send(res));
         }
         // Category/Command Disabled
-        const DisabledDoc = client.databaseCache.getDocument("command", message.guild.id);
+        const DisabledDoc = client.databaseCache.getDocument("disabledcommands", message.guild.id);
         if (DisabledDoc && DisabledDoc.commands.includes(command.name)) {
           const res = client.defaultResponses.getValue("DISABLED_COMMAND", "", [
             {
@@ -85,7 +85,7 @@ module.exports = new Event("message", async (client, message) => {
           return message.channel.send("", { embed: client.error({ msg: message, data: res })}).catch(err => message.channel.send(res));
         }
         // Required Roles
-        const reqRolesDoc = client.databaseCache.getDocument("roles", message.guild.id);
+        const reqRolesDoc = client.databaseCache.getDocument("requriedroles", message.guild.id);
         if (reqRolesDoc) {
             const rolesRes = ValidateRoles(reqRolesDoc, message.member, command);
             if (rolesRes) {
