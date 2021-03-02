@@ -28,7 +28,7 @@ module.exports = new Command({
             categories: [],
         });
 
-        const enabledDisabled = args[0];
+        const enabledDisabled = args[0].toLowerCase();
         const commandName = args[1];
         const commands = new Set(client.commands.map(c => c.name));
 
