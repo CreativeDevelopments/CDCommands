@@ -38,7 +38,7 @@ module.exports = class Cache {
    * @private
    * @type {Collection<string, Model<any>>}
    */
-  _models;
+  _models = new Collection();
   /**
    * @param {{
    * models: T;
@@ -76,7 +76,7 @@ module.exports = class Cache {
    * @param {string} findBy
    */
   getDocument(type, findBy) {
-    return this._cache.get(type).get(findBy);
+    return this._cache.get(type)?.get(findBy);
   }
 
   /**
@@ -85,7 +85,9 @@ module.exports = class Cache {
    * @param {Document<any>} doc 
    */
   insertDocument(type, doc) {
-    this._cache.get(type).set(doc[this._options.documents[type].getBy], doc);
+    if (!this._cache.get(type)) this._cache.set(type, new Collection().set(doc[this._options.models[type].getBy], doc))
+    else this._cache.get(type).set(doc[this._options.models[type].getBy], doc);
+    console.log(this._cache.get(type));
   }
 
   /** 
@@ -94,7 +96,7 @@ module.exports = class Cache {
    * @param {Document<any>} update
    */
   updateDocument(type, update) {
-    this._cache.get(type).set(update[this._options.documents[type].getBy], update);
+    this._cache.get(type).set(update[this._options.models[type].getBy], update);
   }
 
   /**

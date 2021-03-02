@@ -21,7 +21,7 @@ module.exports = new Command({
     userPermissions: ["MANAGE_GUILD"],
     category: "configuration",
     run: async ({ args, client, message, prefix }) => {
-        let prefixDoc = client.databaseCache.getDocument("prefix", message.guild.id);
+        let prefixDoc = client.databaseCache.getDocument("prefixes", message.guild.id);
         if (!prefixDoc) prefixDoc = new prefixes({ gId: message.guild.id, prefix });
 
         const updatedPrefix = args.join(" ").trim();
@@ -32,10 +32,10 @@ module.exports = new Command({
 
         prefixDoc.prefix = updatedPrefix;
 
-        if (client.databaseCache.getDocument("prefix", message.guild.id))
-            client.databaseCache.updateDocument("prefix", message.guild.id, prefixDoc);
+        if (client.databaseCache.getDocument("prefixes", message.guild.id))
+            client.databaseCache.updateDocument("prefixes", message.guild.id, prefixDoc);
         else 
-            client.databaseCache.insertDocument("prefix", prefixDoc);
+            client.databaseCache.insertDocument("prefixes", prefixDoc);
 
         const successRes = client.defaultResponses.getValue("PREFIX_COMMAND", "SUCCESS", [
             {

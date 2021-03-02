@@ -13,7 +13,7 @@ module.exports = new Command({
     guildOnly: true,
     maxArgs: 2,
     minArgs: 2,
-    name: "command",
+    name: "disabledcommands",
     noDisable: true,
     nsfw: false,
     testOnly: false,
@@ -21,7 +21,7 @@ module.exports = new Command({
     userPermissions: ["MANAGE_GUILD"],
     category: "configuration",
     run: async ({ prefix, message, client, args }) => {
-        let DisabledDoc = client.databaseCache.getDocument("command", message.guild.id);
+        let DisabledDoc = client.databaseCache.getDocument("disabledcommands", message.guild.id);
         if (!DisabledDoc) DisabledDoc = new DisabledCommands({
             gId: message.guild.id,
             commands: [],
@@ -87,9 +87,9 @@ module.exports = new Command({
             DisabledDoc.commands.push(commandName);
         }
 
-        if (!client.databaseCache.getDocument("command", message.guild.id))
-            client.databaseCache.insertDocument("command", DisabledDoc);
-        else client.databaseCache.updateDocument("command", message.guild.id, DisabledDoc);
+        if (!client.databaseCache.getDocument("disabledcommands", message.guild.id))
+            client.databaseCache.insertDocument("disabledcommands", DisabledDoc);
+        else client.databaseCache.updateDocument("disabledcommands", message.guild.id, DisabledDoc);
 
         const successRes = client.defaultResponses.getValue("COMMANDS_COMMAND", "SUCCESS", [
             {

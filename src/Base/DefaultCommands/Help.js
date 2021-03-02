@@ -52,7 +52,7 @@ module.exports = new Command({
             helpEmbed
                 .setTitle(`${ProperCase(command.name)} Help Menu`)
                 .setDescription(`*${command.details || 'No extra details provided!'}*\n\n**Usage:** ${command.usage.replace(/{prefix}/gi, prefix)}\n**Required Member Permissions:** ${FormatPerms(command.userPermissions) || 'None'}\n**Required Bot Permissions:** ${FormatPerms(command.botPermissions) || 'None'}\n**Cooldown:** ${FormatCooldown(command.cooldown) || 'None'}\n**Global Cooldown** ${FormatCooldown(command.globalCooldown) || 'None'}`);
-            return message.channel.send(helpEmbed);
+            return message.channel.send("", { embed: helpEmbed });
         } else if (category.size > 0) {
             helpEmbed
                 .setTitle(`${ProperCase(command_category)} Help Menu`);
@@ -71,7 +71,7 @@ module.exports = new Command({
                 .setDescription(page1.map((c) => `**${c.name}** → ${c.description}\n**Aliases:** ${c.aliases.join(", ")}\n**Usage:** ${c.usage.replace(/{prefix}/gi, prefix)}`).join("\n\n"))
                 .setFooter(`Use ${prefix}help [command] for more info`, message.author.displayAvatarURL({ format: "png" }));
 
-            const helpMessage = await message.channel.send(helpEmbed);
+            const helpMessage = await message.channel.send("", { embed: helpEmbed });
 
             if (pages.length > 1) {
                 const emojis = ["⬅️", "❌", "➡️"];
@@ -127,7 +127,7 @@ module.exports = new Command({
             for (const category of pages[curPage])
                 helpEmbed.addField(`${category} [${client.commands.filter(c => c.category === category).size}]`, client.commands.filter(c => c.category === category).array().slice(0, 3).map((c) => `\`${c.name}\``).join(", ") + "...")
 
-            const helpMessage = await message.channel.send(helpEmbed);
+            const helpMessage = await message.channel.send("", { embed: helpEmbed });
 
             if (pages.length > 1) {
                 const emojis = ["⬅️", "❌", "➡️"];
