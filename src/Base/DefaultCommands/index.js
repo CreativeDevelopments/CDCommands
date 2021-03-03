@@ -4,4 +4,5 @@ module.exports = {
     help: require("./Help"),
     requiredroles: require("./RequiredRoles"),
     setprefix: require("./SetPrefix"),
+    ticketconfig: require("./TicketConfig")
 };
