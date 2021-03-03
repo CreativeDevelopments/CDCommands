@@ -2,7 +2,7 @@ const { Client, Collection, MessageEmbed } = require("discord.js");
 const { mkdirSync, writeFileSync } = require("fs");
 const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
-const { categories, requiredroles, commands, help, setprefix } = require("./Base/DefaultCommands");
+const { categories, requiredroles, commands, help, setprefix, ticketconfig } = require("./Base/DefaultCommands");
 const colors = require('colors')
 const Commands = require("./registry/Commands");
 const database = require("./Database/database");
@@ -11,9 +11,12 @@ const cooldown = require("./Database/models/cooldown");
 const prefixes = require("./Database/models/prefixes");
 const disabledCommands = require("./Database/models/disabled-commands");
 const requiredRoles = require("./Database/models/required-roles");
+const ticketConfig = require("./Database/models/ticketConfig");
+const ticketSystem = require("./Database/models/tickets");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const Events = require("./registry/Events");
 const MessageJSON = require("./Base/Handling/MessageJSON");
+const TicketConfig = require("./Base/DefaultCommands/TicketConfig");
 
 class CDCommands {
   /** 
@@ -186,6 +189,10 @@ class CDCommands {
             model: requiredRoles,
             getBy: "gId",
           },
+          ticketConfig: {
+            model: ticketConfig,
+            getBy: "gId",
+          },
         },
         updateSpeed: this._cacheUpdateSpeed,
       });
@@ -199,7 +206,7 @@ class CDCommands {
     _commands() {
         this._client = Commands(this._commandsDir, this._client, this._customHelpCommand);
 
-        const customCommands = [setprefix, requiredroles, categories, commands, help];
+        const customCommands = [setprefix, requiredroles, categories, commands, help, ticketconfig];
 
         for (const command of customCommands) {
             if (command.name === "help" && !this._customHelpCommand && !this._client.commands.get("help")) {
@@ -245,9 +252,12 @@ class CDCommands {
 module.exports = CDCommands;
 module.exports.Event = require("./Base/Event");
 module.exports.Command = require("./Base/Command");
+module.exports.Ticket = require("./Tickets");
 module.exports.Models = {
     cooldown: require("./Database/models/cooldown"),
     disabledCommands: require("./Database/models/disabled-commands"),
     prefixes: require("./Database/models/prefixes"),
     requiredRoles: require("./Database/models/required-roles"), 
+    ticketConfig: require("./Database/models/ticketConfig"),
+    ticketSystem: require("./Database/models/tickets"),
 };
