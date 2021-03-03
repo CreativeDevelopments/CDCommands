@@ -3,18 +3,19 @@ const colors = require("colors");
 const { mkdirSync, writeFileSync } = require("fs");
 const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
+
 const {
   categories,
   requiredroles,
   commands,
   help,
   setprefix,
-<<<<<<< HEAD
+
   language: lang,
-=======
->>>>>>> a40d3a2... 11/14
+
   ticketconfig,
 } = require("./Base/DefaultCommands");
+
 const Commands = require("./registry/Commands");
 const Events = require("./registry/Events");
 const database = require("./Database/database");
@@ -28,13 +29,10 @@ const ticketConfig = require("./Database/models/ticketConfig");
 const ticketSystem = require("./Database/models/tickets");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const MessageJSON = require("./Base/Handling/MessageJSON");
-<<<<<<< HEAD
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
 const Cache = require("./Base/Handling/CacheHandler");
 const Ticket = require("./Tickets");
-=======
->>>>>>> a40d3a2... 11/14
-const Ticket = require("./Tickets");
+const TicketConfig = require("./Base/DefaultCommands/TicketConfig");
 class CDCommands {
   /**
    * @private
@@ -53,14 +51,11 @@ class CDCommands {
   _eventsDir;
   /**
    * @private
-<<<<<<< HEAD
    * @type {string}
    */
-   _featuresDir;
+  _featuresDir;
   /**
    * @private
-=======
->>>>>>> a40d3a2... 11/14
    * @type {string[]}
    */
   _testServers;
