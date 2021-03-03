@@ -28,6 +28,8 @@ const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
 const Cache = require("./Base/Handling/CacheHandler");
 const Ticket = require("./Tickets");
+const TicketConfig = require("./Base/DefaultCommands/TicketConfig");
+
 class CDCommands {
   /**
    * @private
