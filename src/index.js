@@ -3,6 +3,7 @@ const colors = require("colors");
 const { mkdirSync, writeFileSync } = require("fs");
 const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
+
 const {
   categories,
   requiredroles,
@@ -12,6 +13,7 @@ const {
   language: lang,
   ticketconfig,
 } = require("./Base/DefaultCommands");
+
 const Commands = require("./registry/Commands");
 const Events = require("./registry/Events");
 const database = require("./Database/database");
@@ -29,7 +31,6 @@ const FeatureHandler = require("./Base/Handling/FeatureHandler");
 const Cache = require("./Base/Handling/CacheHandler");
 const Ticket = require("./Tickets");
 const TicketConfig = require("./Base/DefaultCommands/TicketConfig");
-
 class CDCommands {
   /**
    * @private
@@ -50,7 +51,7 @@ class CDCommands {
    * @private
    * @type {string}
    */
-   _featuresDir;
+  _featuresDir;
   /**
    * @private
    * @type {string[]}
