@@ -75,7 +75,10 @@ module.exports = class Cache {
    * @param {string} findBy
    */
   getDocument(type, findBy) {
-    return this._cache.get(type)?.get(findBy);
+    if (!this._cache.get(type))
+      return undefined;
+    else 
+      return this._cache.get(type).get(findBy);
   }
 
   /**
