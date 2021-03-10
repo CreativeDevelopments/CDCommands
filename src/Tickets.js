@@ -231,10 +231,11 @@ class Ticket {
             return msg.channel.send("", { embed: CDClient.error({ msg: msg, data: 'This channel is not linked to a ticket, you can only delete ticket channels!'})}).catch(err => msg.channel.send('This channel is not linked to a ticket, you can only delete ticket channels!'));
         
         if (msg.channel.id === result.channelId) {
+            
+            msg.channel.send("", { embed: CDClient.info({ msg: msg, data: `Deleting the ticket in 5 seconds...`})}).catch(err => msg.channel.send(`Deleting the ticket in 5 seconds...`))
 
             try {
-                msg.channel.send("", { embed: CDClient.error({ msg: msg, data: `Deleting the ticket...`})}).catch(err => msg.channel.send(`Deleting the ticket...`))
-                .then(() => msg.channel.delete({ reason: `Closing ticket ${msg.channel.name}`}));
+                setTimeout(() => msg.channel.delete({ reason: `Deleting ticket for ${msg.author.tag}`), 5000);
             } catch(err) {
                 CDClient.logError({ data: err })
                 return msg.channel.send("", { embed: CDClient.error({ msg: msg, data: 'Failed to delete the ticket, please try again!'})}).catch(err => msg.channel.send('Failed to delete the ticket, please try again!'));
