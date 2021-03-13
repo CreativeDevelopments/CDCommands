@@ -55,7 +55,7 @@ module.exports = class Cache {
     this._init();
   }
 
-  /**
+ /**
    * @private
    */
   async _init() {
@@ -63,7 +63,7 @@ module.exports = class Cache {
       const data = await model.find();
       for (const doc of data) {
         if (!this._cache.get(modelName)) this._cache.set(modelName, new Collection().set(doc[this._options.models[modelName].getBy], doc));
-        else this._cache.set(doc[this._options.models[modelName].getBy], doc);
+        else this._cache.get(modelName).set(doc[this._options.models[modelName].getBy], doc);
       }
     }
     this._startUpdateCycle();
