@@ -48,15 +48,15 @@ const client = new Discord.Client();
 client.on('ready', () => {
     new CDCommands(client, {
         commandsDir: 'commands',
-        eventsDir: 'events',
-        MessageJSONPath: "./path/to/message.json",
-        testServers: [],
-        devs: [],
+        eventsDir: 'events', 
+        MessageJSONPath: "./path/to/message.json", // You can get the default message.json from our GitHub
+        testServers: [], // Array of your test servers, these will be the servers that the testOnly: true commands work in
+        devs: [], // Array of your bot developers IDs
         defaultPrefix: 'prefix',
-        mongoURI: process.env.MONGO_URI,
-        cacheUpdateSpeed: Number, 
-        customHelpCommand: false,
-        customMessageEvent: false,
+        mongoURI: process.env.MONGO_URI, 
+        cacheUpdateSpeed: 60000 * 5 , // Needs to be a number, this example would be 5 minutes
+        customHelpCommand: false, // Boolean
+        customMessageEvent: false, // Boolean
     })
 })
 
