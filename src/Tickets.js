@@ -1,12 +1,13 @@
 const { MessageEmbed } = require('discord.js');
 const { CDClient } = require('./Base/CDClient');
+const { client } = require('./index');
 class Ticket {
 
 
     async create({ msg, name, reason, prefix }) {
         if (!msg) 
             return CDClient.logError({ data: `Please provide a valid "msg" for creating a ticket!` })
-
+            
         if (!name) 
             name = `${msg.author.username}`;
 

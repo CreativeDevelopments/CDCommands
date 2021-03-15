@@ -11,6 +11,7 @@
   "PREFIX": null,
   "ROLE": null,
   "GUILD_NAME": null,
+<<<<<<< HEAD
   "ISO_CODE": null,
   "PROVIDED_CODES": null,
   "USER_GUILD": null,
@@ -31,3 +32,9 @@
     "IMAGE": null
   }
 }
+=======
+  "MAX_NUMBER": null,
+  "ON_OFF": null,
+  "UPDATE": null
+}
+>>>>>>> 7ab19fc (Updated replacers.json)
