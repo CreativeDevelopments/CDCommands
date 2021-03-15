@@ -77,10 +77,7 @@ module.exports = class Command {
    * dmOnly: boolean;
    * nsfw: boolean;
    * devOnly: boolean;
-<<<<<<< HEAD
    * validator?: Validator;
-=======
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
    * cooldown?: string | number;
    * globalCooldown?: string | number;
    * noDisable: boolean;
