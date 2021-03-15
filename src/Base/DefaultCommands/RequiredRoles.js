@@ -23,6 +23,7 @@ module.exports = new Command({
   userPermissions: ["MANAGE_ROLES"],
   botPermissions: ["SEND_MESSAGES"],
   category: "configuration",
+<<<<<<< HEAD
   validator: new ArgumentValidator({
     validate: ({ args, client, message }) => {
       const role =
@@ -109,6 +110,9 @@ module.exports = new Command({
     },
   }),
   run: async ({ args, client, message, language }) => {
+=======
+  run: async ({ args, client, message, prefix }) => {
+>>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
     let reqRolesDoc = client.databaseCache.getDocument(
       "requriedroles",
       message.guild.id,
@@ -123,6 +127,57 @@ module.exports = new Command({
       message.mentions.roles.first() || message.guild.roles.cache.get(args[1]);
     const command = args[2];
 
+<<<<<<< HEAD
+=======
+    if (addRemove !== "add" && addRemove !== "remove") {
+      const res = client.defaultResponses.getValue(
+        "ROLES_COMMAND",
+        "INVALID_ARGUMENTS",
+        [
+          {
+            key: "USAGE",
+            replace: this.usage.replace(/{prefix}/g, prefix),
+          },
+        ],
+      );
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((_) => msg.channel.send(res));
+    }
+
+    if (!role) {
+      const res = client.defaultResponses.getValue(
+        "ROLES_COMMAND",
+        "INVALID_ROLE",
+        [
+          {
+            key: "ACTION",
+            replace: addRemove,
+          },
+        ],
+      );
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((_) => message.channel.send(res));
+    }
+
+    if (!client.commands.get(command)) {
+      const res = client.defaultResponses.getValue(
+        "ROLES_COMMAND",
+        "INVALID_COMMAND",
+        [
+          {
+            key: "COMMAND",
+            replace: command,
+          },
+        ],
+      );
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((_) => message.channel.send(res));
+    }
+
+>>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
     const reqRolesObject = reqRolesDoc.requiredRoles.find(
       (ob) => ob.command === command,
     );
@@ -130,6 +185,7 @@ module.exports = new Command({
       if (reqRolesObject) {
         if (reqRolesObject.roles.find((s) => s === role.id)) {
           const res = client.defaultResponses.getValue(
+<<<<<<< HEAD
             language,
             "ROLES_COMMAND",
             "ALREADY_ADDED",
@@ -161,6 +217,24 @@ module.exports = new Command({
           if (res instanceof MessageEmbed)
             return message.channel.send({ embed: res });
           else return message.channel.send(res);
+=======
+            "ROLES_COMMAND",
+            "ALREADY_ADDED",
+            [
+              {
+                key: "ROLE",
+                replace: `**${role.name}**`,
+              },
+              {
+                key: "COMMAND",
+                replace: `**${command}**`,
+              },
+            ],
+          );
+          return message.channel
+            .send("", { embed: client.error({ msg: message, data: res }) })
+            .catch((_) => message.channel.send(res));
+>>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
         }
         reqRolesObject.roles.push(role.id);
       } else {
@@ -173,6 +247,7 @@ module.exports = new Command({
       if (reqRolesObject) {
         if (!reqRolesObject.roles.find((s) => s === role.id)) {
           const res = client.defaultResponses.getValue(
+<<<<<<< HEAD
             language,
             "ROLES_COMMAND",
             "ALREADY_REMOVED",
@@ -258,12 +333,18 @@ module.exports = new Command({
                 key: "ACTION",
                 replace: `${addRemove === "add" ? "added" : "removed"}`,
               },
+=======
+            "ROLES_COMMAND",
+            "ALREADY_REMOVED",
+            [
+>>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
               {
                 key: "ROLE",
                 replace: `**${role.name}**`,
               },
               {
                 key: "COMMAND",
+<<<<<<< HEAD
                 replace: command,
               },
             ],
@@ -273,18 +354,72 @@ module.exports = new Command({
               key: "ACTION",
               replace: `${addRemove === "add" ? "added" : "removed"}`,
             },
+=======
+                replace: `**${command}**`,
+              },
+            ],
+          );
+          return message.channel
+            .send("", { embed: client.error({ msg: message, data: res }) })
+            .catch((_) => message.channel.send(res));
+        }
+        const i = reqRolesObject.roles.findIndex((s) => s === role.id);
+        reqRolesObject.roles.splice(i, 1);
+      } else {
+        const res = client.defaultResponses.getValue(
+          "ROLES_COMMAND",
+          "ALREADY_REMOVED",
+          [
+>>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
             {
               key: "ROLE",
               replace: `**${role.name}**`,
             },
             {
               key: "COMMAND",
-              replace: command,
+              replace: `**${command}**`,
             },
           ],
+<<<<<<< HEAD
     );
     if (successRes instanceof MessageEmbed)
       return message.channel.send({ embed: successRes });
     else return message.channel.send({ embed: successRes });
   },
 });
+=======
+        );
+        return message.channel
+          .send("", { embed: client.error({ msg: message, data: res }) })
+          .catch((_) => message.channel.send(res));
+      }
+    }
+
+    if (!client.databaseCache.getDocument("requriedroles", message.guild.id))
+      client.databaseCache.insertDocument("requriedroles", reqRolesDoc);
+    else client.databaseCache.updateDocument("requriedroles", reqRolesDoc);
+
+    const successRes = client.defaultResponses.getValue(
+      "ROLES_COMMAND",
+      "SUCCESS",
+      [
+        {
+          key: "ACTION",
+          replace: `${addRemove === "add" ? "added" : "removed"}`,
+        },
+        {
+          key: "ROLE",
+          replace: `**${role.name}**`,
+        },
+        {
+          key: "COMMAND",
+          replace: command,
+        },
+      ],
+    );
+    return message.channel
+      .send("", { embed: client.success({ msg: message, data: successRes }) })
+      .catch((_) => message.channel.send(successRes));
+  },
+});
+>>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)

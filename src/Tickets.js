@@ -126,7 +126,7 @@ class Ticket {
           this._client.logError({
             data: "The category provided is an invalid category",
           });
-        console.log(chan, cat)
+
         chan.setParent(cat.id, {
           lockPermissions: false,
           reason: `Opening ticket for ${msg.author.tag}`,
