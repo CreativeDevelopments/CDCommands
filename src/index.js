@@ -153,11 +153,11 @@ class CDCommands {
         return embed;
       };
 
-      this._client.logReady = ({ data }) => console.log(`${colors.brightGreen('[READY]')}`.white + colors.white(` ${data}`))
-      this._client.logError = ({ data }) => console.log(`${colors.brightRed('[ERROR]')}`.white + colors.white(` ${data}`))
-      this._client.logWarn = ({ data }) => console.log(`${colors.yellow('[WARN]')}`.white + colors.white(` ${data}`))
-      this._client.logInfo = ({ data }) => console.log(`${colors.brightCyan('[INFO]')}`.white + colors.white(` ${data}`))
-      this._client.logDatabase = ({ data }) => console.log(`${colors.brightGreen('[DATABASE]')}`.white + colors.white(` ${data}`))
+      this._client.logReady = ({ data }) => console.log(`${colors.brightGreen('[READY]')}`.white + colors.white(` ${data}`));
+      this._client.logError = ({ data }) => console.log(`${colors.brightRed('[ERROR]')}`.white + colors.white(` ${data}`));
+      this._client.logWarn = ({ data }) => console.log(`${colors.yellow('[WARN]')}`.white + colors.white(` ${data}`));
+      this._client.logInfo = ({ data }) => console.log(`${colors.brightCyan('[INFO]')}`.white + colors.white(` ${data}`));
+      this._client.logDatabase = ({ data }) => console.log(`${colors.brightGreen('[DATABASE]')}`.white + colors.white(` ${data}`));
 
       this._init();
     }
@@ -191,6 +191,10 @@ class CDCommands {
           },
           ticketConfig: {
             model: ticketConfig,
+            getBy: "gId",
+          },
+          ticketSystem: {
+            model: ticketSystem,
             getBy: "gId",
           },
         },

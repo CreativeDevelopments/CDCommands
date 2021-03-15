@@ -266,6 +266,58 @@
           "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix."
         }
       }
+    },
+    "TICKET_COMMAND": {
+      "type": "object",
+      "properties": {
+        "INVALID_ARGUMENTS": {
+          "type": "string",
+          "examples": [
+            "Invalid Arguments! Please use {USAGE} instead"
+          ],
+          "description": "\"{USAGE}\" represents the correct usage of the command"
+        },
+        "MAX_TICKERTS": {
+          "type": "string",
+          "examples": [
+            "The max tickets a user can have is already set to {MAX_NUMBER}, please choose a new number to set."
+          ],
+          "description": "\"{MAX_NUMBER}\" represents the max number of tickets a user can have"
+        },
+        "CLAIM_SETTING": {
+          "type": "string",
+          "examples": [
+            "This guild's settings already have claiming set to {ON_OFF}. If you want to change this please choose a different setting."
+          ],
+          "description": "\"{ON_OFF}\" represents the server's settings for claiming tickets"
+        },
+        "INVALID_CATEGORY": {
+          "type": "string",
+          "examples": [
+            "I failed to find a category with that ID or name, please try again!"
+          ]
+        },
+        "INVALID_CATEGORY_TYPE": {
+          "type": "string",
+          "examples": [
+            "The category ID or name provided is not a cateogry. Please make sure you are using the ID or name of a **category**!"
+          ]
+        },
+        "NOT_CONFIGURED": {
+          "type": "string",
+          "examples": [
+            "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+          ],
+          "description": "\"{PREFIX}\" represents the server's prefix"
+        },
+        "SUCCESS": {
+          "type": "string",
+          "examples": [
+            "Successfully {ACTION} to {UPDATE}"
+          ],
+          "description": "\"{ACTION}\" represents the action taken, \"{UPDATE}\" represents the setting that was updated."
+        }
+      }
     }
   }
 }
