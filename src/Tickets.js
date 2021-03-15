@@ -235,7 +235,7 @@ class Ticket {
             msg.channel.send("", { embed: CDClient.info({ msg: msg, data: `Deleting the ticket in 5 seconds...`})}).catch(err => msg.channel.send(`Deleting the ticket in 5 seconds...`))
 
             try {
-                setTimeout(() => msg.channel.delete({ reason: `Deleting ticket for ${msg.author.tag}`), 5000);
+                setTimeout(() => msg.channel.delete({ reason: `Deleting ticket for ${msg.author.tag}` }), 5000);
             } catch(err) {
                 CDClient.logError({ data: err })
                 return msg.channel.send("", { embed: CDClient.error({ msg: msg, data: 'Failed to delete the ticket, please try again!'})}).catch(err => msg.channel.send('Failed to delete the ticket, please try again!'));
