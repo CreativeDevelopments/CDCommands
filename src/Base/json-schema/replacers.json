@@ -10,5 +10,8 @@
   "COMMAND_CATEGORY": null,
   "PREFIX": null,
   "ROLE": null,
-  "GUILD_NAME": null
+  "GUILD_NAME": null,
+  "MAX_NUMBER": null,
+  "ON_OFF": null,
+  "UPDATE": null
 }
