@@ -7,23 +7,17 @@
   "properties": {
     "GUILD_ONLY": {
       "type": "string",
-      "examples": [
-        "{COMMAND} can only be used in a server."
-      ],
+      "examples": ["{COMMAND} can only be used in a server."],
       "description": "\"{COMMAND}\" represents the command that was used"
     },
     "DM_ONLY": {
       "type": "string",
-      "examples": [
-        "{COMMAND} can only be used in my DMs."
-      ],
+      "examples": ["{COMMAND} can only be used in my DMs."],
       "description": "\"{COMMAND}\" represents the command that was used"
     },
     "NSFW_ONLY": {
       "type": "string",
-      "examples": [
-        "This command is locked to NSFW channels only!"
-      ],
+      "examples": ["This command is locked to NSFW channels only!"],
       "description": "\"{COMMAND}\" represents the command that was used"
     },
     "DISABLED_COMMAND": {
@@ -63,9 +57,7 @@
     },
     "DEVELOPER_ONLY": {
       "type": "string",
-      "examples": [
-        "You can't use {COMMAND}. It is locked to developers only."
-      ],
+      "examples": ["You can't use {COMMAND}. It is locked to developers only."],
       "description": "\"{COMMAND}\" represents the command that was used"
     },
     "TEST_SERVER": {
@@ -108,37 +100,27 @@
       "properties": {
         "INVALID_ARGS_ERROR": {
           "type": "string",
-          "examples": [
-            "Invalid Arguments! Please use {USAGE} instead."
-          ],
+          "examples": ["Invalid Arguments! Please use {USAGE} instead."],
           "description": "\"{USAGE}\" represents the correct usage of the command"
         },
         "NON_EXISTANT_CATEGORY": {
           "type": "string",
-          "examples": [
-            "That category does not exist."
-          ],
+          "examples": ["That category does not exist."],
           "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
         },
         "ALREADY_ENABLED": {
           "type": "string",
-          "examples": [
-            "That category is already enabled."
-          ],
+          "examples": ["That category is already enabled."],
           "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
         },
         "ALREADY_DISABLED": {
           "type": "string",
-          "examples": [
-            "That category is already disabled."
-          ],
+          "examples": ["That category is already disabled."],
           "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
         },
         "SUCCESS": {
           "type": "string",
-          "examples": [
-            "Successfully {ACTION} the {CATEGORY} category."
-          ],
+          "examples": ["Successfully {ACTION} the {CATEGORY} category."],
           "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable"
         }
       }
@@ -148,44 +130,32 @@
       "properties": {
         "INVALID_ARGS_ERROR": {
           "type": "string",
-          "examples": [
-            "Invalid Arguments! Please use {USAGE} instead."
-          ],
+          "examples": ["Invalid Arguments! Please use {USAGE} instead."],
           "description": "\"{USAGE}\" represents the correct usage of the command"
         },
         "NON_EXISTANT_COMMAND": {
           "type": "string",
-          "examples": [
-            "That command does not exist."
-          ],
+          "examples": ["That command does not exist."],
           "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
         },
         "ALREADY_ENABLED": {
           "type": "string",
-          "examples": [
-            "That command is already enabled."
-          ],
+          "examples": ["That command is already enabled."],
           "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
         },
         "NO_DISABLE": {
           "type": "string",
-          "examples": [
-            "{COMMAND} can not be disabled"
-          ],
+          "examples": ["{COMMAND} can not be disabled"],
           "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
         },
         "ALREADY_DISABLED": {
           "type": "string",
-          "examples": [
-            "That command is already disabled."
-          ],
+          "examples": ["That command is already disabled."],
           "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable"
         },
         "SUCCESS": {
           "type": "string",
-          "examples": [
-            "Successfully {ACTION} the {COMMAND} command."
-          ],
+          "examples": ["Successfully {ACTION} the {COMMAND} command."],
           "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable"
         }
       }
@@ -207,16 +177,12 @@
       "properties": {
         "INVALID_ARGUMENTS": {
           "type": "string",
-          "examples": [
-            "Invalid Arguments! Please use {USAGE} instead."
-          ],
+          "examples": ["Invalid Arguments! Please use {USAGE} instead."],
           "description": "\"{USAGE}\" represents the correct usage of the command."
         },
         "INVALID_ROLE": {
           "type": "string",
-          "examples": [
-            "Please provide a valid role to {ACTION}."
-          ],
+          "examples": ["Please provide a valid role to {ACTION}."],
           "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\""
         },
         "INVALID_COMMAND": {
@@ -254,9 +220,7 @@
       "properties": {
         "SAME_PREFIX": {
           "type": "string",
-          "examples": [
-            "Please choose a **new** prefix to set."
-          ]
+          "examples": ["Please choose a **new** prefix to set."]
         },
         "SUCCESS": {
           "type": "string",
@@ -272,9 +236,7 @@
       "properties": {
         "INVALID_ARGUMENTS": {
           "type": "string",
-          "examples": [
-            "Invalid Arguments! Please use {USAGE} instead"
-          ],
+          "examples": ["Invalid Arguments! Please use {USAGE} instead"],
           "description": "\"{USAGE}\" represents the correct usage of the command"
         },
         "MAX_TICKERTS": {
@@ -312,9 +274,7 @@
         },
         "SUCCESS": {
           "type": "string",
-          "examples": [
-            "Successfully {ACTION} to {UPDATE}"
-          ],
+          "examples": ["Successfully {ACTION} to {UPDATE}"],
           "description": "\"{ACTION}\" represents the action taken, \"{UPDATE}\" represents the setting that was updated."
         }
       }
