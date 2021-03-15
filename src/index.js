@@ -16,7 +16,6 @@ const ticketSystem = require("./Database/models/tickets");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const Events = require("./registry/Events");
 const MessageJSON = require("./Base/Handling/MessageJSON");
-const TicketConfig = require("./Base/DefaultCommands/TicketConfig");
 
 class CDCommands {
   /** 
@@ -189,11 +188,11 @@ class CDCommands {
             model: requiredRoles,
             getBy: "gId",
           },
-          ticketConfig: {
+          ticketconfig: {
             model: ticketConfig,
             getBy: "gId",
           },
-          ticketSystem: {
+          ticketsystem: {
             model: ticketSystem,
             getBy: "gId",
           },
