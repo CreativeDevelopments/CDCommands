@@ -1,6 +1,6 @@
 <div style="text-align:center"><a href="https://discord.gg/jUNbV5u"><img src="./images/cdcommands.png"></a></div>
 
-<br></br>
+<br> 
 
 <div style="text-align:center">
 <a href="https://discord.com/invite/jUNbV5u"><img src="https://img.shields.io/discord/769710808435261490.svg"></a>
@@ -10,7 +10,7 @@
 <a href="https://github.com/CreativeDevelopments/CDCommands"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square"></a>
 </div>
 
-<br></br>
+<br> 
 
 # Contents
 - [Installation](#installation)
@@ -19,6 +19,7 @@
     - [Properties](#properties)
     - [Command](#command)
 - [Creating an Event](#creating-an-event)
+    - [Custom Message Event](#custom-message-event)
 - [Message.json](#message-json)
 - [Defaults](#defaults)
     - [Embeds](#embeds)
@@ -26,7 +27,7 @@
 - [Functions](#functions)
 - [Other](#other)
 
-<br></br>
+<br> 
 
 # Installation
 We recommend that if you are going to use the mongoose package to install version 5.11.15, you can do this with this command below:
@@ -35,7 +36,7 @@ npm i cdcommands --save
 npm i mongoose@5.11.15 --save
 ```
 
-<br></br>
+<br> 
 
 # Setup
 ```js
@@ -63,7 +64,7 @@ client.on('ready', () => {
 client.login(process.env.TOKEN)
 ```
 
-<br></br>
+<br> 
 
 # Message JSON
 Setting up your message.json file is as easy as creating the file in your directory and adding the relative path in the MessageJsonPath property. On the first start of the project, a directory and file will be created, "~.vscode/settings.json". This is created to allow for autocomplete in your message.json files. You can get the default message.json file [here, from our github.](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/message.json)
@@ -77,7 +78,7 @@ client.on("ready", () => {
 });
 ```
 
-<br></br>
+<br> 
 
 # Creating a Command
 
@@ -153,7 +154,7 @@ module.exports = new Command({
     }
 })
 ```
-<br></br>
+<br> 
 
 # Creating an Event
 
@@ -170,7 +171,13 @@ module.exports = new Event('guildMemberAdd', (client, member) => {
     
 })
 ```
-<br></br>
+
+<br> 
+
+## Custom Message Event
+If you want to have our own message event you will need to set `customMessageEvent: true` in your main file. I'd suggest taking the default message event from [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/Message.js) and changing this. 
+
+<br>
 
 # Defaults
 
@@ -195,10 +202,10 @@ run: ({ message, client }) => {
 <img src="./images/embeds.png">
 </div>
 
-<br></br>
+<br>
 
 ## Logging
-There are 5 different defualt logs - ready, info, load, database, error and warn:
+There are 5 different default logs - ready, info, load, database, error and warn:
 
 Example:
 ```js
@@ -212,7 +219,7 @@ client.logDatabase({ data: 'Successfully connected to the database' })
 <img src="https://tom.creativedevelopments.org/GDQ_cmd_Ucmvrpl3Ur.png">
 </div>
 
-<br></br>
+<br> 
 
 # Functions
 
@@ -237,7 +244,15 @@ module.exports = new Command({
 Hello World
 ```
 
-<br></br>
+<br> 
 
 # Other
-If you have any questions, suggestions or need helping setting it up join our [Support Server](https://discord.gg/jUNbV5u). 
+If you have any questions, suggestions or need helping setting it up join our [Support Server](https://discord.gg/jUNbV5u).  
+
+Stuff we are adding
+<ul>
+    <li>Default tickets with a ticket config command</li>
+    <li>A way to have premiumOnly commands</li>
+    <li>A default block command so you can block user Id's from using your bot</li>
+</ul>
+
