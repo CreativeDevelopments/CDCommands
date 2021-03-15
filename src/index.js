@@ -3,7 +3,6 @@ const colors = require("colors");
 const { mkdirSync, writeFileSync } = require("fs");
 const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
-
 const {
   categories,
   requiredroles,

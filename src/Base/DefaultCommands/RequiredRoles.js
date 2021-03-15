@@ -279,7 +279,7 @@ module.exports = new Command({
             },
             {
               key: "COMMAND",
-              replace: command,
+              replace: `**${command}**`,
             },
           ],
     );

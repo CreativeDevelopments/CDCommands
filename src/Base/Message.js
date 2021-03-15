@@ -5,7 +5,10 @@ const {
   ValidateRoles,
   FormatCooldown,
 } = require("../Functions");
+<<<<<<< HEAD
 const { MessageEmbed } = require("discord.js");
+=======
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
 
 module.exports = new Event("message", async (client, message) => {
   const prefix = message.guild
@@ -14,7 +17,11 @@ module.exports = new Event("message", async (client, message) => {
       : client.defaultPrefix
     : client.defaultPrefix;
 
+<<<<<<< HEAD
   const args = message.content.trim().slice(prefix.length).split(/ +/g);
+=======
+  const args = message.content.trim().slice(prefix.length).split(" ");
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
   const commandName = args.shift().toLowerCase();
 
   if (!message.content.startsWith(prefix)) return;
@@ -23,6 +30,7 @@ module.exports = new Event("message", async (client, message) => {
     client.commands.get(commandName) ||
     client.commands.get(client.aliases.get(commandName));
   if (command) {
+<<<<<<< HEAD
     const language = client.getLanguage({
       guildId: message.guild ? message.guild.id : "",
       authorId: message.author.id,
@@ -105,6 +113,43 @@ module.exports = new Event("message", async (client, message) => {
       if (res instanceof MessageEmbed)
         return message.channel.send({ embed: res });
       else return message.channel.send(res);
+=======
+    // Guild Only
+    if (command.guildOnly && !message.guild) {
+      const res = client.defaultResponses.getValue("GUILD_ONLY", "", [
+        {
+          key: "COMMAND",
+          replace: ProperCase(command.name),
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+    }
+    // DM only
+    if (command.dmOnly && message.guild) {
+      const res = client.defaultResponses.getValue("DM_ONLY", "", [
+        {
+          key: "COMMAND",
+          replace: ProperCase(command.name),
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+    }
+    // NSFW Channel
+    if (!message.channel.nsfw && command.nsfw) {
+      const res = client.defaultResponses.getValue("NSFW_ONLY", "", [
+        {
+          key: "COMMAND",
+          replace: ProperCase(command.name),
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
     }
     // Category/Command Disabled
     const DisabledDoc = client.databaseCache.getDocument(
@@ -112,6 +157,7 @@ module.exports = new Event("message", async (client, message) => {
       message.guild.id,
     );
     if (DisabledDoc && DisabledDoc.commands.includes(command.name)) {
+<<<<<<< HEAD
       const res = client.defaultResponses.getValue(
         language,
         "DISABLED_COMMAND",
@@ -135,11 +181,23 @@ module.exports = new Event("message", async (client, message) => {
       if (res instanceof MessageEmbed)
         return message.channel.send({ embed: res });
       else return message.channel.send(res);
+=======
+      const res = client.defaultResponses.getValue("DISABLED_COMMAND", "", [
+        {
+          key: "COMMAND",
+          replace: command.name,
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
     } else if (
       DisabledDoc &&
       DisabledDoc.categories.includes(command.category) &&
       !command.noDisable
     ) {
+<<<<<<< HEAD
       const res = client.defaultResponses.getValue(
         language,
         "DISABLED_CATEGORY",
@@ -163,6 +221,17 @@ module.exports = new Event("message", async (client, message) => {
       if (res instanceof MessageEmbed)
         return message.channel.send({ embed: res });
       else return message.channel.send(res);
+=======
+      const res = client.defaultResponses.getValue("DISABLED_CATEGORY", "", [
+        {
+          key: "CATEGORY",
+          replace: command.category,
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
     }
     const memberPermCheck = ValidatePermissions(
       message.member.permissions.toArray(),
@@ -175,6 +244,7 @@ module.exports = new Event("message", async (client, message) => {
     // Client Permissions
     if (clientPermCheck.perms !== null) {
       const res = client.defaultResponses.getValue(
+<<<<<<< HEAD
         language,
         "MISSING_CLIENT_PERMISSION",
         "",
@@ -198,10 +268,25 @@ module.exports = new Event("message", async (client, message) => {
       if (res instanceof MessageEmbed)
         return message.channel.send({ embed: res });
       else return message.channel.send(res);
+=======
+        "MISSING_CLIENT_PERMISSION",
+        "",
+        [
+          {
+            key: "CLIENT_PERMISSIONS",
+            replace: clientPermCheck.perms,
+          },
+        ],
+      );
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
     }
     // Member Permissions
     if (memberPermCheck.perms !== null) {
       const res = client.defaultResponses.getValue(
+<<<<<<< HEAD
         language,
         "MISSING_MEMBER_PERMISSION",
         "",
@@ -476,8 +561,153 @@ module.exports = new Event("message", async (client, message) => {
           return message.channel.send({ embed: res });
         else return message.channel.send(res);
       }
+=======
+        "MISSING_MEMBER_PERMISSION",
+        "",
+        [
+          {
+            key: "MEMBER_PERMISSIONS",
+            replace: memberPermCheck.perms,
+          },
+        ],
+      );
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
+    }
+    // Required Roles
+    const reqRolesDoc = client.databaseCache.getDocument(
+      "requriedroles",
+      message.guild.id,
+    );
+    if (reqRolesDoc) {
+      const rolesRes = ValidateRoles(reqRolesDoc, message.member, command);
+      if (rolesRes) {
+        const res = client.defaultResponses.getValue("MISSING_ROLES", "", [
+          {
+            key: "ROLES",
+            replace: `**${rolesRes.roles}**`,
+          },
+          {
+            key: "COMMAND",
+            replace: command.name,
+          },
+        ]);
+        return message.channel
+          .send("", { embed: client.error({ msg: message, data: res }) })
+          .catch((err) => message.channel.send(res));
+      }
+    }
+    // Developer only
+    if (command.devOnly && !client.developers.includes(message.author.id)) {
+      const res = client.defaultResponses.getValue("DEVELOPER_ONLY", "", [
+        {
+          key: "COMMAND",
+          replace: command.name,
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+    }
+    // Test Server only
+    if (command.testOnly && !client.testservers.includes(message.guild.id)) {
+      const res = client.defaultResponses.getValue("TEST_SERVER", "", [
+        {
+          key: "COMMAND",
+          replace: ProperCase(command.name),
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+    }
+    // Max args
+    if (command.maxArgs !== Infinity && args.length > command.maxArgs) {
+      const res = client.defaultResponses.getValue("TOO_MANY_ARGS", "", [
+        {
+          key: "USAGE",
+          replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+    }
+    // Min args
+    if (command.minArgs !== -1 && args.length < command.minArgs) {
+      const res = client.defaultResponses.getValue("TOO_FEW_ARGS", "", [
+        {
+          key: "USAGE",
+          replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
+        },
+      ]);
+      return message.channel
+        .send("", { embed: client.error({ msg: message, data: res }) })
+        .catch((err) => message.channel.send(res));
+    }
+    // Global Cooldown
+    if (client.cooldowns.isOnCooldown(message.author, commandName, "global")) {
+      const remainingTime = client.cooldowns.getRemainingCooldown(
+        message.author,
+        commandName,
+        "global",
+      );
+      if (remainingTime !== undefined) {
+        const res = client.defaultResponses.getValue("GLOBAL_COOLDOWN", "", [
+          {
+            key: "COMMAND",
+            replace: ProperCase(command.name),
+          },
+          {
+            key: "COOLDOWN",
+            replace: FormatCooldown(remainingTime),
+          },
+        ]);
+        return message.channel
+          .send("", { embed: client.error({ msg: message, data: res }) })
+          .catch((err) => message.channel.send(res));
+      }
+    }
+    // Cooldown
+    if (client.cooldowns.isOnCooldown(message.author, commandName, "local")) {
+      const remainingTime = client.cooldowns.getRemainingCooldown(
+        message.author,
+        commandName,
+        "local",
+      );
+      if (remainingTime !== undefined) {
+        const res = client.defaultResponses.getValue("USER_COOLDOWN", "", [
+          {
+            key: "COMMAND",
+            replace: command.name,
+          },
+          {
+            key: "COOLDOWN",
+            replace: FormatCooldown(remainingTime),
+          },
+        ]);
+        return message.channel
+          .send("", { embed: client.error({ msg: message, data: res }) })
+          .catch((err) => message.channel.send(res));
+      }
     }
 
+    client.cooldowns.setCooldown(
+      message.author,
+      commandName,
+      new Date(Date.now() + command.globalCooldown),
+      "global",
+    );
+    client.cooldowns.setCooldown(
+      message.author,
+      commandName,
+      new Date(Date.now() + command.cooldown),
+      "local",
+    );
+
+<<<<<<< HEAD
     client.cooldowns.setCooldown(
       message.author,
       commandName,
@@ -494,3 +724,8 @@ module.exports = new Event("message", async (client, message) => {
     return command.run({ message, args, client, prefix, language });
   }
 });
+=======
+    return command.run({ message, args, client, prefix });
+  }
+});
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
