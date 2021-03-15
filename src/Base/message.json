@@ -42,5 +42,14 @@
     "INVALID_COMMAND": "That command does not exist. Please provide a valid command.",
     "INVALID_ROLE": "Please provide a valid role to {ACTION}.",
     "SUCCESS": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+  },
+  "TICKET-COMMAND": {
+    "INVALID_ARGUMENTS": "Invalid Arguments! Please use {USAGE} instead.",
+    "MAX_TICKETS": "The max tickets a user can have is already set to {MAX_NUMBER}, please choose a new number to set.",
+    "CLAIM_SETTING": "This guild's settings already have claiming set to {ON_OFF}. If you want to change this please choose a different setting.",
+    "INVALID_CATEGORY": "I failed to find a category with that ID or name, please try again!",
+    "INVALID_CATEGORY_TYPE": "The category ID or name provided is not a cateogry. Please make sure you are using the ID or name of a **category**!",
+    "NOT_CONFIGURED": "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig",
+    "SUCCESS": "Successfully {ACTION} to {UPDATE}"
   }
 }
