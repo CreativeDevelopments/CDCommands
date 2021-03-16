@@ -215,9 +215,9 @@ module.exports = new Event("message", async (client, message) => {
         return command.validator.onError({
           message,
           client,
-          error: typeof valid === "string" ? valid : "INVALED_ARGUMENT",
           prefix,
           args,
+          error: typeof valid === "string" ? valid : "INVALID_ARGUMENT",
         });
       }
     }

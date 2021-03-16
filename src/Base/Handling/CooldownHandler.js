@@ -64,7 +64,7 @@ module.exports = class Cooldowns {
             this._globalCoolDowns.set(command, cooldown);
             if ((Math.ceil(cooldown.valueOf() - Date.now()) / 1000 / 60) >= 5)
                 this._client.databaseCache.insertDocument("cooldown", new cooldownDoc({ name: command, cooldown, type: "global" }))
-        } else throw new TypeError("Invaled \"type\" parameter. Please ensure you pass \"global\" or \"local\"");
+        } else throw new TypeError("Invalid \"type\" parameter. Please ensure you pass \"global\" or \"local\"");
         
     }
 
@@ -84,7 +84,7 @@ module.exports = class Cooldowns {
             if (this._globalCoolDowns.get(command) === undefined) return undefined;
             const remainingTime = parsems(this._globalCoolDowns.get(command).valueOf() - Date.now());
             return remainingTime;
-        } else throw new TypeError("Invaled \"type\" parameter. Please ensure you pass \"global\" or \"local\"");
+        } else throw new TypeError("Invalid \"type\" parameter. Please ensure you pass \"global\" or \"local\"");
     }
 
     /**
@@ -121,6 +121,6 @@ module.exports = class Cooldowns {
                     return false;
                 }
             }
-        } else throw new TypeError("Invaled \"type\" parameter. Please ensure you pass \"global\" or \"local\"");
+        } else throw new TypeError("Invalid \"type\" parameter. Please ensure you pass \"global\" or \"local\"");
     }
 }
