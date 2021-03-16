@@ -77,7 +77,7 @@ module.exports = class Command {
    * dmOnly: boolean;
    * nsfw: boolean;
    * devOnly: boolean;
-   * validator: Validator;
+   * validator?: Validator;
    * cooldown?: string | number;
    * globalCooldown?: string | number;
    * noDisable: boolean;
@@ -114,7 +114,6 @@ module.exports = class Command {
     if (!botPermissions) botPermissions = [];
     if (!cooldown) cooldown = 0;
     if (!globalCooldown) globalCooldown = 0;
-
 
     this.aliases = aliases;
     this.botPermissions = botPermissions;
