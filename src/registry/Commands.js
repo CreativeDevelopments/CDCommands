@@ -36,16 +36,6 @@ function Commands(commandsDir, client, customHelpCommand) {
         });
         continue;
       }
-      if (!command.validator) {
-        client.logError({
-          data: `Command file ${join(
-            require.main.path,
-            commandsDir,
-            folder,
-          )} does not have an argument validator set up. Please make sure one is setup correctly.`,
-        });
-        continue;
-      }
       client.commands.set(command.name, command);
       if (command.aliases && command.aliases.length > 0)
         for (const alias of command.aliases) {
