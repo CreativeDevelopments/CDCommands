@@ -203,14 +203,16 @@ module.exports = new Event("message", async (client, message) => {
     // Validate arguments
     if (command.validator) {
       const valid = await command.validator.validate({ message, args, client });
-      if (valid !== false && typeof valid !== "string")
-        await command.validator.onSuccess(message);
-      else
+      if (valid !== false && typeof valid !== "string") {
+        if (command.validator.onSuccess !== undefined)
+          await command.validator.onSuccess(message);
+      } else {
         return command.validator.onError({
           message,
           client,
           error: typeof valid === "string" ? valid : "INVALED_ARGUMENT",
         });
+      }
     }
 
     // Global Cooldown
