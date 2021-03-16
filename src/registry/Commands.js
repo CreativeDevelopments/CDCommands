@@ -42,7 +42,7 @@ function Commands(commandsDir, client, customHelpCommand) {
             require.main.path,
             commandsDir,
             folder,
-          )} does not have a argument validator set up. Please make sure one is setup correctly.`,
+          )} does not have an argument validator set up. Please make sure one is setup correctly.`,
         });
         continue;
       }
