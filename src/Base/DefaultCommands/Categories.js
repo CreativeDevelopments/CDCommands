@@ -27,11 +27,11 @@ module.exports = new Command({
       const categories = new Set(client.commands.map((c) => c.category));
 
       if (args[0] !== "enable" && args[0] !== "disable")
-        return "INVALED_ARGS_0";
-      else if (!categories.has(args[1])) return "INVALED_ARGS_1";
+        return "INVALID_ARGS_0";
+      else if (!categories.has(args[1])) return "INVALID_ARGS_1";
     },
     onError: ({ client, message, error, prefix, args }) => {
-      if (error === "INVALED_ARGS_0") {
+      if (error === "INVALID_ARGS_0") {
         const res = client.defaultResponses.getValue(
           "CATEGORY_COMMAND",
           "INVALID_ARGS_ERROR",
@@ -45,7 +45,7 @@ module.exports = new Command({
         message.channel
           .send("", { embed: client.error({ msg: message, data: res }) })
           .catch((_) => message.channel.send(res));
-      } else if (error === "INVALED_ARGS_1") {
+      } else if (error === "INVALID_ARGS_1") {
         const res = client.defaultResponses.getValue(
           "CATEGORY_COMMAND",
           "NON_EXISTANT_CATEGORY",
