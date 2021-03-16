@@ -24,9 +24,42 @@ module.exports = new Command({
   category: "configuration",
   validator: new ArgumentValidator({
     validate: ({ args, client, message, prefix }) => {
-      if (args[0] !== "enable" && args[0] !== "disable") return "INVALID";
+      const commands = new Set(client.commands.map((c) => c.name));
+      if (args[0] !== "enable" && args[0] !== "disable")
+        return "INVALID_ARGS_0";
+      else if (!commands.has(args[1])) return "INVALID_ARGS_1";
     },
-    onError: ({}) => {},
+    onError: ({ args, prefix, message, client, error }) => {
+      if (error === "INVALID_ARGS_0") {
+        const res = client.defaultResponses.getValue(
+          "COMMANDS_COMMAND",
+          "INVALID_ARGS_ERROR",
+          [
+            {
+              key: "USAGE",
+              replace: `${prefix}command <enable/disable> <command>`,
+            },
+          ],
+        );
+        return message.channel
+          .send("", { embed: client.error({ msg: message, data: res }) })
+          .catch((_) => message.channel.send(res));
+      } else if (error === "INVALID_ARGS_1") {
+        const res = client.defaultResponses.getValue(
+          "COMMANDS_COMMAND",
+          "NON_EXISTANT_COMMAND",
+          [
+            {
+              key: "COMMAND",
+              replace: args[1],
+            },
+          ],
+        );
+        return message.channel
+          .send("", { embed: client.error({ msg: message, data: res }) })
+          .catch((_) => message.channel.send(res));
+      }
+    },
   }),
   run: async ({ prefix, message, client, args }) => {
     let DisabledDoc = client.databaseCache.getDocument(
@@ -42,39 +75,6 @@ module.exports = new Command({
 
     const enabledDisabled = args[0].toLowerCase();
     const commandName = args[1];
-    const commands = new Set(client.commands.map((c) => c.name));
-
-    if (enabledDisabled !== "enable" && enabledDisabled !== "disable") {
-      const res = client.defaultResponses.getValue(
-        "COMMANDS_COMMAND",
-        "INVALID_ARGS_ERROR",
-        [
-          {
-            key: "USAGE",
-            replace: this.usage.replace(/{prefix}/g, prefix),
-          },
-        ],
-      );
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((_) => message.channel.send(res));
-    }
-
-    if (!commands.has(commandName)) {
-      const res = client.defaultResponses.getValue(
-        "COMMANDS_COMMAND",
-        "NON_EXISTANT_COMMAND",
-        [
-          {
-            key: "COMMAND",
-            replace: commandName,
-          },
-        ],
-      );
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((_) => message.channel.send(res));
-    }
 
     if (enabledDisabled === "enable") {
       const res = client.defaultResponses.getValue(
