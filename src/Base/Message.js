@@ -202,7 +202,12 @@ module.exports = new Event("message", async (client, message) => {
     }
     // Validate arguments
     if (command.validator) {
-      const valid = await command.validator.validate({ message, args, client });
+      const valid = await command.validator.validate({
+        message,
+        args,
+        client,
+        prefix,
+      });
       if (valid !== false && typeof valid !== "string") {
         if (command.validator.onSuccess !== undefined)
           await command.validator.onSuccess(message);
@@ -211,6 +216,8 @@ module.exports = new Event("message", async (client, message) => {
           message,
           client,
           error: typeof valid === "string" ? valid : "INVALED_ARGUMENT",
+          prefix,
+          args,
         });
       }
     }
