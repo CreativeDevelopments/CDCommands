@@ -206,7 +206,7 @@ module.exports = new Command({
 `client: CDClient - Represents the client instance (CDClient)`\
 `message: Message - The message that was sent`\
 `prefix: string - The prefix for the current guild, if applicable, if not, defaults to "defaultPrefix"`\
-`@returns string | boolean | Promise<string | boolean>`\
+`@returns string | boolean | Promise<string | boolean>`
 
 This function will execute the provided code, and return any given error values, to be used in `onError`, effectively acting as a middle man between the command being run and the commands execution. Ensuring that the command is run with the correct information provided.
 
@@ -217,14 +217,14 @@ This function will execute the provided code, and return any given error values,
 `prefix: string - The prefix for the current guild, if applicable, if not, defaults to "defaultPrefix"`\
 `client: CDClient - Represents the client instance (CDClient)`\
 `error: string - One of the values that is returned by the validate function stated previously, or if none are returned, the default value of "INVALID_ARGUMENT" is passed.`\
-`@returns void | Promise<void>`\
+`@returns void | Promise<void>`
 
 This function will stop execution of the command before its even ran, and instead execute the blocker code provided in the function. You can do whatever you want in this function, inform a user the command was used incorrectly, log information to the console, whatever it is, it happens BEFORE the command is executed, and will end the command execution.
 
 ### onSuccess(message);
 
 `message: Message - The message that was sent`\
-`@returns void | Promise<void>`\
+`@returns void | Promise<void>`
 
 This function is a non-blocking intermediate function that is executed BEFORE the command is executed. It is run if the message passes validation based off of the `validate` function stated previously. This function can do whatever you want. Log information about commands being run, let the user know something before the command is run. Whatever it is, it happens first, then the command is executed.
 
