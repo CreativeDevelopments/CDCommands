@@ -14,7 +14,7 @@ module.exports = new Event("message", async (client, message) => {
       : client.defaultPrefix
     : client.defaultPrefix;
 
-  const args = message.content.trim().slice(prefix.length).split(" ");
+  const args = message.content.trim().slice(prefix.length).split(/ +/g);
   const commandName = args.shift().toLowerCase();
 
   if (!message.content.startsWith(prefix)) return;
