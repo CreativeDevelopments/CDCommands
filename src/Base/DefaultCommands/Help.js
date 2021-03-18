@@ -191,6 +191,7 @@ module.exports = new Command({
     } else {
       helpEmbed
         .setTitle("Help Menu")
+        .setAuthor(`Total Commands: ${client.commands.size}`)
         .setFooter(`Use ${prefix}help [category] for more info`);
 
       const categories = Array.from(
