@@ -1,4 +1,4 @@
-const { readdirSync } = require("fs");
+const { readdirSync, mkdirSync } = require("fs");
 const { join } = require("path");
 const Feature = require("../Feature");
 
@@ -28,7 +28,7 @@ module.exports = class FeatureHandler {
     try {
       readdirSync(this._dir);
     } catch (err) {
-      throw new ReferenceError('An invalid "features" path was provided.');
+      mkdirSync(this._dir);
     }
 
     this._init();

@@ -1,4 +1,4 @@
-const { existsSync, readdirSync, lstatSync } = require("fs");
+const { existsSync, readdirSync, lstatSync, mkdirSync } = require("fs");
 const { join } = require("path");
 const Command = require("../Base/Command");
 /**
@@ -9,9 +9,7 @@ const Command = require("../Base/Command");
  */
 function Commands(commandsDir, client, customHelpCommand) {
   if (!existsSync(join(require.main.path, commandsDir)))
-    client.logError({
-      data: "Please make sure your commands directory exists.",
-    });
+    mkdirSync(join(require.main.path, commandsDir), { recursive: true });
   const folders = readdirSync(join(require.main.path, commandsDir));
   for (const folder of folders) {
     if (lstatSync(join(require.main.path, commandsDir, folder)).isDirectory())
