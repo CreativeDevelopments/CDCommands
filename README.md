@@ -16,6 +16,7 @@
 
 - [Installation](#installation)
 - [Setup](#setup)
+- [Message.json](#message-json)
 - [Creating a Command](#creating-a-command)
   - [Properties](#properties)
   - [Command](#command)
@@ -23,11 +24,13 @@
     - [Validator Functions](#validator-functions)
 - [Creating an Event](#creating-an-event)
   - [Custom Message Event](#custom-message-event)
-- [Message.json](#message-json)
+- [Creating a Feature](#creating-a-feature)
 - [Defaults](#defaults)
   - [Embeds](#embeds)
   - [Logging](#logging)
 - [Functions](#functions)
+  - [ProperCase](#propercase)
+  - [FormatPerms](#formatPerms)
 - [Other](#other)
 
 <br>
@@ -56,6 +59,7 @@ client.on("ready", () => {
   new CDCommands(client, {
     commandsDir: "commands",
     eventsDir: "events",
+    featuresDir: "features",
     MessageJSONPath: "./path/to/message.json", // You can get the default message.json from our GitHub
     testServers: [], // Array of your test servers, these will be the servers that the testOnly: true commands work in
     devs: [], // Array of your bot developers IDs
@@ -134,7 +138,7 @@ category --> Category of the command | String
 ## Command
 
 ```js
-// File name: "ping.js"
+// File Name: "ping.js"
 
 const { Command, Validator } = require("cdcommands");
 
@@ -169,7 +173,7 @@ module.exports = new Command({
 In the command class, one parameter is accepted as an ArgumentValidator. To use this, require "Validator" from the package, and create a new instance of the class for the option. The class accepts three functions. "validate", "onSuccess", and "onError". "onSuccess" is optional. Each function takes its own parameters, validate is used to determine if the function on "onSuccess" or "onError" should be run. In the "validate" function, you can either return a boolean value, or a string to create your own error types. The default error type is "INVALID_ARGUMENT" (if no string is returned). You can see the example below for more information.
 
 ```js
-// example.js
+// File Name: example.js
 const { Command, Validator } = require("cdcommands");
 
 module.exports = new Command({
@@ -235,7 +239,7 @@ This function is a non-blocking intermediate function that is executed BEFORE th
 Events can have as many subfolders as you want. If you want to create a message event you need to enable "customMessageEvent" when
 
 ```js
-// File name: guildMemberAdd.js
+// File Name: guildMemberAdd.js
 
 const { Event } = require("cdcommands");
 
@@ -252,6 +256,23 @@ If you want to have our own message event you will need to set `customMessageEve
 
 <br>
 
+# Creating a Feature
+
+```js
+// File Name: someFeature.js
+
+const { Feature } = require("cdcommands");
+
+module.exports = new Feature((client) => {
+  console.log(`${client.user.username} from "someFeature.js"`);
+});
+```
+
+### What is a Feature?
+
+A feature is a piece of code that is run only once, when your bot is starting up. It will run after all your commands and events have been loaded in. You can have whatever you want in these files, and it will be run **once** on **start up**.
+<br>
+
 # Defaults
 
 ## Embeds
@@ -261,7 +282,7 @@ There are 4 different embeds - load, error, success and info:
 Example:
 
 ```js
-//File name: example.js
+//File Name: example.js
 
 run: ({ message, client }) => {
   message.channel.send("", {
@@ -313,25 +334,44 @@ client.logDatabase({ data: "Successfully connected to the database" });
 
 # Functions
 
-There is currently only one main function but more will be added in the future.
+There is currently only a few functions but more will be added soon. If you have any suggestions for new functions please join our [support server](https://discord.gg/jUNbV5u)
+
+## ProperCase
 
 ```js
-// File name: test.js
-// Directory: ./commands/general/test.js
-// This will be changed so you can do const { ProperCase } = require('cdcommands') soon.
+// File Name: example.js
 
-const { Command } = require('cdcommands')
-const { ProperCase } = require('cdcommands/src/Functions')
+const { Command } = require('cdcommands');
+const { ProperCase } = require('cdcommands/src/Functions');
 
 module.exports = new Command({
-    name: 'test',  // Fill out the rest as normal
-    run: ({ message }) = {
-        console.log(ProperCase('hello world'))
-    }
+  name: 'test', //Fill out the rest as normal
+  run: ({ message }) => {
+    console.log(ProperCase('hello world'));
+  }
 })
 
 // Console Log:
 Hello World
+```
+
+<br>
+
+## FormatPerms
+
+```js
+// File Name: example.js
+
+const { Command } = require("cdcommands");
+const { FormatPerms } = require("cdcommands/src/Functions");
+
+module.exports = new Command({
+  name: "roleperms", // Fill out the rest as normal
+  run: ({ message }) => {
+    const role = message.mentions.roles.first();
+    message.channel.send(FormatPerms(role.permissions.toArray()));
+  },
+});
 ```
 
 <br>
