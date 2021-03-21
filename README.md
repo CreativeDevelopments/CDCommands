@@ -257,17 +257,20 @@ If you want to have our own message event you will need to set `customMessageEve
 <br>
 
 # Creating a Feature
+
 ```js
 // File Name: someFeature.js
 
-const { Feature } = require('cdcommands');
+const { Feature } = require("cdcommands");
 
 module.exports = new Feature((client) => {
   console.log(`${client.user.username} from "someFeature.js"`);
-})
-
+});
 ```
 
+### What is a Feature?
+
+A feature is a piece of code that is run only once, when your bot is starting up. It will run after all your commands and events have been loaded in. You can have whatever you want in these files, and it will be run **once** on **start up**.
 <br>
 
 # Defaults
@@ -334,6 +337,7 @@ client.logDatabase({ data: "Successfully connected to the database" });
 There is currently only a few functions but more will be added soon. If you have any suggestions for new functions please join our [support server](https://discord.gg/jUNbV5u)
 
 ## ProperCase
+
 ```js
 // File Name: example.js
 
@@ -354,23 +358,23 @@ Hello World
 <br>
 
 ## FormatPerms
+
 ```js
 // File Name: example.js
 
-const { Command } = require('cdcommands');
-const { FormatPerms } = require('cdcommands/src/Functions');
+const { Command } = require("cdcommands");
+const { FormatPerms } = require("cdcommands/src/Functions");
 
 module.exports = new Command({
-  name: 'roleperms', // Fill out the rest as normal
+  name: "roleperms", // Fill out the rest as normal
   run: ({ message }) => {
     const role = message.mentions.roles.first();
     message.channel.send(FormatPerms(role.permissions.toArray()));
-  }
-})
+  },
+});
 ```
 
 <br>
-
 
 # Other
 
