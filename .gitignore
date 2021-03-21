@@ -1,7 +1,12 @@
 node_modules/
 <<<<<<< HEAD
+<<<<<<< HEAD
 tests/*.json
 test/
 =======
 tests/*.json
 >>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
+=======
+tests/*.json
+test/
+>>>>>>> ebb0231... It won't let me change branch smh
