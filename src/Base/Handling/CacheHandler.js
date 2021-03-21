@@ -13,6 +13,7 @@ const disabledCommands = require("../../Database/models/disabled-commands");
  * }} T
  */
 module.exports = class Cache {
+
   /**
    * @private
    * @type {Collection<string, Collection<string, Document<any>>>}
@@ -20,7 +21,7 @@ module.exports = class Cache {
   _cache = new Collection();
   /**
    * @private
-   * @type {number}
+   * @type {number} 
    */
   _updateSpeed;
 
@@ -61,20 +62,8 @@ module.exports = class Cache {
     for (const [modelName, model] of this._models) {
       const data = await model.find();
       for (const doc of data) {
-<<<<<<< HEAD
         if (!this._cache.get(modelName)) this._cache.set(modelName, new Collection().set(doc[this._options.models[modelName].getBy], doc));
         else this._cache.get(modelName).set(doc[this._options.models[modelName].getBy], doc);
-=======
-        if (!this._cache.get(modelName))
-          this._cache.set(
-            modelName,
-            new Collection().set(
-              doc[this._options.models[modelName].getBy],
-              doc,
-            ),
-          );
-        else this._cache.set(doc[this._options.models[modelName].getBy], doc);
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
       }
     }
     this._startUpdateCycle();
@@ -82,7 +71,7 @@ module.exports = class Cache {
 
   /**
    * @public
-   * @param {keyof T} type
+   * @param {keyof T} type 
    * @param {string} findBy
    */
   getDocument(type, findBy) {
@@ -94,19 +83,15 @@ module.exports = class Cache {
 
   /**
    * @public
-   * @param {keyof T} type
-   * @param {Document<any>} doc
+   * @param {keyof T} type  
+   * @param {Document<any>} doc 
    */
   insertDocument(type, doc) {
-    if (!this._cache.get(type))
-      this._cache.set(
-        type,
-        new Collection().set(doc[this._options.models[type].getBy], doc),
-      );
+    if (!this._cache.get(type)) this._cache.set(type, new Collection().set(doc[this._options.models[type].getBy], doc))
     else this._cache.get(type).set(doc[this._options.models[type].getBy], doc);
   }
 
-  /**
+  /** 
    * @public
    * @param {keyof T} type
    * @param {Document<any>} update
@@ -117,15 +102,15 @@ module.exports = class Cache {
 
   /**
    * @public
-   * @param {keyof T} type
-   * @param {string} findBy
+   * @param {keyof T} type 
+   * @param {string} findBy 
    */
   async deleteDocument(type, findBy) {
-    this._cache.get(type).delete(findBy);
+    this._cache.get(type).delete(findBy)
     const query = {};
     query[this._options.models[type].getBy] = findBy;
 
-    await this._models.get(type).findOneAndDelete(query);
+    await this._models.get(type).findOneAndDelete(query)
   }
 
   /** @private */
@@ -143,4 +128,4 @@ module.exports = class Cache {
       }
     }, this._updateSpeed);
   }
-};
+}
