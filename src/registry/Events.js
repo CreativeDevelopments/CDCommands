@@ -1,5 +1,4 @@
 const { join } = require("path");
-const colors = require("colors");
 const Event = require("../Base/Event");
 const { CDClient } = require("../Base/CDClient");
 const { lstatSync, existsSync, readdirSync, mkdirSync } = require("fs");
@@ -12,7 +11,7 @@ const { lstatSync, existsSync, readdirSync, mkdirSync } = require("fs");
 function Events(eventsDir, client, customMessageEvent) {
   let totalEvents = 0;
   if (!existsSync(join(require.main.path, eventsDir))) {
-    console.log(`${colors.yellow("[WARN]")}`.white + colors.white(' No events directory found! Creating one...'));
+    client.logWarn({ data: 'No events directory found! Creating one...'});
     mkdirSync(join(require.main.path, eventsDir), { recursive: true });
   };
   const files = readdirSync(join(require.main.path, eventsDir));

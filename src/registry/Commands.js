@@ -1,5 +1,4 @@
 const { join } = require("path");
-const colors = require("colors");
 const Command = require("../Base/Command");
 const { existsSync, readdirSync, lstatSync, mkdirSync } = require("fs");
 /**
@@ -10,7 +9,7 @@ const { existsSync, readdirSync, lstatSync, mkdirSync } = require("fs");
  */
 function Commands(commandsDir, client, customHelpCommand) {
   if (!existsSync(join(require.main.path, commandsDir))) {
-    console.log(`${colors.yellow("[WARN]")}`.white + colors.white(' No commands directory found! Creating one...'));
+    client.logWarn({ data: 'No commands directory found! Creating one...'});
     mkdirSync(join(require.main.path, commandsDir), { recursive: true });
   };
   const folders = readdirSync(join(require.main.path, commandsDir));
