@@ -1,6 +1,7 @@
-const { readdirSync, mkdirSync } = require("fs");
 const { join } = require("path");
+const colors = require("colors");
 const Feature = require("../Feature");
+const { readdirSync, mkdirSync } = require("fs");
 
 module.exports = class FeatureHandler {
   /**
@@ -28,6 +29,7 @@ module.exports = class FeatureHandler {
     try {
       readdirSync(this._dir);
     } catch (err) {
+      console.log(`${colors.yellow("[WARN]")}`.white + colors.white(' No features directory found! Creating one...'));
       mkdirSync(this._dir);
     }
 
