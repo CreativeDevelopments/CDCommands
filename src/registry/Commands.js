@@ -9,9 +9,11 @@ const { existsSync, readdirSync, lstatSync, mkdirSync } = require("fs");
  */
 function Commands(commandsDir, client, customHelpCommand) {
   if (!existsSync(join(require.main.path, commandsDir))) {
-    client.logWarn({ data: 'No commands directory found! Creating one...'});
+    client.logWarn({
+      data: `No "${commandsDir}" directory found! Creating one...`,
+    });
     mkdirSync(join(require.main.path, commandsDir), { recursive: true });
-  };
+  }
   const folders = readdirSync(join(require.main.path, commandsDir));
   for (const folder of folders) {
     if (lstatSync(join(require.main.path, commandsDir, folder)).isDirectory())

@@ -28,7 +28,9 @@ module.exports = class FeatureHandler {
     try {
       readdirSync(this._dir);
     } catch (err) {
-      this._client.logWarn({ data: 'No features directory found! Creating one...'});
+      this._client.logWarn({
+        data: `No "${dir}" directory found! Creating one...`,
+      });
       mkdirSync(this._dir);
     }
 

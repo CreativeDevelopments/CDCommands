@@ -11,9 +11,11 @@ const { lstatSync, existsSync, readdirSync, mkdirSync } = require("fs");
 function Events(eventsDir, client, customMessageEvent) {
   let totalEvents = 0;
   if (!existsSync(join(require.main.path, eventsDir))) {
-    client.logWarn({ data: 'No events directory found! Creating one...'});
+    client.logWarn({
+      data: `No "${eventsDir}" directory found! Creating one...`,
+    });
     mkdirSync(join(require.main.path, eventsDir), { recursive: true });
-  };
+  }
   const files = readdirSync(join(require.main.path, eventsDir));
   for (const file of files) {
     if (lstatSync(join(require.main.path, eventsDir, file)).isDirectory())
