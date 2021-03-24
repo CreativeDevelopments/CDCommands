@@ -184,7 +184,8 @@ module.exports = new Command({
                 )
                 .join("\n\n"),
             );
-          await reaction.users.remove(user);
+          await reaction.users.remove(user)
+            .catch((err) => client.logError({ data: err }));
           await helpMessage.edit(helpEmbed);
         });
       }
