@@ -19,7 +19,9 @@
 <ul>
     <li>Remake the README.md or make a proper Wiki/Doc (Anyone)</li>
     <li>Add support for more Databases (Max)</li>
-    <li>Add a color param for the default embeds (Anyone)</li>
+    <li>Embed support in message.json like I was going to do originally [technically just needs the autocomplete] (Max)</li>
+    <li>Language support in message.json (Max)</li>
+    <li>Add a color param for the default embeds (Anyone)</li> 
 </ul>
 
 <br>
