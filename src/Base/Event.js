@@ -4,30 +4,26 @@ const { CDClient } = require("./CDClient");
  */
 
 module.exports = class Event {
+  /**
+   * @type {K}
+   */
+  name;
 
-    /**
-     * @type {K}
-     */
-    name;
+  /**
+   * @function
+   * @param {CDClient} client
+   * @returns {Promise<any>}
+   *
+   * @type {(client: CDClient, ...args: import("discord.js").ClientEvents[K]) => Promise<any>}
+   */
+  run;
 
-    /**
-     * @function
-     * @param {CDClient} client
-     * @returns {Promise<any>}
-     * 
-     * @type {(client: CDClient, ...args: import("discord.js").ClientEvents[K]) => Promise<any>}
-     */
-    run;
-
-    /**
-     * @param {K} name
-     * @param {(client: CDClient, ...args: import("discord.js").ClientEvents[K]) => Promise<any>} run
-     */
-    constructor(
-        name,
-        run,
-    ) {
-        this.name = name;
-        this.run = run;
-    }
-}
+  /**
+   * @param {K} name
+   * @param {(client: CDClient, ...args: import("discord.js").ClientEvents[K]) => Promise<any>} run
+   */
+  constructor(name, run) {
+    this.name = name;
+    this.run = run;
+  }
+};

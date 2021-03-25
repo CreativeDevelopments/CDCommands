@@ -8,15 +8,16 @@ const { existsSync, readdirSync, lstatSync, mkdirSync } = require("fs");
  * @returns {import("../Base/CDClient").CDClient}
  */
 function Commands(commandsDir, client, customHelpCommand) {
-  if (!existsSync(join(require.main.path, commandsDir))) {
-    client.logWarn({
-      data: `No "${commandsDir}" directory found! Creating one...`,
+  //if (!existsSync(`${require.main.path}\\${commandsDir}`)) client.logError({ data: 'Please make sure your commands directory exists.'}); --> Previous
+  //const folders = readdirSync(`${require.main.path}\\${commandsDir}`); --> Previous
+  if (!existsSync(join(require.main.path, commandsDir)))
+    client.logError({
+      data: "Please make sure your commands directory exists.",
     });
-    mkdirSync(join(require.main.path, commandsDir), { recursive: true });
-  }
   const folders = readdirSync(join(require.main.path, commandsDir));
   for (const folder of folders) {
     if (lstatSync(join(require.main.path, commandsDir, folder)).isDirectory())
+      //Commands(`${commandsDir}\\${folder}`, client, customHelpCommand) --> Previous
       Commands(`${join(commandsDir, folder)}`, client, customHelpCommand);
     else {
       /** @type {Command} */
@@ -29,6 +30,7 @@ function Commands(commandsDir, client, customHelpCommand) {
         continue;
       }
       if (!(command instanceof Command)) {
+        //client.logError({ data: `Command file ${require.main.path}\\${commandsDir}\\${folder} is an invalid command. Please make sure all files are set up correctly.` }); --> Previous
         client.logError({
           data: `Command file ${join(
             require.main.path,
