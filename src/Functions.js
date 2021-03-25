@@ -4,7 +4,7 @@ const parseMilliseconds = require("parse-ms");
 const Command = require("./Base/Command");
 
 /**
- * @param {import("discord.js").PermissionResolvable[]} memberPermissions 
+ * @param {import("discord.js").PermissionResolvable[]} memberPermissions
  * @param {import("discord.js").PermissionResolvable[]} requiredPermissions
  * @returns {{perms: string | null; length: number}}
  */
@@ -18,15 +18,15 @@ function ValidatePermissions(memberPermissions, requiredPermissions) {
     }
 }
 /**
- * @param {string} string 
+ * @param {string} string
  * @returns {string}
  */
 function ProperCase(string) {
     return string.toLowerCase().replace(/(\b\w)/gi, w => w.toUpperCase());
 }
 /**
- * @param {Document<any>} rolesDocument 
- * @param {GuildMember} member 
+ * @param {Document<any>} rolesDocument
+ * @param {GuildMember} member
  * @param {Command} command
  */
 function ValidateRoles(rolesDocument, member, command) {
@@ -45,38 +45,43 @@ function ValidateRoles(rolesDocument, member, command) {
 }
 
 /** @param {import("discord.js").PermissionResolvable[]} permissions */
-function FormatPerms(permissions) { 
-    return permissions.map((p) => ProperCase(p.replace(/_/g, " "))).join(", ");
+function FormatPerms(permissions) {
+  return permissions.map((p) => ProperCase(p.replace(/_/g, " "))).join(", ");
 }
 
-/** 
- * @param {number | 
- * { 
- * days: number; 
- * hours: number; 
- * minutes: number; 
- * seconds: number; 
- * milliseconds: number; 
- * microseconds: number; 
- * nanoseconds: number; 
- * }} cooldown 
+/**
+ * @param {number |
+ * {
+ * days: number;
+ * hours: number;
+ * minutes: number;
+ * seconds: number;
+ * milliseconds: number;
+ * microseconds: number;
+ * nanoseconds: number;
+ * }} cooldown
  */
 function FormatCooldown(cooldown) {
-    const totalTime = typeof cooldown === "object" ? cooldown : parseMilliseconds(cooldown);
-    if (totalTime.milliseconds > 0)
-        totalTime.seconds += parseFloat((totalTime.milliseconds / 1000).toFixed(1));
-    /**
-     * @type {["days", "hours", "minutes", "seconds", "milliseconds", "microseconds", "nanoseconds"]}
-     */
-    const keys = Object.keys(totalTime);
-    const importantTimes = keys.splice(0, 4);
+  const totalTime =
+    typeof cooldown === "object" ? cooldown : parseMilliseconds(cooldown);
+  if (totalTime.milliseconds > 0)
+    totalTime.seconds += parseFloat((totalTime.milliseconds / 1000).toFixed(1));
+  /**
+   * @type {["days", "hours", "minutes", "seconds", "milliseconds", "microseconds", "nanoseconds"]}
+   */
+  const keys = Object.keys(totalTime);
+  const importantTimes = keys.splice(0, 4);
 
-    const arr = [];
-    for (const key of importantTimes) {
-        if (totalTime[key] > 0)
-            arr.push(`${totalTime[key]} ${totalTime[key] === 1 ? key.slice(0, key.length - 2) : key}`);
-    }
-    return arr.join(", ");
+  const arr = [];
+  for (const key of importantTimes) {
+    if (totalTime[key] > 0)
+      arr.push(
+        `${totalTime[key]} ${
+          totalTime[key] === 1 ? key.slice(0, key.length - 2) : key
+        }`,
+      );
+  }
+  return arr.join(", ");
 }
 
 module.exports = {

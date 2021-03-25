@@ -60,9 +60,11 @@ class CDClient extends Client {
   developers;
   /** @type {string[]} */
   testservers;
-
+  
   /** @type {({ guildId, authorId }: { guildId: string, authorId: string }) => keyof import("./Handling/Languages.json"))} */
   getLanguage;
+  /** @type {import("../Tickets")} */
+  tickets;
 
   /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
   error;
