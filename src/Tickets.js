@@ -45,7 +45,7 @@ class Ticket {
       "ticketconfig",
       msg.guild.id,
     );
-    if (!ticketConfDoc || !ticketConfDoc.supportRole)
+    if (!ticketConfDoc || !ticketConfDoc.supportRoles)
       return msg.channel
         .send("", {
           embed: this._client.error({
@@ -53,15 +53,28 @@ class Ticket {
             data: `This server does not have a support role set! Please ask an administrator to set one with \`${prefix}tconf role add <@Role / Role ID / Role Name>\`!`,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.channel.send(
             `This server does not have a support role set! Please ask an administrator to set one with \`${prefix}tconf role add <@Role / Role ID / Role Name>\`!`,
           ),
         );
 
-    const sRole = ticketConfDoc.supportRole;
     const maxTickets = ticketConfDoc.maxTickets || 1;
     const category = ticketConfDoc.category;
+    const role = msg.guild.roles.cache.get(ticketConfDoc.supportRoles);
+    if (!role)
+      return msg.channel
+        .send("", {
+          embed: this._client.error({
+            msg: msg,
+            data: `I failed to find the support role, it may have been deleted! Please ask an administrator to set a new one with \`${prefix}tconf role add <@Role / Role ID / Role Name>\`!`
+          })
+        })
+        .catch((_) =>
+          msg.channel.send(
+            `I failed to find the support role, it may have been deleted! Please ask an administrator to set a new one with \`${prefix}tconf role add <@Role / Role ID / Role Name>\`!`
+          ),
+        );
 
     const results = this._client.databaseCache.getDocument("tickets", {
       gId: msg.guild.id,
@@ -75,14 +88,15 @@ class Ticket {
             data: `You already have the maximum number of tickets you can have open at one time! Please close that ticket before opening a new one!`,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.channel.send(
             `You already have the maximum number of tickets you can have open at one time! Please close that ticket before opening a new one!`,
           ),
         );
-
+    
+    let chan;
     try {
-      const chan = msg.guild.channels.create(name, {
+      chan = await msg.guild.channels.create(name, {
         type: "text",
         permissionOverwrites: [
           {
@@ -90,7 +104,7 @@ class Ticket {
             allow: 117760,
           },
           {
-            id: sRole,
+            id: role.id,
             allow: 117760,
           },
           {
@@ -112,7 +126,7 @@ class Ticket {
           this._client.logError({
             data: "The category provided is an invalid category",
           });
-
+        console.log(chan, cat)
         chan.setParent(cat.id, {
           lockPermissions: false,
           reason: `Opening ticket for ${msg.author.tag}`,
@@ -127,7 +141,7 @@ class Ticket {
             data: `Failed to create a new ticket, please try again!`,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.channel.send(`Failed to create a new ticket, please try again!`),
         );
     }
@@ -140,8 +154,8 @@ class Ticket {
         `Welcome to your ticket, ${msg.author}!\n\nReason: ${reason}`,
       );
     chan
-      .send(`${role}, ${message.author}`, chanEmbed)
-      .catch((err) =>
+      .send(`${role}, ${msg.author}`, chanEmbed)
+      .catch((_) =>
         chan.send(
           `${role}, ${msg.author}`,
           `Weclome to your ticket, ${msg.author}!\n\nReason: ${reason}`,
@@ -154,7 +168,7 @@ class Ticket {
 
     msg.channel
       .send(embed)
-      .catch((err) =>
+      .catch((_) =>
         msg.channel.send(
           `Your ticket has successfully been created in ${chan}`,
         ),
@@ -208,7 +222,7 @@ class Ticket {
               "This channel is not linked to a ticket, you can only re open ticket channels!",
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.channel.send(
             "This channel is not linked to a ticket, you can only re open ticket channels!",
           ),
@@ -223,7 +237,7 @@ class Ticket {
               "This ticket has not been closed! You can only re-open closed tickets!",
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.channel.send(
             "This ticket has not been closed! You can only re-open closed tickets!",
           ),
