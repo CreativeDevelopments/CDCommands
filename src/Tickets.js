@@ -18,7 +18,7 @@ class Ticket {
 
   // what the frick
   // Use this._client now
-  // you used "ticketconf" as the getDocument type, yet you typed it in the index and CDClient as ticketconfig lmao
+  // you used "ticketconfig" as the getDocument type, yet you typed it in the index and CDClient as ticketconfig lmao
   // smh use jsdoc too
 
   /**
@@ -63,9 +63,9 @@ class Ticket {
     const maxTickets = ticketConfDoc.maxTickets || 1;
     const category = ticketConfDoc.category;
 
-    const results = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
-      userId: msg.author.id,
+    const results = this._client.databaseCache.getDocument("tickets", {
+      gId: msg.guild.id,
+      uId: msg.author.id,
     });
     if (results && results.length === maxTickets)
       return msg.channel
@@ -161,8 +161,8 @@ class Ticket {
       );
 
     this._client.databaseCache.insertDocument("tickets", {
-      guildId: msg.guild.id,
-      userId: msg.author.id,
+      gId: msg.guild.id,
+      uId: msg.author.id,
       channelId: chan.id,
       ticketName: name,
       claim: false,
@@ -196,7 +196,7 @@ class Ticket {
     if (!reason) reason = "No reason provided";
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
@@ -271,11 +271,11 @@ class Ticket {
     this._client.databaseCache.updateDocument(
       "tickets",
       {
-        guildId: msg.guild.id,
+        gId: msg.guild.id,
         channelId: msg.channel.id,
       },
       {
-        guildId: msg.guild.id,
+        gId: msg.guild.id,
         closed: false,
       },
     );
@@ -306,7 +306,7 @@ class Ticket {
     if (!reason) reason = "No reason provided!";
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
@@ -385,11 +385,11 @@ class Ticket {
       this._client.databaseCache.updateDocument(
         "tickets",
         {
-          guildId: msg.guild.id,
+          gId: msg.guild.id,
           channelId: msg.channel.id,
         },
         {
-          guildId: msg.guild.id,
+          gId: msg.guild.id,
           closed: true,
         },
       );
@@ -421,7 +421,7 @@ class Ticket {
     if (!reason) reason = "No reason provided!";
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
@@ -474,7 +474,7 @@ class Ticket {
       }
 
       this._client.databaseCache
-        .deleteDocument({ guildId: msg.guild.id, channelId: msg.channel.id })
+        .deleteDocument({ gId: msg.guild.id, channelId: msg.channel.id })
         .catch((err) =>
           this._client.logError({
             data: "Failed to remove a ticket from the database!",
@@ -511,7 +511,7 @@ class Ticket {
       });
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
@@ -589,11 +589,11 @@ class Ticket {
       this._client.databaseCache.updateDocument(
         "tickets",
         {
-          guildId: msg.guild.id,
+          gId: msg.guild.id,
           channelId: msg.channel.id,
         },
         {
-          guildId: msg.guild.id,
+          gId: msg.guild.id,
           claim: true,
           claimId: msg.author.id,
         },
@@ -633,7 +633,7 @@ class Ticket {
       });
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
@@ -711,11 +711,11 @@ class Ticket {
       this._client.databaseCache.updateDocument(
         "tickets",
         {
-          guildId: msg.guild.id,
+          gId: msg.guild.id,
           channelId: msg.channel.id,
         },
         {
-          guildId: msg.guild.id,
+          gId: msg.guild.id,
           claim: false,
           claimId: null,
         },
@@ -760,7 +760,7 @@ class Ticket {
       });
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
@@ -844,7 +844,7 @@ class Ticket {
       });
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
@@ -934,7 +934,7 @@ class Ticket {
       });
 
     const result = await this._client.databaseCache.getDocument("tickets", {
-      guildId: msg.guild.id,
+      gId: msg.guild.id,
       channelId: msg.channel.id,
     });
     if (!result || result.channelId !== msg.channel.id)
