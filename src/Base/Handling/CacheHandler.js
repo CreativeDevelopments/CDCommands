@@ -56,7 +56,7 @@ module.exports = class Cache {
 
   /**
    * @private
-   */
+  */
   async _init() {
     for (const [modelName, model] of this._models) {
       const data = await model.find();
