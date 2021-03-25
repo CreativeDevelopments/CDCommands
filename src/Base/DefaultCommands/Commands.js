@@ -23,7 +23,6 @@ module.exports = new Command({
   usage: "{prefix}command <enable/disable> <command>",
   userPermissions: ["MANAGE_GUILD"],
   category: "configuration",
-<<<<<<< HEAD
   validator: new ArgumentValidator({
     validate: ({ args, client, message, prefix }) => {
       const commands = new Set(client.commands.map((c) => c.name));
@@ -212,101 +211,11 @@ module.exports = new Command({
               key: "ACTION",
               replace: `${enabledDisabled}d`,
             },
-=======
-  run: async ({ prefix, message, client, args }) => {
-    let DisabledDoc = client.databaseCache.getDocument(
-      "disabledcommands",
-      message.guild.id,
-    );
-    if (!DisabledDoc)
-      DisabledDoc = new DisabledCommands({
-        gId: message.guild.id,
-        commands: [],
-        categories: [],
-      });
-
-    const enabledDisabled = args[0].toLowerCase();
-    const commandName = args[1];
-    const commands = new Set(client.commands.map((c) => c.name));
-
-    if (enabledDisabled !== "enable" && enabledDisabled !== "disable") {
-      const res = client.defaultResponses.getValue(
-        "COMMANDS_COMMAND",
-        "INVALID_ARGS_ERROR",
-        [
-          {
-            key: "USAGE",
-            replace: this.usage.replace(/{prefix}/g, prefix),
-          },
-        ],
-      );
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((_) => message.channel.send(res));
-    }
-
-    if (!commands.has(commandName)) {
-      const res = client.defaultResponses.getValue(
-        "COMMANDS_COMMAND",
-        "NON_EXISTANT_COMMAND",
-        [
-          {
-            key: "COMMAND",
-            replace: commandName,
-          },
-        ],
-      );
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((_) => message.channel.send(res));
-    }
-
-    if (enabledDisabled === "enable") {
-      const res = client.defaultResponses.getValue(
-        "COMMANDS_COMMAND",
-        "ALREADY_ENABLED",
-        [
-          {
-            key: "COMMAND",
-            replace: commandName,
-          },
-        ],
-      );
-      if (!DisabledDoc.commands.includes(commandName))
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
-      const i = DisabledDoc.commands.findIndex((v) => v === commandName);
-      DisabledDoc.commands.splice(i, 1);
-    } else if (enabledDisabled === "disable") {
-      if (client.commands.get(commandName).noDisable) {
-        const res = client.defaultResponses.getValue(
-          "COMMANDS_COMMAND",
-          "NO_DISABLE",
-          [
             {
               key: "COMMAND",
               replace: commandName,
             },
           ],
-        );
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => msg.channel.send(res));
-      }
-
-      if (DisabledDoc.commands.includes(commandName)) {
-        const res = client.defaultResponses.getValue(
-          "COMMANDS_COMMAND",
-          "ALREADY_DISABLED",
-          [
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
-            {
-              key: "COMMAND",
-              replace: commandName,
-            },
-          ],
-<<<<<<< HEAD
     );
 
     if (successRes instanceof MessageEmbed)
@@ -314,37 +223,3 @@ module.exports = new Command({
     else return message.channel.send(successRes);
   },
 });
-=======
-        );
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
-      }
-      DisabledDoc.commands.push(commandName);
-    }
-
-    if (!client.databaseCache.getDocument("disabledcommands", message.guild.id))
-      client.databaseCache.insertDocument("disabledcommands", DisabledDoc);
-    else client.databaseCache.updateDocument("disabledcommands", DisabledDoc);
-
-    const successRes = client.defaultResponses.getValue(
-      "COMMANDS_COMMAND",
-      "SUCCESS",
-      [
-        {
-          key: "ACTION",
-          replace: `${enabledDisabled}d`,
-        },
-        {
-          key: "COMMAND",
-          replace: commandName,
-        },
-      ],
-    );
-
-    return message.channel
-      .send("", { embed: client.success({ msg: message, data: successRes }) })
-      .catch((_) => message.channel.send(successRes));
-  },
-});
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)

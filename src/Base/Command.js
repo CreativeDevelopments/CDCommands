@@ -1,14 +1,4 @@
-<<<<<<< HEAD
 const { Message } = require("discord.js");
-=======
-const {
-  Message,
-  GuildMember,
-  GuildChannel,
-  Role,
-  GuildEmoji,
-} = require("discord.js");
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
 const { CDClient } = require("./CDClient");
 const Validator = require("./Handling/ArgumentValidator");
 
@@ -49,12 +39,9 @@ module.exports = class Command {
   /** @type {boolean} */
   devOnly;
 
-<<<<<<< HEAD
   /** @type {Validator} */
   validator;
 
-=======
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
   /** @type {number} */
   cooldown;
 
@@ -73,11 +60,7 @@ module.exports = class Command {
   /** @type {string} */
   category;
 
-<<<<<<< HEAD
   /** @type {({ message, args, client, prefix, language }: { message: Message, args: string[]; client: CDClient; prefix: string; language: keyof import("./Handling/Languages.json")}) => Promise<unknown>;} */
-=======
-  /** @type {({ message, args, client, prefix }: { message: Message, args: string[]; client: CDClient; prefix: string }) => Promise<any>;} */
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
   run;
 
   /**
@@ -104,11 +87,7 @@ module.exports = class Command {
    * userPermissions?: import("discord.js").PermissionResolvable[];
    * botPermissions?: import("discord.js").PermissionResolvable[];
    * category: string;
-<<<<<<< HEAD
    * run: ({ message, args, client, prefix, language }: { message: Message, args: string[]; client: CDClient; prefix: string; language: keyof import("./Handling/Languages.json")}) => Promise<unknown>;
-=======
-   * run: ({ message, args, client, prefix }: { message: Message, args: string[]; client: CDClient; prefix: string }) => Promise<any>;
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
    *}} CommandOptions
    */
   constructor({
@@ -123,10 +102,7 @@ module.exports = class Command {
     testOnly,
     dmOnly,
     nsfw,
-<<<<<<< HEAD
     validator,
-=======
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
     devOnly,
     cooldown,
     globalCooldown,
@@ -155,10 +131,7 @@ module.exports = class Command {
     this.minArgs = minArgs;
     this.category = category;
     this.name = name;
-<<<<<<< HEAD
     this.validator = validator;
-=======
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
     this.usage = usage;
     this.testOnly = testOnly;
     this.nsfw = nsfw;
@@ -166,8 +139,5 @@ module.exports = class Command {
     this.userPermissions = userPermissions;
     this.run = run;
   }
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 6b07f04 (prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder)
+
