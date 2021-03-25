@@ -32,6 +32,14 @@ class CDClient extends Client {
      *   model: Model<any>,
      *   getBy: string,
      * };
+     * ticketconfig: {
+     *   model: Model<any>,
+     *   getBy: string,
+     * };
+     * ticketsystem: {
+     *   model: Model<any>,
+     *   getBy: string,
+     * };
      * }>}
      */
     databaseCache;
