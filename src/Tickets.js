@@ -93,7 +93,6 @@ class Ticket {
             `You already have the maximum number of tickets you can have open at one time! Please close that ticket before opening a new one!`,
           ),
         );
-
     let chan;
     try {
       chan = await msg.guild.channels.create(name, {
