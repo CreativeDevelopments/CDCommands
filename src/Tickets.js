@@ -18,7 +18,7 @@ class Ticket {
 
   // what the frick
   // Use this._client now
-  // you used "ticketconf" as the getDocument type, yet you typed it in the index and CDClient as ticketconfig lmao
+  // you used "ticketconfig" as the getDocument type, yet you typed it in the index and CDClient as ticketconfig lmao
   // smh use jsdoc too
 
   /**
