@@ -16,11 +16,6 @@ class Ticket {
     this._client = client;
   }
 
-  // what the frick
-  // Use this._client now
-  // you used "ticketconfig" as the getDocument type, yet you typed it in the index and CDClient as ticketconfig lmao
-  // smh use jsdoc too
-
   /**
    *
    * @param {Object} param0
