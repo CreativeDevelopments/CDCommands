@@ -28,7 +28,7 @@ class MessageJSON {
     try {
       require(this._path);
     } catch (err) {
-      throw new ReferenceError('An invalid "message.json" path was provided.');
+      throw new ReferenceError("An invalid \"message.json\" path was provided.");
     }
 
     this._fileData = require(this._path);
