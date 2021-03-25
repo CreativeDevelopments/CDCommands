@@ -1,6 +1,6 @@
 const Command = require("../Command");
 const { MessageEmbed } = require("discord.js");
-const ticketConfig = require('../../Database/models/ticketConfig');
+const ticketConfig = require("../../Database/models/ticketConfig");
 
 module.exports = new Command({
   name: "ticketconfig",
@@ -29,7 +29,7 @@ module.exports = new Command({
     );
     if (!ticketConfDoc)
       ticketConfDoc = new ticketConfig({
-        gId: message.guild.id
+        gId: message.guild.id,
       });
 
     const option1 = args[0].toLowerCase();
@@ -90,8 +90,7 @@ module.exports = new Command({
 
       if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
         client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
-      else
-        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
+      else client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -131,8 +130,7 @@ module.exports = new Command({
 
       if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
         client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
-      else
-        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
+      else client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -176,7 +174,7 @@ module.exports = new Command({
             ),
           );
 
-      onOff = onOff === 'on' ? true : false;
+      onOff = onOff === "on" ? true : false;
       if (onOff === ticketConfDoc.claim)
         return message.channel
           .send("", {
@@ -191,11 +189,10 @@ module.exports = new Command({
             ),
           );
 
-      ticketConfDoc.claim = onOff
+      ticketConfDoc.claim = onOff;
       if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
         client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
-      else
-        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
+      else client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -263,8 +260,7 @@ module.exports = new Command({
 
       if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
         client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
-      else
-        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
+      else client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -333,8 +329,7 @@ module.exports = new Command({
 
       if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
         client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
-      else
-        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
+      else client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -389,8 +384,7 @@ module.exports = new Command({
       ticketConfDoc.log = chan.id;
       if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
         client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
-      else
-        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
+      else client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -412,18 +406,18 @@ module.exports = new Command({
         message.guild.id,
       );
       if (!results)
-        return message.channel.
-          send("", {
+        return message.channel
+          .send("", {
             embed: client.error({
               msg: message,
               data: `This guild has not configured the ticket settings! You can do this with \`${prefix}ticketconfig\``,
             }),
           })
           .catch((_) =>
-          msg.reply(
-            `This guild has not configured the ticket settings! You can do this with \`${prefix}ticketconfig\``,
-          ),
-        );
+            msg.reply(
+              `This guild has not configured the ticket settings! You can do this with \`${prefix}ticketconfig\``,
+            ),
+          );
 
       const role = message.guild.roles.cache.get(results.supportRoles);
       const maxTickets = results.maxTickets;
@@ -438,18 +432,15 @@ module.exports = new Command({
         .addFields(
           {
             name: "Max number of tickets per user",
-            value: maxTickets || '1',
+            value: maxTickets || "1",
             inline: false,
           },
           {
             name: "Can tickets be claimed",
-            value: claim ? 'True' : 'False',
+            value: claim ? "True" : "False",
             inline: false,
           },
-          { name: "Support Role", 
-            value: role || "None", 
-            inline: false,
-          },
+          { name: "Support Role", value: role || "None", inline: false },
           {
             name: "Ticket Category Name",
             value: category.name || "None",
@@ -460,10 +451,7 @@ module.exports = new Command({
             value: close.name || "None",
             inline: false,
           },
-          { name: "Log Channel", 
-            value: log || "None",
-            inline: false,
-          },
+          { name: "Log Channel", value: log || "None", inline: false },
         )
         .setFooter(
           `You can change the configuration settings with ${prefix}ticketconfig`,
@@ -472,7 +460,9 @@ module.exports = new Command({
 
       return message.channel
         .send(embed)
-        .catch((_) => message.reply('I failed to send the ticket config embed!'));
+        .catch((_) =>
+          message.reply("I failed to send the ticket config embed!"),
+        );
     }
   },
 });

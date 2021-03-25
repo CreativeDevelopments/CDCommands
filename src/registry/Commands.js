@@ -15,6 +15,7 @@ function Commands(commandsDir, client, customHelpCommand) {
   const folders = readdirSync(join(require.main.path, commandsDir));
   for (const folder of folders) {
     if (lstatSync(join(require.main.path, commandsDir, folder)).isDirectory())
+      //Commands(`${commandsDir}\\${folder}`, client, customHelpCommand) --> Previous
       Commands(`${join(commandsDir, folder)}`, client, customHelpCommand);
     else {
       /** @type {Command} */
@@ -27,6 +28,7 @@ function Commands(commandsDir, client, customHelpCommand) {
         continue;
       }
       if (!(command instanceof Command)) {
+        //client.logError({ data: `Command file ${require.main.path}\\${commandsDir}\\${folder} is an invalid command. Please make sure all files are set up correctly.` }); --> Previous
         client.logError({
           data: `Command file ${join(
             require.main.path,
