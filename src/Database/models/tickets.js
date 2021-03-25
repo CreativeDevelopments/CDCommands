@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 
 const ticketSystem = new Schema({
-  guildId: { type: String, required: true },
-  userId: { type: String, required: false },
+  gId: { type: String, required: true },
+  uId: { type: String, required: false },
   claim: { type: String, required: false, default: false },
   claimId: { type: String, required: false, default: null },
   channelId: { type: String, required: false, default: null },

@@ -1,13 +1,14 @@
 const Command = require("../Command");
 const { MessageEmbed } = require("discord.js");
+const ticketConfig = require('../../Database/models/ticketConfig');
 
 module.exports = new Command({
   name: "ticketconfig",
-  aliases: ["tconfig", "ticketconf", "tconf"],
+  aliases: ["tconfig", "ticketconfig", "tconf"],
   description: "Configure your ticket settings",
   details:
     "Max = Max Number of Tickets someone can have open\nRoles = Support Roles\nClaim = Enable / Disable claiming tickets\nCategory = Category ID or Name for where tickets are opened\nClose = Category ID or Name for where closed tickets go\nLog = Logs channel for tickets",
-  minArgs: 2,
+  minArgs: 1,
   maxArgs: Infinity,
   usage:
     "{prefix}ticketconfig <Max / Role / Claim / Category / Close / Log / List> <Options>",
@@ -22,16 +23,20 @@ module.exports = new Command({
   botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
   category: "tickets",
   run: async ({ args, client, message, prefix }) => {
-    const ticketConfDoc = client.databaseCache.getDocument(
-      "ticketconf",
+    let ticketConfDoc = client.databaseCache.getDocument(
+      "ticketconfig",
       message.guild.id,
     );
+    if (!ticketConfDoc)
+      ticketConfDoc = new ticketConfig({
+        gId: message.guild.id
+      });
 
     const option1 = args[0].toLowerCase();
 
     if (
       option1 !== "max" &&
-      option1 !== "roles" &&
+      option1 !== "role" &&
       option1 !== "claim" &&
       option1 !== "category" &&
       option1 !== "close" &&
@@ -42,12 +47,12 @@ module.exports = new Command({
         .send("", {
           embed: client.error({
             msg: message,
-            data: `Invalid Arguments! Please use \`${prefix}ticketconfig <Max / Roles / Claim / Cateogry> <Options>\` instead!`,
+            data: `Invalid Arguments! Please use \`${prefix}ticketconfig <Max / Role / Claim / Cateogry> <Options>\` instead!`,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           message.reply(
-            `Invalid Arguments! Please use \`${prefix}ticketconfig <Max / Roles / Claim / Cateogry> <Options>\` instead!`,
+            `Invalid Arguments! Please use \`${prefix}ticketconfig <Max / Role / Claim / Cateogry> <Options>\` instead!`,
           ),
         );
 
@@ -61,7 +66,7 @@ module.exports = new Command({
               data: `Invalid Arguments! Please use \`${prefix}ticketconfig max <Max Number of Tickets>\` instead.`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               `Invalid Arguments! Please use \`${prefix}ticketconfig max <Max Number of Tickets>\` instead.`,
             ),
@@ -75,22 +80,18 @@ module.exports = new Command({
               data: `The max tickets a user can have is already set to \`${maxNumber}\`. If you want to change this please choose a different number!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               `The max tickets a user can have is already set to ${maxNumber}. If you want to change this please choose a different number!`,
             ),
           );
 
-      if (client.databaseCache.getDocument("ticketconf", message.guild.id))
-        client.databaseCache.updateDocument("ticketconf", message.guild.id, {
-          guildId: message.guild.id,
-          maxTickets: maxNumber,
-        });
+      ticketConfDoc.maxTickets = maxNumber;
+
+      if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
+        client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
       else
-        client.databaseCache.insertDocument("ticketconf", {
-          guildId: message.guild.id,
-          maxTickets: maxNumber,
-        });
+        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -99,7 +100,7 @@ module.exports = new Command({
             data: `Successfully updated the max number of tickers per user to \`${maxNumber}\``,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           message.reply(
             `Successfully updated the max number of tickers per user to \`${maxNumber}\``,
           ),
@@ -120,22 +121,18 @@ module.exports = new Command({
               data: `Invalid Arguments! Please use \`${prefix}ticketconfig role <@Role / Role ID or Role Name>\` instead!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               `Invalid Arguments! Please use \`${prefix}ticketconfig role <@Role / Role ID or Role Name>\` instead!`,
             ),
           );
 
-      if (client.databaseCache.getDocument("ticketconf", message.guild.id))
-        client.databaseCache.updateDocument("ticketconf", message.guild.id, {
-          guildId: message.guild.id,
-          supportRole: role.id,
-        });
+      ticketConfDoc.supportRoles = role.id;
+
+      if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
+        client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
       else
-        client.databaseCache.insertDocument("ticketconf", {
-          guildId: message.guild.id,
-          supportRole: role.id,
-        });
+        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -144,7 +141,7 @@ module.exports = new Command({
             data: `Successfully updated the support role to ${role}`,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.reply(`Successfully updated the support role to ${role}`),
         );
     }
@@ -158,13 +155,13 @@ module.exports = new Command({
               data: `Invalid Arguments! Please use \`${prefix}ticketconfig Claim <On / Off>\` instead!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               `Invalid Arguments! Please use \`${prefix}ticketconfig Claim <On / Off>\` instead!`,
             ),
           );
 
-      const onOff = args[1].toLowerCase();
+      let onOff = args[1].toLowerCase();
       if (onOff !== "on" && onOff !== "off")
         return message.channel
           .send("", {
@@ -179,6 +176,7 @@ module.exports = new Command({
             ),
           );
 
+      onOff = onOff === 'on' ? true : false;
       if (onOff === ticketConfDoc.claim)
         return message.channel
           .send("", {
@@ -187,22 +185,17 @@ module.exports = new Command({
               data: `This guild's settings already have claiming tickets set to \`${onOff}\`. If you want to change this please choose a different setting!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               `This guild's settings already have claiming tickets set to ${onOff}. If you want to change this please choose a different setting!`,
             ),
           );
 
-      if (client.databaseCache.getDocument("ticketconf", message.guild.id))
-        client.databaseCache.updateDocument("ticketconf", message.guild.id, {
-          guildId: message.guild.id,
-          claim: onOff,
-        });
+      ticketConfDoc.claim = onOff
+      if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
+        client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
       else
-        client.databaseCache.insertDocument("ticketconf", {
-          guildId: message.guild.id,
-          claim: onOff,
-        });
+        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -211,7 +204,7 @@ module.exports = new Command({
             data: `Successfully updated the claim settings to \`${onOff}\``,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           message.reply(
             `Successfully updated the claim settings to \`${onOff}\``,
           ),
@@ -228,7 +221,7 @@ module.exports = new Command({
               data: `Invalid Arguments! Please use \`${prefix}ticketconfig category <Category ID or Name>\` instead!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               `Invalid Arguments! Please use \`${prefix}ticketconfig category <Category ID or Name>\` instead!`,
             ),
@@ -245,7 +238,7 @@ module.exports = new Command({
               data: `I failed to find a category with that ID or name, please try again!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               `I failed to find a category with that ID or name, please try again!`,
             ),
@@ -260,22 +253,18 @@ module.exports = new Command({
                 "The category ID or Name given is not a category. Please make sure you are using the ID or name of a **category**!",
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             message.reply(
               "The category ID or Name given is not a category. Please make sure you are using the name or ID of a **category**!",
             ),
           );
 
-      if (client.databaseCache.getDocument("ticketconf", message.guild.id))
-        client.databaseCache.updateDocument("ticketconf", message.guild.id, {
-          guildId: message.guild.id,
-          category: fCat.id,
-        });
+      ticketConfDoc.category = fCat.id;
+
+      if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
+        client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
       else
-        client.databaseCache.insertDocument("ticketconf", {
-          guildId: message.guild.id,
-          category: fCat.id,
-        });
+        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -284,7 +273,7 @@ module.exports = new Command({
             data: `Successfully updated the category for tickets to \`${fCat.name}\``,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           message.reply(
             `Successfully updated the category for tickets to \`${fCat.name}\``,
           ),
@@ -301,7 +290,7 @@ module.exports = new Command({
               data: `Invalid Arguments! Please use \`${prefix}ticketconfig close <Category ID or Name>\` instead!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             msg.reply(
               `Invalid Arguments! Please use \`${prefix}ticketconfig close <Category ID or Name>\` instead!`,
             ),
@@ -319,13 +308,13 @@ module.exports = new Command({
                 "I failed to find a category with that ID or name, please try again!",
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             msg.reply(
               "I failed to find a category with that ID or name, please try again!",
             ),
           );
 
-      if (!fCat.type !== "category")
+      if (fCat.type !== "category")
         return message.channel
           .send("", {
             embed: client.error({
@@ -334,22 +323,18 @@ module.exports = new Command({
                 "The category ID or name given is not a category. Please make sure you are using the ID or name of a **category**!",
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             msg.reply(
               "The category ID or name given is not a category. Please make sure you are using the ID or name of a **category**!",
             ),
           );
 
-      if (client.databaseCache.getDocument("ticketconf", message.guild.id))
-        client.databaseCache.updateDocument("ticketconf", message.guild.id, {
-          guildId: message.guild.id,
-          close: fCat.id,
-        });
+      ticketConfDoc.close = fCat.id;
+
+      if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
+        client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
       else
-        client.databaseCache.insertDocument("ticketconf", {
-          guildId: message.guild.id,
-          close: fCat.id,
-        });
+        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -358,7 +343,7 @@ module.exports = new Command({
             data: `Successfully updated the category for tickets to \`${fCat.name}\``,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.reply(
             `Successfully updated the category for tickets to \`${fCat.name}\``,
           ),
@@ -366,6 +351,20 @@ module.exports = new Command({
     }
 
     if (option1 === "log") {
+      if (!args[1])
+        return message.channel
+          .send("", {
+            embed: client.error({
+              msg: message,
+              data: `Invalid Arguments! Please use \`${prefix}ticketconfig <#Channel / Channel ID or Name>\` instead!`,
+            }),
+          })
+          .catch((_) =>
+            message.reply(
+              `Invalid Arguments! Please use \`${prefix}ticketconfig <#Channel / Channel ID or Name>\` instead!`,
+            ),
+          );
+
       const chan =
         message.guild.channels.cache.get(args[1]) ||
         message.guild.channels.cache.find(
@@ -373,7 +372,7 @@ module.exports = new Command({
         ) ||
         message.mentions.channels.first() ||
         message.channel;
-      if (!chan || chan.type === "category")
+      if (!chan || chan.type !== "text")
         return message.channel
           .send("", {
             embed: client.error({
@@ -381,22 +380,17 @@ module.exports = new Command({
               data: `Invalid Arguments! Please use \`${prefix}ticketconf log <Channel ID, Name, #channel or leave blank for current channel>\` instead!`,
             }),
           })
-          .catch((err) =>
+          .catch((_) =>
             msg.reply(
               `Invalid Arguments! Please use \`${prefix}ticketconf log <Channel ID, Name, #channel or leave blank for current channel>\` instead!`,
             ),
           );
 
-      if (client.databaseCache.getDocument("ticketconf", message.guild.id))
-        client.databaseCache.updateDocument("ticketconf", message.guild.id, {
-          guildId: message.guild.id,
-          log: chan.id,
-        });
+      ticketConfDoc.log = chan.id;
+      if (client.databaseCache.getDocument("ticketconfig", message.guild.id))
+        client.databaseCache.updateDocument("ticketconfig", ticketConfDoc);
       else
-        client.databaseCache.insertDocument("ticketconf", {
-          guildId: message.guild.id,
-          log: chan.id,
-        });
+        client.databaseCache.insertDocument("ticketconfig", ticketConfDoc);
 
       return message.channel
         .send("", {
@@ -405,7 +399,7 @@ module.exports = new Command({
             data: `Successfully updated the log channel for tickets to ${chan}`,
           }),
         })
-        .catch((err) =>
+        .catch((_) =>
           msg.reply(
             `Successfully updated the log channel for tickets to ${chan}`,
           ),
@@ -414,18 +408,24 @@ module.exports = new Command({
 
     if (option1 === "list") {
       const results = client.databaseCache.getDocument(
-        "ticketconf",
+        "ticketconfig",
         message.guild.id,
       );
       if (!results)
-        return message.channel.send("", {
-          embed: client.error({
-            msg: message,
-            data: `This guild has not configured the ticket settings! You can do this with \`${prefix}ticketconfig\``,
-          }),
-        });
+        return message.channel.
+          send("", {
+            embed: client.error({
+              msg: message,
+              data: `This guild has not configured the ticket settings! You can do this with \`${prefix}ticketconfig\``,
+            }),
+          })
+          .catch((_) =>
+          msg.reply(
+            `This guild has not configured the ticket settings! You can do this with \`${prefix}ticketconfig\``,
+          ),
+        );
 
-      const role = message.guild.roles.cache.get(result.supportRole);
+      const role = message.guild.roles.cache.get(results.supportRoles);
       const maxTickets = results.maxTickets;
       const claim = results.claim;
       const category = message.guild.channels.cache.get(results.category);
@@ -438,33 +438,41 @@ module.exports = new Command({
         .addFields(
           {
             name: "Max number of tickets per user",
-            value: `${maxTickets || 1}`,
-            inline: true,
+            value: maxTickets || '1',
+            inline: false,
           },
           {
             name: "Can tickets be claimed",
-            value: `${claim || true}`,
-            inline: true,
+            value: claim ? 'True' : 'False',
+            inline: false,
           },
-          { name: "Support Role", value: `${role || "None"}`, inline: true },
+          { name: "Support Role", 
+            value: role || "None", 
+            inline: false,
+          },
           {
             name: "Ticket Category Name",
-            value: `${category.name || "None"}`,
-            inline: true,
+            value: category.name || "None",
+            inline: false,
           },
           {
             name: "Category Name for closed tickets",
-            value: `${close.name || "None"}`,
-            inline: true,
+            value: close.name || "None",
+            inline: false,
           },
-          { name: "Log Channel", value: `${log || "None"}`, inline: true },
+          { name: "Log Channel", 
+            value: log || "None",
+            inline: false,
+          },
         )
         .setFooter(
           `You can change the configuration settings with ${prefix}ticketconfig`,
         )
         .setTimestamp();
 
-      message.channel.send(embed);
+      return message.channel
+        .send(embed)
+        .catch((_) => message.reply('I failed to send the ticket config embed!'));
     }
   },
 });
