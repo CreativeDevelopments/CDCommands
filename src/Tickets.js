@@ -1,6 +1,7 @@
 const { MessageEmbed, Message } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { CDClient } = require("./Base/CDClient");
-const { client } = require("./index");
+
 class Ticket {
   /**
    * @private
