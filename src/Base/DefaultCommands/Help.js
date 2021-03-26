@@ -21,7 +21,7 @@ module.exports = new Command({
   usage: "{prefix}help [command]",
   userPermissions: ["SEND_MESSAGES"],
   botPermissions: ["EMBED_LINKS"],
-  category: "configuration",
+  category: "help",
   validator: new ArgumentValidator({
     validate: ({ client, message, prefix, args }) => {
       const command_category = args[0] ? args[0] : undefined;
