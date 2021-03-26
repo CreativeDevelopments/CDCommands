@@ -60,7 +60,7 @@ module.exports = class Cooldowns {
         this._cooldowns.set(user.id, new Collection().set(command, cooldown));
       if (Math.ceil(cooldown.valueOf() - Date.now()) / 1000 / 60 >= 5)
         this._client.databaseCache.insertDocument(
-          "cooldown",
+          "cooldowns",
           new cooldownDoc({
             uId: user.id,
             name: command,
@@ -73,7 +73,7 @@ module.exports = class Cooldowns {
       this._globalCoolDowns.set(command, cooldown);
       if (Math.ceil(cooldown.valueOf() - Date.now()) / 1000 / 60 >= 5)
         this._client.databaseCache.insertDocument(
-          "cooldown",
+          "cooldowns",
           new cooldownDoc({ name: command, cooldown, type: "global" }),
         );
     } else
@@ -130,7 +130,7 @@ module.exports = class Cooldowns {
             .findOne({ uId: user.id, name: command, type: "local" })
             .then((c) => {
               if (c !== null)
-                this._client.databaseCache.deleteDocument("cooldown", c);
+                this._client.databaseCache.deleteDocument("cooldowns", c);
             });
           return false;
         }
@@ -143,7 +143,7 @@ module.exports = class Cooldowns {
           this._globalCoolDowns.delete(command);
           cooldownDoc.findOne({ name: command, type: "global" }).then((c) => {
             if (c !== null)
-              this._client.databaseCache.deleteDocument("cooldown", c);
+              this._client.databaseCache.deleteDocument("cooldowns", c);
           });
           return false;
         }
