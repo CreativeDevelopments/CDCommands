@@ -49,53 +49,53 @@ class MessageJSON {
    * {
    *  title?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * };
    * url?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * };
    * author_name?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * author_iconURL?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * color?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * fields?: [
    *  {
    *    key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *    repalce: string
+   *    replace: string
    *  }
    * ]
    * footer_text?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * footer_iconURL?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * timestamp?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * thumbnail_url?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * description?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * image?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *   repalce: string
+   *   replace: string
    * }
    * }} args
    * @returns {is extends "string" ? string : MessageEmbed}
@@ -122,6 +122,15 @@ class MessageJSON {
       return get;
     } else if (is === "embed") {
       for (const args_key of Object.keys(args)) {
+        if (args_key === "fields") {
+          const fields_keys = args[args_key];
+          for (let i = 0; i < fields_keys.length; i++) {
+            const { key, replace } = fields_keys[i];
+            const get_key = get[args_key][i];
+          }
+          continue;
+        }
+
         if (!args[args_key].key) {
           console.log(
             "[WARN]".yellow +
@@ -165,8 +174,14 @@ new MessageJSON("").getValue(
   {
     author_iconURL: {
       key: "AUTHOR_URL",
-      repalce: "https://www.google.com",
+      replace: "https://www.google.com",
     },
+    fields: [
+      {
+        key: "",
+        replace,
+      },
+    ],
   },
 );
 
