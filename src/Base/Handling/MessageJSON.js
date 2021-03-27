@@ -31,25 +31,42 @@ class MessageJSON {
     }
 
     this._fileData = require(this._path);
+    console.log(Object.keys(this._fileData.en));
   }
   /**
-   * @template {keyof T} V
-   * @template {keyof import("../message.json")[V] extends keyof string ? "" : keyof import("../message.json")[V]} S
+   * @template {keyof import("./Languages.json")} Langs
+   * @template {keyof (T[Langs])} V
+   * @template {T[Langs][V] extends string ? "" : keyof T[Langs][V]} S
+   * @template {"embed" | "string"} is
+   * @param {Langs} language
+   * 
    * @param {V} key
    * @param {S} secondary_key
-   * @param {[{ key: keyof import("../json-schema/replacers.json"), replace: string }]} args
+   * @param {{ is: is }}
+   * @param {
+   * is extends "string" ?
+   * [{ key: keyof import("../json-schema/replacers.json"), replace: string }]
+   * : 
+   * } args
    * @returns {import("../message.json")[V] extends keyof string ? import("../message.json")[V] : import("../message.json")[V][S]}
+
    */
-  getValue(key, secondary_key, args) {
-    let value = this._fileData[key];
-    if (typeof value === "object") value = value[secondary_key];
-
-    for (const replacer of args) {
-      const regex = new RegExp(`{${replacer.key}}`, "g");
-      value = value.replace(regex, replacer.replace);
-    }
-
-    return value;
+  getValue(language, key, secondary_key, { is }, args) {
+    // let value = this._fileData[key];
+    // if (typeof value === "object") value = value[secondary_key];
+    // for (const replacer of args) {
+    //   const regex = new RegExp(`{${replacer.key}}`, "g");
+    //   value = value.replace(regex, replacer.replace);
+    // }
+    // return value;
+    this.getValue("en", "");
   }
 }
+
+new MessageJSON("./").getValue(
+  "en",
+  "HELP_COMMAND",
+  "INVALID_COMMAND_CATEGORY",
+  { is: "string" },
+);
 module.exports = MessageJSON;
