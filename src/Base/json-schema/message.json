@@ -4,266 +4,250 @@
   "description": "Autocomplete for said message.json file",
   "type": "object",
   "additionalProperties": true,
+  "propertyNames": {
+    "pattern": "^([a-z][a-z])$"
+  },
   "properties": {
-    "GUILD_ONLY": {
-      "type": "string",
-      "examples": [
-        "{COMMAND} can only be used in a server."
-      ],
-      "description": "\"{COMMAND}\" represents the command that was used"
-    },
-    "DM_ONLY": {
-      "type": "string",
-      "examples": [
-        "{COMMAND} can only be used in my DMs."
-      ],
-      "description": "\"{COMMAND}\" represents the command that was used"
-    },
-    "NSFW_ONLY": {
-      "type": "string",
-      "examples": [
-        "This command is locked to NSFW channels only!"
-      ],
-      "description": "\"{COMMAND}\" represents the command that was used"
-    },
-    "DISABLED_COMMAND": {
-      "type": "string",
-      "examples": [
-        "The {COMMAND} command is currently disabled in this server. You can not use it."
-      ],
-      "description": "\"{COMMAND}\" represents the command that is disabled"
-    },
-    "DISABLED_CATEGORY": {
-      "type": "string",
-      "examples": [
-        "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
-      ],
-      "description": "\"{CATEGORY}\" represents the category that is disabled"
-    },
-    "MISSING_CLIENT_PERMISSION": {
-      "type": "string",
-      "examples": [
-        "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
-      ],
-      "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions"
-    },
-    "MISSING_MEMBER_PERMISSION": {
-      "type": "string",
-      "examples": [
-        "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
-      ],
-      "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions"
-    },
-    "MISSING_ROLES": {
-      "type": "string",
-      "examples": [
-        "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
-      ],
-      "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used"
-    },
-    "DEVELOPER_ONLY": {
-      "type": "string",
-      "examples": [
-        "You can't use {COMMAND}. It is locked to developers only."
-      ],
-      "description": "\"{COMMAND}\" represents the command that was used"
-    },
-    "TEST_SERVER": {
-      "type": "string",
-      "examples": [
-        "{COMMAND} is locked to test servers only and this server is not one."
-      ],
-      "description": "\"{COMMAND}\" represents the command that was used"
-    },
-    "TOO_MANY_ARGS": {
-      "type": "string",
-      "examples": [
-        "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
-      ],
-      "description": "\"{USAGE}\" represents the correct usage of the command"
-    },
-    "TOO_FEW_ARGS": {
-      "type": "string",
-      "examples": [
-        "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
-      ],
-      "description": "\"{USAGE}\" represents the correct usage of the command"
-    },
-    "GLOBAL_COOLDOWN": {
-      "type": "string",
-      "examples": [
-        "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
-      ],
-      "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
-    },
-    "USER_COOLDOWN": {
-      "type": "string",
-      "examples": [
-        "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
-      ],
-      "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
-    },
-    "CATEGORY_COMMAND": {
+    "en": {
       "type": "object",
       "properties": {
-        "INVALID_ARGS_ERROR": {
-          "type": "string",
+        "GUILD_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["{COMMAND} can only be used in a server."],
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DM_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["{COMMAND} can only be used in my DMs."],
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "NSFW_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["This command is locked to NSFW channels only!"],
+          "description": "\"{COMMAND}\" represents the command that was used"
+        },
+        "DISABLED_COMMAND": {
+          "type": ["string", "object"],
           "examples": [
-            "Invalid Arguments! Please use {USAGE} instead."
+            "The {COMMAND} command is currently disabled in this server. You can not use it."
+          ],
+          "description": "\"{COMMAND}\" represents the command that is disabled"
+        },
+        "DISABLED_CATEGORY": {
+          "type": ["string", "object"],
+          "examples": [
+            "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
+          ],
+          "description": "\"{CATEGORY}\" represents the category that is disabled"
+        },
+        "MISSING_CLIENT_PERMISSION": {
+          "type": ["string", "object"],
+          "examples": [
+            "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
+          ],
+          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions"
+        },
+        "MISSING_MEMBER_PERMISSION": {
+          "type": ["string", "object"],
+          "examples": [
+            "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
+          ],
+          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions"
+        },
+        "MISSING_ROLES": {
+          "type": ["string", "object"],
+          "examples": [
+            "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
+          ],
+          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used"
+        },
+        "DEVELOPER_ONLY": {
+          "type": ["string", "object"],
+          "examples": [
+            "You can't use {COMMAND}. It is locked to developers only."
+          ],
+          "description": "\"{COMMAND}\" represents the command that was used"
+        },
+        "TEST_SERVER": {
+          "type": ["string", "object"],
+          "examples": [
+            "{COMMAND} is locked to test servers only and this server is not one."
+          ],
+          "description": "\"{COMMAND}\" represents the command that was used"
+        },
+        "TOO_MANY_ARGS": {
+          "type": ["string", "object"],
+          "examples": [
+            "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
           ],
           "description": "\"{USAGE}\" represents the correct usage of the command"
         },
-        "NON_EXISTANT_CATEGORY": {
-          "type": "string",
+        "TOO_FEW_ARGS": {
+          "type": ["string", "object"],
           "examples": [
-            "That category does not exist."
-          ],
-          "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
-        },
-        "ALREADY_ENABLED": {
-          "type": "string",
-          "examples": [
-            "That category is already enabled."
-          ],
-          "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
-        },
-        "ALREADY_DISABLED": {
-          "type": "string",
-          "examples": [
-            "That category is already disabled."
-          ],
-          "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
-        },
-        "SUCCESS": {
-          "type": "string",
-          "examples": [
-            "Successfully {ACTION} the {CATEGORY} category."
-          ],
-          "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable"
-        }
-      }
-    },
-    "COMMANDS_COMMAND": {
-      "type": "object",
-      "properties": {
-        "INVALID_ARGS_ERROR": {
-          "type": "string",
-          "examples": [
-            "Invalid Arguments! Please use {USAGE} instead."
+            "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
           ],
           "description": "\"{USAGE}\" represents the correct usage of the command"
         },
-        "NON_EXISTANT_COMMAND": {
-          "type": "string",
+        "GLOBAL_COOLDOWN": {
+          "type": ["string", "object"],
           "examples": [
-            "That command does not exist."
+            "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
           ],
-          "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
         },
-        "ALREADY_ENABLED": {
-          "type": "string",
+        "USER_COOLDOWN": {
+          "type": ["string", "object"],
           "examples": [
-            "That command is already enabled."
+            "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
           ],
-          "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
         },
-        "NO_DISABLE": {
-          "type": "string",
-          "examples": [
-            "{COMMAND} can not be disabled"
-          ],
-          "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+        "CATEGORY_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGS_ERROR": {
+              "type": ["string", "object"],
+              "examples": ["Invalid Arguments! Please use {USAGE} instead."],
+              "description": "\"{USAGE}\" represents the correct usage of the command"
+            },
+            "NON_EXISTANT_CATEGORY": {
+              "type": ["string", "object"],
+              "examples": ["That category does not exist."],
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+            },
+            "ALREADY_ENABLED": {
+              "type": ["string", "object"],
+              "examples": ["That category is already enabled."],
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+            },
+            "ALREADY_DISABLED": {
+              "type": ["string", "object"],
+              "examples": ["That category is already disabled."],
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": ["Successfully {ACTION} the {CATEGORY} category."],
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+            }
+          }
         },
-        "ALREADY_DISABLED": {
-          "type": "string",
-          "examples": [
-            "That command is already disabled."
-          ],
-          "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable"
+        "COMMANDS_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGS_ERROR": {
+              "type": ["string", "object"],
+              "examples": ["Invalid Arguments! Please use {USAGE} instead."],
+              "description": "\"{USAGE}\" represents the correct usage of the command"
+            },
+            "NON_EXISTANT_COMMAND": {
+              "type": ["string", "object"],
+              "examples": ["That command does not exist."],
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+            },
+            "ALREADY_ENABLED": {
+              "type": ["string", "object"],
+              "examples": ["That command is already enabled."],
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+            },
+            "NO_DISABLE": {
+              "type": ["string", "object"],
+              "examples": ["{COMMAND} can not be disabled"],
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+            },
+            "ALREADY_DISABLED": {
+              "type": ["string", "object"],
+              "examples": ["That command is already disabled."],
+              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable"
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": ["Successfully {ACTION} the {COMMAND} command."],
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable"
+            }
+          }
         },
-        "SUCCESS": {
-          "type": "string",
-          "examples": [
-            "Successfully {ACTION} the {COMMAND} command."
-          ],
-          "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable"
-        }
-      }
-    },
-    "HELP_COMMAND": {
-      "type": "object",
-      "properties": {
-        "INVALID_COMMAND_CATEGORY": {
-          "type": "string",
-          "examples": [
-            "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
-          ],
-          "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix"
-        }
-      }
-    },
-    "ROLES_COMMAND": {
-      "type": "object",
-      "properties": {
-        "INVALID_ARGUMENTS": {
-          "type": "string",
-          "examples": [
-            "Invalid Arguments! Please use {USAGE} instead."
-          ],
-          "description": "\"{USAGE}\" represents the correct usage of the command."
+        "HELP_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_COMMAND_CATEGORY": {
+              "type": ["string", "object"],
+              "examples": [
+                "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
+              ],
+              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix"
+            }
+          }
         },
-        "INVALID_ROLE": {
-          "type": "string",
-          "examples": [
-            "Please provide a valid role to {ACTION}."
-          ],
-          "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\""
+        "ROLES_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGUMENTS": {
+              "type": ["string", "object"],
+              "examples": ["Invalid Arguments! Please use {USAGE} instead."],
+              "description": "\"{USAGE}\" represents the correct usage of the command."
+            },
+            "INVALID_ROLE": {
+              "type": ["string", "object"],
+              "examples": ["Please provide a valid role to {ACTION}."],
+              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\""
+            },
+            "INVALID_COMMAND": {
+              "type": ["string", "object"],
+              "examples": [
+                "That command does not exist. Please provide a valid command."
+              ],
+              "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to."
+            },
+            "ALREADY_ADDED": {
+              "type": ["string", "object"],
+              "examples": [
+                "{ROLE} is already on the required roles list of {COMMAND}"
+              ],
+              "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to."
+            },
+            "ALREADY_REMOVED": {
+              "type": ["string", "object"],
+              "examples": [
+                "{ROLE} is not on the required roles list for {COMMAND}"
+              ],
+              "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+              ],
+              "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
+            }
+          }
         },
-        "INVALID_COMMAND": {
-          "type": "string",
-          "examples": [
-            "That command does not exist. Please provide a valid command."
-          ],
-          "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to."
-        },
-        "ALREADY_ADDED": {
-          "type": "string",
-          "examples": [
-            "{ROLE} is already on the required roles list of {COMMAND}"
-          ],
-          "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to."
-        },
-        "ALREADY_REMOVED": {
-          "type": "string",
-          "examples": [
-            "{ROLE} is not on the required roles list for {COMMAND}"
-          ],
-          "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
-        },
-        "SUCCESS": {
-          "type": "string",
-          "examples": [
-            "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
-          ],
-          "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
-        }
-      }
-    },
-    "PREFIX_COMMAND": {
-      "type": "object",
-      "properties": {
-        "SAME_PREFIX": {
-          "type": "string",
-          "examples": [
-            "Please choose a **new** prefix to set."
-          ]
-        },
-        "SUCCESS": {
-          "type": "string",
-          "examples": [
-            "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
-          ],
-          "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix."
+        "PREFIX_COMMAND": {
+          "type": "object",
+          "properties": {
+            "SAME_PREFIX": {
+              "type": ["string", "object"],
+              "examples": ["Please choose a **new** prefix to set."]
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+              ],
+              "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix."
+            }
+          }
         }
       }
     }
