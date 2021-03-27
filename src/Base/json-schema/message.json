@@ -34,84 +34,144 @@
         "NSFW_ONLY": {
           "type": ["string", "object"],
           "examples": ["This command is locked to NSFW channels only!"],
-          "description": "\"{COMMAND}\" represents the command that was used"
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "DISABLED_COMMAND": {
           "type": ["string", "object"],
           "examples": [
             "The {COMMAND} command is currently disabled in this server. You can not use it."
           ],
-          "description": "\"{COMMAND}\" represents the command that is disabled"
+          "description": "\"{COMMAND}\" represents the command that is disabled",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "DISABLED_CATEGORY": {
           "type": ["string", "object"],
           "examples": [
             "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
           ],
-          "description": "\"{CATEGORY}\" represents the category that is disabled"
+          "description": "\"{CATEGORY}\" represents the category that is disabled",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "MISSING_CLIENT_PERMISSION": {
           "type": ["string", "object"],
           "examples": [
             "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
           ],
-          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions"
+          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "MISSING_MEMBER_PERMISSION": {
           "type": ["string", "object"],
           "examples": [
             "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
           ],
-          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions"
+          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "MISSING_ROLES": {
           "type": ["string", "object"],
           "examples": [
             "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
           ],
-          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used"
+          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "DEVELOPER_ONLY": {
           "type": ["string", "object"],
           "examples": [
             "You can't use {COMMAND}. It is locked to developers only."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used"
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "TEST_SERVER": {
           "type": ["string", "object"],
           "examples": [
             "{COMMAND} is locked to test servers only and this server is not one."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used"
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "TOO_MANY_ARGS": {
           "type": ["string", "object"],
           "examples": [
             "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command"
+          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "TOO_FEW_ARGS": {
           "type": ["string", "object"],
           "examples": [
             "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command"
+          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "GLOBAL_COOLDOWN": {
           "type": ["string", "object"],
           "examples": [
             "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "USER_COOLDOWN": {
           "type": ["string", "object"],
           "examples": [
             "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown"
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
         },
         "CATEGORY_COMMAND": {
           "type": "object",
@@ -119,27 +179,52 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["Invalid Arguments! Please use {USAGE} instead."],
-              "description": "\"{USAGE}\" represents the correct usage of the command"
+              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "NON_EXISTANT_CATEGORY": {
               "type": ["string", "object"],
               "examples": ["That category does not exist."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["That category is already enabled."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["That category is already disabled."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["Successfully {ACTION} the {CATEGORY} category."],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable"
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             }
           }
         },
@@ -149,32 +234,62 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["Invalid Arguments! Please use {USAGE} instead."],
-              "description": "\"{USAGE}\" represents the correct usage of the command"
+              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "NON_EXISTANT_COMMAND": {
               "type": ["string", "object"],
               "examples": ["That command does not exist."],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["That command is already enabled."],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "NO_DISABLE": {
               "type": ["string", "object"],
               "examples": ["{COMMAND} can not be disabled"],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable"
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["That command is already disabled."],
-              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable"
+              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["Successfully {ACTION} the {COMMAND} command."],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable"
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             }
           }
         },
@@ -186,7 +301,12 @@
               "examples": [
                 "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
               ],
-              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix"
+              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             }
           }
         },
@@ -196,40 +316,70 @@
             "INVALID_ARGUMENTS": {
               "type": ["string", "object"],
               "examples": ["Invalid Arguments! Please use {USAGE} instead."],
-              "description": "\"{USAGE}\" represents the correct usage of the command."
+              "description": "\"{USAGE}\" represents the correct usage of the command.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "INVALID_ROLE": {
               "type": ["string", "object"],
               "examples": ["Please provide a valid role to {ACTION}."],
-              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\""
+              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\"",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "INVALID_COMMAND": {
               "type": ["string", "object"],
               "examples": [
                 "That command does not exist. Please provide a valid command."
               ],
-              "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to."
+              "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "ALREADY_ADDED": {
               "type": ["string", "object"],
               "examples": [
                 "{ROLE} is already on the required roles list of {COMMAND}"
               ],
-              "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to."
+              "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "ALREADY_REMOVED": {
               "type": ["string", "object"],
               "examples": [
                 "{ROLE} is not on the required roles list for {COMMAND}"
               ],
-              "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
+              "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": [
                 "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
               ],
-              "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from."
+              "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             }
           }
         },
@@ -238,14 +388,24 @@
           "properties": {
             "SAME_PREFIX": {
               "type": ["string", "object"],
-              "examples": ["Please choose a **new** prefix to set."]
+              "examples": ["Please choose a **new** prefix to set."],
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             },
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": [
                 "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
               ],
-              "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix."
+              "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             }
           }
         }
