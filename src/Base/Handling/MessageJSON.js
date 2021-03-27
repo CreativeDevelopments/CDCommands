@@ -51,20 +51,5 @@ class MessageJSON {
 
     return value;
   }
-
-  /**
-   * Writes a new value to the specified key value in the "message.json" file, if the key already exists.
-   * @template {string} K
-   * @param {string} key
-   * @param {K} value
-   * @returns {K}
-   */
-  setValue(key, value) {
-    if (!this._fileData[key])
-      throw new ReferenceError(`Unknown key: \"${key}\"`);
-    this._fileData[key] = value;
-    fs.writeFileSync(this._path, this._fileData);
-    return value;
-  }
 }
 module.exports = MessageJSON;
