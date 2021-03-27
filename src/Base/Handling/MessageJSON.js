@@ -32,7 +32,6 @@ class MessageJSON {
     }
 
     this._fileData = require(this._path);
-    console.log(Object.keys(this._fileData.en));
   }
   /**
    * @template {keyof import("./Languages.json")} Langs
@@ -69,8 +68,18 @@ class MessageJSON {
    * }
    * fields?: [
    *  {
-   *    key: keyof import("../json-schema/replacers.json")["EMBED"]
-   *    replace: string
+   *    name: {
+   *      key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *      replace: string
+   *    }
+   *    value: {
+   *      key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *      replace: string
+   *    }
+   *    inline?: {
+   *      key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *      replace: string
+   *    }
    *  }
    * ]
    * footer_text?: {
@@ -93,7 +102,7 @@ class MessageJSON {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
    *   replace: string
    * }
-   * image?: {
+   * image_url?: {
    *   key: keyof import("../json-schema/replacers.json")["EMBED"]
    *   replace: string
    * }
@@ -125,8 +134,32 @@ class MessageJSON {
         if (args_key === "fields") {
           const fields_keys = args[args_key];
           for (let i = 0; i < fields_keys.length; i++) {
-            const { key, replace } = fields_keys[i];
-            const get_key = get[args_key][i];
+            const args_keys_inline_etc = fields_keys[i];
+            const get_field = get["embed"][args_key][i];
+
+            const { inline, value, name } = args_keys_inline_etc;
+
+            if (inline) {
+              const inlineRegex = new RegExp(`{${inline.key}}`, "g");
+              get_field["inline"] = get_field["inline"].replace(
+                inlineRegex,
+                inline.replace,
+              );
+            }
+            if (value) {
+              const valueRegex = new RegExp(`{${value.key}}`, "g");
+              get_field["value"] = get_field["value"].replace(
+                valueRegex,
+                value.replace,
+              );
+            }
+            if (name) {
+              const nameRegex = new RegExp(`{${name.key}}`, "g");
+              get_field["name"] = get_field["name"].replace(
+                nameRegex,
+                name.replace,
+              );
+            }
           }
           continue;
         }
@@ -146,43 +179,26 @@ class MessageJSON {
         }
         if (args_key.includes("_")) {
           const _keys = args_key.split("_");
-          const regex = new RegExp(`${args[args_key].key}`, "g");
+          const regex = new RegExp(`{${args[args_key].key}}`, "g");
 
-          get[_keys[0]][_keys[1]] = get[_keys[0]][_keys[1]].replace(
+          get["embed"][_keys[0]][_keys[1]] = get["embed"][_keys[0]][
+            _keys[1]
+          ].replace(regex, args[args_key].replace);
+          continue;
+        } else {
+          const regex = new RegExp(`{${args[args_key].key}}`, "g");
+          get["embed"][args_key] = get["embed"][args_key].replace(
             regex,
             args[args_key].replace,
           );
-          continue;
-        } else {
-          const regex = new RegExp(`${args[args_key].key}`, "g");
-          get[args_key] = get[args_key].replace(regex, args[args_key].replace);
         }
       }
-      return new MessageEmbed(get);
+      return new MessageEmbed(get.embed);
     } else
       throw new Error(
         'Invalid "is" value. Please use either "string" or "embed"',
       );
   }
 }
-
-new MessageJSON("").getValue(
-  "en",
-  "HELP_COMMAND",
-  "INVALID_COMMAND_CATEGORY",
-  { is: "embed" },
-  {
-    author_iconURL: {
-      key: "AUTHOR_URL",
-      replace: "https://www.google.com",
-    },
-    fields: [
-      {
-        key: "",
-        replace,
-      },
-    ],
-  },
-);
 
 module.exports = MessageJSON;

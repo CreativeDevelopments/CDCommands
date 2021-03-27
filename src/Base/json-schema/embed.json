@@ -33,25 +33,23 @@
           "type": "array",
           "minItems": 1,
           "maxItems": 25,
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "description": "Usable replacers: \"{FIELD_NAME}\""
-                },
-                "value": {
-                  "type": "string",
-                  "description": "Usable replacers: \"{FIELD_VALUE}\""
-                },
-                "inline": {
-                  "type": "boolean",
-                  "description": "Usabled replacers: \"{FIELD_INLINE}\""
-                }
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Usable replacers: \"{FIELD_NAME}\""
+              },
+              "value": {
+                "type": "string",
+                "description": "Usable replacers: \"{FIELD_VALUE}\""
+              },
+              "inline": {
+                "type": "boolean",
+                "description": "Usabled replacers: \"{FIELD_INLINE}\""
               }
             }
-          ]
+          }
         },
         "footer": {
           "type": "object",
@@ -84,8 +82,13 @@
           "description": "Usabled replacers: \"{DESCRIPTION}\""
         },
         "image": {
-          "type": "string",
-          "description": "Usabled replacers: \"{IMAGE}\""
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Usabled replacers: \"{IMAGE}\""
+            }
+          }
         }
       }
     }
