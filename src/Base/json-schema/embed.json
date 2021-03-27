@@ -5,24 +5,29 @@
     "embed": {
       "properties": {
         "title": {
-          "type": "string"
+          "type": "string",
+          "description": "Usable replacers: \"{TITLE}\""
         },
         "url": {
-          "type": "string"
+          "type": "string",
+          "description": "Usable replacers: \"{TITLE_URL}\""
         },
         "author": {
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "description": "Usable replacers: \"{AUTHOR_NAME}\""
             },
             "iconURL": {
-              "type": "string"
+              "type": "string",
+              "description": "Usable replacers: \"{AUTHOR_URL}\""
             }
           }
         },
         "color": {
-          "type": ["number", "string"]
+          "type": ["number", "string"],
+          "description": "Usable replacers: \"{COLOR}\""
         },
         "fields": {
           "type": "array",
@@ -33,13 +38,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Usable replacers: \"{FIELD_NAME}\""
                 },
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Usable replacers: \"{FIELD_VALUE}\""
                 },
                 "inline": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "Usabled replacers: \"{FIELD_INLINE}\""
                 }
               }
             }
@@ -49,29 +57,35 @@
           "type": "object",
           "properties": {
             "text": {
-              "type": "string"
+              "type": "string",
+              "description": "Usabled replacers: \"{FOOTER_TEXT}\""
             },
             "iconURL": {
-              "type": "string"
+              "type": "string",
+              "description": "Usabled replacers: \"{FOOTER_URL}\""
             }
           }
         },
         "timestamp": {
-          "type": "number"
+          "type": "number",
+          "description": "Usabled replacers: \"{TIMESTAMP}\""
         },
         "thumbnail": {
           "type": "object",
           "properties": {
             "url": {
-              "type": "string"
+              "type": "string",
+              "description": "Usabled replacers: \"{THUMBNAIL_URL}\""
             }
           }
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "description": "Usabled replacers: \"{DESCRIPTION}\""
         },
         "image": {
-          "type": "string"
+          "type": "string",
+          "description": "Usabled replacers: \"{IMAGE}\""
         }
       }
     }
