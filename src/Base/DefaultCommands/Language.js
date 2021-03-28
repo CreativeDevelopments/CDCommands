@@ -28,7 +28,15 @@ module.exports = new Command({
     },
     onError: ({ args, prefix, client, message, error }) => {
       if (error === "INVALID_ISO_CODE") {
-        // message.channel.send()
+        const res = client.defaultResponses.getValue(
+          "dbValue",
+          "LANGUAGE_COMMAND",
+          "INVALID_ISO_CODE",
+          {
+            description: [{ key: "ISO_CODE", replace: args[0] }],
+          },
+        );
+        message.channel.send({ embed: res });
       }
     },
   }),
