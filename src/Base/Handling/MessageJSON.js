@@ -36,7 +36,7 @@ class MessageJSON {
   /**
    * @template {keyof import("./Languages.json")} Langs
    * @template {keyof (T[Langs])} V
-   * @template {T[Langs][V] extends string ? "" : keyof T[Langs][V]} S
+   * @template {keyof T[Langs][V] extends "embed" ? "" : T[Langs][V] extends string ? "" : keyof T[Langs][V]} S
    * @template {"embed" | "string"} Is
    * @param {Langs} language
    * @param {V} key
@@ -47,63 +47,63 @@ class MessageJSON {
    * :
    * {
    *  title?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * };
    * url?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * };
    * author_name?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * author_iconURL?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * color?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * fields?: [
    *  {
    *    name: {
-   *      key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *      key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *      replace: string
    *    }
    *    value: {
-   *      key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *      key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *      replace: string
    *    }
    *    inline?: {
-   *      key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *      key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *      replace: string
    *    }
    *  }
    * ]
    * footer_text?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * footer_iconURL?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * timestamp?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * thumbnail_url?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * description?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * image_url?: {
-   *   key: keyof import("../json-schema/replacers.json")["EMBED"]
+   *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
    * }
    * }} args
