@@ -424,6 +424,18 @@
                 }
               }
             },
+            "UNPROVIDED_LANGUAGE": {
+              "type": ["string", "object"],
+              "examples": [
+                "{ISO_CODE} is not provided for by the bot owner, please select from one of the following: {PROVIDED_CODES}"
+              ],
+              "description": "\"{ISO_CODE}\" represents the language code that was attempted to be used. \"{PROVIDED_CODES}\" represents the language codes that the bot creator has translated to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": [
