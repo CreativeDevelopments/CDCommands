@@ -1,14 +1,59 @@
 {
   "en": {
-    "GUILD_ONLY": "{COMMAND} can only be used in a server.",
-    "DM_ONLY": "{COMMAND} can only be used in my DMs.",
-    "NSFW_ONLY": "This command is locked to NSFW channels only!",
-    "DISABLED_COMMAND": "The {COMMAND} command is currently disabled in this server. You can not use it.",
-    "DISABLED_CATEGORY": "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category.",
-    "MISSING_CLIENT_PERMISSION": "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!",
-    "MISSING_MEMBER_PERMISSION": "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!",
-    "MISSING_ROLES": "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}.",
-    "DEVELOPER_ONLY": "You can't use {COMMAND}. It is locked to developers only.",
+    "GUILD_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} can only be used in a server."
+      }
+    },
+    "DM_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} can only be used in my DMs."
+      }
+    },
+    "NSFW_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "This command is locked to NSFW channels only!"
+      }
+    },
+    "DISABLED_COMMAND": {
+      "embed": {
+        "color": "#C93131",
+        "description": "The {COMMAND} command is currently disabled in this server. You can not use it."
+      }
+    },
+    "DISABLED_CATEGORY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
+      }
+    },
+    "MISSING_CLIENT_PERMISSION": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
+      }
+    },
+    "MISSING_MEMBER_PERMISSION": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
+      }
+    },
+    "MISSING_ROLES": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
+      }
+    },
+    "DEVELOPER_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "You can't use {COMMAND}. It is locked to developers only."
+      }
+    },
     "TEST_SERVER": "{COMMAND} is locked to test servers only and this server is not one.",
     "TOO_FEW_ARGS": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead",
     "TOO_MANY_ARGS": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead",
