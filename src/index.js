@@ -21,6 +21,7 @@ const Cooldowns = require("./Base/Handling/CooldownHandler");
 const Events = require("./registry/Events");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
+const language = require("./Database/models/language");
 
 class CDCommands {
   /**
@@ -226,6 +227,10 @@ class CDCommands {
         },
         requriedroles: {
           model: requiredRoles,
+          getBy: "gId",
+        },
+        language: {
+          model: language,
           getBy: "gId",
         },
       },
