@@ -177,12 +177,42 @@
       }
     },
     "ROLES_COMMAND": {
-      "ALREADY_ADDED": "{ROLE} is already on the required roles list of {COMMAND}",
-      "ALREADY_REMOVED": "{ROLE} is not on the required roles list for {COMMAND}",
-      "INVALID_ARGUMENTS": "Invalid Arguments! Please use {USAGE} instead.",
-      "INVALID_COMMAND": "That command does not exist. Please provide a valid command.",
-      "INVALID_ROLE": "Please provide a valid role to {ACTION}.",
-      "SUCCESS": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+      "ALREADY_ADDED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{ROLE} is already on the required roles list of {COMMAND}"
+        }
+      },
+      "ALREADY_REMOVED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{ROLE} is not on the required roles list for {COMMAND}"
+        }
+      },
+      "INVALID_ARGUMENTS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Invalid Arguments! Please use {USAGE} instead."
+        }
+      },
+      "INVALID_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command does not exist. Please provide a valid command."
+        }
+      },
+      "INVALID_ROLE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Please provide a valid role to {ACTION}."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+        }
+      }
     }
   }
 }
