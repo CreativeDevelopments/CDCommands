@@ -30,6 +30,7 @@ module.exports = new Event("message", async (client, message) => {
           replace: ProperCase(command.name),
         },
       ]);
+      // const res = client.defaultResponses.getValue()
       return message.channel
         .send("", { embed: client.error({ msg: message, data: res }) })
         .catch((err) => message.channel.send(res));
