@@ -316,4 +316,5 @@ module.exports.Models = {
   disabledCommands: require("./Database/models/disabled-commands"),
   prefixes: require("./Database/models/prefixes"),
   requiredRoles: require("./Database/models/required-roles"),
+  language: require("./Database/models/language"),
 };
