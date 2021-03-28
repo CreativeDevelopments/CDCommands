@@ -1,6 +1,5 @@
 const { join } = require("path");
-const colors = require("colors");
-const fs = require("fs");
+const langs = Object.keys(require("./Languages.json"));
 const { MessageEmbed } = require("discord.js");
 
 /**
@@ -104,16 +103,28 @@ class MessageJSON {
    */
   getValue(language, key, secondary_key, args) {
     const lang_data = this._fileData[language];
-    if (lang_data === undefined) throw new Error("Uknown language");
+    if (lang_data === undefined || !langs.includes(language))
+      return console.log(
+        "[ERROR] ".red +
+          `Language "${language}" is unknown. Please provide a valid language.`,
+      );
     let get = lang_data[key];
-    if (get === undefined) throw new Error("Unknown primary key");
+    if (get === undefined)
+      return console.log(
+        "[ERROR] ".red +
+          `Primary key "${key}" is unknown. Please provide a valid primary key.`,
+      );
     if (
       typeof get === "object" &&
       Object.keys(get).length > 1 &&
       !Object.keys(get).includes("embed")
     )
       get = get[secondary_key];
-    if (get === undefined) throw new Error("Unknown secondary key");
+    if (get === undefined)
+      return console.log(
+        "[ERROR] ".red +
+          `Secondary key "${secondary_key}" is unknown. Please provide a valid secondary key.`,
+      );
 
     if (Object.keys(get).length > 1 && !Object.keys(get).includes("embed")) {
       if (!(args instanceof Array))
