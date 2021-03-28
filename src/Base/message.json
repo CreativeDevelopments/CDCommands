@@ -163,8 +163,18 @@
       }
     },
     "PREFIX_COMMAND": {
-      "SAME_PREFIX": "Please choose a **new** prefix to set.",
-      "SUCCESS": "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+      "SAME_PREFIX": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Please choose a **new** prefix to set."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+        }
+      }
     },
     "ROLES_COMMAND": {
       "ALREADY_ADDED": "{ROLE} is already on the required roles list of {COMMAND}",
