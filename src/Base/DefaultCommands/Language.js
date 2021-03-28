@@ -28,8 +28,12 @@ module.exports = new Command({
     },
     onError: ({ args, prefix, client, message, error }) => {
       if (error === "INVALID_ISO_CODE") {
+        const language = client.databaseCache
+          .getDocument("language", message.guild.id)
+          .userLangs.find((v) => v.uId === message.author.id);
+
         const res = client.defaultResponses.getValue(
-          "dbValue",
+          "",
           "LANGUAGE_COMMAND",
           "INVALID_ISO_CODE",
           {

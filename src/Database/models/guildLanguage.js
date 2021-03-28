@@ -1,9 +1,8 @@
 const { Schema, model } = require("mongoose");
 
-const language = new Schema({
+const guildLanguage = new Schema({
   gId: { type: String, required: true },
   guildLanguage: { type: String, required: false, default: "en" },
-  userLangs: { type: Array, required: false, default: [] },
 });
 
-module.exports = model("languages", language);
+module.exports = model("guildLanguages", guildLanguage);

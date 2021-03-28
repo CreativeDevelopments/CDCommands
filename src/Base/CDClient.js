@@ -32,7 +32,7 @@ class CDClient extends Client {
    *   model: Model<any>,
    *   getBy: string,
    * };
-   * language: {
+   * guildLanguage: {
    *   model: Model<any>,
    *   getBy: string,
    * }
