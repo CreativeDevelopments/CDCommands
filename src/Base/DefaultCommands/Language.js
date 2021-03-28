@@ -69,32 +69,111 @@ module.exports = new Command({
           language,
           "LANGUAGE_COMMAND",
           "UNPROVIDED_LANGUAGE",
-          client.defaultResponses.fileData.en.LANGUAGE_COMMAND.INVALID_ISO_CODE
-            .embed !== undefined
+          client.defaultResponses.fileData.en.LANGUAGE_COMMAND
+            .UNPROVIDED_LANGUAGE.embed !== undefined
             ? {
-                description: [{ key: "" }],
+                description: [
+                  { key: "ISO_CODE", replace: args[0] },
+                  {
+                    key: "PROVIDED_CODES",
+                    replace: Object.keys(client.defaultResponses.fileData).join(
+                      ", ",
+                    ),
+                  },
+                ],
               }
-            : "",
+            : [
+                {
+                  key: "ISO_CODE",
+                  replace: args[0],
+                },
+                {
+                  key: "PROVIDED_CODES",
+                  replace: Object.keys(client.defaultResponses.fileData).join(
+                    ", ",
+                  ),
+                },
+              ],
         );
+
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       }
     },
   }),
   async run({ prefix, args, client, message }) {
-    if (
+    const owner =
       message.author.id ===
-      (await message.guild.members.fetch(message.guild.ownerID).id)
-    ) {
+      (await message.guild.members.fetch(message.guild.owner.id)).id;
+    if (owner) {
       const document =
         client.databaseCache.getDocument("guildLanguage", message.guild.id) ||
         new guildLanguage({
           gId: message.guild.id,
         });
+
+      document.language = args[0];
+
+      if (!client.databaseCache.getDocument("guildLanguage", message.guild.id))
+        client.databaseCache.insertDocument("guildLanguage", document);
+      else client.databaseCache.updateDocument("guildLanguage", document);
     } else {
       const document =
         client.databaseCache.getDocument("userLanguage", message.author.id) ||
         new userLanguage({
           uId: message.author.id,
         });
+
+      document.language = args[0];
+
+      if (!client.databaseCache.getDocument("userLanguage", message.author.id))
+        client.databaseCache.insertDocument("userLanguage", document);
+      else client.databaseCache.updateDocument("userLanguage", document);
     }
+
+    /** @type {keyof import("../Handling/Languages.json")} */
+    const language = client.databaseCache.getDocument(
+      "userLanguage",
+      message.author.id,
+    )
+      ? client.databaseCache.getDocument("userLanguage", message.author.id)
+          .language
+      : client.databaseCache.getDocument("guildLanguage", message.guild.id)
+      ? client.databaseCache.getDocument("guildLanguage", message.guild.id)
+          .language
+      : "en";
+
+    const res = client.defaultResponses.getValue(
+      language,
+      "LANGUAGE_COMMAND",
+      "SUCCESS",
+      client.defaultResponses.fileData.en.LANGUAGE_COMMAND.SUCCESS.embed
+        ? {
+            description: [
+              {
+                key: "USER_GUILD",
+                replace: owner ? message.guild.name : message.author.username,
+              },
+              {
+                key: "ISO_CODE",
+                replace: `**${args[0]}**`,
+              },
+            ],
+          }
+        : [
+            {
+              key: "USER_GUILD",
+              replace: owner ? message.guild.name : message.author.username,
+            },
+            {
+              key: "ISO_CODE",
+              replace: `**${args[0]}**`,
+            },
+          ],
+    );
+
+    if (res instanceof MessageEmbed)
+      return message.channel.send({ embed: res });
+    else return message.channel.send(res);
   },
 });

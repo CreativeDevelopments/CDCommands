@@ -224,13 +224,13 @@
       "UNPROVIDED_LANGUAGE": {
         "embed": {
           "color": "#C93131",
-          "description": "{ISO_CODE} is not provided for by the bot owner, please select from one of the following: {PROVIDED_CODES}"
+          "description": "**{ISO_CODE}** is not provided for by the bot owner, please select from one of the following: **{PROVIDED_CODES}**"
         }
       },
       "SUCCESS": {
         "embed": {
           "color": "#C93131",
-          "description": "Successfully updated {USER_GUILD} language to {ISO_CODE}"
+          "description": "Successfully updated {USER_GUILD}'s language to {ISO_CODE}"
         }
       }
     }
