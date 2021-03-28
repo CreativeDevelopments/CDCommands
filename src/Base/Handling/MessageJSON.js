@@ -34,18 +34,12 @@ class MessageJSON {
     this._fileData = require(this._path);
   }
   /**
-   * @template {keyof import("./Languages.json")} Langs
-   * @template {keyof (T[Langs])} V
-   * @template {keyof T[Langs][V] extends "embed" ? "" : T[Langs][V] extends string ? "" : keyof T[Langs][V]} S
-   * @template {"embed" | "string"} Is
-   * @param {Langs} language
+   * @template {keyof (T["en"])} V
+   * @template {keyof T["en"][V] extends "embed" ? "" : T["en"][V] extends string ? "" : keyof T["en"][V]} S
+   * @param {keyof import("./Languages.json")} language
    * @param {V} key
    * @param {S} secondary_key
-   * @param {{is: Is}} is
-   * @param {is extends "string" ?
-   * [{ key: keyof import("../json-schema/replacers.json"), replace: string }]
-   * :
-   * {
+   * @param {{
    *  title?: [{
    *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
@@ -105,19 +99,23 @@ class MessageJSON {
    * image_url?: [{
    *   key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *   replace: string
-   * }]
-   * }} args
-   * @returns {is extends "string" ? string : MessageEmbed}
+   * }]} | [{ key: keyof import("../json-schema/replacers.json"), replace: string }]} args
+   * @returns {MessageEmbed | string}
    */
-  getValue(language, key, secondary_key, { is }, args) {
+  getValue(language, key, secondary_key, args) {
     const lang_data = this._fileData[language];
     if (lang_data === undefined) throw new Error("Uknown language");
     let get = lang_data[key];
     if (get === undefined) throw new Error("Unknown primary key");
-    if (typeof get === "object" && is !== "embed") get = get[secondary_key];
+    if (
+      typeof get === "object" &&
+      Object.keys(get).length > 1 &&
+      !Object.keys(get).includes("embed")
+    )
+      get = get[secondary_key];
     if (get === undefined) throw new Error("Unknown secondary key");
 
-    if (is === "string") {
+    if (Object.keys(get).length > 1 && !Object.keys(get).includes("embed")) {
       if (!(args instanceof Array))
         throw new Error(
           'Got "is" as "string" but "args" is not an instance of an Array.',
@@ -129,7 +127,7 @@ class MessageJSON {
       }
 
       return get;
-    } else if (is === "embed") {
+    } else {
       if (args instanceof Array)
         throw new Error(
           'Got "is" as "embed" but "args" is an instance of an Array',
@@ -266,25 +264,12 @@ class MessageJSON {
         }
       }
       return new MessageEmbed(get.embed);
-    } else
-      throw new Error(
-        'Invalid "is" value. Please use either "string" or "embed"',
-      );
+    }
   }
 }
 
-// new MessageJSON("").getValue(
-//   "en",
-//   "GUILD_ONLY",
-//   "",
-//   { is: "embed" },
-//   {
-//     description: [
-//       {
-//         key,
-//       },
-//     ],
-//   },
-// );
+// new MessageJSON("").getValue("en", "GUILD_ONLY", "", {
+
+// })
 
 module.exports = MessageJSON;
