@@ -117,8 +117,9 @@ class MessageJSON {
 
     if (Object.keys(get).length > 1 && !Object.keys(get).includes("embed")) {
       if (!(args instanceof Array))
-        throw new Error(
-          'Got "is" as "string" but "args" is not an instance of an Array.',
+        return console.log(
+          "[ERROR] ".red +
+            'Result is of type "string" but "args" is not an instance of an Array. Use an Array instead.',
         );
 
       for (const replacer of args) {
@@ -129,8 +130,9 @@ class MessageJSON {
       return get;
     } else {
       if (args instanceof Array)
-        throw new Error(
-          'Got "is" as "embed" but "args" is an instance of an Array',
+        return console.log(
+          "[ERROR] ".red +
+            'Result is an "embed" but "args" is an instance of an Array. Use an Object instead.',
         );
 
       for (const args_key of Object.keys(args)) {
