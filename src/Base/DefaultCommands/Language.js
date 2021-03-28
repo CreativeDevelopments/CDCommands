@@ -1,4 +1,6 @@
 const { MessageEmbed } = require("discord.js");
+const guildLanguage = require("../../Database/models/guildLanguage");
+const userLanguage = require("../../Database/models/userLanguage");
 const Command = require("../Command");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
 const valid_codes = Object.keys(require("../Handling/Languages.json"));
@@ -24,23 +26,25 @@ module.exports = new Command({
   cooldown: 5000,
   globalCooldown: 0,
   validator: new ArgumentValidator({
-    validate: ({ args }) => {
+    validate: ({ args, client }) => {
       if (!valid_codes.includes(args[0])) return "INVALID_ISO_CODE";
+      if (!Object.keys(client.defaultResponses.fileData).includes(args[0]))
+        return "UNPROVIDED_LANGUAGE";
     },
     onError: ({ args, prefix, client, message, error }) => {
-      if (error === "INVALID_ISO_CODE") {
-        /** @type {keyof import("../Handling/Languages.json")} */
-        const language = client.databaseCache.getDocument(
-          "userLanguage",
-          message.author.id,
-        )
-          ? client.databaseCache.getDocument("userLanguage", message.author.id)
-              .language
-          : client.databaseCache.getDocument("guildLanguage", message.guild.id)
-          ? client.databaseCache.getDocument("guildLanguage", message.guild.id)
-              .language
-          : "en";
+      /** @type {keyof import("../Handling/Languages.json")} */
+      const language = client.databaseCache.getDocument(
+        "userLanguage",
+        message.author.id,
+      )
+        ? client.databaseCache.getDocument("userLanguage", message.author.id)
+            .language
+        : client.databaseCache.getDocument("guildLanguage", message.guild.id)
+        ? client.databaseCache.getDocument("guildLanguage", message.guild.id)
+            .language
+        : "en";
 
+      if (error === "INVALID_ISO_CODE") {
         let res = client.defaultResponses.getValue(
           language,
           "LANGUAGE_COMMAND",
@@ -60,8 +64,31 @@ module.exports = new Command({
 
         if (res instanceof MessageEmbed) message.channel.send({ embed: res });
         else message.channel.send(res);
+      } else if (error === "UNPROVIDED_LANGUAGE") {
+        let res = client.defaultResponses.getValue(
+          language,
+          "LANGUAGE_COMMAND",
+          "",
+        );
       }
     },
   }),
-  run({ prefix, args, client, message }) {},
+  async run({ prefix, args, client, message }) {
+    if (
+      message.author.id ===
+      (await message.guild.members.fetch(message.guild.ownerID).id)
+    ) {
+      const document =
+        client.databaseCache.getDocument("guildLanguage", message.guild.id) ||
+        new guildLanguage({
+          gId: message.guild.id,
+        });
+    } else {
+      const document =
+        client.databaseCache.getDocument("userLanguage", message.author.id) ||
+        new userLanguage({
+          uId: message.author.id,
+        });
+    }
+  },
 });
