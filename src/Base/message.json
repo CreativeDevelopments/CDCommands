@@ -220,6 +220,12 @@
           "color": "#C93131",
           "description": "Please provide a valid ISO 639-1 Code, `{ISO_CODE}` is invalid. Visit [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to learn more."
         }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Successfully updated {USER_GUILD} language to {ISO_CODE}"
+        }
       }
     }
   }

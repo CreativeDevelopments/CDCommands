@@ -423,6 +423,18 @@
                   "$ref": "embed.json#/definitions/embed"
                 }
               }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Successfully updated {USER_GUILD} language to {ISO_CODE}"
+              ],
+              "description": "\"{USER_GUILD}\" represents either the user or guild that is updating the language. \"{ISO_CODE}\" represents the ISO Code that was updated to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
             }
           }
         }
