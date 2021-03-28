@@ -54,11 +54,36 @@
         "description": "You can't use {COMMAND}. It is locked to developers only."
       }
     },
-    "TEST_SERVER": "{COMMAND} is locked to test servers only and this server is not one.",
-    "TOO_FEW_ARGS": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead",
-    "TOO_MANY_ARGS": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead",
-    "GLOBAL_COOLDOWN": "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again.",
-    "USER_COOLDOWN": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again.",
+    "TEST_SERVER": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} is locked to test servers only and this server is not one."
+      }
+    },
+    "TOO_FEW_ARGS": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
+      }
+    },
+    "TOO_MANY_ARGS": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
+      }
+    },
+    "GLOBAL_COOLDOWN": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
+      }
+    },
+    "USER_COOLDOWN": {
+      "embed": {
+        "color": "#C93131",
+        "description": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
+      }
+    },
     "CATEGORY_COMMAND": {
       "ALREADY_DISABLED": "That category is already disabled.",
       "ALREADY_ENABLED": "That category is already enabled.",
