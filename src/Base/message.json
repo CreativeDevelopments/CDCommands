@@ -87,31 +87,31 @@
     "CATEGORY_COMMAND": {
       "ALREADY_DISABLED": {
         "embed": {
-          "color": "",
+          "color": "#C93131",
           "description": "That category is already disabled."
         }
       },
       "ALREADY_ENABLED": {
         "embed": {
-          "color": "",
+          "color": "#C93131",
           "description": "That category is already enabled."
         }
       },
       "INVALID_ARGS_ERROR": {
         "embed": {
-          "color": "",
+          "color": "#C93131",
           "description": "Invalid Arguments! Please use {USAGE} instead."
         }
       },
       "NON_EXISTANT_CATEGORY": {
         "embed": {
-          "color": "",
+          "color": "#C93131",
           "description": "That category does not exist."
         }
       },
       "SUCCESS": {
         "embed": {
-          "color": "",
+          "color": "#C93131",
           "description": "Successfully {ACTION} the {CATEGORY} category."
         }
       }
