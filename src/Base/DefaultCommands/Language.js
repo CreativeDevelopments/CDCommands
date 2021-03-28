@@ -68,7 +68,13 @@ module.exports = new Command({
         let res = client.defaultResponses.getValue(
           language,
           "LANGUAGE_COMMAND",
-          "",
+          "UNPROVIDED_LANGUAGE",
+          client.defaultResponses.fileData.en.LANGUAGE_COMMAND.INVALID_ISO_CODE
+            .embed !== undefined
+            ? {
+                description: [{ key: "" }],
+              }
+            : "",
         );
       }
     },
