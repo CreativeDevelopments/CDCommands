@@ -28,6 +28,7 @@ module.exports = new Command({
     },
     onError: ({ args, prefix, client, message, error }) => {
       if (error === "INVALID_ISO_CODE") {
+        // message.channel.send()
       }
     },
   }),
