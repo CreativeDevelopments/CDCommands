@@ -41,18 +41,22 @@ module.exports = new Command({
               .language
           : "en";
 
-        console.log(language);
-
         let res = client.defaultResponses.getValue(
           language,
           "LANGUAGE_COMMAND",
           "INVALID_ISO_CODE",
-          {
-            description: [{ key: "ISO_CODE", replace: args[0] }],
-          },
+          client.defaultResponses.fileData.en.LANGUAGE_COMMAND.INVALID_ISO_CODE
+            .embed !== undefined
+            ? {
+                description: [{ key: "ISO_CODE", replace: args[0] }],
+              }
+            : [
+                {
+                  key: "ISO_CODE",
+                  replace: args[0],
+                },
+              ],
         );
-
-        console.log(res);
 
         if (res instanceof MessageEmbed) message.channel.send({ embed: res });
         else message.channel.send(res);

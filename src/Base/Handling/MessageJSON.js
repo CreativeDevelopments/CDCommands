@@ -114,11 +114,8 @@ class MessageJSON {
         "[ERROR] ".red +
           `Primary key "${key}" is unknown. Please provide a valid primary key.`,
       );
-    if (
-      typeof get === "object" &&
-      Object.keys(get).length > 1 &&
-      !Object.keys(get).includes("embed")
-    )
+
+    if (typeof get === "object" && !Object.keys(get).includes("embed"))
       get = get[secondary_key];
     if (get === undefined)
       return console.log(
@@ -126,7 +123,7 @@ class MessageJSON {
           `Secondary key "${secondary_key}" is unknown. Please provide a valid secondary key.`,
       );
     try {
-      if (Object.keys(get).length > 1 && !Object.keys(get).includes("embed")) {
+      if (!Object.keys(get).includes("embed")) {
         if (!(args instanceof Array))
           return console.log(
             "[ERROR] ".red +
