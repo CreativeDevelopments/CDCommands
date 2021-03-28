@@ -1,4 +1,5 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
+const colors = require("colors");
 const { mkdirSync, writeFileSync } = require("fs");
 const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
@@ -8,20 +9,20 @@ const {
   commands,
   help,
   setprefix,
+  language: lang,
 } = require("./Base/DefaultCommands");
-const colors = require("colors");
 const Commands = require("./registry/Commands");
+const Events = require("./registry/Events");
 const database = require("./Database/database");
-const Cache = require("./Base/Handling/CacheHandler");
 const cooldown = require("./Database/models/cooldown");
 const prefixes = require("./Database/models/prefixes");
 const disabledCommands = require("./Database/models/disabled-commands");
 const requiredRoles = require("./Database/models/required-roles");
+const language = require("./Database/models/language");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
-const Events = require("./registry/Events");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
-const language = require("./Database/models/language");
+const Cache = require("./Base/Handling/CacheHandler");
 
 class CDCommands {
   /**
@@ -257,6 +258,7 @@ class CDCommands {
       categories,
       commands,
       help,
+      lang,
     ];
 
     for (const command of customCommands) {
