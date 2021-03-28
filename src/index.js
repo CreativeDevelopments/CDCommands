@@ -19,6 +19,7 @@ const prefixes = require("./Database/models/prefixes");
 const disabledCommands = require("./Database/models/disabled-commands");
 const requiredRoles = require("./Database/models/required-roles");
 const guildLanguage = require("./Database/models/guildLanguage");
+const userLanguage = require("./Database/models/userLanguage");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
@@ -234,6 +235,10 @@ class CDCommands {
           model: guildLanguage,
           getBy: "gId",
         },
+        userLanguage: {
+          model: userLanguage,
+          getBy: "uId",
+        },
       },
       updateSpeed: this._cacheUpdateSpeed,
     });
@@ -324,4 +329,5 @@ module.exports.Models = {
   prefixes: require("./Database/models/prefixes"),
   requiredRoles: require("./Database/models/required-roles"),
   guildLanguage: require("./Database/models/guildLanguage"),
+  userLanguage: require("./Database/models/userLanguage"),
 };
