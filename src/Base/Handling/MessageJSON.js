@@ -68,11 +68,11 @@ class MessageJSON {
    * }
    * fields?: [
    *  {
-   *    name: {
+   *    name?: {
    *      key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *      replace: string
    *    }
-   *    value: {
+   *    value?: {
    *      key: keyof import("../json-schema/replacers.json")["EMBED"] | keyof import("../json-schema/replacers.json")
    *      replace: string
    *    }
