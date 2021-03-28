@@ -1,3 +1,4 @@
+const { MessageEmbed } = require("discord.js");
 const Command = require("../Command");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
 const valid_codes = Object.keys(require("../Handling/Languages.json"));
@@ -28,19 +29,33 @@ module.exports = new Command({
     },
     onError: ({ args, prefix, client, message, error }) => {
       if (error === "INVALID_ISO_CODE") {
-        const language = client.databaseCache
-          .getDocument("language", message.guild.id)
-          .userLangs.find((v) => v.uId === message.author.id);
+        /** @type {keyof import("../Handling/Languages.json")} */
+        const language = client.databaseCache.getDocument(
+          "userLanguage",
+          message.author.id,
+        )
+          ? client.databaseCache.getDocument("userLanguage", message.author.id)
+              .language
+          : client.databaseCache.getDocument("guildLanguage", message.guild.id)
+          ? client.databaseCache.getDocument("guildLanguage", message.guild.id)
+              .language
+          : "en";
 
-        const res = client.defaultResponses.getValue(
-          "",
+        console.log(language);
+
+        let res = client.defaultResponses.getValue(
+          language,
           "LANGUAGE_COMMAND",
           "INVALID_ISO_CODE",
           {
             description: [{ key: "ISO_CODE", replace: args[0] }],
           },
         );
-        message.channel.send({ embed: res });
+
+        console.log(res);
+
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       }
     },
   }),

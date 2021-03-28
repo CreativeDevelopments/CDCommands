@@ -125,159 +125,166 @@ class MessageJSON {
         "[ERROR] ".red +
           `Secondary key "${secondary_key}" is unknown. Please provide a valid secondary key.`,
       );
+    try {
+      if (Object.keys(get).length > 1 && !Object.keys(get).includes("embed")) {
+        if (!(args instanceof Array))
+          return console.log(
+            "[ERROR] ".red +
+              'Result is of type "string" but "args" is not an instance of an Array. Use an Array instead.',
+          );
 
-    if (Object.keys(get).length > 1 && !Object.keys(get).includes("embed")) {
-      if (!(args instanceof Array))
-        return console.log(
-          "[ERROR] ".red +
-            'Result is of type "string" but "args" is not an instance of an Array. Use an Array instead.',
-        );
-
-      for (const replacer of args) {
-        const regex = new RegExp(`{${replacer.key}}`, "g");
-        get = get.replace(regex, replacer.replace);
-      }
-
-      return get;
-    } else {
-      if (args instanceof Array)
-        return console.log(
-          "[ERROR] ".red +
-            'Result is an "embed" but "args" is an instance of an Array. Use an Object instead.',
-        );
-
-      for (const args_key of Object.keys(args)) {
-        if (args_key === "fields") {
-          const fields_keys = args[args_key];
-          for (let i = 0; i < fields_keys.length; i++) {
-            const args_keys_inline_etc = fields_keys[i];
-            const get_field = get["embed"][args_key][i];
-
-            const { inline, value, name } = args_keys_inline_etc;
-
-            if (inline instanceof Array) {
-              for (let i = 0; i < inline.length; i++) {
-                const key_value = inline[i];
-                if (!key_value.key) {
-                  console.log(
-                    "[WARN] ".yellow +
-                      `Argument value at position "${i}" in "${args_key}->inline" is missing a valid key value, skipping replacer.`,
-                  );
-                  continue;
-                }
-                if (!key_value.replace) {
-                  console.log(
-                    "[WARN] ".yellow +
-                      `Argument value at position "${i}" in "${args_key}->inline" is missing a valid replace value, skipping replacer.`,
-                  );
-                  continue;
-                }
-                const inlineRegex = new RegExp(`{${key_value.key}}`, "g");
-                get_field["inline"] = get_field["inline"].replace(
-                  inlineRegex,
-                  key_value.replace,
-                );
-              }
-            } else if (!(inline instanceof Array) && inline !== undefined)
-              console.log(
-                "[WARN] ".yellow +
-                  `Got "inline" value in "fields" at position "${i}" as non-Array.`,
-              );
-
-            if (value instanceof Array) {
-              for (let i = 0; i < value.length; i++) {
-                const key_value = value[i];
-                if (!key_value.key) {
-                  console.log(
-                    "[WARN] ".yellow +
-                      `Argument value at position "${i}" in "${args_key}->value" is missing a valid key value, skipping replacer.`,
-                  );
-                  continue;
-                }
-                if (!key_value.replace) {
-                  console.log(
-                    "[WARN] ".yellow +
-                      `Argument value at position "${i}" in "${args_key}->value" is missing a valid replace value, skipping replacer.`,
-                  );
-                  continue;
-                }
-                const valueRegex = new RegExp(`{${key_value.key}}`, "g");
-                get_field["value"] = get_field["value"].replace(
-                  valueRegex,
-                  key_value.replace,
-                );
-              }
-            } else if (!(value instanceof Array) && value !== undefined)
-              console.log(
-                "[WARN] ".yellow +
-                  `Got "value" value in "fields" at position "${i}" as non-Array.`,
-              );
-            if (name instanceof Array) {
-              for (let i = 0; i < name.length; i++) {
-                const key_value = name[i];
-                if (!key_value.key) {
-                  console.log(
-                    "[WARN] ".yellow +
-                      `Argument value at position "${i}" in "${args_key}->name" is missing a valid key value, skipping replacer.`,
-                  );
-                  continue;
-                }
-                if (!key_value.replace) {
-                  console.log(
-                    "[WARN] ".yellow +
-                      `Argument value at position "${i}" in "${args_key}->name" is missing a valid replace value, skipping replacer.`,
-                  );
-                  continue;
-                }
-                const nameRegex = new RegExp(`{${key_value.key}}`, "g");
-                get_field["name"] = get_field["name"].replace(
-                  nameRegex,
-                  key_value.replace,
-                );
-              }
-            } else if (!(name instanceof Array) && name !== undefined)
-              console.log(
-                "[WARN] ".yellow +
-                  `Got "name" value in "fields" at position "${i}" as non-Array.`,
-              );
-          }
-          continue;
+        for (const replacer of args) {
+          const regex = new RegExp(`{${replacer.key}}`, "g");
+          get = get.replace(regex, replacer.replace);
         }
 
-        for (let i = 0; i < args[args_key].length; i++) {
-          const key_value = args[args_key][i];
-          if (!key_value.key) {
-            console.log(
-              "[WARN] ".yellow +
-                `Argument value at position "${i}" in "${args_key}" is missing a valid key value, skipping replacer.`,
-            );
-            continue;
-          } else if (!key_value.replace) {
-            console.log(
-              "[WARN] ".yellow +
-                `Argument value at position "${i}" in "${args_key}" is missing a valid replace value, skipping replacer.`,
-            );
+        return get;
+      } else {
+        if (args instanceof Array)
+          return console.log(
+            "[ERROR] ".red +
+              'Result is an "embed" but "args" is an instance of an Array. Use an Object instead.',
+          );
+
+        for (const args_key of Object.keys(args)) {
+          if (args_key === "fields") {
+            const fields_keys = args[args_key];
+            for (let i = 0; i < fields_keys.length; i++) {
+              const args_keys_inline_etc = fields_keys[i];
+              const get_field = get["embed"][args_key][i];
+
+              const { inline, value, name } = args_keys_inline_etc;
+
+              if (inline instanceof Array) {
+                for (let i = 0; i < inline.length; i++) {
+                  const key_value = inline[i];
+                  if (!key_value.key) {
+                    console.log(
+                      "[WARN] ".yellow +
+                        `Argument value at position "${i}" in "${args_key}->inline" is missing a valid key value, skipping replacer.`,
+                    );
+                    continue;
+                  }
+                  if (!key_value.replace) {
+                    console.log(
+                      "[WARN] ".yellow +
+                        `Argument value at position "${i}" in "${args_key}->inline" is missing a valid replace value, skipping replacer.`,
+                    );
+                    continue;
+                  }
+                  const inlineRegex = new RegExp(`{${key_value.key}}`, "g");
+                  get_field["inline"] = get_field["inline"].replace(
+                    inlineRegex,
+                    key_value.replace,
+                  );
+                }
+              } else if (!(inline instanceof Array) && inline !== undefined)
+                console.log(
+                  "[WARN] ".yellow +
+                    `Got "inline" value in "fields" at position "${i}" as non-Array.`,
+                );
+
+              if (value instanceof Array) {
+                for (let i = 0; i < value.length; i++) {
+                  const key_value = value[i];
+                  if (!key_value.key) {
+                    console.log(
+                      "[WARN] ".yellow +
+                        `Argument value at position "${i}" in "${args_key}->value" is missing a valid key value, skipping replacer.`,
+                    );
+                    continue;
+                  }
+                  if (!key_value.replace) {
+                    console.log(
+                      "[WARN] ".yellow +
+                        `Argument value at position "${i}" in "${args_key}->value" is missing a valid replace value, skipping replacer.`,
+                    );
+                    continue;
+                  }
+                  const valueRegex = new RegExp(`{${key_value.key}}`, "g");
+                  get_field["value"] = get_field["value"].replace(
+                    valueRegex,
+                    key_value.replace,
+                  );
+                }
+              } else if (!(value instanceof Array) && value !== undefined)
+                console.log(
+                  "[WARN] ".yellow +
+                    `Got "value" value in "fields" at position "${i}" as non-Array.`,
+                );
+              if (name instanceof Array) {
+                for (let i = 0; i < name.length; i++) {
+                  const key_value = name[i];
+                  if (!key_value.key) {
+                    console.log(
+                      "[WARN] ".yellow +
+                        `Argument value at position "${i}" in "${args_key}->name" is missing a valid key value, skipping replacer.`,
+                    );
+                    continue;
+                  }
+                  if (!key_value.replace) {
+                    console.log(
+                      "[WARN] ".yellow +
+                        `Argument value at position "${i}" in "${args_key}->name" is missing a valid replace value, skipping replacer.`,
+                    );
+                    continue;
+                  }
+                  const nameRegex = new RegExp(`{${key_value.key}}`, "g");
+                  get_field["name"] = get_field["name"].replace(
+                    nameRegex,
+                    key_value.replace,
+                  );
+                }
+              } else if (!(name instanceof Array) && name !== undefined)
+                console.log(
+                  "[WARN] ".yellow +
+                    `Got "name" value in "fields" at position "${i}" as non-Array.`,
+                );
+            }
             continue;
           }
-          if (args_key.includes("_")) {
-            const _keys = args_key.split("_");
-            const regex = new RegExp(`{${key_value.key}}`, "g");
 
-            get["embed"][_keys[0]][_keys[1]] = get["embed"][_keys[0]][
-              _keys[1]
-            ].replace(regex, key_value.replace);
-            continue;
-          } else {
-            const regex = new RegExp(`{${key_value.key}}`, "g");
-            get["embed"][args_key] = get["embed"][args_key].replace(
-              regex,
-              key_value.replace,
-            );
+          for (let i = 0; i < args[args_key].length; i++) {
+            const key_value = args[args_key][i];
+            if (!key_value.key) {
+              console.log(
+                "[WARN] ".yellow +
+                  `Argument value at position "${i}" in "${args_key}" is missing a valid key value, skipping replacer.`,
+              );
+              continue;
+            } else if (!key_value.replace) {
+              console.log(
+                "[WARN] ".yellow +
+                  `Argument value at position "${i}" in "${args_key}" is missing a valid replace value, skipping replacer.`,
+              );
+              continue;
+            }
+            if (args_key.includes("_")) {
+              const _keys = args_key.split("_");
+              const regex = new RegExp(`{${key_value.key}}`, "g");
+
+              get["embed"][_keys[0]][_keys[1]] = get["embed"][_keys[0]][
+                _keys[1]
+              ].replace(regex, key_value.replace);
+              continue;
+            } else {
+              const regex = new RegExp(`{${key_value.key}}`, "g");
+              get["embed"][args_key] = get["embed"][args_key].replace(
+                regex,
+                key_value.replace,
+              );
+            }
           }
         }
+        return new MessageEmbed(get.embed);
       }
-      return new MessageEmbed(get.embed);
+    } catch (err) {
+      return undefined;
     }
+  }
+
+  get fileData() {
+    return this._fileData;
   }
 }
 
