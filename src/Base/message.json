@@ -85,11 +85,36 @@
       }
     },
     "CATEGORY_COMMAND": {
-      "ALREADY_DISABLED": "That category is already disabled.",
-      "ALREADY_ENABLED": "That category is already enabled.",
-      "INVALID_ARGS_ERROR": "Invalid Arguments! Please use {USAGE} instead.",
-      "NON_EXISTANT_CATEGORY": "That category does not exist.",
-      "SUCCESS": "Successfully {ACTION} the {CATEGORY} category."
+      "ALREADY_DISABLED": {
+        "embed": {
+          "color": "",
+          "description": "That category is already disabled."
+        }
+      },
+      "ALREADY_ENABLED": {
+        "embed": {
+          "color": "",
+          "description": "That category is already enabled."
+        }
+      },
+      "INVALID_ARGS_ERROR": {
+        "embed": {
+          "color": "",
+          "description": "Invalid Arguments! Please use {USAGE} instead."
+        }
+      },
+      "NON_EXISTANT_CATEGORY": {
+        "embed": {
+          "color": "",
+          "description": "That category does not exist."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "",
+          "description": "Successfully {ACTION} the {CATEGORY} category."
+        }
+      }
     },
     "COMMANDS_COMMAND": {
       "ALREADY_DISABLED": "That command is already disabled.",
