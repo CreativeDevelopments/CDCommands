@@ -117,12 +117,42 @@
       }
     },
     "COMMANDS_COMMAND": {
-      "ALREADY_DISABLED": "That command is already disabled.",
-      "ALREADY_ENABLED": "That command is already enabled.",
-      "INVALID_ARGS_ERROR": "Invalid Arguments! Please use {USAGE} instead.",
-      "NO_DISABLE": "{COMMAND} can not be disabled",
-      "NON_EXISTANT_COMMAND": "That command does not exist.",
-      "SUCCESS": "Successfully {ACTION} the {COMMAND} command."
+      "ALREADY_DISABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command is already disabled."
+        }
+      },
+      "ALREADY_ENABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command is already enabled."
+        }
+      },
+      "INVALID_ARGS_ERROR": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Invalid Arguments! Please use {USAGE} instead."
+        }
+      },
+      "NO_DISABLE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} can not be disabled"
+        }
+      },
+      "NON_EXISTANT_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command does not exist."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Successfully {ACTION} the {COMMAND} command."
+        }
+      }
     },
     "HELP_COMMAND": {
       "INVALID_COMMAND_CATEGORY": "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
