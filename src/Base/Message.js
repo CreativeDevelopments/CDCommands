@@ -5,6 +5,7 @@ const {
   ValidateRoles,
   FormatCooldown,
 } = require("../Functions");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = new Event("message", async (client, message) => {
   const prefix = message.guild
@@ -29,16 +30,29 @@ module.exports = new Event("message", async (client, message) => {
 
     // Guild Only
     if (command.guildOnly && !message.guild) {
-      const res = client.defaultResponses.getValue("GUILD_ONLY", "", [
-        {
-          key: "COMMAND",
-          replace: ProperCase(command.name),
-        },
-      ]);
-      // const res = client.defaultResponses.getValue()
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((err) => message.channel.send(res));
+      const res = client.defaultResponses.getValue(
+        language,
+        "GUILD_ONLY",
+        "",
+        client.defaultResponses.fileData[language].GUILD_ONLY.embed
+          ? {
+              description: [
+                {
+                  key: "COMMAND",
+                  replace: ProperCase(command.name),
+                },
+              ],
+            }
+          : [
+              {
+                key: "COMMAND",
+                replace: ProperCase(command.name),
+              },
+            ],
+      );
+      if (res instanceof MessageEmbed)
+        return message.channel.send({ embed: res });
+      else return message.channel.send(res);
     }
     // DM only
     if (command.dmOnly && message.guild) {
