@@ -1,6 +1,7 @@
 const { join } = require("path");
 const langs = Object.keys(require("./Languages.json"));
 const { MessageEmbed } = require("discord.js");
+const { clone } = require("ramda");
 
 /**
  * @template {import("../message.json")} T
@@ -102,7 +103,7 @@ class MessageJSON {
    * @returns {MessageEmbed | string}
    */
   getValue(language, key, secondary_key, args) {
-    const lang_data = this._fileData[language];
+    const lang_data = clone(this._fileData[language]);
     if (lang_data === undefined || !langs.includes(language))
       return console.log(
         "[ERROR] ".red +

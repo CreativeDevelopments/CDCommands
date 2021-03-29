@@ -244,6 +244,20 @@ class CDCommands {
     });
 
     this._client.cooldowns = new Cooldowns(await cooldown.find(), this._client);
+
+    this._client.getLanguage = ({ authorId, guildId }) => {
+      const uDBLang = this._client.databaseCache.getDocument(
+        "userLanguage",
+        authorId,
+      );
+      const gDBLang = this._client.databaseCache.getDocument(
+        "guildLanguage",
+        guildId,
+      );
+
+      return uDBLang ? uDBLang.language : gDBLang ? gDBLang.language : "en";
+    };
+
     this._commands();
     this._events();
     new FeatureHandler(this._client, this._featuresDir);

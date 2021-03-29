@@ -52,6 +52,9 @@ class CDClient extends Client {
   /** @type {string[]} */
   testservers;
 
+  /** @type {({ guildId, authorId }: { guildId: string, authorId: string }) => string} */
+  getLanguage;
+
   /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
   error;
   /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
