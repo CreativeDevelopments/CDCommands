@@ -238,7 +238,7 @@ module.exports = new Event("message", async (client, message) => {
     );
     if (reqRolesDoc) {
       const rolesRes = ValidateRoles(reqRolesDoc, message.member, command);
-      if (rolesRes) {
+      if (rolesRes && !message.member.permissions.has('ADMINISTRATOR')) {
         const res = client.defaultResponses.getValue(
           language,
           "MISSING_ROLES",
