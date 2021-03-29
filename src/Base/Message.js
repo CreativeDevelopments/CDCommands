@@ -212,6 +212,7 @@ module.exports = new Event("message", async (client, message) => {
         args,
         client,
         prefix,
+        language,
       });
       if (valid !== false && typeof valid !== "string") {
         if (command.validator.onSuccess !== undefined)
@@ -223,6 +224,7 @@ module.exports = new Event("message", async (client, message) => {
           prefix,
           args,
           error: typeof valid === "string" ? valid : "INVALID_ARGUMENT",
+          language,
         });
       }
     }

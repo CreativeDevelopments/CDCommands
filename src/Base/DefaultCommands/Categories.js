@@ -24,19 +24,15 @@ module.exports = new Command({
   userPermissions: ["MANAGE_GUILD"],
   category: "configuration",
   validator: new ArgumentValidator({
-    validate: ({ args, client, message }) => {
+    validate: ({ args, client }) => {
       const categories = new Set(client.commands.map((c) => c.category));
 
       if (args[0] !== "enable" && args[0] !== "disable")
         return "INVALID_ARGS_0";
       else if (!categories.has(args[1])) return "INVALID_ARGS_1";
     },
-    onError: ({ client, message, error, prefix, args }) => {
-      const language = client.getLanguage({
-        guildId: message.guild.id,
-        authorId: message.author.id,
-      });
-
+    onError: ({ client, message, error, prefix, args, language }) => {
+      console.log(language);
       if (error === "INVALID_ARGS_0") {
         const res = client.defaultResponses.getValue(
           language,
@@ -89,7 +85,7 @@ module.exports = new Command({
       }
     },
   }),
-  run: ({ args, client, message, prefix }) => {
+  run: ({ args, client, message, language }) => {
     let DisabledDoc = client.databaseCache.getDocument(
       "disabledcommands",
       message.guild.id,
@@ -104,43 +100,63 @@ module.exports = new Command({
     const enabledDisabled = args[0].toLowerCase();
     const categoryName = args[1];
 
-    const language = client.getLanguage({
-      guildId: message.guild.id,
-      authorId: message.author.id,
-    });
-
     if (enabledDisabled === "enable") {
       const res = client.defaultResponses.getValue(
+        language,
         "CATEGORY_COMMAND",
         "ALREADY_ENABLED",
-        [
-          {
-            key: "CATEGORY",
-            replace: categoryName,
-          },
-        ],
+        client.defaultResponses.fileData[language].CATEGORY_COMMAND
+          .ALREADY_ENABLED.embed
+          ? {
+              description: [
+                {
+                  key: "CATEGORY",
+                  replace: categoryName,
+                },
+              ],
+            }
+          : [
+              {
+                key: "CATEGORY",
+                replace: categoryName,
+              },
+            ],
       );
-      if (!DisabledDoc.categories.includes(categoryName))
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+      if (!DisabledDoc.categories.includes(categoryName)) {
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res);
+      }
+
       const i = DisabledDoc.categories.findIndex((v) => v === categoryName);
       DisabledDoc.categories.splice(i, 1);
     } else if (enabledDisabled === "disable") {
       const res = client.defaultResponses.getValue(
+        language,
         "CATEGORY_COMMAND",
         "ALREADY_DISABLED",
-        [
-          {
-            key: "CATEGORY",
-            replace: categoryName,
-          },
-        ],
+        client.defaultResponses.fileData[language].CATEGORY_COMMAND
+          .ALREADY_DISABLED.embed
+          ? {
+              description: [
+                {
+                  key: "CATEGORY",
+                  replace: categoryName,
+                },
+              ],
+            }
+          : [
+              {
+                key: "CATEGORY",
+                replace: categoryName,
+              },
+            ],
       );
-      if (DisabledDoc.categories.includes(categoryName))
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+      if (DisabledDoc.categories.includes(categoryName)) {
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res);
+      }
       DisabledDoc.categories.push(categoryName);
     }
 
@@ -149,21 +165,36 @@ module.exports = new Command({
     else client.databaseCache.updateDocument("disabledcommands", DisabledDoc);
 
     const successRes = client.defaultResponses.getValue(
+      language,
       "CATEGORY_COMMAND",
       "SUCCESS",
-      [
-        {
-          key: "ACTION",
-          replace: `${enabledDisabled}d`,
-        },
-        {
-          key: "CATEGORY",
-          replace: categoryName,
-        },
-      ],
+      client.defaultResponses.fileData[language].CATEGORY_COMMAND.SUCCESS.embed
+        ? {
+            description: [
+              {
+                key: "ACTION",
+                replace: `${enabledDisabled}d`,
+              },
+              {
+                key: "CATEGORY",
+                replace: categoryName,
+              },
+            ],
+          }
+        : [
+            {
+              key: "ACTION",
+              replace: `${enabledDisabled}d`,
+            },
+            {
+              key: "CATEGORY",
+              replace: categoryName,
+            },
+          ],
     );
-    return message.channel
-      .send("", { embed: client.success({ msg: message, data: successRes }) })
-      .catch((_) => message.channel.send(successRes));
+
+    if (successRes instanceof MessageEmbed)
+      return message.channel.send({ embed: successRes });
+    else return message.channel.send(successRes);
   },
 });
