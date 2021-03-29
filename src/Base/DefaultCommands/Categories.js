@@ -1,3 +1,4 @@
+const { MessageEmbed } = require("discord.js");
 const DisabledCommands = require("../../Database/models/disabled-commands");
 const Command = require("../Command");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
@@ -37,40 +38,54 @@ module.exports = new Command({
       });
 
       if (error === "INVALID_ARGS_0") {
-        // const res = client.defaultResponses.getValue(
-        //   "CATEGORY_COMMAND",
-        //   "INVALID_ARGS_ERROR",
-        //   [
-        //     {
-        //       key: "USAGE",
-        //       replace: `${prefix}category <enable/disable> <category>`,
-        //     },
-        //   ],
-        // );
         const res = client.defaultResponses.getValue(
           language,
           "CATEGORY_COMMAND",
           "INVALID_ARGS_ERROR",
-          client.defaultResponses.fileData[language],
+          client.defaultResponses.fileData[language].CATEGORY_COMMAND
+            .INVALID_ARGS_ERROR.embed
+            ? {
+                description: [
+                  {
+                    key: "USAGE",
+                    replace: `${prefix}category <enable/disable> <category>`,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "USAGE",
+                  replace: `${prefix}category <enable/disable> <category>`,
+                },
+              ],
         );
 
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       } else if (error === "INVALID_ARGS_1") {
         const res = client.defaultResponses.getValue(
+          language,
           "CATEGORY_COMMAND",
           "NON_EXISTANT_CATEGORY",
-          [
-            {
-              key: "CATEGORY",
-              replace: args[0],
-            },
-          ],
+          client.defaultResponses.fileData[language].CATEGORY_COMMAND
+            .NON_EXISTANT_CATEGORY.embed
+            ? {
+                description: [
+                  {
+                    key: "CATEGORY",
+                    replace: args[0],
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "CATEGORY",
+                  replace: args[0],
+                },
+              ],
         );
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       }
     },
   }),
