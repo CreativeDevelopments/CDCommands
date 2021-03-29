@@ -23,7 +23,7 @@ module.exports = new Command({
   botPermissions: ["EMBED_LINKS"],
   category: "help",
   validator: new ArgumentValidator({
-    validate: ({ client, message, prefix, args }) => {
+    validate: ({ client, args }) => {
       const command_category = args[0] ? args[0] : undefined;
 
       const command =
@@ -36,14 +36,14 @@ module.exports = new Command({
       if (!command && category.size < 1 && command_category)
         return "NON_EXISTANT_COMMAND_CATEGORY";
     },
-    onError: ({ args, prefix, message, client, error }) => {
+    onError: ({ args, prefix, message, client, error, language }) => {
       if (error === "NON_EXISTANT_COMMAND_CATEGORY") {
         const command_category = args[0] ? args[0] : undefined;
         const res = client.defaultResponses.getValue(
           language,
           "HELP_COMMAND",
           "INVALID_COMMAND_CATEGORY",
-          client.defaultResponses.fileDate[language].HELP_COMMAND
+          client.defaultResponses.fileData[language].HELP_COMMAND
             .INVALID_COMMAND_CATEGORY.embed
             ? {
                 description: [

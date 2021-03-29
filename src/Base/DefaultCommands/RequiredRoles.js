@@ -23,7 +23,7 @@ module.exports = new Command({
   botPermissions: ["SEND_MESSAGES"],
   category: "configuration",
   validator: new ArgumentValidator({
-    validate: ({ args, client, message, prefix }) => {
+    validate: ({ args, client, message }) => {
       const role =
         message.mentions.roles.first() ||
         message.guild.roles.cache.get(args[1]);
@@ -31,49 +31,79 @@ module.exports = new Command({
       else if (!role) return "NO_ROLE";
       else if (!client.commands.get(args[2])) return "UNKNOWN_COMMAND";
     },
-    onError: ({ args, prefix, message, client, error }) => {
+    onError: ({ args, prefix, message, client, error, language }) => {
       if (error === "INVALID_ARGS_0") {
         const res = client.defaultResponses.getValue(
+          language,
           "ROLES_COMMAND",
           "INVALID_ARGUMENTS",
-          [
-            {
-              key: "USAGE",
-              replace: `${prefix}requiredroles [add/remove] [role] [command`,
-            },
-          ],
+          client.defaultResponses.fileData[language].ROLES_COMMAND
+            .INVALID_ARGUMENTS.embed
+            ? {
+                description: [
+                  {
+                    key: "USAGE",
+                    replace: `${prefix}requiredroles [add/remove] [role] [command`,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "USAGE",
+                  replace: `${prefix}requiredroles [add/remove] [role] [command`,
+                },
+              ],
         );
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => msg.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       } else if (error === "NO_ROLE") {
         const res = client.defaultResponses.getValue(
+          language,
           "ROLES_COMMAND",
           "INVALID_ROLE",
-          [
-            {
-              key: "ACTION",
-              replace: args[0],
-            },
-          ],
+          client.defaultResponses.fileData[language].ROLES_COMMAND
+            .INVALID_ROLE.embed
+            ? {
+                description: [
+                  {
+                    key: "ACTION",
+                    replace: args[0],
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "ACTION",
+                  replace: args[0],
+                },
+              ]
         );
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       } else if (error === "UNKNOWN_COMMAND") {
         const res = client.defaultResponses.getValue(
+          language,
           "ROLES_COMMAND",
           "INVALID_COMMAND",
-          [
-            {
-              key: "COMMAND",
-              replace: args[2],
-            },
-          ],
+          client.defaultResponses.fileData[language].ROLES_COMMAND
+            .INVALID_COMMAND.embed
+            ? {
+                description: [
+                  {
+                    key: "COMMAND",
+                    replace: args[2],
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "COMMAND",
+                  replace: args[2],
+                },
+              ],
         );
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       }
     },
   }),
@@ -99,22 +129,37 @@ module.exports = new Command({
       if (reqRolesObject) {
         if (reqRolesObject.roles.find((s) => s === role.id)) {
           const res = client.defaultResponses.getValue(
+            language,
             "ROLES_COMMAND",
             "ALREADY_ADDED",
-            [
-              {
-                key: "ROLE",
-                replace: `**${role.name}**`,
-              },
-              {
-                key: "COMMAND",
-                replace: `**${command}**`,
-              },
-            ],
+            client.defaultResponses.fileData[language].ROLES_COMMAND
+              .ALREADY_ADDED.embed
+              ? {
+                  description: [
+                    {
+                      key: "ROLE",
+                      replace: `**${role.name}**`,
+                    },
+                    {
+                      key: "COMMAND",
+                      replace: `**${command}**`,
+                    },
+                  ],
+                }
+              : [
+                  {
+                    key: "ROLE",
+                    replace: `**${role.name}**`,
+                  },
+                  {
+                    key: "COMMAND",
+                    replace: `**${command}**`,
+                  },
+                ],
           );
-          return message.channel
-            .send("", { embed: client.error({ msg: message, data: res }) })
-            .catch((_) => message.channel.send(res));
+          if (res instanceof MessageEmbed)
+            return message.channel.send({ embed: res });
+          else return message.channel.send(res);
         }
         reqRolesObject.roles.push(role.id);
       } else {
@@ -127,43 +172,73 @@ module.exports = new Command({
       if (reqRolesObject) {
         if (!reqRolesObject.roles.find((s) => s === role.id)) {
           const res = client.defaultResponses.getValue(
+            language,
             "ROLES_COMMAND",
             "ALREADY_REMOVED",
-            [
-              {
-                key: "ROLE",
-                replace: `**${role.name}**`,
-              },
-              {
-                key: "COMMAND",
-                replace: `**${command}**`,
-              },
-            ],
+            client.defaultResponses.fileData[language].ROLES_COMMAND
+              .ALREADY_REMOVED.embed
+              ? {
+                  description: [
+                    {
+                      key: "ROLE",
+                      replace: `**${role.name}**`,
+                    },
+                    {
+                      key: "COMMAND",
+                      replace: `**${command}**`,
+                    },
+                  ],
+                }
+              : [
+                  {
+                    key: "ROLE",
+                    replace: `**${role.name}**`,
+                  },
+                  {
+                    key: "COMMAND",
+                    replace: `**${command}**`,
+                  },
+                ],
           );
-          return message.channel
-            .send("", { embed: client.error({ msg: message, data: res }) })
-            .catch((_) => message.channel.send(res));
+          if (res instanceof MessageEmbed)
+            return message.channel.send({ embed: res });
+          else return message.channel.send(res);
         }
         const i = reqRolesObject.roles.findIndex((s) => s === role.id);
         reqRolesObject.roles.splice(i, 1);
       } else {
         const res = client.defaultResponses.getValue(
+          language,
           "ROLES_COMMAND",
           "ALREADY_REMOVED",
-          [
-            {
-              key: "ROLE",
-              replace: `**${role.name}**`,
-            },
-            {
-              key: "COMMAND",
-              replace: `**${command}**`,
-            },
-          ],
+          client.defaultResponses.fileData[language].ROLES_COMMAND
+            .ALREADY_REMOVED.embed
+            ? {
+                description: [
+                  {
+                    key: "ROLE",
+                    replace: `**${role.name}**`,
+                  },
+                  {
+                    key: "COMMAND",
+                    replace: `**${command.name}**`,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "ROLE",
+                  replace: `**${role.name}**`,
+                },
+                {
+                  key: "COMMAND",
+                  replace: `**${command}**`,
+                },
+              ],
         );
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res);
       }
     }
 
@@ -172,25 +247,44 @@ module.exports = new Command({
     else client.databaseCache.updateDocument("requriedroles", reqRolesDoc);
 
     const successRes = client.defaultResponses.getValue(
+      language,
       "ROLES_COMMAND",
       "SUCCESS",
-      [
-        {
-          key: "ACTION",
-          replace: `${addRemove === "add" ? "added" : "removed"}`,
-        },
-        {
-          key: "ROLE",
-          replace: `**${role.name}**`,
-        },
-        {
-          key: "COMMAND",
-          replace: command,
-        },
-      ],
+      client.defaultResponses.fileData[language].ROLES_COMMAND
+        .SUCCESS.embed
+        ? {
+            description: [
+              {
+                key: "ACTION",
+                replace: `${addRemove === "add" ? "added" : "removed"}`,
+              },
+              {
+                key: "ROLE",
+                replace: `**${role.name}**`,
+              },
+              {
+                key: "COMMAND",
+                replace: command,
+              },
+            ],
+          }
+        : [
+            {
+              key: "ACTION",
+              replace: `${addRemove === "add" ? "added" : "removed"}`,
+            },
+            {
+              key: "ROLE",
+              replace: `**${role.name}**`,
+            },
+            {
+              key: "COMMAND",
+              replace: command,
+            },
+          ],
     );
-    return message.channel
-      .send("", { embed: client.success({ msg: message, data: successRes }) })
-      .catch((_) => message.channel.send(successRes));
+    if (res instanceof MessageEmbed)
+      return message.channel.send({ embed: successRes });
+    else return message.channel.send({ embed: successRes });
   },
 });
