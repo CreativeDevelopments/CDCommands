@@ -34,7 +34,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "GUILD_ONLY",
         "",
-        client.defaultResponses.fileData[language].GUILD_ONLY.embed
+        client.defaultResponses.fileData[language]
+          .GUILD_ONLY.embed
           ? {
               description: [
                 {
@@ -60,7 +61,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DM_ONLY",
         "",
-        client.defaultResponses.fileData[language].DM_ONLY.embed
+        client.defaultResponses.fileData[language]
+          .DM_ONLY.embed
           ? {
               description: [
                 {
@@ -86,7 +88,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "NSFW_ONLY",
         "",
-        client.defaultResponses.fileData[language].NSFW_ONLY.embed
+        client.defaultResponses.fileData[language]
+          .NSFW_ONLY.embed
           ? {
               description: [
                 {
@@ -116,7 +119,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DISABLED_COMMAND",
         "",
-        client.defaultResponses.fileData[language].DISABLED_COMMAND.embed
+        client.defaultResponses.fileData[language]
+          .DISABLED_COMMAND.embed
           ? {
               description: [
                 {
@@ -144,7 +148,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DISABLED_CATEGORY",
         "",
-        client.defaultResponses.fileData[language].DISABLED_CATEGORY.embed
+        client.defaultResponses.fileData[language]
+          .DISABLED_CATEGORY.embed
           ? {
               description: [
                 {
@@ -274,7 +279,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DEVELOPER_ONLY",
         "",
-        client.defaultResponses.fileData[language].DEVELOPER_ONLY.embed
+        client.defaultResponses.fileData[language]
+          .DEVELOPER_ONLY.embed
           ? {
               description: [
                 {
@@ -300,7 +306,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "TEST_SERVER",
         "",
-        client.defaultResponses.fileData[language].TEST_SERVER.embed
+        client.defaultResponses.fileData[language]
+          .TEST_SERVER.embed
           ? {
               description: [
                 {
@@ -333,8 +340,8 @@ module.exports = new Event("message", async (client, message) => {
                 {
                   key: "USAGE",
                   replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
-                }
-              ]
+                },
+              ],
             }
           : [
               {
@@ -349,15 +356,30 @@ module.exports = new Event("message", async (client, message) => {
     }
     // Min args
     if (command.minArgs !== -1 && args.length < command.minArgs) {
-      const res = client.defaultResponses.getValue("TOO_FEW_ARGS", "", [
-        {
-          key: "USAGE",
-          replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
-        },
-      ]);
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((err) => message.channel.send(res));
+      const res = client.defaultResponses.getValue(
+        language,
+        "TOO_FEW_ARGS",
+        "",
+        client.defaultResponses.fileData[language]
+          .TOO_MANY_ARGS.embed
+          ? {
+              description: [
+                {
+                  key: "USAGE",
+                  replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
+                },
+              ],
+            }
+          : [
+              {
+                key: "USAGE",
+                replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
+              },
+            ],
+      );
+      if (res instanceof MessageEmbed)
+        return message.channel.send({ embed: res });
+      else return message.channel.send(res)
     }
     // Validate arguments
     if (command.validator) {
@@ -391,19 +413,38 @@ module.exports = new Event("message", async (client, message) => {
         "global",
       );
       if (remainingTime !== undefined) {
-        const res = client.defaultResponses.getValue("GLOBAL_COOLDOWN", "", [
-          {
-            key: "COMMAND",
-            replace: ProperCase(command.name),
-          },
-          {
-            key: "COOLDOWN",
-            replace: FormatCooldown(remainingTime),
-          },
-        ]);
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((err) => message.channel.send(res));
+        const res = client.defaultResponses.getValue(
+          language,
+          "GLOBAL_COOLDOWN",
+          "",
+          client.defaultResponses.fileData[langauge]
+            .GLOBAL_COOLDOWN.embed
+            ? {
+                description: [
+                  {
+                    key: "COMMAND",
+                    replace: ProperCase(command.name),
+                  },
+                  {
+                    key: "COOLDOWN",
+                    replace: FormatCooldown(remainingTime),
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "COMMAND",
+                  replace: ProperCase(command.name),
+                },
+                {
+                  key: "COOLDOWN",
+                  replace: FormatCooldown(remainingTime),
+                },
+              ],
+        );
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res)
       }
     }
     // Cooldown
@@ -414,19 +455,38 @@ module.exports = new Event("message", async (client, message) => {
         "local",
       );
       if (remainingTime !== undefined) {
-        const res = client.defaultResponses.getValue("USER_COOLDOWN", "", [
-          {
-            key: "COMMAND",
-            replace: command.name,
-          },
-          {
-            key: "COOLDOWN",
-            replace: FormatCooldown(remainingTime),
-          },
-        ]);
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((err) => message.channel.send(res));
+        const res = client.defaultResponses.getValue(
+          language,
+          "USER_COOLDOWN",
+          "",
+          client.defaultResponses.fileData[language]
+            .USER_COOLDOWN.embed
+            ? {
+                description: [
+                  {
+                    key: "COMMAND",
+                    replace: command.name,
+                  },
+                  {
+                    key: "COOLDOWN",
+                    replace: FormatCooldown(remainingTime),
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "COMMAND",
+                  replace: command.name,
+                },
+                {
+                  key: "COOLDOWN",
+                  replace: FormatCooldown(remainingTime),
+                },
+              ],
+        );
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res)
       }
     }
 
