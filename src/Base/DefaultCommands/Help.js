@@ -40,22 +40,36 @@ module.exports = new Command({
       if (error === "NON_EXISTANT_COMMAND_CATEGORY") {
         const command_category = args[0] ? args[0] : undefined;
         const res = client.defaultResponses.getValue(
+          language,
           "HELP_COMMAND",
           "INVALID_COMMAND_CATEGORY",
-          [
-            {
-              key: "COMMAND_CATEGORY",
-              replace: `${ProperCase(command_category)}`,
-            },
-            {
-              key: "PREFIX",
-              replace: prefix,
-            },
-          ],
+          client.defaultResponses.fileDate[language].HELP_COMMAND
+            .INVALID_COMMAND_CATEGORY.embed
+            ? {
+                description: [
+                  {
+                    key: "COMMAND_CATEGORY",
+                    replace: `${ProperCase(command_category)}`,
+                  },
+                  {
+                    key: "PREFIX",
+                    replace: prefix,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "COMMAND_CATEGORY",
+                  replace: `${ProperCase(command_category)}`,
+                },
+                {
+                  key: "PREFIX",
+                  replace: prefix,
+                },
+              ],
         );
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => msg.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       }
     },
   }),
