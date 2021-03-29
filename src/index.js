@@ -251,7 +251,7 @@ class CDCommands {
           data:
             'An invalid "authorId" was provided for fn "getLanguage", unable to get author language, using "guildId" instead',
         });
-      if (!guild || typeof guildId !== "string")
+      if (!guildId || typeof guildId !== "string")
         this._client.logError({
           data:
             'An invalid "guildId" was provided for fn "getLanguage", unable to get guildLanguage, defaulting to "en" instead',
