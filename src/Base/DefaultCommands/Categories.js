@@ -32,7 +32,6 @@ module.exports = new Command({
       else if (!categories.has(args[1])) return "INVALID_ARGS_1";
     },
     onError: ({ client, message, error, prefix, args, language }) => {
-      console.log(language);
       if (error === "INVALID_ARGS_0") {
         const res = client.defaultResponses.getValue(
           language,
