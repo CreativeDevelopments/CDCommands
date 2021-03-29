@@ -56,15 +56,29 @@ module.exports = new Event("message", async (client, message) => {
     }
     // DM only
     if (command.dmOnly && message.guild) {
-      const res = client.defaultResponses.getValue("DM_ONLY", "", [
-        {
-          key: "COMMAND",
-          replace: ProperCase(command.name),
-        },
-      ]);
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((err) => message.channel.send(res));
+      const res = client.defaultResponses.getValue(
+        language,
+        "DM_ONLY",
+        "",
+        client.defaultResponses.fileData[language].DM_ONLY.embed
+          ? {
+              description: [
+                {
+                  key: "COMMAND",
+                  replace: ProperCase(command.name),
+                },
+              ],
+            }
+          : [
+              {
+                key: "COMMAND",
+                replace: ProperCase(command.name),
+              },
+            ],
+      );
+      if (res instanceof MessageEmbed)
+        return message.channel.send({ embed: res });
+      else return message.channel.send(res);
     }
     // NSFW Channel
     if (!message.channel.nsfw && command.nsfw) {
