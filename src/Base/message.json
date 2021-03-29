@@ -111,7 +111,7 @@
       },
       "SUCCESS": {
         "embed": {
-          "color": "#C93131",
+          "color": "#2FDD2C",
           "description": "Successfully {ACTION} the {CATEGORY} category."
         }
       }
@@ -149,7 +149,7 @@
       },
       "SUCCESS": {
         "embed": {
-          "color": "#C93131",
+          "color": "#2FDD2C",
           "description": "Successfully {ACTION} the {COMMAND} command."
         }
       }
@@ -171,7 +171,7 @@
       },
       "SUCCESS": {
         "embed": {
-          "color": "#C93131",
+          "color": "#2FDD2C",
           "description": "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
         }
       }
@@ -209,7 +209,7 @@
       },
       "SUCCESS": {
         "embed": {
-          "color": "#C93131",
+          "color": "#2FDD2C",
           "description": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
         }
       }
@@ -229,7 +229,7 @@
       },
       "SUCCESS": {
         "embed": {
-          "color": "#C93131",
+          "color": "#2FDD2C",
           "description": "Successfully updated {USER_GUILD}'s language to {ISO_CODE}"
         }
       }
