@@ -246,6 +246,16 @@ class CDCommands {
     this._client.cooldowns = new Cooldowns(await cooldown.find(), this._client);
 
     this._client.getLanguage = ({ authorId, guildId }) => {
+      if (!authorId || typeof authorId !== "string")
+        this._client.logError({
+          data:
+            'An invalid "authorId" was provided for fn "getLanguage", unable to get author language, using "guildId" instead',
+        });
+      if (!guild || typeof guildId !== "string")
+        this._client.logError({
+          data:
+            'An invalid "guildId" was provided for fn "getLanguage", unable to get guildLanguage, defaulting to "en" instead',
+        });
       const uDBLang = this._client.databaseCache.getDocument(
         "userLanguage",
         authorId,
