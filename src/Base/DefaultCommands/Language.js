@@ -31,13 +31,7 @@ module.exports = new Command({
       if (!Object.keys(client.defaultResponses.fileData).includes(args[0]))
         return "UNPROVIDED_LANGUAGE";
     },
-    onError: ({ args, prefix, client, message, error }) => {
-      /** @type {keyof import("../Handling/Languages.json")} */
-      const language = client.getLanguage({
-        guildId: message.guild.id,
-        authorId: message.author.id,
-      });
-
+    onError: ({ args, client, message, error, language }) => {
       if (error === "INVALID_ISO_CODE") {
         let res = client.defaultResponses.getValue(
           language,
@@ -125,7 +119,6 @@ module.exports = new Command({
       else client.databaseCache.updateDocument("userLanguage", document);
     }
 
-    /** @type {keyof import("../Handling/Languages.json")} */
     const language = client.getLanguage({
       guildId: message.guild.id,
       authorId: message.author.id,
