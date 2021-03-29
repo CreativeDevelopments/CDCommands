@@ -1,7 +1,7 @@
 const Command = require("../Command");
-const { ProperCase, FormatCooldown, FormatPerms } = require("../../Functions");
-const { MessageEmbed, MessageReaction, User } = require("discord.js");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
+const { MessageEmbed, MessageReaction, User } = require("discord.js");
+const { ProperCase, FormatCooldown, FormatPerms } = require("../../Functions");
 
 module.exports = new Command({
   aliases: ["commands"],

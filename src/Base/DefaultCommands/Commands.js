@@ -218,7 +218,7 @@ module.exports = new Command({
           ],
     );
 
-    if (res instanceof MessageEmbed)
+    if (successRes instanceof MessageEmbed)
       return message.channel.send({ embed: successRes });
     else return message.channel.send(successRes);
   },

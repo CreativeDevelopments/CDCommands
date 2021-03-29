@@ -1,4 +1,5 @@
 const Command = require("../Command");
+const { MessageEmbed } = require("discord.js");
 const prefixes = require("../../Database/models/prefixes");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
 
@@ -61,7 +62,7 @@ module.exports = new Command({
     else client.databaseCache.insertDocument("prefixes", prefixDoc);
 
     const successRes = client.defaultResponses.getValue(
-      langauge,
+      language,
       "PREFIX_COMMAND",
       "SUCCESS",
       client.defaultResponses.fileData[language].PREFIX_COMMAND
@@ -89,7 +90,7 @@ module.exports = new Command({
             },
           ],
     );
-    if (res instanceof MessageEmbed)
+    if (successRes instanceof MessageEmbed)
       return message.channel.send({ embed: successRes });
     else return message.channel.send(successRes);
   },

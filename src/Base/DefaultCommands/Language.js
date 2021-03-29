@@ -1,8 +1,8 @@
-const { MessageEmbed } = require("discord.js");
-const guildLanguage = require("../../Database/models/guildLanguage");
-const userLanguage = require("../../Database/models/userLanguage");
 const Command = require("../Command");
+const { MessageEmbed } = require("discord.js");
+const userLanguage = require("../../Database/models/userLanguage");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
+const guildLanguage = require("../../Database/models/guildLanguage");
 const valid_codes = Object.keys(require("../Handling/Languages.json"));
 
 module.exports = new Command({
@@ -153,7 +153,7 @@ module.exports = new Command({
           ],
     );
 
-    if (res instanceof MessageEmbed)
+    if (successRes instanceof MessageEmbed)
       return message.channel.send({ embed: res });
     else return message.channel.send(res);
   },

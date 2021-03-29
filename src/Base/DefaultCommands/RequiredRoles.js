@@ -1,6 +1,7 @@
-const requiredRoles = require("../../Database/models/required-roles");
 const Command = require("../Command");
+const { MessageEmbed } = require("discord.js");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
+const requiredRoles = require("../../Database/models/required-roles");
 
 module.exports = new Command({
   aliases: ["reqroles"],
@@ -283,7 +284,7 @@ module.exports = new Command({
             },
           ],
     );
-    if (res instanceof MessageEmbed)
+    if (successRes instanceof MessageEmbed)
       return message.channel.send({ embed: successRes });
     else return message.channel.send({ embed: successRes });
   },
