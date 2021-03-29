@@ -44,14 +44,14 @@ module.exports = new Command({
                 description: [
                   {
                     key: "USAGE",
-                    replace: `${prefix}requiredroles [add/remove] [role] [command`,
+                    replace: `\`${prefix}requiredroles [add/remove] [role] [command]\``,
                   },
                 ],
               }
             : [
                 {
                   key: "USAGE",
-                  replace: `${prefix}requiredroles [add/remove] [role] [command`,
+                  replace: `\`${prefix}requiredroles [add/remove] [role] [command]\``,
                 },
               ],
         );

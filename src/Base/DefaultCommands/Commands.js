@@ -1,6 +1,7 @@
-const DisabledCommands = require("../../Database/models/disabled-commands");
 const Command = require("../Command");
+const { MessageEmbed } = require('discord.js');
 const ArgumentValidator = require("../Handling/ArgumentValidator");
+const DisabledCommands = require("../../Database/models/disabled-commands");
 
 module.exports = new Command({
   aliases: ["cmd"],
@@ -41,14 +42,14 @@ module.exports = new Command({
                 description: [
                   {
                     key: "USAGE",
-                    replace: `${prefix}command <enable/disable> <command>`,
+                    replace: `\`${prefix}command <enable/disable> <command>\``,
                   },
                 ],
               }
             : [
                 {
                   key: "USAGE",
-                  replace: `${prefix}command <enable/disable> <command>`,
+                  replace: `\`${prefix}command <enable/disable> <command>\``,
                 },
               ],
         );

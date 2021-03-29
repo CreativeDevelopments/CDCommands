@@ -124,7 +124,7 @@ module.exports = new Command({
       authorId: message.author.id,
     });
 
-    const res = client.defaultResponses.getValue(
+    const successRes = client.defaultResponses.getValue(
       language,
       "LANGUAGE_COMMAND",
       "SUCCESS",
@@ -154,7 +154,7 @@ module.exports = new Command({
     );
 
     if (successRes instanceof MessageEmbed)
-      return message.channel.send({ embed: res });
-    else return message.channel.send(res);
+      return message.channel.send({ embed: successRes });
+    else return message.channel.send(successRes);
   },
 });

@@ -43,14 +43,14 @@ module.exports = new Command({
                 description: [
                   {
                     key: "USAGE",
-                    replace: `${prefix}category <enable/disable> <category>`,
+                    replace: `\`${prefix}category <enable/disable> <category>\``,
                   },
                 ],
               }
             : [
                 {
                   key: "USAGE",
-                  replace: `${prefix}category <enable/disable> <category>`,
+                  replace: `\`${prefix}category <enable/disable> <category>\``,
                 },
               ],
         );
