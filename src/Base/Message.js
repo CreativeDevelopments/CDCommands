@@ -34,8 +34,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "GUILD_ONLY",
         "",
-        client.defaultResponses.fileData[language]
-          .GUILD_ONLY.embed
+        client.defaultResponses.fileData[language].GUILD_ONLY.embed
           ? {
               description: [
                 {
@@ -61,8 +60,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DM_ONLY",
         "",
-        client.defaultResponses.fileData[language]
-          .DM_ONLY.embed
+        client.defaultResponses.fileData[language].DM_ONLY.embed
           ? {
               description: [
                 {
@@ -88,8 +86,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "NSFW_ONLY",
         "",
-        client.defaultResponses.fileData[language]
-          .NSFW_ONLY.embed
+        client.defaultResponses.fileData[language].NSFW_ONLY.embed
           ? {
               description: [
                 {
@@ -119,8 +116,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DISABLED_COMMAND",
         "",
-        client.defaultResponses.fileData[language]
-          .DISABLED_COMMAND.embed
+        client.defaultResponses.fileData[language].DISABLED_COMMAND.embed
           ? {
               description: [
                 {
@@ -148,8 +144,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DISABLED_CATEGORY",
         "",
-        client.defaultResponses.fileData[language]
-          .DISABLED_CATEGORY.embed
+        client.defaultResponses.fileData[language].DISABLED_CATEGORY.embed
           ? {
               description: [
                 {
@@ -183,8 +178,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "MISSING_CLIENT_PERMISSION",
         "",
-        client.defaultResponses.fileData[language]
-          .MISSING_CLIENT_PERMISSION.embed
+        client.defaultResponses.fileData[language].MISSING_CLIENT_PERMISSION
+          .embed
           ? {
               description: [
                 {
@@ -210,8 +205,8 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "MISSING_MEMBER_PERMISSION",
         "",
-        client.defaultResponses.fileData[language]
-          .MISSING_MEMBER_PERMISSION.embed
+        client.defaultResponses.fileData[language].MISSING_MEMBER_PERMISSION
+          .embed
           ? {
               description: [
                 {
@@ -238,13 +233,12 @@ module.exports = new Event("message", async (client, message) => {
     );
     if (reqRolesDoc) {
       const rolesRes = ValidateRoles(reqRolesDoc, message.member, command);
-      if (rolesRes && !message.member.permissions.has('ADMINISTRATOR')) {
+      if (rolesRes && !message.member.permissions.has("ADMINISTRATOR")) {
         const res = client.defaultResponses.getValue(
           language,
           "MISSING_ROLES",
           "",
-          client.defaultResponses.fileData[language]
-            .MISSING_ROLES.embed
+          client.defaultResponses.fileData[language].MISSING_ROLES.embed
             ? {
                 description: [
                   {
@@ -279,8 +273,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "DEVELOPER_ONLY",
         "",
-        client.defaultResponses.fileData[language]
-          .DEVELOPER_ONLY.embed
+        client.defaultResponses.fileData[language].DEVELOPER_ONLY.embed
           ? {
               description: [
                 {
@@ -306,8 +299,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "TEST_SERVER",
         "",
-        client.defaultResponses.fileData[language]
-          .TEST_SERVER.embed
+        client.defaultResponses.fileData[language].TEST_SERVER.embed
           ? {
               description: [
                 {
@@ -333,8 +325,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "TOO_MANY_ARGS",
         "",
-        client.defaultResponses.fileData[language]
-          .TOO_MANY_ARGS.embed
+        client.defaultResponses.fileData[language].TOO_MANY_ARGS.embed
           ? {
               description: [
                 {
@@ -360,8 +351,7 @@ module.exports = new Event("message", async (client, message) => {
         language,
         "TOO_FEW_ARGS",
         "",
-        client.defaultResponses.fileData[language]
-          .TOO_MANY_ARGS.embed
+        client.defaultResponses.fileData[language].TOO_MANY_ARGS.embed
           ? {
               description: [
                 {
@@ -379,7 +369,7 @@ module.exports = new Event("message", async (client, message) => {
       );
       if (res instanceof MessageEmbed)
         return message.channel.send({ embed: res });
-      else return message.channel.send(res)
+      else return message.channel.send(res);
     }
     // Validate arguments
     if (command.validator) {
@@ -417,8 +407,7 @@ module.exports = new Event("message", async (client, message) => {
           language,
           "GLOBAL_COOLDOWN",
           "",
-          client.defaultResponses.fileData[langauge]
-            .GLOBAL_COOLDOWN.embed
+          client.defaultResponses.fileData[langauge].GLOBAL_COOLDOWN.embed
             ? {
                 description: [
                   {
@@ -444,7 +433,7 @@ module.exports = new Event("message", async (client, message) => {
         );
         if (res instanceof MessageEmbed)
           return message.channel.send({ embed: res });
-        else return message.channel.send(res)
+        else return message.channel.send(res);
       }
     }
     // Cooldown
@@ -459,8 +448,7 @@ module.exports = new Event("message", async (client, message) => {
           language,
           "USER_COOLDOWN",
           "",
-          client.defaultResponses.fileData[language]
-            .USER_COOLDOWN.embed
+          client.defaultResponses.fileData[language].USER_COOLDOWN.embed
             ? {
                 description: [
                   {
@@ -486,7 +474,7 @@ module.exports = new Event("message", async (client, message) => {
         );
         if (res instanceof MessageEmbed)
           return message.channel.send({ embed: res });
-        else return message.channel.send(res)
+        else return message.channel.send(res);
       }
     }
 
