@@ -1,46 +1,238 @@
 {
-  "GUILD_ONLY": "{COMMAND} can only be used in a server.",
-  "DM_ONLY": "{COMMAND} can only be used in my DMs.",
-  "NSFW_ONLY": "This command is locked to NSFW channels only!",
-  "DISABLED_COMMAND": "The {COMMAND} command is currently disabled in this server. You can not use it.",
-  "DISABLED_CATEGORY": "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category.",
-  "MISSING_CLIENT_PERMISSION": "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!",
-  "MISSING_MEMBER_PERMISSION": "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!",
-  "MISSING_ROLES": "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}.",
-  "DEVELOPER_ONLY": "You can't use {COMMAND}. It is locked to developers only.",
-  "TEST_SERVER": "{COMMAND} is locked to test servers only and this server is not one.",
-  "TOO_FEW_ARGS": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead",
-  "TOO_MANY_ARGS": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead",
-  "GLOBAL_COOLDOWN": "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again.",
-  "USER_COOLDOWN": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again.",
-  "CATEGORY_COMMAND": {
-    "ALREADY_DISABLED": "That category is already disabled.",
-    "ALREADY_ENABLED": "That category is already enabled.",
-    "INVALID_ARGS_ERROR": "Invalid Arguments! Please use {USAGE} instead.",
-    "NON_EXISTANT_CATEGORY": "That category does not exist.",
-    "SUCCESS": "Successfully {ACTION} the {CATEGORY} category."
-  },
-  "COMMANDS_COMMAND": {
-    "ALREADY_DISABLED": "That command is already disabled.",
-    "ALREADY_ENABLED": "That command is already enabled.",
-    "INVALID_ARGS_ERROR": "Invalid Arguments! Please use {USAGE} instead.",
-    "NO_DISABLE": "{COMMAND} can not be disabled",
-    "NON_EXISTANT_COMMAND": "That command does not exist.",
-    "SUCCESS": "Successfully {ACTION} the {COMMAND} command."
-  },
-  "HELP_COMMAND": {
-    "INVALID_COMMAND_CATEGORY": "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
-  },
-  "PREFIX_COMMAND": {
-    "SAME_PREFIX": "Please choose a **new** prefix to set.",
-    "SUCCESS": "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
-  },
-  "ROLES_COMMAND": {
-    "ALREADY_ADDED": "{ROLE} is already on the required roles list of {COMMAND}",
-    "ALREADY_REMOVED": "{ROLE} is not on the required roles list for {COMMAND}",
-    "INVALID_ARGUMENTS": "Invalid Arguments! Please use {USAGE} instead.",
-    "INVALID_COMMAND": "That command does not exist. Please provide a valid command.",
-    "INVALID_ROLE": "Please provide a valid role to {ACTION}.",
-    "SUCCESS": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+  "en": {
+    "GUILD_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} can only be used in a server."
+      }
+    },
+    "DM_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} can only be used in my DMs."
+      }
+    },
+    "NSFW_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "This command is locked to NSFW channels only!"
+      }
+    },
+    "DISABLED_COMMAND": {
+      "embed": {
+        "color": "#C93131",
+        "description": "The {COMMAND} command is currently disabled in this server. You can not use it."
+      }
+    },
+    "DISABLED_CATEGORY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
+      }
+    },
+    "MISSING_CLIENT_PERMISSION": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
+      }
+    },
+    "MISSING_MEMBER_PERMISSION": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
+      }
+    },
+    "MISSING_ROLES": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
+      }
+    },
+    "DEVELOPER_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "You can't use {COMMAND}. It is locked to developers only."
+      }
+    },
+    "TEST_SERVER": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} is locked to test servers only and this server is not one."
+      }
+    },
+    "TOO_FEW_ARGS": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
+      }
+    },
+    "TOO_MANY_ARGS": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
+      }
+    },
+    "GLOBAL_COOLDOWN": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
+      }
+    },
+    "USER_COOLDOWN": {
+      "embed": {
+        "color": "#C93131",
+        "description": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
+      }
+    },
+    "CATEGORY_COMMAND": {
+      "ALREADY_DISABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That category is already disabled."
+        }
+      },
+      "ALREADY_ENABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That category is already enabled."
+        }
+      },
+      "INVALID_ARGS_ERROR": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Invalid Arguments! Please use {USAGE} instead."
+        }
+      },
+      "NON_EXISTANT_CATEGORY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That category does not exist."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Successfully {ACTION} the {CATEGORY} category."
+        }
+      }
+    },
+    "COMMANDS_COMMAND": {
+      "ALREADY_DISABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command is already disabled."
+        }
+      },
+      "ALREADY_ENABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command is already enabled."
+        }
+      },
+      "INVALID_ARGS_ERROR": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Invalid Arguments! Please use {USAGE} instead."
+        }
+      },
+      "NO_DISABLE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} can not be disabled"
+        }
+      },
+      "NON_EXISTANT_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command does not exist."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Successfully {ACTION} the {COMMAND} command."
+        }
+      }
+    },
+    "HELP_COMMAND": {
+      "INVALID_COMMAND_CATEGORY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
+        }
+      }
+    },
+    "PREFIX_COMMAND": {
+      "SAME_PREFIX": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Please choose a **new** prefix to set."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+        }
+      }
+    },
+    "ROLES_COMMAND": {
+      "ALREADY_ADDED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{ROLE} is already on the required roles list of {COMMAND}"
+        }
+      },
+      "ALREADY_REMOVED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{ROLE} is not on the required roles list for {COMMAND}"
+        }
+      },
+      "INVALID_ARGUMENTS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Invalid Arguments! Please use {USAGE} instead."
+        }
+      },
+      "INVALID_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "That command does not exist. Please provide a valid command."
+        }
+      },
+      "INVALID_ROLE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Please provide a valid role to {ACTION}."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+        }
+      }
+    },
+    "LANGUAGE_COMMAND": {
+      "INVALID_ISO_CODE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Please provide a valid ISO 639-1 Code, `{ISO_CODE}` is invalid. Visit [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to learn more."
+        }
+      },
+      "UNPROVIDED_LANGUAGE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "**{ISO_CODE}** is not provided for by the bot owner, please select from one of the following: **{PROVIDED_CODES}**"
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Successfully updated {USER_GUILD}'s language to {ISO_CODE}"
+        }
+      }
+    }
   }
 }

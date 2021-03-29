@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["message.json"],
+      "url": "./src/Base/json-schema/message.json"
+    }
+  ]
+}

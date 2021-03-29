@@ -10,5 +10,24 @@
   "COMMAND_CATEGORY": null,
   "PREFIX": null,
   "ROLE": null,
-  "GUILD_NAME": null
+  "GUILD_NAME": null,
+  "ISO_CODE": null,
+  "PROVIDED_CODES": null,
+  "USER_GUILD": null,
+  "EMBED": {
+    "TITLE": null,
+    "TITLE_URL": null,
+    "AUTHOR_NAME": null,
+    "AUTHOR_URL": null,
+    "COLOR": null,
+    "FIELD_NAME": null,
+    "FIELD_VALUE": null,
+    "FIELD_INLINE": null,
+    "FOOTER_TEXT": null,
+    "FOOTER_URL": null,
+    "TIMESTAMP": null,
+    "THUMBNAIL_URL": null,
+    "DESCRIPTION": null,
+    "IMAGE": null
+  }
 }

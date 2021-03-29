@@ -1,4 +1,5 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
+const colors = require("colors");
 const { mkdirSync, writeFileSync } = require("fs");
 const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
@@ -8,19 +9,21 @@ const {
   commands,
   help,
   setprefix,
+  language: lang,
 } = require("./Base/DefaultCommands");
-const colors = require("colors");
 const Commands = require("./registry/Commands");
+const Events = require("./registry/Events");
 const database = require("./Database/database");
-const Cache = require("./Base/Handling/CacheHandler");
 const cooldown = require("./Database/models/cooldown");
 const prefixes = require("./Database/models/prefixes");
 const disabledCommands = require("./Database/models/disabled-commands");
 const requiredRoles = require("./Database/models/required-roles");
+const guildLanguage = require("./Database/models/guildLanguage");
+const userLanguage = require("./Database/models/userLanguage");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
-const Events = require("./registry/Events");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
+const Cache = require("./Base/Handling/CacheHandler");
 
 class CDCommands {
   /**
@@ -228,11 +231,46 @@ class CDCommands {
           model: requiredRoles,
           getBy: "gId",
         },
+        guildLanguage: {
+          model: guildLanguage,
+          getBy: "gId",
+        },
+        userLanguage: {
+          model: userLanguage,
+          getBy: "uId",
+        },
       },
       updateSpeed: this._cacheUpdateSpeed,
     });
 
     this._client.cooldowns = new Cooldowns(await cooldown.find(), this._client);
+
+    this._client.getLanguage = ({ authorId, guildId }) => {
+      if (!authorId || typeof authorId !== "string")
+        this._client.logError({
+          data:
+            'An invalid "authorId" was provided for fn "getLanguage", unable to get author language, using "guildId" instead',
+        });
+      if (
+        (!guildId || typeof guildId !== "string") &&
+        (!authorId || typeof authorId !== "string")
+      )
+        this._client.logError({
+          data:
+            'An invalid "guildId" was provided for fn "getLanguage", unable to get guildLanguage, defaulting to "en" instead',
+        });
+      const uDBLang = this._client.databaseCache.getDocument(
+        "userLanguage",
+        authorId,
+      );
+      const gDBLang = this._client.databaseCache.getDocument(
+        "guildLanguage",
+        guildId,
+      );
+
+      return uDBLang ? uDBLang.language : gDBLang ? gDBLang.language : "en";
+    };
+
     this._commands();
     this._events();
     new FeatureHandler(this._client, this._featuresDir);
@@ -252,6 +290,7 @@ class CDCommands {
       categories,
       commands,
       help,
+      lang,
     ];
 
     for (const command of customCommands) {
@@ -316,4 +355,6 @@ module.exports.Models = {
   disabledCommands: require("./Database/models/disabled-commands"),
   prefixes: require("./Database/models/prefixes"),
   requiredRoles: require("./Database/models/required-roles"),
+  guildLanguage: require("./Database/models/guildLanguage"),
+  userLanguage: require("./Database/models/userLanguage"),
 };
