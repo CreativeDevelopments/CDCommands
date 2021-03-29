@@ -4,5 +4,6 @@
 - Spanish :x:
 - German :x:
 - Portuguese :x:
+- Croatian :x:
 - Turkish :x:
 - Hindi :man_shrugging:
