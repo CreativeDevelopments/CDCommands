@@ -82,7 +82,7 @@ module.exports = new Command({
       }
     },
   }),
-  run: async ({ prefix, message, client, args }) => {
+  run: async ({ message, client, args, language }) => {
     let DisabledDoc = client.databaseCache.getDocument(
       "disabledcommands",
       message.guild.id,

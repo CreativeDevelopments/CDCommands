@@ -89,7 +89,7 @@ module.exports = new Command({
       }
     },
   }),
-  async run({ prefix, args, client, message }) {
+  async run({ args, client, message }) {
     const owner =
       message.author.id ===
       (await message.guild.members.fetch(message.guild.owner.id)).id;

@@ -107,7 +107,7 @@ module.exports = new Command({
       }
     },
   }),
-  run: async ({ args, client, message, prefix }) => {
+  run: async ({ args, client, message, language }) => {
     let reqRolesDoc = client.databaseCache.getDocument(
       "requriedroles",
       message.guild.id,

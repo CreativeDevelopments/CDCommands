@@ -22,23 +22,28 @@ module.exports = new Command({
   userPermissions: ["MANAGE_GUILD"],
   category: "configuration",
   validator: new ArgumentValidator({
-    validate: ({ client, prefix, args, message }) => {
+    validate: ({ prefix, args }) => {
       if (args.join(" ").trim() === prefix) return "SAME_PREFIX";
     },
-    onError: ({ args, message, prefix, client, error }) => {
+    onError: ({ message, client, error, language }) => {
       if (error === "SAME_PREFIX") {
         const res = client.defaultResponses.getValue(
+          language,
           "PREFIX_COMMAND",
           "SAME_PREFIX",
-          [],
+          client.defaultResponses.fileData[language].PREFIX_COMMAND
+            .SAME_PREFIX.embed
+            ? {
+                description: [],
+              }
+            : [],
         );
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => message.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       }
     },
   }),
-  run: async ({ args, client, message, prefix }) => {
+  run: async ({ args, client, message, prefix, language }) => {
     let prefixDoc = client.databaseCache.getDocument(
       "prefixes",
       message.guild.id,
@@ -56,21 +61,36 @@ module.exports = new Command({
     else client.databaseCache.insertDocument("prefixes", prefixDoc);
 
     const successRes = client.defaultResponses.getValue(
+      langauge,
       "PREFIX_COMMAND",
       "SUCCESS",
-      [
-        {
-          key: "GUILD_NAME",
-          replace: message.guild.name,
-        },
-        {
-          key: "PREFIX",
-          replace: `\`${updatedPrefix}\``,
-        },
-      ],
+      client.defaultResponses.fileData[language].PREFIX_COMMAND
+        .SUCCESS.embed
+        ? {
+            description: [
+              {
+                key: "GUILD_NAME",
+                replace: message.guild.name,
+              },
+              {
+                key: "PREFIX",
+                replace: `\`${updatedPrefix}\``,
+              },
+            ],
+          }
+        : [
+            {
+              key: "GUILD_NAME",
+              replace: message.guild.name,
+            },
+            {
+              key: "PREFIX",
+              replace: `\`${updatedPrefix}\``,
+            },
+          ],
     );
-    return message.channel
-      .send("", { embed: client.success({ msg: message, data: successRes }) })
-      .catch((_) => message.channel.send(successRes));
+    if (res instanceof MessageEmbed)
+      return message.channel.send({ embed: successRes });
+    else return message.channel.send(successRes);
   },
 });

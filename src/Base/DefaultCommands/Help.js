@@ -73,7 +73,7 @@ module.exports = new Command({
       }
     },
   }),
-  run: async ({ args, prefix, message, client }) => {
+  run: async ({ args, prefix, message, client, language }) => {
     const command_category = args[0] ? args[0] : undefined;
 
     const command =
