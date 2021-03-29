@@ -60,7 +60,7 @@ module.exports = class Command {
   /** @type {string} */
   category;
 
-  /** @type {({ message, args, client, prefix }: { message: Message, args: string[]; client: CDClient; prefix: string }) => Promise<any>;} */
+  /** @type {({ message, args, client, prefix, language }: { message: Message, args: string[]; client: CDClient; prefix: string; language: keyof import("./Handling/Languages.json")}) => Promise<unknown>;} */
   run;
 
   /**
@@ -84,7 +84,7 @@ module.exports = class Command {
    * userPermissions?: import("discord.js").PermissionResolvable[];
    * botPermissions?: import("discord.js").PermissionResolvable[];
    * category: string;
-   * run: ({ message, args, client, prefix }: { message: Message, args: string[]; client: CDClient; prefix: string }) => Promise<any>;
+   * run: ({ message, args, client, prefix, language }: { message: Message, args: string[]; client: CDClient; prefix: string; language: keyof import("./Handling/Languages.json")}) => Promise<unknown>;
    *}} CommandOptions
    */
   constructor({

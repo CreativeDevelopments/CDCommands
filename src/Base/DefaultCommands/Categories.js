@@ -104,6 +104,11 @@ module.exports = new Command({
     const enabledDisabled = args[0].toLowerCase();
     const categoryName = args[1];
 
+    const language = client.getLanguage({
+      guildId: message.guild.id,
+      authorId: message.author.id,
+    });
+
     if (enabledDisabled === "enable") {
       const res = client.defaultResponses.getValue(
         "CATEGORY_COMMAND",

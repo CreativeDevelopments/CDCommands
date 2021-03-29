@@ -22,6 +22,11 @@ module.exports = new Event("message", async (client, message) => {
     client.commands.get(commandName) ||
     client.commands.get(client.aliases.get(commandName));
   if (command) {
+    const language = client.getLanguage({
+      guildId: message.guild ? message.guild.id : "",
+      authorId: message.author.id,
+    });
+
     // Guild Only
     if (command.guildOnly && !message.guild) {
       const res = client.defaultResponses.getValue("GUILD_ONLY", "", [
@@ -282,6 +287,6 @@ module.exports = new Event("message", async (client, message) => {
       "local",
     );
 
-    return command.run({ message, args, client, prefix });
+    return command.run({ message, args, client, prefix, language });
   }
 });
