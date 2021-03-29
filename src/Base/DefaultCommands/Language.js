@@ -33,16 +33,6 @@ module.exports = new Command({
     },
     onError: ({ args, prefix, client, message, error }) => {
       /** @type {keyof import("../Handling/Languages.json")} */
-      // const language = client.databaseCache.getDocument(
-      //   "userLanguage",
-      //   message.author.id,
-      // )
-      //   ? client.databaseCache.getDocument("userLanguage", message.author.id)
-      //       .language
-      //   : client.databaseCache.getDocument("guildLanguage", message.guild.id)
-      //   ? client.databaseCache.getDocument("guildLanguage", message.guild.id)
-      //       .language
-      //   : "en";
       const language = client.getLanguage({
         guildId: message.guild.id,
         authorId: message.author.id,
@@ -53,8 +43,8 @@ module.exports = new Command({
           language,
           "LANGUAGE_COMMAND",
           "INVALID_ISO_CODE",
-          client.defaultResponses.fileData.en.LANGUAGE_COMMAND.INVALID_ISO_CODE
-            .embed !== undefined
+          client.defaultResponses.fileData[language].LANGUAGE_COMMAND
+            .INVALID_ISO_CODE.embed !== undefined
             ? {
                 description: [{ key: "ISO_CODE", replace: args[0] }],
               }
@@ -73,7 +63,7 @@ module.exports = new Command({
           language,
           "LANGUAGE_COMMAND",
           "UNPROVIDED_LANGUAGE",
-          client.defaultResponses.fileData.en.LANGUAGE_COMMAND
+          client.defaultResponses.fileData[language].LANGUAGE_COMMAND
             .UNPROVIDED_LANGUAGE.embed !== undefined
             ? {
                 description: [
@@ -145,7 +135,7 @@ module.exports = new Command({
       language,
       "LANGUAGE_COMMAND",
       "SUCCESS",
-      client.defaultResponses.fileData.en.LANGUAGE_COMMAND.SUCCESS.embed
+      client.defaultResponses.fileData[language].LANGUAGE_COMMAND.SUCCESS.embed
         ? {
             description: [
               {

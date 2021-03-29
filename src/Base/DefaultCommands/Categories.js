@@ -31,17 +31,29 @@ module.exports = new Command({
       else if (!categories.has(args[1])) return "INVALID_ARGS_1";
     },
     onError: ({ client, message, error, prefix, args }) => {
+      const language = client.getLanguage({
+        guildId: message.guild.id,
+        authorId: message.author.id,
+      });
+
       if (error === "INVALID_ARGS_0") {
+        // const res = client.defaultResponses.getValue(
+        //   "CATEGORY_COMMAND",
+        //   "INVALID_ARGS_ERROR",
+        //   [
+        //     {
+        //       key: "USAGE",
+        //       replace: `${prefix}category <enable/disable> <category>`,
+        //     },
+        //   ],
+        // );
         const res = client.defaultResponses.getValue(
+          language,
           "CATEGORY_COMMAND",
           "INVALID_ARGS_ERROR",
-          [
-            {
-              key: "USAGE",
-              replace: `${prefix}category <enable/disable> <category>`,
-            },
-          ],
+          client.defaultResponses.fileData[language],
         );
+
         message.channel
           .send("", { embed: client.error({ msg: message, data: res }) })
           .catch((_) => message.channel.send(res));
