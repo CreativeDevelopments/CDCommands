@@ -1,5 +1,5 @@
 const Command = require("../Command");
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require("discord.js");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
 const DisabledCommands = require("../../Database/models/disabled-commands");
 
@@ -53,7 +53,7 @@ module.exports = new Command({
                 },
               ],
         );
-        
+
         if (res instanceof MessageEmbed) message.channel.send({ embed: res });
         else message.channel.send(res);
       } else if (error === "INVALID_ARGS_1") {
@@ -125,7 +125,7 @@ module.exports = new Command({
           return message.channel.send({ embed: res });
         else return message.channel.send(res);
       }
-      
+
       const i = DisabledDoc.commands.findIndex((v) => v === commandName);
       DisabledDoc.commands.splice(i, 1);
     } else if (enabledDisabled === "disable") {
@@ -134,8 +134,8 @@ module.exports = new Command({
           language,
           "COMMANDS_COMMAND",
           "NO_DISABLE",
-          client.defaultResponses.fileData[language].COMMANDS_COMMAND
-            .NO_DISABLE.embed
+          client.defaultResponses.fileData[language].COMMANDS_COMMAND.NO_DISABLE
+            .embed
             ? {
                 description: [
                   {
@@ -193,8 +193,7 @@ module.exports = new Command({
       language,
       "COMMANDS_COMMAND",
       "SUCCESS",
-      client.defaultResponses.fileData[language].COMMANDS_COMMAND
-        .SUCCESS.embed
+      client.defaultResponses.fileData[language].COMMANDS_COMMAND.SUCCESS.embed
         ? {
             description: [
               {

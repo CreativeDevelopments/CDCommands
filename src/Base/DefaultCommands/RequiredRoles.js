@@ -62,8 +62,8 @@ module.exports = new Command({
           language,
           "ROLES_COMMAND",
           "INVALID_ROLE",
-          client.defaultResponses.fileData[language].ROLES_COMMAND
-            .INVALID_ROLE.embed
+          client.defaultResponses.fileData[language].ROLES_COMMAND.INVALID_ROLE
+            .embed
             ? {
                 description: [
                   {
@@ -77,7 +77,7 @@ module.exports = new Command({
                   key: "ACTION",
                   replace: args[0],
                 },
-              ]
+              ],
         );
         if (res instanceof MessageEmbed) message.channel.send({ embed: res });
         else message.channel.send(res);
@@ -251,8 +251,7 @@ module.exports = new Command({
       language,
       "ROLES_COMMAND",
       "SUCCESS",
-      client.defaultResponses.fileData[language].ROLES_COMMAND
-        .SUCCESS.embed
+      client.defaultResponses.fileData[language].ROLES_COMMAND.SUCCESS.embed
         ? {
             description: [
               {
