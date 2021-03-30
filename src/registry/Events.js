@@ -1,7 +1,6 @@
 const { join } = require("path");
 const Event = require("../Base/Event");
 const { lstatSync, existsSync, readdirSync } = require("fs");
-const { join } = require("path");
 
 /**
  * @param {string} eventsDir
