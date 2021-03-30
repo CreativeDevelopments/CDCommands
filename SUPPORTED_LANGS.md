@@ -4,6 +4,6 @@
 - Spanish :x:
 - German :white_check_mark:
 - Portuguese :x:
-- Croatian :x:
+- Croatian :white_check_mark:
 - Turkish :x:
 - Hindi :white_check_mark:
