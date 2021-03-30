@@ -30,18 +30,13 @@ function ProperCase(string) {
  * @param {Command} command
  */
 function ValidateRoles(rolesDocument, member, command) {
-    const memberRoles = member.roles.cache.array().map((r) => r.id).filter((s) => s !== member.guild.id);
+    const memberRoles = member.roles.cache.array().map(r => r.id).filter(s => s !== member.guild.id);
     const roles = rolesDocument.requiredRoles.filter((ob) => ob.command === command.name)[0];
     if (roles) {
         const reqRoles = roles.roles;
         /** @type {string[]} */
-        const missingRoles = [];
-        for (const reqRole of reqRoles) {
-            if (!memberRoles.includes(reqRole))
-                missingRoles.push(reqRole);
-        }
-
-        if (missingRoles.length > 0)
+        const missingRoles = reqRoles.filter(reqRole => !memberRoles.includes(reqRole));
+        if (missingRoles.length)
             return {
                 roles: missingRoles.map((s, i, a) => a.length > 1 ? i === a.length - 1 ? `and ${member.guild.roles.cache.get(s).name}` : `${member.guild.roles.cache.get(s).name}, ` : member.guild.roles.cache.get(s).name).join(""),
                 length: missingRoles.length,
