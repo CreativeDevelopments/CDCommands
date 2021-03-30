@@ -22,11 +22,7 @@ function ValidatePermissions(memberPermissions, requiredPermissions) {
  * @returns {string}
  */
 function ProperCase(string) {
-    const words = string.split(" ");
-    const fixedWords = [];
-    for (const word of words)
-        fixedWords.push(word.split("").map((l, i) => i === 0 ? l.toUpperCase() : l.toLowerCase()).join(""));
-    return fixedWords.join(" ");
+    return string.toLowerCase().replace(/(\b\w)/gi, w => w.toUpperCase());
 }
 /**
  * @param {Document<any>} rolesDocument 
