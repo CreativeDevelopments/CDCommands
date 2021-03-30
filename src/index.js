@@ -20,11 +20,13 @@ const disabledCommands = require("./Database/models/disabled-commands");
 const requiredRoles = require("./Database/models/required-roles");
 const guildLanguage = require("./Database/models/guildLanguage");
 const userLanguage = require("./Database/models/userLanguage");
+const ticketConfig = require("./Database/models/ticketConfig");
+const ticketSystem = require("./Database/models/tickets");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
 const Cache = require("./Base/Handling/CacheHandler");
-
+const Ticket = require("./Tickets");
 class CDCommands {
   /**
    * @private
@@ -147,6 +149,7 @@ class CDCommands {
     this._client.developers = this._devs;
     this._client.testservers = this._testServers;
     this._client.defaultResponses = new MessageJSON(options.MessageJSONPath);
+    this._client.tickets = new Ticket(this._client, []);
 
     this._client.success = ({ msg, data }) => {
       const embed = new MessageEmbed()
@@ -239,6 +242,14 @@ class CDCommands {
           model: userLanguage,
           getBy: "uId",
         },
+        ticketconfig: {
+          model: ticketConfig,
+          getBy: "gId",
+        },
+        ticketsystem: {
+          model: ticketSystem,
+          getBy: "gId",
+        },
       },
       updateSpeed: this._cacheUpdateSpeed,
     });
@@ -291,6 +302,7 @@ class CDCommands {
       commands,
       help,
       lang,
+      ticketconfig,
     ];
 
     for (const command of customCommands) {
@@ -348,6 +360,7 @@ class CDCommands {
 module.exports = CDCommands;
 module.exports.Event = require("./Base/Event");
 module.exports.Command = require("./Base/Command");
+module.exports.Ticket = require("./Tickets");
 module.exports.Validator = require("./Base/Handling/ArgumentValidator");
 module.exports.Feature = require("./Base/Feature");
 module.exports.Models = {
@@ -357,4 +370,6 @@ module.exports.Models = {
   requiredRoles: require("./Database/models/required-roles"),
   guildLanguage: require("./Database/models/guildLanguage"),
   userLanguage: require("./Database/models/userLanguage"),
+  ticketConfig: require("./Database/models/ticketConfig"),
+  ticketSystem: require("./Database/models/tickets"),
 };
