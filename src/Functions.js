@@ -9,44 +9,22 @@ const Command = require("./Base/Command");
  * @returns {{perms: string | null; length: number}}
  */
 function ValidatePermissions(memberPermissions, requiredPermissions) {
-  /** @type {import("discord.js").PermissionResolvable[]} */
-  const missingPerms = [];
-  for (const perm of requiredPermissions) {
-    if (!memberPermissions.includes(perm)) missingPerms.push(perm);
-  }
-  return {
-    perms:
-      missingPerms.length > 0
-        ? missingPerms
-            .map((p, i, a) =>
-              a.length > 1
-                ? i === a.length - 1
-                  ? `, and ${ProperCase(p.split("_").join(" "))}`
-                  : i === 0
-                  ? ProperCase(p.split("_").join(" "))
-                  : `, ${ProperCase(p.split("_").join(" "))}`
-                : ProperCase(p.split("_").join(" ")),
-            )
-            .join("")
-        : null,
-    length: missingPerms.length,
-  };
+
+    /** @type {import("discord.js").PermissionResolvable[]} */
+    const missingPerms = requiredPermissions.filter(perm => !memberPermissions.includes(perm));
+    
+    return {
+        perms: missingPerms.length > 0 ? missingPerms.map((p, i, a) => a.length > 1 ? i === a.length - 1 ? `, and ${ProperCase(p.split("_").join(" "))}` : i === 0 ? ProperCase(p.split("_").join(" ")) : `, ${ProperCase(p.split("_").join(" "))}` : ProperCase(p.split("_").join(" "))).join("") : null,
+        length: missingPerms.length,
+    }
+
 }
 /**
  * @param {string} string
  * @returns {string}
  */
 function ProperCase(string) {
-  const words = string.split(" ");
-  const fixedWords = [];
-  for (const word of words)
-    fixedWords.push(
-      word
-        .split("")
-        .map((l, i) => (i === 0 ? l.toUpperCase() : l.toLowerCase()))
-        .join(""),
-    );
-  return fixedWords.join(" ");
+    return string.toLowerCase().replace(/(\b\w)/gi, w => w.toUpperCase());
 }
 /**
  * @param {Document<any>} rolesDocument
@@ -54,19 +32,17 @@ function ProperCase(string) {
  * @param {Command} command
  */
 function ValidateRoles(rolesDocument, member, command) {
-  const memberRoles = member.roles.cache
-    .array()
-    .map((r) => r.id)
-    .filter((s) => s !== member.guild.id);
-  const roles = rolesDocument.requiredRoles.filter(
-    (ob) => ob.command === command.name,
-  )[0];
-  if (roles) {
-    const reqRoles = roles.roles;
-    /** @type {string[]} */
-    const missingRoles = [];
-    for (const reqRole of reqRoles) {
-      if (!memberRoles.includes(reqRole)) missingRoles.push(reqRole);
+    const memberRoles = member.roles.cache.array().map((r) => r.id).filter((s) => s !== member.guild.id);
+    const roles = rolesDocument.requiredRoles.filter((ob) => ob.command === command.name)[0];
+    if (roles) {
+        const reqRoles = roles.roles;
+        /** @type {string[]} */
+        const missingRoles = reqRoles.filter(reqRole => !memberRoles.includes(reqRole));
+        if (missingRoles.length)
+            return {
+                roles: missingRoles.map((s, i, a) => a.length > 1 ? i === a.length - 1 ? `and ${member.guild.roles.cache.get(s).name}` : `${member.guild.roles.cache.get(s).name}, ` : member.guild.roles.cache.get(s).name).join(""),
+                length: missingRoles.length,
+            }
     }
 
     if (missingRoles.length > 0)
@@ -126,9 +102,9 @@ function FormatCooldown(cooldown) {
 }
 
 module.exports = {
-  ValidatePermissions,
-  ProperCase,
-  ValidateRoles,
-  FormatPerms,
-  FormatCooldown,
+    ValidatePermissions,
+    ProperCase,
+    ValidateRoles,
+    FormatPerms,
+    FormatCooldown,
 };
