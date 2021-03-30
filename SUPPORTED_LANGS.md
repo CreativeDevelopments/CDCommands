@@ -2,8 +2,8 @@
 
 - English :white_check_mark:
 - Spanish :x:
-- German :x:
+- German :white_check_mark:
 - Portuguese :x:
 - Croatian :x:
 - Turkish :x:
-- Hindi :man_shrugging:
+- Hindi :white_check_mark:
