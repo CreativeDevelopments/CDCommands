@@ -472,7 +472,8 @@
       }
     }
   },
-    "hi": {
+
+  "hi": {
     "GUILD_ONLY": {
       "embed": {
         "color": "#C93131",
