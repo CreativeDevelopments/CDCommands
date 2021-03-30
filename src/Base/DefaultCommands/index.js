@@ -5,4 +5,5 @@ module.exports = {
   requiredroles: require("./RequiredRoles"),
   setprefix: require("./SetPrefix"),
   language: require("./Language"),
+  ticketconfig: require("./TicketConfig"),
 };
