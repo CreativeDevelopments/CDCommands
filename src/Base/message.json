@@ -708,5 +708,242 @@
         }
       }
     }
+  },
+
+  "hr": {
+    "GUILD_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} se moze koristiti samo u serveru."
+      }
+    },
+    "DM_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} se moze koristiti samo u mojim privatnim porukama."
+      }
+    },
+    "NSFW_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Ova komanda je samo za NSFW kanale!"
+      }
+    },
+    "DISABLED_COMMAND": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} komanda je trenunto iskljucena u ovom serveru. Ne mozes je koristiti."
+      }
+    },
+    "DISABLED_CATEGORY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{CATEGORY} kategorija je trenutno iskljucena u ovom serveru. Ne mozes koristiti komande iz ove kategorije."
+      }
+    },
+    "MISSING_CLIENT_PERMISSION": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Polako! Nemam {CLIENT_PERMISSIONS} permisije! Daj mi permisiju prije koristenja te komande!"
+      }
+    },
+    "MISSING_MEMBER_PERMISSION": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Polako! Nemas {MEMBER_PERMISSIONS} permisije! Dobi permisiju prije koristenja te komande!"
+      }
+    },
+    "MISSING_ROLES": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Izgleda da ti fali rola {ROLES}! Dobi rolu prije koristenja komande {COMMAND}."
+      }
+    },
+    "DEVELOPER_ONLY": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Ne mozes koristiti {COMMAND}. Komanda je iskljucivo za developere."
+      }
+    },
+    "TEST_SERVER": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} je iskljucivo za test servere, a ovo nije jedan od njih."
+      }
+    },
+    "TOO_FEW_ARGS": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Kriva Upotreba [Nedovoljno argumenata]; Koristi {USAGE}."
+      }
+    },
+    "TOO_MANY_ARGS": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Kriva Upotreba [Previse argumenata]; Koristi {USAGE}."
+      }
+    },
+    "GLOBAL_COOLDOWN": {
+      "embed": {
+        "color": "#C93131",
+        "description": "{COMMAND} je na globalnom cooldownu! Pricekaj {COOLDOWN} prije ponovne upotrebe."
+      }
+    },
+    "USER_COOLDOWN": {
+      "embed": {
+        "color": "#C93131",
+        "description": "Ohladi malo! Pricekaj {COOLDOWN} prije ponovne upotrebe {COMMAND}."
+      }
+    },
+    "CATEGORY_COMMAND": {
+      "ALREADY_DISABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ta kategorija ja vec iskljucena."
+        }
+      },
+      "ALREADY_ENABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ta kategorija je vec ukljucena."
+        }
+      },
+      "INVALID_ARGS_ERROR": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Kriva Upotreba! Koristi {USAGE}."
+        }
+      },
+      "NON_EXISTANT_CATEGORY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ta kategorija ne postoji."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Uspjesno {ACTION} {CATEGORY} kategorija."
+        }
+      }
+    },
+    "COMMANDS_COMMAND": {
+      "ALREADY_DISABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ta komanda je vec iskljucena."
+        }
+      },
+      "ALREADY_ENABLED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ta komanda je vec ukljucena."
+        }
+      },
+      "INVALID_ARGS_ERROR": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Kriva Upotreba! Koristi {USAGE}"
+        }
+      },
+      "NO_DISABLE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} se ne moze iskljuciti."
+        }
+      },
+      "NON_EXISTANT_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Komanda ne postoji."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Uspjesno {ACTION} {COMMAND} komanda."
+        }
+      }
+    },
+    "HELP_COMMAND": {
+      "INVALID_COMMAND_CATEGORY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND_CATEGORY} nije komanda ni kategorija. Koristi {PREFIX}help da vidis sve komande i kategorije."
+        }
+      }
+    },
+    "PREFIX_COMMAND": {
+      "SAME_PREFIX": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Izaberi **novi** prefix."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Uspjesno azuriran {GUILD_NAME} prefix na {PREFIX}"
+        }
+      }
+    },
+    "ROLES_COMMAND": {
+      "ALREADY_ADDED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{ROLE} je vec na na listi potrebnih rola za {COMMAND}"
+        }
+      },
+      "ALREADY_REMOVED": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{ROLE} nije na listi potrebnih rola za {COMMAND}"
+        }
+      },
+      "INVALID_ARGUMENTS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Kriva Upotreba! Koristi {USAGE}"
+        }
+      },
+      "INVALID_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Komanda ne postoji. Upisi postojecu komandu."
+        }
+      },
+      "INVALID_ROLE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Upisi ispravnu rolu za {ACTION}."
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Uspjesno {ACTION} {ROLE} u/iz liste potrebnih rola za {COMMAND}"
+        }
+      }
+    },
+    "LANGUAGE_COMMAND": {
+      "INVALID_ISO_CODE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Upisi ispravan ISO 639-1 kod, `{ISO_CODE}` je neispravan. Posjeti [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) da saznas vise."
+        }
+      },
+      "UNPROVIDED_LANGUAGE": {
+        "embed": {
+          "color": "#C93131",
+          "description": "**{ISO_CODE}** nije dostupan od strane vlasnika, izaberi iz sljedecih: **{PROVIDED_CODES}**"
+        }
+      },
+      "SUCCESS": {
+        "embed": {
+          "color": "#2FDD2C",
+          "description": "Uspjesno promijenjen {USER_GUILD} jezik na {ISO_CODE}"
+        }
+      }
+    }
   }
 }
