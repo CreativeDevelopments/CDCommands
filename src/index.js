@@ -23,6 +23,7 @@ const ticketSystem = require("./Database/models/tickets");
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const Events = require("./registry/Events");
 const MessageJSON = require("./Base/Handling/MessageJSON");
+const FeatureHandler = require("./Base/Handling/FeatureHandler");
 const Ticket = require("./Tickets");
 
 class CDCommands {
@@ -41,6 +42,11 @@ class CDCommands {
    * @type {string}
    */
   _eventsDir;
+  /**
+   * @private
+   * @type {string}
+   */
+   _featuresDir;
   /**
    * @private
    * @type {string[]}
@@ -79,6 +85,7 @@ class CDCommands {
    * @param {{
    * commandsDir?: string;
    * eventsDir?: string;
+   * featuresDir?: string;
    * testServers?: string[];
    * customMessageEvent?: boolean;
    * customHelpCommand?: boolean;
@@ -115,9 +122,9 @@ class CDCommands {
           "file!",
       );
     } catch (err) {}
-
     if (!options.commandsDir) options.commandsDir = "commands";
     if (!options.eventsDir) options.eventsDir = "events";
+    if (!options.featuresDir) options.featuresDir = "features";
     if (!options.testServers) options.testServers = [];
     if (!options.devs) options.devs = [];
     if (!options.MessageJSONPath) options.MessageJSONPath = "";
@@ -125,6 +132,7 @@ class CDCommands {
     this._client = client;
     this._commandsDir = options.commandsDir;
     this._eventsDir = options.eventsDir;
+    this._featuresDir = options.featuresDir;
     this._testServers = options.testServers;
     this._defaultPrefix = options.defaultPrefix;
     this._mongoURI = options.mongoURI;

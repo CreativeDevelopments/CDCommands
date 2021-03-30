@@ -1,7 +1,7 @@
 const Command = require("../Command");
-const { ProperCase, FormatCooldown, FormatPerms } = require("../../Functions");
-const { MessageEmbed, MessageReaction, User } = require("discord.js");
 const ArgumentValidator = require("../Handling/ArgumentValidator");
+const { MessageEmbed, MessageReaction, User } = require("discord.js");
+const { ProperCase, FormatCooldown, FormatPerms } = require("../../Functions");
 
 module.exports = new Command({
   aliases: ["commands"],
@@ -21,9 +21,9 @@ module.exports = new Command({
   usage: "{prefix}help [command]",
   userPermissions: ["SEND_MESSAGES"],
   botPermissions: ["EMBED_LINKS"],
-  category: "configuration",
+  category: "help",
   validator: new ArgumentValidator({
-    validate: ({ client, message, prefix, args }) => {
+    validate: ({ client, args }) => {
       const command_category = args[0] ? args[0] : undefined;
 
       const command =
@@ -36,30 +36,44 @@ module.exports = new Command({
       if (!command && category.size < 1 && command_category)
         return "NON_EXISTANT_COMMAND_CATEGORY";
     },
-    onError: ({ args, prefix, message, client, error }) => {
+    onError: ({ args, prefix, message, client, error, language }) => {
       if (error === "NON_EXISTANT_COMMAND_CATEGORY") {
         const command_category = args[0] ? args[0] : undefined;
         const res = client.defaultResponses.getValue(
+          language,
           "HELP_COMMAND",
           "INVALID_COMMAND_CATEGORY",
-          [
-            {
-              key: "COMMAND_CATEGORY",
-              replace: `${ProperCase(command_category)}`,
-            },
-            {
-              key: "PREFIX",
-              replace: prefix,
-            },
-          ],
+          client.defaultResponses.fileData[language].HELP_COMMAND
+            .INVALID_COMMAND_CATEGORY.embed
+            ? {
+                description: [
+                  {
+                    key: "COMMAND_CATEGORY",
+                    replace: `${ProperCase(command_category)}`,
+                  },
+                  {
+                    key: "PREFIX",
+                    replace: prefix,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "COMMAND_CATEGORY",
+                  replace: `${ProperCase(command_category)}`,
+                },
+                {
+                  key: "PREFIX",
+                  replace: prefix,
+                },
+              ],
         );
-        message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((_) => msg.channel.send(res));
+        if (res instanceof MessageEmbed) message.channel.send({ embed: res });
+        else message.channel.send(res);
       }
     },
   }),
-  run: async ({ args, prefix, message, client }) => {
+  run: async ({ args, prefix, message, client, language }) => {
     const command_category = args[0] ? args[0] : undefined;
 
     const command =
@@ -184,7 +198,8 @@ module.exports = new Command({
                 )
                 .join("\n\n"),
             );
-          await reaction.users.remove(user)
+          await reaction.users
+            .remove(user)
             .catch((err) => client.logError({ data: err }));
           await helpMessage.edit(helpEmbed);
         });
@@ -277,7 +292,8 @@ module.exports = new Command({
                 .join(", ") + "...",
             );
 
-          await reaction.users.remove(user)
+          await reaction.users
+            .remove(user)
             .catch((err) => client.logError({ data: err }));
           await helpMessage.edit(reactedEmbed);
         });
