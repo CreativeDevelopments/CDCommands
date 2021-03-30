@@ -30,7 +30,7 @@ function ProperCase(string) {
  * @param {Command} command
  */
 function ValidateRoles(rolesDocument, member, command) {
-    const memberRoles = member.roles.cache.array().map(r => r.id).filter(s => s !== member.guild.id);
+    const memberRoles = member.roles.cache.array().map((r) => r.id).filter((s) => s !== member.guild.id);
     const roles = rolesDocument.requiredRoles.filter((ob) => ob.command === command.name)[0];
     if (roles) {
         const reqRoles = roles.roles;
