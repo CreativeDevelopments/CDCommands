@@ -24,13 +24,12 @@ module.exports = new Command({
   category: "help",
   validator: new ArgumentValidator({
     validate: ({ client, args }) => {
-      const command_category = args[0] ? args[0] : undefined;
-
-      const command =
-        client.commands.get(command_category) ||
-        client.commands.get(client.aliases.get(command_category));
+      const command_category = (args[0] || "").toLowerCase();
+      const command = client.commands.get(
+        [...client.commands.keys()].filter(command => command.toLowerCase() === command_category)[0] || [...client.aliases.keys()].filter(alias => alias.toLowerCase() === command_category)[0]
+      );
       const category = client.commands.filter(
-        (c) => c.category === command_category,
+        (c) => c.category.toLowerCase() === command_category,
       );
 
       if (!command && category.size < 1 && command_category)
@@ -38,7 +37,7 @@ module.exports = new Command({
     },
     onError: ({ args, prefix, message, client, error, language }) => {
       if (error === "NON_EXISTANT_COMMAND_CATEGORY") {
-        const command_category = args[0] ? args[0] : undefined;
+        const command_category = args[0] || "None";
         const res = client.defaultResponses.getValue(
           language,
           "HELP_COMMAND",
@@ -49,7 +48,7 @@ module.exports = new Command({
                 description: [
                   {
                     key: "COMMAND_CATEGORY",
-                    replace: `${ProperCase(command_category)}`,
+                    replace: ProperCase(command_category),
                   },
                   {
                     key: "PREFIX",
@@ -60,7 +59,7 @@ module.exports = new Command({
             : [
                 {
                   key: "COMMAND_CATEGORY",
-                  replace: `${ProperCase(command_category)}`,
+                  replace: ProperCase(command_category),
                 },
                 {
                   key: "PREFIX",
@@ -74,13 +73,12 @@ module.exports = new Command({
     },
   }),
   run: async ({ args, prefix, message, client, language }) => {
-    const command_category = args[0] ? args[0] : undefined;
-
-    const command =
-      client.commands.get(command_category) ||
-      client.commands.get(client.aliases.get(command_category));
+    const command_category = (args[0] || "").toLowerCase();
+    const command = client.commands.get(
+      [...client.commands.keys()].filter(command => command.toLowerCase() === command_category)[0] || [...client.aliases.keys()].filter(alias => alias.toLowerCase() === command_category)[0]
+    );
     const category = client.commands.filter(
-      (c) => c.category === command_category,
+      (c) => c.category.toLowerCase() === command_category,
     );
 
     const helpEmbed = new MessageEmbed()
@@ -115,7 +113,7 @@ module.exports = new Command({
           }`,
         );
       return message.channel.send("", { embed: helpEmbed });
-    } else if (category.size > 0) {
+    } else if (category.size) {
       helpEmbed.setTitle(`${ProperCase(command_category)} Help Menu`);
 
       const cateCommands = category.array();

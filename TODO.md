@@ -13,7 +13,6 @@
 <ul>
     <li>Add premiumOnly to command options (Anyone)</li>
     <li>Add a blacklist default command (Anyone)</li>
-    <li>Make category names not be case senstivie (For help command) (Anyone)</li>
 </ul>
 
 <br>

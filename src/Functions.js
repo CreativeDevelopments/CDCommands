@@ -10,11 +10,8 @@ const Command = require("./Base/Command");
  */
 function ValidatePermissions(memberPermissions, requiredPermissions) {
     /** @type {import("discord.js").PermissionResolvable[]} */
-    const missingPerms = [];
-    for (const perm of requiredPermissions) {
-        if (!memberPermissions.includes(perm))
-            missingPerms.push(perm);
-    }
+    const missingPerms = requiredPermissions.filter(perm => !memberPermissions.includes(perm));
+    
     return {
         perms: missingPerms.length > 0 ? missingPerms.map((p, i, a) => a.length > 1 ? i === a.length - 1 ? `, and ${ProperCase(p.split("_").join(" "))}` : i === 0 ? ProperCase(p.split("_").join(" ")) : `, ${ProperCase(p.split("_").join(" "))}` : ProperCase(p.split("_").join(" "))).join("") : null,
         length: missingPerms.length,
@@ -25,11 +22,7 @@ function ValidatePermissions(memberPermissions, requiredPermissions) {
  * @returns {string}
  */
 function ProperCase(string) {
-    const words = string.split(" ");
-    const fixedWords = [];
-    for (const word of words)
-        fixedWords.push(word.split("").map((l, i) => i === 0 ? l.toUpperCase() : l.toLowerCase()).join(""));
-    return fixedWords.join(" ");
+    return string.toLowerCase().replace(/(\b\w)/gi, w => w.toUpperCase());
 }
 /**
  * @param {Document<any>} rolesDocument 
@@ -42,13 +35,8 @@ function ValidateRoles(rolesDocument, member, command) {
     if (roles) {
         const reqRoles = roles.roles;
         /** @type {string[]} */
-        const missingRoles = [];
-        for (const reqRole of reqRoles) {
-            if (!memberRoles.includes(reqRole))
-                missingRoles.push(reqRole);
-        }
-
-        if (missingRoles.length > 0)
+        const missingRoles = reqRoles.filter(reqRole => !memberRoles.includes(reqRole));
+        if (missingRoles.length)
             return {
                 roles: missingRoles.map((s, i, a) => a.length > 1 ? i === a.length - 1 ? `and ${member.guild.roles.cache.get(s).name}` : `${member.guild.roles.cache.get(s).name}, ` : member.guild.roles.cache.get(s).name).join(""),
                 length: missingRoles.length,
