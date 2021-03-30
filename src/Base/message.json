@@ -1,949 +1,1187 @@
 {
-  "en": {
-    "GUILD_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} can only be used in a server."
-      }
-    },
-    "DM_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} can only be used in my DMs."
-      }
-    },
-    "NSFW_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "This command is locked to NSFW channels only!"
-      }
-    },
-    "DISABLED_COMMAND": {
-      "embed": {
-        "color": "#C93131",
-        "description": "The {COMMAND} command is currently disabled in this server. You can not use it."
-      }
-    },
-    "DISABLED_CATEGORY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
-      }
-    },
-    "MISSING_CLIENT_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
-      }
-    },
-    "MISSING_MEMBER_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
-      }
-    },
-    "MISSING_ROLES": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
-      }
-    },
-    "DEVELOPER_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "You can't use {COMMAND}. It is locked to developers only."
-      }
-    },
-    "TEST_SERVER": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} is locked to test servers only and this server is not one."
-      }
-    },
-    "TOO_FEW_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
-      }
-    },
-    "TOO_MANY_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
-      }
-    },
-    "GLOBAL_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
-      }
-    },
-    "USER_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
-      }
-    },
-    "CATEGORY_COMMAND": {
-      "ALREADY_DISABLED": {
+    "en": {
+      "GUILD_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "That category is already disabled."
+          "description": "{COMMAND} can only be used in a server."
         }
       },
-      "ALREADY_ENABLED": {
+      "DM_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "That category is already enabled."
+          "description": "{COMMAND} can only be used in my DMs."
         }
       },
-      "INVALID_ARGS_ERROR": {
+      "NSFW_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "Invalid Arguments! Please use {USAGE} instead."
+          "description": "This command is locked to NSFW channels only!"
         }
       },
-      "NON_EXISTANT_CATEGORY": {
+      "DISABLED_COMMAND": {
         "embed": {
           "color": "#C93131",
-          "description": "That category does not exist."
+          "description": "The {COMMAND} command is currently disabled in this server. You can not use it."
         }
       },
-      "SUCCESS": {
+      "DISABLED_CATEGORY": {
         "embed": {
-          "color": "#2FDD2C",
-          "description": "Successfully {ACTION} the {CATEGORY} category."
+          "color": "#C93131",
+          "description": "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
+        }
+      },
+      "MISSING_CLIENT_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
+        }
+      },
+      "MISSING_MEMBER_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
+        }
+      },
+      "MISSING_ROLES": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
+        }
+      },
+      "DEVELOPER_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "You can't use {COMMAND}. It is locked to developers only."
+        }
+      },
+      "TEST_SERVER": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} is locked to test servers only and this server is not one."
+        }
+      },
+      "TOO_FEW_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
+        }
+      },
+      "TOO_MANY_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
+        }
+      },
+      "GLOBAL_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
+        }
+      },
+      "USER_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
+        }
+      },
+      "CATEGORY_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "That category is already disabled."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "That category is already enabled."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Invalid Arguments! Please use {USAGE} instead."
+          }
+        },
+        "NON_EXISTANT_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "That category does not exist."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Successfully {ACTION} the {CATEGORY} category."
+          }
+        }
+      },
+      "COMMANDS_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "That command is already disabled."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "That command is already enabled."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Invalid Arguments! Please use {USAGE} instead."
+          }
+        },
+        "NO_DISABLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND} can not be disabled"
+          }
+        },
+        "NON_EXISTANT_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "That command does not exist."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Successfully {ACTION} the {COMMAND} command."
+          }
+        }
+      },
+      "HELP_COMMAND": {
+        "INVALID_COMMAND_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
+          }
+        }
+      },
+      "PREFIX_COMMAND": {
+        "SAME_PREFIX": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Please choose a **new** prefix to set."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+          }
+        }
+      },
+      "ROLES_COMMAND": {
+        "ALREADY_ADDED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} is already on the required roles list of {COMMAND}"
+          }
+        },
+        "ALREADY_REMOVED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} is not on the required roles list for {COMMAND}"
+          }
+        },
+        "INVALID_ARGUMENTS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Invalid Arguments! Please use {USAGE} instead."
+          }
+        },
+        "INVALID_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "That command does not exist. Please provide a valid command."
+          }
+        },
+        "INVALID_ROLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Please provide a valid role to {ACTION}."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+          }
+        }
+      },
+      "LANGUAGE_COMMAND": {
+        "INVALID_ISO_CODE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Please provide a valid ISO 639-1 Code, `{ISO_CODE}` is invalid. Visit [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to learn more."
+          }
+        },
+        "UNPROVIDED_LANGUAGE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "**{ISO_CODE}** is not provided for by the bot owner, please select from one of the following: **{PROVIDED_CODES}**"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Successfully updated {USER_GUILD}'s language to {ISO_CODE}"
+          }
         }
       }
     },
-    "COMMANDS_COMMAND": {
-      "ALREADY_DISABLED": {
+  
+    "de": {
+      "GUILD_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "That command is already disabled."
+          "description": "{COMMAND} kann nur in einem Server benutzt werden."
         }
       },
-      "ALREADY_ENABLED": {
+      "DM_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "That command is already enabled."
+          "description": "{COMMAND} kann nur in meinen PNs benutzt werden."
         }
       },
-      "INVALID_ARGS_ERROR": {
+      "NSFW_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "Invalid Arguments! Please use {USAGE} instead."
+          "description": "Dieser Befehl funktioniert nur in NSFW-Channels!"
         }
       },
-      "NO_DISABLE": {
+      "DISABLED_COMMAND": {
         "embed": {
           "color": "#C93131",
-          "description": "{COMMAND} can not be disabled"
+          "description": "Der {COMMAND}-Befehl ist momentan auf diesem Server deaktiviert. Du kannst ihn nicht benutzen."
         }
       },
-      "NON_EXISTANT_COMMAND": {
+      "DISABLED_CATEGORY": {
         "embed": {
           "color": "#C93131",
-          "description": "That command does not exist."
+          "description": "Die {CATEGORY}-Kategorie ist momentan auf diesem Server deaktiviert. Du kannst Befehle dieser Kategorie nicht benutzen."
         }
       },
-      "SUCCESS": {
+      "MISSING_CLIENT_PERMISSION": {
         "embed": {
-          "color": "#2FDD2C",
-          "description": "Successfully {ACTION} the {COMMAND} command."
+          "color": "#C93131",
+          "description": "Halt Stopp! Mir fehlen {CLIENT_PERMISSIONS}-Berechtigungen! Bitte gib mir besagte Berechtigungen bevor du diesen Befehl benutzt!"
+        }
+      },
+      "MISSING_MEMBER_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Halt Stopp! Dir fehlen {MEMBER_PERMISSIONS}-Berechtigungen! Bitte erhalte besagte Berechtigungen bevor du diesen Befehl benutzt!"
+        }
+      },
+      "MISSING_ROLES": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Sieht aus als fehlten dir {ROLES}! Stell sicher, dass du besagte Rollen hast, bevor du {COMMAND} benutzt."
+        }
+      },
+      "DEVELOPER_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Du kannst {COMMAND} nicht benutzen. Dieser ist nur für Entwickler bestimmt."
+        }
+      },
+      "TEST_SERVER": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} kann nur in Test-Servern benutzt werden, was dieser Server nicht ist."
+        }
+      },
+      "TOO_FEW_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ungültige Argumente [Zu wenige Argumente]; bitte benutze stattdessen {USAGE}."
+        }
+      },
+      "TOO_MANY_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ungültige Argumente [Zu viele Argumente]; bitte benutze stattdessen {USAGE}."
+        }
+      },
+      "GLOBAL_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} befindet sich im Global Cooldown (Abklingzeit)! Bitte warte {COOLDOWN} bevor du ihn wieder benutzt."
+        }
+      },
+      "USER_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Du befindest dich im Cooldown (Abklingzeit)! Bitte warte {COOLDOWN}, bevor du {COMMAND} wieder benutzt."
+        }
+      },
+      "CATEGORY_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Diese Kategorie ist bereits deaktiviert."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Diese Kategorie ist bereits aktiviert."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
+          }
+        },
+        "NON_EXISTANT_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Erfolgreich die {CATEGORY}-Kategorie {ACTION}."
+          }
+        }
+      },
+      "COMMANDS_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Dieser Befehl ist bereits deaktiviert."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Dieser Befehl ist bereits aktiviert."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
+          }
+        },
+        "NO_DISABLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND} kann nicht deaktiviert werden."
+          }
+        },
+        "NON_EXISTANT_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Dieser Befehl existiert nicht."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Erfolgreich den {COMMAND}-Befehl {ACTION}."
+          }
+        }
+      },
+      "HELP_COMMAND": {
+        "INVALID_COMMAND_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND_CATEGORY} ist kein gültiger Befehl bzw. Kategorie. Benutze {PREFIX}-Hilfe um alle Befehlskategorien zu sehen."
+          }
+        }
+      },
+      "PREFIX_COMMAND": {
+        "SAME_PREFIX": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Bitte wähle einen **neuen** Präfix aus."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Erfolgreich den {GUILD_NAME}-Präfix zu {PREFIX} upgedatet."
+          }
+        }
+      },
+      "ROLES_COMMAND": {
+        "ALREADY_ADDED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} ist bereits Teil der Liste der erforderlichen Rollen von {COMMAND}."
+          }
+        },
+        "ALREADY_REMOVED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} ist nicht Teil der Liste der erforderlichen Rollen von {COMMAND}."
+          }
+        },
+        "INVALID_ARGUMENTS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ungültiges Argument! Bitte benutze stattdessen {USAGE}."
+          }
+        },
+        "INVALID_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Dieser Befehl existiert nicht. Bestimme bitte einen gültigen Befehl."
+          }
+        },
+        "INVALID_ROLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Bestimme bitte eine gültige Rolle für {ACTION}."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Erfolgreich {ROLE} zu/von der Liste der erforderlichen Rollen von {COMMAND} {ACTION}."
+          }
+        }
+      },
+      "LANGUAGE_COMMAND": {
+        "INVALID_ISO_CODE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Bitte wähle einen gültigen \"ISO 639-1\"-Code, `{ISO_CODE}` ist ungültig. Besuche [diese Seite](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes), um mehr zu erfahren."
+          }
+        },
+        "UNPROVIDED_LANGUAGE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "**{ISO_CODE}** wird nicht vom Bot-Besitzer bereitgestellt, bitte wähle aus einem der folgenden: **{PROVIDED_CODES}**"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Erfolgreich die Sprache von {USER_GUILD} zu {ISO_CODE} geupdatet."
+          }
         }
       }
     },
-    "HELP_COMMAND": {
-      "INVALID_COMMAND_CATEGORY": {
+  
+    "hi": {
+      "GUILD_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
+          "description": "{COMMAND} सिर्फ सर्वर में इस्तमाल किया जा सकता है।"
+        }
+      },
+      "DM_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} सिर्फ dm में इस्तमाल किया जा सकता है।"
+        }
+      },
+      "NSFW_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "यह कमांड NSFW चैनल्स में ही इस्तमाल किया जा सकता है।"
+        }
+      },
+      "DISABLED_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "यह {COMMAND} कमांड इस सर्वर में बंद है। आप इस कमांड का इस्तमाल नही कर सकते।"
+        }
+      },
+      "DISABLED_CATEGORY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "यह {CATEGORY} कैटेगरी इस सर्वर में बंद है। आप इसका इस्तमाल नही कर सकते।"
+        }
+      },
+      "MISSING_CLIENT_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "मेरे पास {CLIENT_PERMISSIONS} की अनुमति नही है। कृपया मुझे कमांड इस्तमाल करने से पहले वह अनुमति देदीजिए।"
+        }
+      },
+      "MISSING_MEMBER_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "आपके पास {MEMBER_PERMISSIONS} की अनुमति नही है। कृपया आप कमांड का इस्तमाल करने से पहले वह अनुमति लेलिजिए।"
+        }
+      },
+      "MISSING_ROLES": {
+        "embed": {
+          "color": "#C93131",
+          "description": "ऐसा लगता है की आपके पास {ROLES} रोल नहीं है। कृपया आप {COMMAND} कमांड डालने के पूर्व वह रोल लेलिजिये।"
+        }
+      },
+      "DEVELOPER_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "आप वह {COMMAND} कमांड का इस्तमाल नही कर सकते। वह कमांड निर्माता के लिए है।"
+        }
+      },
+      "TEST_SERVER": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} कमांड सिर्फ टेस्ट सर्वर के लिए ही उपलब है।"
+        }
+      },
+      "TOO_FEW_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "अमान्य आर्गुमेंट [बोहोत काम आर्गुमेंट है]। कृपया {USAGE} का इस्तमाल कीजिए।"
+        }
+      },
+      "TOO_MANY_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "अमान्य आर्गुमेंट [बोहोत ज्यादा आर्गुमेंट है]। कृपया का {USAGE} इस्तमाल कीजिए।"
+        }
+      },
+      "GLOBAL_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} वैश्विक कूलडाउन पर है। कृपया {COOLDOWN} देर रुक जाए।"
+        }
+      },
+      "USER_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "आप कूलडोन पर है। कृपया कमांड का इस्तमाल करने से पहले {COOLDOWN} देर रुक जाए।"
+        }
+      },
+      "CATEGORY_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह कैटेगरी पहले से ही बंद है।"
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह कैटेगरी पहले से ही चालू है।"
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "अमान्य आर्गुमेंट। कृपया {USAGE} का इस्तमाल कीजिए।"
+          }
+        },
+        "NON_EXISTANT_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह कैटेगरी मौजूद नहीं है।"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "सफलतापूर्वक आपने {CATEGORY} कैटेगरी को {ACTION} करदिया।"
+          }
+        }
+      },
+      "COMMANDS_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह कमांड पहले से बंद है।"
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह कमांड पहले से चालू है।"
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "अमान्य आर्गुमेंट। कृपया का {USAGE} इस्तमाल कीजिए।"
+          }
+        },
+        "NO_DISABLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह {COMMAND} कमांड बंद नहीं किया जा सकता।"
+          }
+        },
+        "NON_EXISTANT_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह कमांड मौजूद नहीं है।"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "सफलतापूर्वफ आपने {COMMAND} कमांड को {ACTION} करडिया।"
+          }
+        }
+      },
+      "HELP_COMMAND": {
+        "INVALID_COMMAND_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND_CATEGORY} वैध कमांड या कैटेगरी नही है। {PREFIX}help का इस्तमाल करे ताकि आप सब कमांड कैटेगरी देख सको।"
+          }
+        }
+      },
+      "PREFIX_COMMAND": {
+        "SAME_PREFIX": {
+          "embed": {
+            "color": "#C93131",
+            "description": "कृपया नई prefix चुने जिससे हम सेट करसके।"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "हमने सफलतापूर्वक {GUILD_NAME} का {PREFIX} prefix रख लिया है।"
+          }
+        }
+      },
+      "ROLES_COMMAND": {
+        "ALREADY_ADDED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} यह रोल पहले से ही {COMMAND} कमांड की जरूरी रोल्स की लिस्ट मैं है।"
+          }
+        },
+        "ALREADY_REMOVED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} यह रोल {COMMAND} कमांड की जरूरी रोल्स की लिस्ट में नही है।"
+          }
+        },
+        "INVALID_ARGUMENTS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "अमान्य आर्गुमेंट। कृपया {USAGE} का इस्तमाल कीजिए।"
+          }
+        },
+        "INVALID_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह कमांड मौजूद नही करता। कृपया सही कमांड दीजिए।"
+          }
+        },
+        "INVALID_ROLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "कृपया सही रोल दीजिए ताकि हम {ACTION} करसके।"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "सफलतापूर्वक आपने {ACTION} विधि इस {COMMAND} कमांड की जरूरी {ROLES} रोल की लिस्ट पर करदी।"
+          }
+        }
+      },
+      "LANGUAGE_COMMAND": {
+        "INVALID_ISO_CODE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "कृपया सही ISO कोड दीजिए। यह iso कोड गलत है। ज्यादा जानकारी के लिए इसे देखे [लिंक](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)"
+          }
+        },
+        "UNPROVIDED_LANGUAGE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "यह {ISO_CODE} भाषा bot के ऑनर की तरफ से नही दी गई है। कृपया इस में से किसी {PROVIDED_CODES} का इस्तमाल करे।"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "आपने सफलतापूर्वक {USER_GUILD} अपनी भाषा को {ISO_CODE} बना लिया है।"
+          }
         }
       }
     },
-    "PREFIX_COMMAND": {
-      "SAME_PREFIX": {
+  
+    "hr": {
+      "GUILD_ONLY": {
         "embed": {
           "color": "#C93131",
-          "description": "Please choose a **new** prefix to set."
+          "description": "{COMMAND} se moze koristiti samo u serveru."
         }
       },
-      "SUCCESS": {
+      "DM_ONLY": {
         "embed": {
-          "color": "#2FDD2C",
-          "description": "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+          "color": "#C93131",
+          "description": "{COMMAND} se moze koristiti samo u mojim privatnim porukama."
+        }
+      },
+      "NSFW_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ova komanda je samo za NSFW kanale!"
+        }
+      },
+      "DISABLED_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} komanda je trenunto iskljucena u ovom serveru. Ne mozes je koristiti."
+        }
+      },
+      "DISABLED_CATEGORY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{CATEGORY} kategorija je trenutno iskljucena u ovom serveru. Ne mozes koristiti komande iz ove kategorije."
+        }
+      },
+      "MISSING_CLIENT_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Polako! Nemam {CLIENT_PERMISSIONS} permisije! Daj mi permisiju prije koristenja te komande!"
+        }
+      },
+      "MISSING_MEMBER_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Polako! Nemas {MEMBER_PERMISSIONS} permisije! Dobi permisiju prije koristenja te komande!"
+        }
+      },
+      "MISSING_ROLES": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Izgleda da ti fali rola {ROLES}! Dobi rolu prije koristenja komande {COMMAND}."
+        }
+      },
+      "DEVELOPER_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ne mozes koristiti {COMMAND}. Komanda je iskljucivo za developere."
+        }
+      },
+      "TEST_SERVER": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} je iskljucivo za test servere, a ovo nije jedan od njih."
+        }
+      },
+      "TOO_FEW_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Kriva Upotreba [Nedovoljno argumenata]; Koristi {USAGE}."
+        }
+      },
+      "TOO_MANY_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Kriva Upotreba [Previse argumenata]; Koristi {USAGE}."
+        }
+      },
+      "GLOBAL_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} je na globalnom cooldownu! Pricekaj {COOLDOWN} prije ponovne upotrebe."
+        }
+      },
+      "USER_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Ohladi malo! Pricekaj {COOLDOWN} prije ponovne upotrebe {COMMAND}."
+        }
+      },
+      "CATEGORY_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ta kategorija ja vec iskljucena."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ta kategorija je vec ukljucena."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Kriva Upotreba! Koristi {USAGE}."
+          }
+        },
+        "NON_EXISTANT_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ta kategorija ne postoji."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Uspjesno {ACTION} {CATEGORY} kategorija."
+          }
+        }
+      },
+      "COMMANDS_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ta komanda je vec iskljucena."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ta komanda je vec ukljucena."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Kriva Upotreba! Koristi {USAGE}"
+          }
+        },
+        "NO_DISABLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND} se ne moze iskljuciti."
+          }
+        },
+        "NON_EXISTANT_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Komanda ne postoji."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Uspjesno {ACTION} {COMMAND} komanda."
+          }
+        }
+      },
+      "HELP_COMMAND": {
+        "INVALID_COMMAND_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND_CATEGORY} nije komanda ni kategorija. Koristi {PREFIX}help da vidis sve komande i kategorije."
+          }
+        }
+      },
+      "PREFIX_COMMAND": {
+        "SAME_PREFIX": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Izaberi **novi** prefix."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Uspjesno azuriran {GUILD_NAME} prefix na {PREFIX}"
+          }
+        }
+      },
+      "ROLES_COMMAND": {
+        "ALREADY_ADDED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} je vec na na listi potrebnih rola za {COMMAND}"
+          }
+        },
+        "ALREADY_REMOVED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} nije na listi potrebnih rola za {COMMAND}"
+          }
+        },
+        "INVALID_ARGUMENTS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Kriva Upotreba! Koristi {USAGE}"
+          }
+        },
+        "INVALID_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Komanda ne postoji. Upisi postojecu komandu."
+          }
+        },
+        "INVALID_ROLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Upisi ispravnu rolu za {ACTION}."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Uspjesno {ACTION} {ROLE} u/iz liste potrebnih rola za {COMMAND}"
+          }
+        }
+      },
+      "LANGUAGE_COMMAND": {
+        "INVALID_ISO_CODE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Upisi ispravan ISO 639-1 kod, `{ISO_CODE}` je neispravan. Posjeti [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) da saznas vise."
+          }
+        },
+        "UNPROVIDED_LANGUAGE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "**{ISO_CODE}** nije dostupan od strane vlasnika, izaberi iz sljedecih: **{PROVIDED_CODES}**"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Uspjesno promijenjen {USER_GUILD} jezik na {ISO_CODE}"
+          }
         }
       }
     },
-    "ROLES_COMMAND": {
-      "ALREADY_ADDED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} is already on the required roles list of {COMMAND}"
-        }
-      },
-      "ALREADY_REMOVED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} is not on the required roles list for {COMMAND}"
-        }
-      },
-      "INVALID_ARGUMENTS": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Invalid Arguments! Please use {USAGE} instead."
-        }
-      },
-      "INVALID_COMMAND": {
-        "embed": {
-          "color": "#C93131",
-          "description": "That command does not exist. Please provide a valid command."
-        }
-      },
-      "INVALID_ROLE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Please provide a valid role to {ACTION}."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
-        }
-      }
-    },
-    "LANGUAGE_COMMAND": {
-      "INVALID_ISO_CODE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Please provide a valid ISO 639-1 Code, `{ISO_CODE}` is invalid. Visit [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to learn more."
-        }
-      },
-      "UNPROVIDED_LANGUAGE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "**{ISO_CODE}** is not provided for by the bot owner, please select from one of the following: **{PROVIDED_CODES}**"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Successfully updated {USER_GUILD}'s language to {ISO_CODE}"
-        }
-      }
-    }
-  },
+     "es": {
+        "GUILD_ONLY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND} solo puede ser usado en un servidor."
+          }
+        },
+        "DM_ONLY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND} solo puede ser usado en mensajes directos."
+          }
+        },
+        "NSFW_ONLY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Este comando solo funciona en canales NSFW!"
+          }
+        },
+        "DISABLED_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "El comando {COMMAND} esta actualmente deshabilitado en este servidor. No puedes utilizarlo."
+          }
+        },
+        "DISABLED_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "La categoria {CATEGORY} esta actualmente deshabilitada en este servidor. No puedes usar los comandos de esta categoria."
+          }
+        },
+        "MISSING_CLIENT_PERMISSION": {
+          "embed": {
+            "color": "#C93131",
 
-  "de": {
-    "GUILD_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} kann nur in einem Server benutzt werden."
-      }
-    },
-    "DM_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} kann nur in meinen PNs benutzt werden."
-      }
-    },
-    "NSFW_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Dieser Befehl funktioniert nur in NSFW-Channels!"
-      }
-    },
-    "DISABLED_COMMAND": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Der {COMMAND}-Befehl ist momentan auf diesem Server deaktiviert. Du kannst ihn nicht benutzen."
-      }
-    },
-    "DISABLED_CATEGORY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Die {CATEGORY}-Kategorie ist momentan auf diesem Server deaktiviert. Du kannst Befehle dieser Kategorie nicht benutzen."
-      }
-    },
-    "MISSING_CLIENT_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Halt Stopp! Mir fehlen {CLIENT_PERMISSIONS}-Berechtigungen! Bitte gib mir besagte Berechtigungen bevor du diesen Befehl benutzt!"
-      }
-    },
-    "MISSING_MEMBER_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Halt Stopp! Dir fehlen {MEMBER_PERMISSIONS}-Berechtigungen! Bitte erhalte besagte Berechtigungen bevor du diesen Befehl benutzt!"
-      }
-    },
-    "MISSING_ROLES": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Sieht aus als fehlten dir {ROLES}! Stell sicher, dass du besagte Rollen hast, bevor du {COMMAND} benutzt."
-      }
-    },
-    "DEVELOPER_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Du kannst {COMMAND} nicht benutzen. Dieser ist nur für Entwickler bestimmt."
-      }
-    },
-    "TEST_SERVER": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} kann nur in Test-Servern benutzt werden, was dieser Server nicht ist."
-      }
-    },
-    "TOO_FEW_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Ungültige Argumente [Zu wenige Argumente]; bitte benutze stattdessen {USAGE}."
-      }
-    },
-    "TOO_MANY_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Ungültige Argumente [Zu viele Argumente]; bitte benutze stattdessen {USAGE}."
-      }
-    },
-    "GLOBAL_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} befindet sich im Global Cooldown (Abklingzeit)! Bitte warte {COOLDOWN} bevor du ihn wieder benutzt."
-      }
-    },
-    "USER_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Du befindest dich im Cooldown (Abklingzeit)! Bitte warte {COOLDOWN}, bevor du {COMMAND} wieder benutzt."
-      }
-    },
-    "CATEGORY_COMMAND": {
-      "ALREADY_DISABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Diese Kategorie ist bereits deaktiviert."
+            "description": "Hey! Me faltan los permisos {CLIENT_PERMISSIONS}! Porfavor deme los permisos necesarios antes de usar este comando!"
+          }
+        },
+        "MISSING_MEMBER_PERMISSION": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Hey! Te faltan los permisos {MEMBER_PERMISSIONS}! Porfavor obtenga los permisos necesarios antes de usar este comando!"
+          }
+        },
+        "MISSING_ROLES": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Parece que te faltan los roles {ROLES}! Asegurate de tener los role(s) antes de usar el comando {COMMAND}."
+          }
+        },
+        "DEVELOPER_ONLY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "No puedes usar el comando {COMMAND}. El acceso esta restringido solo para los desarrolladores."
+          }
+        },
+        "TEST_SERVER": {
+          "embed": {
+            "color": "#C93131",
+            "description": "El comando {COMMAND} solo funciona en servidores de prueba y este no es uno."
+          }
+        },
+        "TOO_FEW_ARGS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Argumentos invalidos [Pocos argumentos]; Porfavor utilice {USAGE}."
+          }
+        },
+        "TOO_MANY_ARGS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Argumentos invalidos [Muchos Argumentos]; Porfavor utilice {USAGE}."
+          }
+        },
+        "GLOBAL_COOLDOWN": {
+          "embed": {
+            "color": "#C93131",
+            "description": "El comando {COMMAND} esta en un cooldown global! Porfavor espere {COOLDOWN} antes de usar el comando {COMMAND} denuevo."
+          }
+        },
+        "USER_COOLDOWN": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Hey espera un poco! Porfavor espere {COOLDOWN} antes de usar el comando {COMMAND} denuevo."
+          }
+        },
+        "CATEGORY_COMMAND": {
+          "ALREADY_DISABLED": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Esa categoria ya estaba deshabilitada."
+            }
+          },
+          "ALREADY_ENABLED": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Esa categoria ya estaba habilitada."
+            }
+          },
+          "INVALID_ARGS_ERROR": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Argumentos invalidos! Porfavor utilice {USAGE}."
+            }
+          },
+          "NON_EXISTANT_CATEGORY": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Esa categoria no existe."
+            }
+          },
+          "SUCCESS": {
+            "embed": {
+              "color": "#2FDD2C",
+              "description": "Se ha {ACTION} a la categoria {CATEGORY}."
+            }
+          }
+        },
+        "COMMANDS_COMMAND": {
+          "ALREADY_DISABLED": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Ese comando ya estaba deshabilitado."
+            }
+          },
+          "ALREADY_ENABLED": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Ese comando ya estaba habilitado."
+            }
+          },
+          "INVALID_ARGS_ERROR": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Argumentos invalidos! Porfavor utilice {USAGE}."
+            }
+          },
+          "NO_DISABLE": {
+            "embed": {
+              "color": "#C93131",
+              "description": "El comando {COMMAND} no puede ser deshabilitado."
+            }
+          },
+          "NON_EXISTANT_COMMAND": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Ese comando no existe."
+            }
+          },
+          "SUCCESS": {
+            "embed": {
+              "color": "#2FDD2C",
+              "description": "Se ha {ACTION} el comando {COMMAND}."
+            }
+          }
+        },
+        "HELP_COMMAND": {
+          "INVALID_COMMAND_CATEGORY": {
+            "embed": {
+              "color": "#C93131",
+              "description": "{COMMAND_CATEGORY} no es un comando valido o categoria valida. Utilice {PREFIX}help para ver todas las categorias de comandos."
+            }
+          }
+        },
+        "PREFIX_COMMAND": {
+          "SAME_PREFIX": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Porfavor escoja un **nuevo** prefijo."
+            }
+          },
+          "SUCCESS": {
+            "embed": {
+              "color": "#2FDD2C",
+              "description": "Se ha cambiado con exito el prefijo de {GUILD_NAME} a {PREFIX}."
+            }
+          }
+        },
+        "ROLES_COMMAND": {
+          "ALREADY_ADDED": {
+            "embed": {
+              "color": "#C93131",
+              "description": "El rol {ROLE} ya estaba en la lista de roles requeridos para el comando {COMMAND}."
+            }
+          },
+          "ALREADY_REMOVED": {
+            "embed": {
+              "color": "#C93131",
+              "description": "El rol {ROLE} no estaba en la lista de roles requeridos para el comando {COMMAND}."
+            }
+          },
+          "INVALID_ARGUMENTS": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Argumentos invalidos! Porfavor utilice {USAGE}."
+            }
+          },
+          "INVALID_COMMAND": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Ese comando no existe. Porfavor de un comando valido."
+            }
+          },
+          "INVALID_ROLE": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Porfavor de un rol valido para {ACTION}."
+            }
+          },
+          "SUCCESS": {
+            "embed": {
+              "color": "#2FDD2C",
+              "description": "Se ha {ACTION} el rol {ROLE} de la lista de roles requeridos del comando {COMMAND}."
+            }
+          }
+        },
+        "LANGUAGE_COMMAND": {
+          "INVALID_ISO_CODE": {
+            "embed": {
+              "color": "#C93131",
+              "description": "Porfavor de un codigo ISO 639-1 valido, `{ISO_CODE}` es invalido. Visita [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) para aprender mas."
+            }
+          },
+          "UNPROVIDED_LANGUAGE": {
+            "embed": {
+              "color": "#C93131",
+              "description": "**{ISO_CODE}** no esta implementado por el dueño del bot, Porfavor escoja uno de los siguientes codigos: **{PROVIDED_CODES}**"
+            }
+          },
+          "SUCCESS": {
+            "embed": {
+              "color": "#2FDD2C",
+              "description": "Se ha actualizado con exito el lenguaje de {USER_GUILD} a {ISO_CODE}."
+            }
+          }
         }
-      },
-      "ALREADY_ENABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Diese Kategorie ist bereits aktiviert."
-        }
-      },
-      "INVALID_ARGS_ERROR": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
-        }
-      },
-      "NON_EXISTANT_CATEGORY": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Erfolgreich die {CATEGORY}-Kategorie {ACTION}."
-        }
-      }
-    },
-    "COMMANDS_COMMAND": {
-      "ALREADY_DISABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Dieser Befehl ist bereits deaktiviert."
-        }
-      },
-      "ALREADY_ENABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Dieser Befehl ist bereits aktiviert."
-        }
-      },
-      "INVALID_ARGS_ERROR": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
-        }
-      },
-      "NO_DISABLE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{COMMAND} kann nicht deaktiviert werden."
-        }
-      },
-      "NON_EXISTANT_COMMAND": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Dieser Befehl existiert nicht."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Erfolgreich den {COMMAND}-Befehl {ACTION}."
-        }
-      }
-    },
-    "HELP_COMMAND": {
-      "INVALID_COMMAND_CATEGORY": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{COMMAND_CATEGORY} ist kein gültiger Befehl bzw. Kategorie. Benutze {PREFIX}-Hilfe um alle Befehlskategorien zu sehen."
-        }
-      }
-    },
-    "PREFIX_COMMAND": {
-      "SAME_PREFIX": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Bitte wähle einen **neuen** Präfix aus."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Erfolgreich den {GUILD_NAME}-Präfix zu {PREFIX} upgedatet."
-        }
-      }
-    },
-    "ROLES_COMMAND": {
-      "ALREADY_ADDED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} ist bereits Teil der Liste der erforderlichen Rollen von {COMMAND}."
-        }
-      },
-      "ALREADY_REMOVED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} ist nicht Teil der Liste der erforderlichen Rollen von {COMMAND}."
-        }
-      },
-      "INVALID_ARGUMENTS": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ungültiges Argument! Bitte benutze stattdessen {USAGE}."
-        }
-      },
-      "INVALID_COMMAND": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Dieser Befehl existiert nicht. Bestimme bitte einen gültigen Befehl."
-        }
-      },
-      "INVALID_ROLE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Bestimme bitte eine gültige Rolle für {ACTION}."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Erfolgreich {ROLE} zu/von der Liste der erforderlichen Rollen von {COMMAND} {ACTION}."
-        }
-      }
-    },
-    "LANGUAGE_COMMAND": {
-      "INVALID_ISO_CODE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Bitte wähle einen gültigen \"ISO 639-1\"-Code, `{ISO_CODE}` ist ungültig. Besuche [diese Seite](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes), um mehr zu erfahren."
-        }
-      },
-      "UNPROVIDED_LANGUAGE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "**{ISO_CODE}** wird nicht vom Bot-Besitzer bereitgestellt, bitte wähle aus einem der folgenden: **{PROVIDED_CODES}**"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Erfolgreich die Sprache von {USER_GUILD} zu {ISO_CODE} geupdatet."
-        }
-      }
-    }
-  },
-
-  "hi": {
-    "GUILD_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} सिर्फ सर्वर में इस्तमाल किया जा सकता है।"
-      }
-    },
-    "DM_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} सिर्फ dm में इस्तमाल किया जा सकता है।"
-      }
-    },
-    "NSFW_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "यह कमांड NSFW चैनल्स में ही इस्तमाल किया जा सकता है।"
-      }
-    },
-    "DISABLED_COMMAND": {
-      "embed": {
-        "color": "#C93131",
-        "description": "यह {COMMAND} कमांड इस सर्वर में बंद है। आप इस कमांड का इस्तमाल नही कर सकते।"
-      }
-    },
-    "DISABLED_CATEGORY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "यह {CATEGORY} कैटेगरी इस सर्वर में बंद है। आप इसका इस्तमाल नही कर सकते।"
-      }
-    },
-    "MISSING_CLIENT_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "मेरे पास {CLIENT_PERMISSIONS} की अनुमति नही है। कृपया मुझे कमांड इस्तमाल करने से पहले वह अनुमति देदीजिए।"
-      }
-    },
-    "MISSING_MEMBER_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "आपके पास {MEMBER_PERMISSIONS} की अनुमति नही है। कृपया आप कमांड का इस्तमाल करने से पहले वह अनुमति लेलिजिए।"
-      }
-    },
-    "MISSING_ROLES": {
-      "embed": {
-        "color": "#C93131",
-        "description": "ऐसा लगता है की आपके पास {ROLES} रोल नहीं है। कृपया आप {COMMAND} कमांड डालने के पूर्व वह रोल लेलिजिये।"
-      }
-    },
-    "DEVELOPER_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "आप वह {COMMAND} कमांड का इस्तमाल नही कर सकते। वह कमांड निर्माता के लिए है।"
-      }
-    },
-    "TEST_SERVER": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} कमांड सिर्फ टेस्ट सर्वर के लिए ही उपलब है।"
-      }
-    },
-    "TOO_FEW_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "अमान्य आर्गुमेंट [बोहोत काम आर्गुमेंट है]। कृपया {USAGE} का इस्तमाल कीजिए।"
-      }
-    },
-    "TOO_MANY_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "अमान्य आर्गुमेंट [बोहोत ज्यादा आर्गुमेंट है]। कृपया का {USAGE} इस्तमाल कीजिए।"
-      }
-    },
-    "GLOBAL_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} वैश्विक कूलडाउन पर है। कृपया {COOLDOWN} देर रुक जाए।"
-      }
-    },
-    "USER_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "आप कूलडोन पर है। कृपया कमांड का इस्तमाल करने से पहले {COOLDOWN} देर रुक जाए।"
-      }
-    },
-    "CATEGORY_COMMAND": {
-      "ALREADY_DISABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह कैटेगरी पहले से ही बंद है।"
-        }
-      },
-      "ALREADY_ENABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह कैटेगरी पहले से ही चालू है।"
-        }
-      },
-      "INVALID_ARGS_ERROR": {
-        "embed": {
-          "color": "#C93131",
-          "description": "अमान्य आर्गुमेंट। कृपया {USAGE} का इस्तमाल कीजिए।"
-        }
-      },
-      "NON_EXISTANT_CATEGORY": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह कैटेगरी मौजूद नहीं है।"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "सफलतापूर्वक आपने {CATEGORY} कैटेगरी को {ACTION} करदिया।"
-        }
-      }
-    },
-    "COMMANDS_COMMAND": {
-      "ALREADY_DISABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह कमांड पहले से बंद है।"
-        }
-      },
-      "ALREADY_ENABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह कमांड पहले से चालू है।"
-        }
-      },
-      "INVALID_ARGS_ERROR": {
-        "embed": {
-          "color": "#C93131",
-          "description": "अमान्य आर्गुमेंट। कृपया का {USAGE} इस्तमाल कीजिए।"
-        }
-      },
-      "NO_DISABLE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह {COMMAND} कमांड बंद नहीं किया जा सकता।"
-        }
-      },
-      "NON_EXISTANT_COMMAND": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह कमांड मौजूद नहीं है।"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "सफलतापूर्वफ आपने {COMMAND} कमांड को {ACTION} करडिया।"
-        }
-      }
-    },
-    "HELP_COMMAND": {
-      "INVALID_COMMAND_CATEGORY": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{COMMAND_CATEGORY} वैध कमांड या कैटेगरी नही है। {PREFIX}help का इस्तमाल करे ताकि आप सब कमांड कैटेगरी देख सको।"
-        }
-      }
-    },
-    "PREFIX_COMMAND": {
-      "SAME_PREFIX": {
-        "embed": {
-          "color": "#C93131",
-          "description": "कृपया नई prefix चुने जिससे हम सेट करसके।"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "हमने सफलतापूर्वक {GUILD_NAME} का {PREFIX} prefix रख लिया है।"
-        }
-      }
-    },
-    "ROLES_COMMAND": {
-      "ALREADY_ADDED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} यह रोल पहले से ही {COMMAND} कमांड की जरूरी रोल्स की लिस्ट मैं है।"
-        }
-      },
-      "ALREADY_REMOVED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} यह रोल {COMMAND} कमांड की जरूरी रोल्स की लिस्ट में नही है।"
-        }
-      },
-      "INVALID_ARGUMENTS": {
-        "embed": {
-          "color": "#C93131",
-          "description": "अमान्य आर्गुमेंट। कृपया {USAGE} का इस्तमाल कीजिए।"
-        }
-      },
-      "INVALID_COMMAND": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह कमांड मौजूद नही करता। कृपया सही कमांड दीजिए।"
-        }
-      },
-      "INVALID_ROLE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "कृपया सही रोल दीजिए ताकि हम {ACTION} करसके।"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "सफलतापूर्वक आपने {ACTION} विधि इस {COMMAND} कमांड की जरूरी {ROLES} रोल की लिस्ट पर करदी।"
-        }
-      }
-    },
-    "LANGUAGE_COMMAND": {
-      "INVALID_ISO_CODE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "कृपया सही ISO कोड दीजिए। यह iso कोड गलत है। ज्यादा जानकारी के लिए इसे देखे [लिंक](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)"
-        }
-      },
-      "UNPROVIDED_LANGUAGE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "यह {ISO_CODE} भाषा bot के ऑनर की तरफ से नही दी गई है। कृपया इस में से किसी {PROVIDED_CODES} का इस्तमाल करे।"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "आपने सफलतापूर्वक {USER_GUILD} अपनी भाषा को {ISO_CODE} बना लिया है।"
-        }
-      }
-    }
-  },
-
-  "hr": {
-    "GUILD_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} se moze koristiti samo u serveru."
-      }
-    },
-    "DM_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} se moze koristiti samo u mojim privatnim porukama."
-      }
-    },
-    "NSFW_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Ova komanda je samo za NSFW kanale!"
-      }
-    },
-    "DISABLED_COMMAND": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} komanda je trenunto iskljucena u ovom serveru. Ne mozes je koristiti."
-      }
-    },
-    "DISABLED_CATEGORY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{CATEGORY} kategorija je trenutno iskljucena u ovom serveru. Ne mozes koristiti komande iz ove kategorije."
-      }
-    },
-    "MISSING_CLIENT_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Polako! Nemam {CLIENT_PERMISSIONS} permisije! Daj mi permisiju prije koristenja te komande!"
-      }
-    },
-    "MISSING_MEMBER_PERMISSION": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Polako! Nemas {MEMBER_PERMISSIONS} permisije! Dobi permisiju prije koristenja te komande!"
-      }
-    },
-    "MISSING_ROLES": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Izgleda da ti fali rola {ROLES}! Dobi rolu prije koristenja komande {COMMAND}."
-      }
-    },
-    "DEVELOPER_ONLY": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Ne mozes koristiti {COMMAND}. Komanda je iskljucivo za developere."
-      }
-    },
-    "TEST_SERVER": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} je iskljucivo za test servere, a ovo nije jedan od njih."
-      }
-    },
-    "TOO_FEW_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Kriva Upotreba [Nedovoljno argumenata]; Koristi {USAGE}."
-      }
-    },
-    "TOO_MANY_ARGS": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Kriva Upotreba [Previse argumenata]; Koristi {USAGE}."
-      }
-    },
-    "GLOBAL_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "{COMMAND} je na globalnom cooldownu! Pricekaj {COOLDOWN} prije ponovne upotrebe."
-      }
-    },
-    "USER_COOLDOWN": {
-      "embed": {
-        "color": "#C93131",
-        "description": "Ohladi malo! Pricekaj {COOLDOWN} prije ponovne upotrebe {COMMAND}."
-      }
-    },
-    "CATEGORY_COMMAND": {
-      "ALREADY_DISABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ta kategorija ja vec iskljucena."
-        }
-      },
-      "ALREADY_ENABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ta kategorija je vec ukljucena."
-        }
-      },
-      "INVALID_ARGS_ERROR": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Kriva Upotreba! Koristi {USAGE}."
-        }
-      },
-      "NON_EXISTANT_CATEGORY": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ta kategorija ne postoji."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Uspjesno {ACTION} {CATEGORY} kategorija."
-        }
-      }
-    },
-    "COMMANDS_COMMAND": {
-      "ALREADY_DISABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ta komanda je vec iskljucena."
-        }
-      },
-      "ALREADY_ENABLED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Ta komanda je vec ukljucena."
-        }
-      },
-      "INVALID_ARGS_ERROR": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Kriva Upotreba! Koristi {USAGE}"
-        }
-      },
-      "NO_DISABLE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{COMMAND} se ne moze iskljuciti."
-        }
-      },
-      "NON_EXISTANT_COMMAND": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Komanda ne postoji."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Uspjesno {ACTION} {COMMAND} komanda."
-        }
-      }
-    },
-    "HELP_COMMAND": {
-      "INVALID_COMMAND_CATEGORY": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{COMMAND_CATEGORY} nije komanda ni kategorija. Koristi {PREFIX}help da vidis sve komande i kategorije."
-        }
-      }
-    },
-    "PREFIX_COMMAND": {
-      "SAME_PREFIX": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Izaberi **novi** prefix."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Uspjesno azuriran {GUILD_NAME} prefix na {PREFIX}"
-        }
-      }
-    },
-    "ROLES_COMMAND": {
-      "ALREADY_ADDED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} je vec na na listi potrebnih rola za {COMMAND}"
-        }
-      },
-      "ALREADY_REMOVED": {
-        "embed": {
-          "color": "#C93131",
-          "description": "{ROLE} nije na listi potrebnih rola za {COMMAND}"
-        }
-      },
-      "INVALID_ARGUMENTS": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Kriva Upotreba! Koristi {USAGE}"
-        }
-      },
-      "INVALID_COMMAND": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Komanda ne postoji. Upisi postojecu komandu."
-        }
-      },
-      "INVALID_ROLE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Upisi ispravnu rolu za {ACTION}."
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Uspjesno {ACTION} {ROLE} u/iz liste potrebnih rola za {COMMAND}"
-        }
-      }
-    },
-    "LANGUAGE_COMMAND": {
-      "INVALID_ISO_CODE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "Upisi ispravan ISO 639-1 kod, `{ISO_CODE}` je neispravan. Posjeti [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) da saznas vise."
-        }
-      },
-      "UNPROVIDED_LANGUAGE": {
-        "embed": {
-          "color": "#C93131",
-          "description": "**{ISO_CODE}** nije dostupan od strane vlasnika, izaberi iz sljedecih: **{PROVIDED_CODES}**"
-        }
-      },
-      "SUCCESS": {
-        "embed": {
-          "color": "#2FDD2C",
-          "description": "Uspjesno promijenjen {USER_GUILD} jezik na {ISO_CODE}"
-        }
-      }
     }
   }
-}
+  
