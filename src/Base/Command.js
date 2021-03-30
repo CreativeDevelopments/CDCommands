@@ -1,3 +1,4 @@
+  
 const { Message } = require("discord.js");
 const { CDClient } = require("./CDClient");
 const Validator = require("./Handling/ArgumentValidator");
@@ -137,4 +138,3 @@ module.exports = class Command {
     this.run = run;
   }
 };
-

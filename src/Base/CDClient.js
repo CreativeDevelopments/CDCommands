@@ -39,7 +39,7 @@ class CDClient extends Client {
    * userLanguage: {
    *   model: Model<any>,
    *   getBy: string,
-   * },
+   * };
    * ticketconfig: {
    *   model: Model<any>,
    *   getBy: string,
@@ -63,6 +63,9 @@ class CDClient extends Client {
   
   /** @type {({ guildId, authorId }: { guildId: string, authorId: string }) => keyof import("./Handling/Languages.json"))} */
   getLanguage;
+  /** @type {import("../Tickets")} */
+  tickets;
+
   /** @type {import("../Tickets")} */
   tickets;
 

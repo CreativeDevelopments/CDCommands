@@ -1,6 +1,7 @@
 const { join } = require("path");
 const Event = require("../Base/Event");
-const { lstatSync, existsSync, readdirSync } = require("fs");
+const { CDClient } = require("../Base/CDClient");
+const { lstatSync, existsSync, readdirSync, mkdirSync } = require("fs");
 
 /**
  * @param {string} eventsDir
@@ -9,15 +10,15 @@ const { lstatSync, existsSync, readdirSync } = require("fs");
  */
 function Events(eventsDir, client, customMessageEvent) {
   let totalEvents = 0;
-  //if (!existsSync(`${require.main.path}\\${eventsDir}`)) client.logError({ data: 'Please make sure your events directory exists.' }); --> Previous
-  //const files = readdirSync(`${require.main.path}\\${eventsDir}`); --> Previous
-  if (!existsSync(join(require.main.path, eventsDir)))
-    client.logError({ data: "Please make sure your events directory exists." });
+  if (!existsSync(join(require.main.path, eventsDir))) {
+    client.logWarn({
+      data: `No "${eventsDir}" directory found! Creating one...`,
+    });
+    mkdirSync(join(require.main.path, eventsDir), { recursive: true });
+  }
   const files = readdirSync(join(require.main.path, eventsDir));
   for (const file of files) {
-    //if (lstatSync(`${require.main.path}\\${eventsDir}\\${file}`).isDirectory()) --> Previous
     if (lstatSync(join(require.main.path, eventsDir, file)).isDirectory())
-      //totalEvents += Events(`${eventsDir}\\${file}`, client, customMessageEvent); --> Previous
       totalEvents += Events(
         `${join(eventsDir, file)}`,
         client,
@@ -25,7 +26,6 @@ function Events(eventsDir, client, customMessageEvent) {
       );
     else {
       /** @type {Event} */
-      //const event = require(`${require.main.path}\\${eventsDir}\\${file}`); --> Previous
       const event = require(join(require.main.path, eventsDir, file));
       if (event.name === "message" && !customMessageEvent) continue;
       if (event.name === "ready") continue;

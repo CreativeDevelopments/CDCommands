@@ -8,8 +8,11 @@ const { existsSync, readdirSync, lstatSync, mkdirSync } = require("fs");
  * @returns {import("../Base/CDClient").CDClient}
  */
 function Commands(commandsDir, client, customHelpCommand) {
+<<<<<<< HEAD
   //if (!existsSync(`${require.main.path}\\${commandsDir}`)) client.logError({ data: 'Please make sure your commands directory exists.'}); --> Previous
   //const folders = readdirSync(`${require.main.path}\\${commandsDir}`); --> Previous
+=======
+>>>>>>> 20c2eb2332658b472ce4ada9144d98d1dc05d9f6
   if (!existsSync(join(require.main.path, commandsDir)))
     client.logError({
       data: "Please make sure your commands directory exists.",

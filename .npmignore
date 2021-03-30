@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 images/
-test/
 TODO.md
+tests/*
+=======
+tests/*
+>>>>>>> 6b07f04... prettier decided to format everything, but what actually happened is only in the Ticket.js, index.js, CDClient.js and tests folder
