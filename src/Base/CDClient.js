@@ -40,6 +40,14 @@ class CDClient extends Client {
    *   model: Model<any>,
    *   getBy: string,
    * }
+   * ticketconfig: {
+   *   model: Model<any>,
+   *   getBy: string,
+   * };
+   * ticketsystem: {
+   *   model: Model<any>,
+   *   getBy: string,
+   * };
    * }>}
    */
   databaseCache;
@@ -54,6 +62,9 @@ class CDClient extends Client {
 
   /** @type {({ guildId, authorId }: { guildId: string, authorId: string }) => keyof import("./Handling/Languages.json"))} */
   getLanguage;
+
+  /** @type {import("../Tickets")} */
+  tickets;
 
   /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
   error;

@@ -29,5 +29,8 @@
     "THUMBNAIL_URL": null,
     "DESCRIPTION": null,
     "IMAGE": null
-  }
+  },
+  "MAX_NUMBER": null,
+  "ON_OFF": null,
+  "UPDATE": null
 }

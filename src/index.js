@@ -10,6 +10,7 @@ const {
   help,
   setprefix,
   language: lang,
+  ticketconfig,
 } = require("./Base/DefaultCommands");
 const Commands = require("./registry/Commands");
 const Events = require("./registry/Events");
@@ -26,6 +27,7 @@ const Cooldowns = require("./Base/Handling/CooldownHandler");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
 const Cache = require("./Base/Handling/CacheHandler");
+const Ticket = require("./Tickets");
 const Ticket = require("./Tickets");
 class CDCommands {
   /**
@@ -47,7 +49,7 @@ class CDCommands {
    * @private
    * @type {string}
    */
-  _featuresDir;
+   _featuresDir;
   /**
    * @private
    * @type {string[]}
