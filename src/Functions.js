@@ -10,11 +10,8 @@ const Command = require("./Base/Command");
  */
 function ValidatePermissions(memberPermissions, requiredPermissions) {
     /** @type {import("discord.js").PermissionResolvable[]} */
-    const missingPerms = [];
-    for (const perm of requiredPermissions) {
-        if (!memberPermissions.includes(perm))
-            missingPerms.push(perm);
-    }
+	const missingPerms = requiredPermissions.filter(perm => !memberPermissions.includes(perm));
+	
     return {
         perms: missingPerms.length > 0 ? missingPerms.map((p, i, a) => a.length > 1 ? i === a.length - 1 ? `, and ${ProperCase(p.split("_").join(" "))}` : i === 0 ? ProperCase(p.split("_").join(" ")) : `, ${ProperCase(p.split("_").join(" "))}` : ProperCase(p.split("_").join(" "))).join("") : null,
         length: missingPerms.length,
