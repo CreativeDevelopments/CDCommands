@@ -594,123 +594,6 @@ module.exports = new Event("message", async (client, message) => {
           .catch((err) => message.channel.send(res));
       }
     }
-    // Required Roles
-    const reqRolesDoc = client.databaseCache.getDocument(
-      "requriedroles",
-      message.guild.id,
-    );
-    if (reqRolesDoc) {
-      const rolesRes = ValidateRoles(reqRolesDoc, message.member, command);
-      if (rolesRes) {
-        const res = client.defaultResponses.getValue("MISSING_ROLES", "", [
-          {
-            key: "ROLES",
-            replace: `**${rolesRes.roles}**`,
-          },
-          {
-            key: "COMMAND",
-            replace: command.name,
-          },
-        ]);
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((err) => message.channel.send(res));
-      }
-    }
-    // Developer only
-    if (command.devOnly && !client.developers.includes(message.author.id)) {
-      const res = client.defaultResponses.getValue("DEVELOPER_ONLY", "", [
-        {
-          key: "COMMAND",
-          replace: command.name,
-        },
-      ]);
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((err) => message.channel.send(res));
-    }
-    // Test Server only
-    if (command.testOnly && !client.testservers.includes(message.guild.id)) {
-      const res = client.defaultResponses.getValue("TEST_SERVER", "", [
-        {
-          key: "COMMAND",
-          replace: ProperCase(command.name),
-        },
-      ]);
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((err) => message.channel.send(res));
-    }
-    // Max args
-    if (command.maxArgs !== Infinity && args.length > command.maxArgs) {
-      const res = client.defaultResponses.getValue("TOO_MANY_ARGS", "", [
-        {
-          key: "USAGE",
-          replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
-        },
-      ]);
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((err) => message.channel.send(res));
-    }
-    // Min args
-    if (command.minArgs !== -1 && args.length < command.minArgs) {
-      const res = client.defaultResponses.getValue("TOO_FEW_ARGS", "", [
-        {
-          key: "USAGE",
-          replace: `\`${command.usage.replace(/{prefix}/gi, prefix)}\``,
-        },
-      ]);
-      return message.channel
-        .send("", { embed: client.error({ msg: message, data: res }) })
-        .catch((err) => message.channel.send(res));
-    }
-    // Global Cooldown
-    if (client.cooldowns.isOnCooldown(message.author, commandName, "global")) {
-      const remainingTime = client.cooldowns.getRemainingCooldown(
-        message.author,
-        commandName,
-        "global",
-      );
-      if (remainingTime !== undefined) {
-        const res = client.defaultResponses.getValue("GLOBAL_COOLDOWN", "", [
-          {
-            key: "COMMAND",
-            replace: ProperCase(command.name),
-          },
-          {
-            key: "COOLDOWN",
-            replace: FormatCooldown(remainingTime),
-          },
-        ]);
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((err) => message.channel.send(res));
-      }
-    }
-    // Cooldown
-    if (client.cooldowns.isOnCooldown(message.author, commandName, "local")) {
-      const remainingTime = client.cooldowns.getRemainingCooldown(
-        message.author,
-        commandName,
-        "local",
-      );
-      if (remainingTime !== undefined) {
-        const res = client.defaultResponses.getValue("USER_COOLDOWN", "", [
-          {
-            key: "COMMAND",
-            replace: command.name,
-          },
-          {
-            key: "COOLDOWN",
-            replace: FormatCooldown(remainingTime),
-          },
-        ]);
-        return message.channel
-          .send("", { embed: client.error({ msg: message, data: res }) })
-          .catch((err) => message.channel.send(res));
-      }
-    }
 
     client.cooldowns.setCooldown(
       message.author,
@@ -724,7 +607,7 @@ module.exports = new Event("message", async (client, message) => {
       new Date(Date.now() + command.cooldown),
       "local",
     );
-
-    return command.run({ message, args, client, prefix });
+    
+    return command.run({ message, args, client, prefix, language });
   }
 });
