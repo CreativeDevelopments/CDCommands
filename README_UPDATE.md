@@ -188,7 +188,7 @@ module.exports = new Command({
 });
 ```
 
-Replacing the above validate property with the one shown previously will now validate your command! Now if you don't provide your first argument as "test", you will get a response saying `args[0] was not equal to "test"`. You now must run your command as **?ping test** or **?pong test**.
+Replacing the validate property shown previously with the one shown above will now validate your command! Now if you don't provide your first argument as "test", you will get a response saying `args[0] was not equal to "test"`. You now must run your command as **?ping test** or **?pong test**.
 
 ### The validate function
 
