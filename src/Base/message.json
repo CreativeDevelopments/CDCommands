@@ -514,6 +514,50 @@
             "description": "Erfolgreich die Sprache von {USER_GUILD} zu {ISO_CODE} geupdatet."
           }
         }
+      },
+      "TICKET_COMMAND": {
+        "CLAIM_SETTING": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Die Einstellungen dieser Gilde haben das Beanspruchen bereits auf {ON_OFF} gesetzt. Falls du dies ändern möchtest wähle bitte eine andere Einstellung."
+          }
+        },
+        "INVALID_ARGUMENTS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
+          }
+        },
+        "INVALID_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Ich konnte keine Kategorie mit diesem Namen oder ID finden, bitte versuche es erneut!"
+          }
+        },
+        "INVALID_CATEGORY_TYPE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Der bereitgestellte Kategorie-Name bzw. -ID ist keine Kategorie. Bitte stelle sicher, dass du den Namen bzw. die ID einer **Kategorie** benutzt."
+          }
+        },
+        "MAX_TICKERTS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Die maximale Anzahl an Tickets, die ein Benutzer haben kann, ist bereits auf {MAX_NUMBER} gesetzt, bitte wähle eine neue Zahl aus."
+          }
+        },
+        "NOT_CONFIGURED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Diese Gilde hat noch keine Ticket-Einstellungen. Du kannst dies mit dem `{PREFIX}ticketconfig`-Befehl erledigen."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Erfolgreich {ACTION} von {UPDATE}"
+          }
+        }
       }
     },
   
