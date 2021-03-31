@@ -65,6 +65,8 @@ client.on("ready", () => {
     // Whether or not you want to make your own message event (default: false)
     customMessageEvent: false,
   });
+
+  console.log(`${client.user.username} has logged in!`);
 });
 
 client.login("BOT_TOKEN");
@@ -74,11 +76,12 @@ As long as you set everything up correctly, this should be all you technically n
 
 # Creating a Basic Command
 
-> Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encoutners. _Commands **must** be an instance of the Command class, or they will not be loaded._ <br>
+> Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encoutners. Note: _Commands **must** be an instance of the Command class, or they will not be loaded._ A bonus of using the class is that you get powerful intellisense both while setting up your command and while creating your "run" function!<br>
 
 To create a command, all you need is a new file in your commands dirrectory and the Commands class from the package, then all you need to do is export a new instance of the class and you're done! New command!
 
 ```js
+// ./commands/Ping.js
 const { Command } = require("cdcommands");
 
 module.exports = new Command();
@@ -92,6 +95,8 @@ The command class has many different properties that can help you get the most o
 We will also be requiring a new class from the module called "Validator", read on to learn more.
 
 ```js
+// ./commands/Ping.js
+
 const { Command, Validator } = require("cdcommands");
 
 module.exports = new Command({
@@ -174,6 +179,7 @@ The above command, when run using either **?ping** or **?pong**, should have the
 The "validate" property may be slightly confusing to new users, so we decided to explain it with its own section! The validate property will accept a class called "Validator", this class provides 3 functions that you can customize to your liking, _"validate", "onSuccess", and "onError"_, each performing their own actions. Out of the three, onSuccess is optional, and the other two are required for functionality.<br>
 
 ```js
+// ./commands/Ping.js
 const { Command, Validator } = require("cdcommands");
 
 module.exports = new Command({
@@ -226,6 +232,32 @@ The onSuccess function is optional, and will execute before the command is run l
 - `message: import("discord.js").Message`
 
 # Creating an Event
+
+To create a new event for your bot to listen to, all you need to do is create a new file in your events dirrectory, which in this case is "events", and import the class named "Event" from the module. After that, all you need to do is export a new instance of the class and there you have it! A new event file!
+
+```js
+// ./events/messageDelete.js
+const { Event } = require("cdcommands");
+
+module.exports = new Event();
+```
+
+Now, again, of course this event wont do anything for you, so we need to add a couple properties to the class. We are going to assign an event name, which is the same as assigning an event name in your regular `<Client>#on` listener, then we will also assign a callback function, which will have your client as `CDClient` as the first parameter, followed by the parameters that the regular listener has.
+
+> Note: Event files **must** use the Event class or else they will not be loaded. A bonus of using the class is that you get powerful intellisense as if you were using a regular client listener!
+
+```js
+// ./events/messageDelete.js
+const { Event } = require("cdcommands");
+
+module.exports = new Event("messageDelete", (client, message) => {
+  console.log(
+    `${client.user.username} saw ${message.author.username} delete ${message.content}`,
+  );
+});
+```
+
+The above event, once your bot logs in, should log a message along the lines of `Application Name saw User delete Test` every time a user that the bot has access to deletes a message from any channel the bot can see.
 
 # Creating a Feature
 
