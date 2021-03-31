@@ -268,7 +268,7 @@
         "NOT_CONFIGURED": {
           "embed": {
             "color": "#C93131",
-            "description": "This guild has not configured the ticket settings! You can do this with the \`{PREFIX}ticketconfig\` command!"
+            "description": "This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
           }
         },
         "SUCCESS": {
