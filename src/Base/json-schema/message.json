@@ -274,7 +274,7 @@
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["That command is already disabled."],
-              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable.",
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
