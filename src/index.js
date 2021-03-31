@@ -79,7 +79,7 @@ class CDCommands {
 
   /**
    * @private
-   * @type {["help", "command", "category", "language", "requiredroles", "setprefix"]}
+   * @type {(keyof {"help", "command", "category", "language", "requiredroles", "setprefix"})[]}
    */
   _disabledDefaultCommands;
 
@@ -94,7 +94,7 @@ class CDCommands {
    * featuresDir?: string;
    * testServers?: string[];
    * customMessageEvent?: boolean;
-   * disabledDefaultCommands?: ["help", "command", "category", "language", "requiredroles", "setprefix"];
+   * disabledDefaultCommands?: (keyof {"help", "command", "category", "language", "requiredroles", "setprefix"})[];
    * devs?: string[];
    * defaultPrefix: string;
    * mongoURI: string;
