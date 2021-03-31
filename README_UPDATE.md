@@ -15,6 +15,11 @@
       - [Validate](#the-validate-function)
       - [On Error](#the-onerror-function)
       - [On Success](#the-onsuccess-function)
+- [Creating an Event](#creating-an-event)
+- [Creating a Feature](#creating-a-feature)
+- [Default Responses](#default-responses)
+  - [Language Support](#language-support)
+- [Client Utils](#client-utils)
 
 # Installation
 
@@ -219,3 +224,13 @@ The onSuccess function is optional, and will execute before the command is run l
 **Parameter Types**
 
 - `message: import("discord.js").Message`
+
+# Creating an Event
+
+# Creating a Feature
+
+# Default Responses
+
+## Language Support
+
+# Client Utils
