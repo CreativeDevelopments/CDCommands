@@ -659,7 +659,7 @@
         "TOO_MANY_ARGS": {
           "type": ["string", "object"],
           "examples": [
-            "Ungültige Argumente [Zu wenige Argumente]; bitte benutze stattdessen {USAGE}."
+            "Ungültige Argumente [Zu viele Argumente]; bitte benutze stattdessen {USAGE}."
           ],
           "description": "\"{USAGE}\" represents the correct usage of the command",
           "properties": {
@@ -671,7 +671,7 @@
         "TOO_FEW_ARGS": {
           "type": ["string", "object"],
           "examples": [
-            "Ungültige Argumente [Zu viele Argumente]; bitte benutze stattdessen {USAGE}."
+            "Ungültige Argumente [Zu wenige Argumente]; bitte benutze stattdessen {USAGE}."
           ],
           "description": "\"{USAGE}\" represents the correct usage of the command",
           "properties": {
@@ -2663,7 +2663,7 @@
         }
       }
     },
-    "pt": {
+  "pt": {
       "type": "object",
       "properties": {
         "GUILD_ONLY": {
