@@ -14,7 +14,7 @@
         "GUILD_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} can only be used in a server."],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -24,7 +24,7 @@
         "DM_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} can only be used in my DMs."],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -34,7 +34,7 @@
         "NSFW_ONLY": {
           "type": ["string", "object"],
           "examples": ["This command is locked to NSFW channels only!"],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -70,7 +70,7 @@
           "examples": [
             "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
           ],
-          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions",
+          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -82,7 +82,7 @@
           "examples": [
             "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
           ],
-          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions",
+          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -94,7 +94,7 @@
           "examples": [
             "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
           ],
-          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used",
+          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -106,7 +106,7 @@
           "examples": [
             "You can't use {COMMAND}. It is locked to developers only."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -118,7 +118,7 @@
           "examples": [
             "{COMMAND} is locked to test servers only and this server is not one."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -130,7 +130,7 @@
           "examples": [
             "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "description": "\"{USAGE}\" represents the correct usage of the command.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -142,7 +142,7 @@
           "examples": [
             "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "description": "\"{USAGE}\" represents the correct usage of the command.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -154,7 +154,7 @@
           "examples": [
             "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -166,7 +166,7 @@
           "examples": [
             "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -179,7 +179,7 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["Invalid Arguments! Please use {USAGE} instead."],
-              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "description": "\"{USAGE}\" represents the correct usage of the command.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -189,7 +189,7 @@
             "NON_EXISTANT_CATEGORY": {
               "type": ["string", "object"],
               "examples": ["That category does not exist."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -199,7 +199,7 @@
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["That category is already enabled."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -209,7 +209,7 @@
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["That category is already disabled."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -219,7 +219,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["Successfully {ACTION} the {CATEGORY} category."],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -234,7 +234,7 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["Invalid Arguments! Please use {USAGE} instead."],
-              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "description": "\"{USAGE}\" represents the correct usage of the command.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -244,7 +244,7 @@
             "NON_EXISTANT_COMMAND": {
               "type": ["string", "object"],
               "examples": ["That command does not exist."],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -254,7 +254,7 @@
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["That command is already enabled."],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -264,7 +264,7 @@
             "NO_DISABLE": {
               "type": ["string", "object"],
               "examples": ["{COMMAND} can not be disabled"],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -274,7 +274,7 @@
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["That command is already disabled."],
-              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -284,7 +284,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["Successfully {ACTION} the {COMMAND} command."],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -301,7 +301,7 @@
               "examples": [
                 "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
               ],
-              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix",
+              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -326,7 +326,7 @@
             "INVALID_ROLE": {
               "type": ["string", "object"],
               "examples": ["Please provide a valid role to {ACTION}."],
-              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\"",
+              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\".",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -458,7 +458,7 @@
               "examples": [
                 "Invalid Arguments! Please use {USAGE} instead"
               ],
-              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "description": "\"{USAGE}\" represents the correct usage of the command.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -470,7 +470,7 @@
               "examples": [
                 "The max tickets a user can have is already set to {MAX_NUMBER}, please choose a new number to set."
               ],
-              "description": "\"{MAX_NUMBER}\" represents the max number of tickets a user can have",
+              "description": "\"{MAX_NUMBER}\" represents the max number of tickets a user can have.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -482,7 +482,7 @@
               "examples": [
                 "This guild's settings already have claiming set to {ON_OFF}. If you want to change this please choose a different setting."
               ],
-              "description": "\"{ON_OFF}\" represents the server's settings for claiming tickets",
+              "description": "\"{ON_OFF}\" represents the server's settings for claiming tickets.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -492,7 +492,7 @@
             "INVALID_CATEGORY": {
               "type": ["string", "object"],
               "examples": [
-                "I failed to find a category with that ID or name, please try again!"
+                "I failed to find a category with that ID or name, please try again!."
               ],
               "properties": {
                 "embed": {
@@ -516,7 +516,7 @@
               "examples": [
                 "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
               ],
-              "description": "\"{PREFIX}\" represents the server's prefix",
+              "description": "\"{PREFIX}\" represents the server's prefix.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -528,7 +528,7 @@
               "examples": [
                 "Successfully {ACTION} to {UPDATE}"
               ],
-              "description": "\"{ACTION}\" represents the action taken, \"{UPDATE}\" represents the setting that was updated.",
+              "description": "\"{ACTION}\" represents the action taken. \"{UPDATE}\" represents the setting that was updated.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -545,7 +545,7 @@
         "GUILD_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} kann nur in einem Server benutzt werden."],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -555,7 +555,7 @@
         "DM_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} kann nur in meinen PNs benutzt werden."],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -565,7 +565,7 @@
         "NSFW_ONLY": {
           "type": ["string", "object"],
           "examples": ["Dieser Befehl funktioniert nur in NSFW-Channels!"],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" represents the command that was used.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
