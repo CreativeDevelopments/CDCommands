@@ -514,7 +514,7 @@
             "NOT_CONFIGURED": {
               "type": ["string", "object"],
               "examples": [
-                "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+                "This guild has not configured the ticket settings! This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
               ],
               "description": "\"{PREFIX}\" represents the server's prefix.",
               "properties": {
@@ -1045,7 +1045,7 @@
             "NOT_CONFIGURED": {
               "type": ["string", "object"],
               "examples": [
-                "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+                "This guild has not configured the ticket settings! This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
               ],
               "description": "\"{PREFIX}\" represents the server's prefix",
               "properties": {
@@ -1576,7 +1576,7 @@
             "NOT_CONFIGURED": {
               "type": ["string", "object"],
               "examples": [
-                "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+                "This guild has not configured the ticket settings! This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
               ],
               "description": "\"{PREFIX}\" represents the server's prefix",
               "properties": {
@@ -2107,7 +2107,7 @@
             "NOT_CONFIGURED": {
               "type": ["string", "object"],
               "examples": [
-                "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+                "This guild has not configured the ticket settings! This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
               ],
               "description": "\"{PREFIX}\" represents the server's prefix",
               "properties": {
@@ -2638,7 +2638,7 @@
             "NOT_CONFIGURED": {
               "type": ["string", "object"],
               "examples": [
-                "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+                "This guild has not configured the ticket settings! This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
               ],
               "description": "\"{PREFIX}\" represents the server's prefix",
               "properties": {
@@ -3169,7 +3169,7 @@
             "NOT_CONFIGURED": {
               "type": ["string", "object"],
               "examples": [
-                "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+                "This guild has not configured the ticket settings! This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
               ],
               "description": "\"{PREFIX}\" represents the server's prefix",
               "properties": {
