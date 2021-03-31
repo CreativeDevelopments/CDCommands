@@ -586,6 +586,537 @@
           "description": "\"{ACTION}\" represents the action taken, \"{UPDATE}\" represents the setting that was updated."
         }
       }
+    },
+    "de": {
+      "type": "object",
+      "properties": {
+        "GUILD_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["{COMMAND} kann nur in einem Server benutzt werden."],
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DM_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["{COMMAND} kann nur in meinen PNs benutzt werden."],
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "NSFW_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["Dieser Befehl funktioniert nur in NSFW-Channels!"],
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DISABLED_COMMAND": {
+          "type": ["string", "object"],
+          "examples": [
+            "Der {COMMAND}-Befehl ist momentan auf diesem Server deaktiviert. Du kannst ihn nicht benutzen."
+          ],
+          "description": "\"{COMMAND}\" represents the command that is disabled",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DISABLED_CATEGORY": {
+          "type": ["string", "object"],
+          "examples": [
+            "Die {CATEGORY}-Kategorie ist momentan auf diesem Server deaktiviert. Du kannst Befehle dieser Kategorie nicht benutzen."
+          ],
+          "description": "\"{CATEGORY}\" represents the category that is disabled",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "MISSING_CLIENT_PERMISSION": {
+          "type": ["string", "object"],
+          "examples": [
+            "Halt Stopp! Mir fehlen {CLIENT_PERMISSIONS}-Berechtigungen! Bitte gib mir besagte Berechtigungen bevor du diesen Befehl benutzt!"
+          ],
+          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "MISSING_MEMBER_PERMISSION": {
+          "type": ["string", "object"],
+          "examples": [
+            "Halt Stopp! Dir fehlen {MEMBER_PERMISSIONS}-Berechtigungen! Bitte erhalte besagte Berechtigungen bevor du diesen Befehl benutzt!"
+          ],
+          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "MISSING_ROLES": {
+          "type": ["string", "object"],
+          "examples": [
+            "Sieht aus als fehlten dir {ROLES}! Stell sicher, dass du besagte Rollen hast, bevor du {COMMAND} benutzt."
+          ],
+          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DEVELOPER_ONLY": {
+          "type": ["string", "object"],
+          "examples": [
+            "Du kannst {COMMAND} nicht benutzen. Dieser ist nur für Entwickler bestimmt."
+          ],
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "TEST_SERVER": {
+          "type": ["string", "object"],
+          "examples": [
+            "{COMMAND} kann nur in Test-Servern benutzt werden, was dieser Server nicht ist."
+          ],
+          "description": "\"{COMMAND}\" represents the command that was used",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "TOO_MANY_ARGS": {
+          "type": ["string", "object"],
+          "examples": [
+            "Ungültige Argumente [Zu wenige Argumente]; bitte benutze stattdessen {USAGE}."
+          ],
+          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "TOO_FEW_ARGS": {
+          "type": ["string", "object"],
+          "examples": [
+            "Ungültige Argumente [Zu viele Argumente]; bitte benutze stattdessen {USAGE}."
+          ],
+          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "GLOBAL_COOLDOWN": {
+          "type": ["string", "object"],
+          "examples": [
+            "{COMMAND} befindet sich im Global Cooldown (Abklingzeit)! Bitte warte {COOLDOWN} bevor du ihn wieder benutzt."
+          ],
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "USER_COOLDOWN": {
+          "type": ["string", "object"],
+          "examples": [
+            "Du befindest dich im Cooldown (Abklingzeit)! Bitte warte {COOLDOWN}, bevor du {COMMAND} wieder benutzt."
+          ],
+          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "CATEGORY_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGS_ERROR": {
+              "type": ["string", "object"],
+              "examples": ["Ungültige Argumente! Bitte benutze stattdessen {USAGE}."],
+              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "NON_EXISTANT_CATEGORY": {
+              "type": ["string", "object"],
+              "examples": ["Ungültige Argumente! Bitte benutze stattdessen {USAGE}."],
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_ENABLED": {
+              "type": ["string", "object"],
+              "examples": ["Diese Kategorie ist bereits aktiviert."],
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_DISABLED": {
+              "type": ["string", "object"],
+              "examples": ["Diese Kategorie ist bereits deaktiviert."],
+              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": ["Erfolgreich die {CATEGORY}-Kategorie {ACTION}."],
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "COMMANDS_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGS_ERROR": {
+              "type": ["string", "object"],
+              "examples": ["Ungültige Argumente! Bitte benutze stattdessen {USAGE}."],
+              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "NON_EXISTANT_COMMAND": {
+              "type": ["string", "object"],
+              "examples": ["Dieser Befehl existiert nicht."],
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_ENABLED": {
+              "type": ["string", "object"],
+              "examples": ["Dieser Befehl ist bereits aktiviert."],
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "NO_DISABLE": {
+              "type": ["string", "object"],
+              "examples": ["{COMMAND} kann nicht deaktiviert werden."],
+              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_DISABLED": {
+              "type": ["string", "object"],
+              "examples": ["Dieser Befehl ist bereits deaktiviert."],
+              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": ["Erfolgreich den {COMMAND}-Befehl {ACTION}."],
+              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "HELP_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_COMMAND_CATEGORY": {
+              "type": ["string", "object"],
+              "examples": [
+                "{COMMAND_CATEGORY} ist kein gültiger Befehl bzw. Kategorie. Benutze {PREFIX}-Hilfe um alle Befehlskategorien zu sehen."
+              ],
+              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "ROLES_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGUMENTS": {
+              "type": ["string", "object"],
+              "examples": ["Ungültiges Argument! Bitte benutze stattdessen {USAGE}."],
+              "description": "\"{USAGE}\" represents the correct usage of the command.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "INVALID_ROLE": {
+              "type": ["string", "object"],
+              "examples": ["Bestimme bitte eine gültige Rolle für {ACTION}."],
+              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\"",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "INVALID_COMMAND": {
+              "type": ["string", "object"],
+              "examples": [
+                "Dieser Befehl existiert nicht. Bestimme bitte einen gültigen Befehl."
+              ],
+              "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_ADDED": {
+              "type": ["string", "object"],
+              "examples": [
+                "{ROLE} ist bereits Teil der Liste der erforderlichen Rollen von {COMMAND}."
+              ],
+              "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_REMOVED": {
+              "type": ["string", "object"],
+              "examples": [
+                "{ROLE} ist nicht Teil der Liste der erforderlichen Rollen von {COMMAND}."
+              ],
+              "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Erfolgreich {ROLE} zu/von der Liste der erforderlichen Rollen von {COMMAND} {ACTION}."
+              ],
+              "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "PREFIX_COMMAND": {
+          "type": "object",
+          "properties": {
+            "SAME_PREFIX": {
+              "type": ["string", "object"],
+              "examples": ["Bitte wähle einen **neuen** Präfix aus."],
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Erfolgreich den {GUILD_NAME}-Präfix zu {PREFIX} upgedatet."
+              ],
+              "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "LANGUAGE_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ISO_CODE": {
+              "type": ["string", "object"],
+              "examples": [
+                "Bitte wähle einen gültigen \"ISO 639-1\"-Code, `{ISO_CODE}` ist ungültig. Besuche [diese Seite](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes), um mehr zu erfahren."
+              ],
+              "description": "\"{ISO_CODE}\" represents the invalid ISO Code that was provided.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "UNPROVIDED_LANGUAGE": {
+              "type": ["string", "object"],
+              "examples": [
+                "**{ISO_CODE}** wird nicht vom Bot-Besitzer bereitgestellt, bitte wähle aus einem der folgenden: **{PROVIDED_CODES}**"
+              ],
+              "description": "\"{ISO_CODE}\" represents the language code that was attempted to be used. \"{PROVIDED_CODES}\" represents the language codes that the bot creator has translated to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Erfolgreich die Sprache von {USER_GUILD} zu {ISO_CODE} geupdatet."
+              ],
+              "description": "\"{USER_GUILD}\" represents either the user or guild that is updating the language. \"{ISO_CODE}\" represents the ISO Code that was updated to.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "TICKET_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGUMENTS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Invalid Arguments! Please use {USAGE} instead"
+              ],
+              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "MAX_TICKERTS": {
+              "type": ["string", "object"],
+              "examples": [
+                "The max tickets a user can have is already set to {MAX_NUMBER}, please choose a new number to set."
+              ],
+              "description": "\"{MAX_NUMBER}\" represents the max number of tickets a user can have",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "CLAIM_SETTING": {
+              "type": ["string", "object"],
+              "examples": [
+                "This guild's settings already have claiming set to {ON_OFF}. If you want to change this please choose a different setting."
+              ],
+              "description": "\"{ON_OFF}\" represents the server's settings for claiming tickets",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "INVALID_CATEGORY": {
+              "type": ["string", "object"],
+              "examples": [
+                "I failed to find a category with that ID or name, please try again!"
+              ],
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "INVALID_CATEGORY_TYPE": {
+              "type": ["string", "object"],
+              "examples": [
+                "The category ID or name provided is not a cateogry. Please make sure you are using the ID or name of a **category**!"
+              ],
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "NOT_CONFIGURED": {
+              "type": ["string", "object"],
+              "examples": [
+                "This guild has not configured the ticket settings! You can do this with {PREFIX}ticketconfig"
+              ],
+              "description": "\"{PREFIX}\" represents the server's prefix",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Successfully {ACTION} to {UPDATE}"
+              ],
+              "description": "\"{ACTION}\" represents the action taken, \"{UPDATE}\" represents the setting that was updated.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
