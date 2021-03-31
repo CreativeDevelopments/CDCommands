@@ -264,6 +264,15 @@ The above event, once your bot logs in, should log a message along the lines of 
 
 # Creating a Feature
 
+Features are quite simple, they are loaded and run one time before your bot starts, but after all your commands and events load in. As of now there is no way to re-run features after startup, but there may be sometime in the future. Creating a Feature is extremely simple, just like everything else so far. All you need to do is create a new file in your features dirrectory, in this case it will be "features". This file can have whatever name you like, and all you need to do is import the "Feature" class from the module, and export a new instance of the class.
+
+```js
+// ./features/file_name.js
+const { Feature } = require("cdcommands");
+
+module.exports = new Feature();
+```
+
 # Default Responses
 
 ## Language Support
