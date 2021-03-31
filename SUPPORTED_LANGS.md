@@ -7,3 +7,4 @@
 - Croatian :white_check_mark:
 - Turkish :x:
 - Hindi :white_check_mark:
+- Swedish :x:
