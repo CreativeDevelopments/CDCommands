@@ -2132,12 +2132,12 @@
         }
       }
     },
-    "en": {
+    "es": {
       "type": "object",
       "properties": {
         "GUILD_ONLY": {
           "type": ["string", "object"],
-          "examples": ["{COMMAND} can only be used in a server."],
+          "examples": ["{COMMAND} solo puede ser usado en un servidor."],
           "description": "\"{COMMAND}\" represents the command that was used",
           "properties": {
             "embed": {
@@ -2147,7 +2147,7 @@
         },
         "DM_ONLY": {
           "type": ["string", "object"],
-          "examples": ["{COMMAND} can only be used in my DMs."],
+          "examples": ["{COMMAND} solo puede ser usado en mensajes directos."],
           "description": "\"{COMMAND}\" represents the command that was used",
           "properties": {
             "embed": {
@@ -2157,7 +2157,7 @@
         },
         "NSFW_ONLY": {
           "type": ["string", "object"],
-          "examples": ["This command is locked to NSFW channels only!"],
+          "examples": ["Este comando solo funciona en canales NSFW!"],
           "description": "\"{COMMAND}\" represents the command that was used",
           "properties": {
             "embed": {
@@ -2168,7 +2168,7 @@
         "DISABLED_COMMAND": {
           "type": ["string", "object"],
           "examples": [
-            "The {COMMAND} command is currently disabled in this server. You can not use it."
+            "El comando {COMMAND} esta actualmente deshabilitado en este servidor. No puedes utilizarlo."
           ],
           "description": "\"{COMMAND}\" represents the command that is disabled",
           "properties": {
@@ -2180,7 +2180,7 @@
         "DISABLED_CATEGORY": {
           "type": ["string", "object"],
           "examples": [
-            "The {CATEGORY} category is currently disabled in this server. You can not use commands from this category."
+            "La categoria {CATEGORY} esta actualmente deshabilitada en este servidor. No puedes usar los comandos de esta categoria."
           ],
           "description": "\"{CATEGORY}\" represents the category that is disabled",
           "properties": {
@@ -2192,7 +2192,7 @@
         "MISSING_CLIENT_PERMISSION": {
           "type": ["string", "object"],
           "examples": [
-            "Woah there! I'm missing {CLIENT_PERMISSIONS} permissions! Please give me said permission before using that command!"
+            "Hey! Me faltan los permisos {CLIENT_PERMISSIONS}! Porfavor deme los permisos necesarios antes de usar este comando!"
           ],
           "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions",
           "properties": {
@@ -2204,7 +2204,7 @@
         "MISSING_MEMBER_PERMISSION": {
           "type": ["string", "object"],
           "examples": [
-            "Woah there! You're missing {MEMBER_PERMISSIONS} permissions! Please get said permission before using that command!"
+            "Hey! Te faltan los permisos {MEMBER_PERMISSIONS}! Porfavor obtenga los permisos necesarios antes de usar este comando!"
           ],
           "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions",
           "properties": {
@@ -2216,7 +2216,7 @@
         "MISSING_ROLES": {
           "type": ["string", "object"],
           "examples": [
-            "Looks like you're missing {ROLES}! Make sure you get said role(s) before using {COMMAND}."
+            "Parece que te faltan los roles {ROLES}! Asegurate de tener los role(s) antes de usar el comando {COMMAND}."
           ],
           "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used",
           "properties": {
@@ -2228,7 +2228,7 @@
         "DEVELOPER_ONLY": {
           "type": ["string", "object"],
           "examples": [
-            "You can't use {COMMAND}. It is locked to developers only."
+            "No puedes usar el comando {COMMAND}. El acceso esta restringido solo para los desarrolladores."
           ],
           "description": "\"{COMMAND}\" represents the command that was used",
           "properties": {
@@ -2240,7 +2240,7 @@
         "TEST_SERVER": {
           "type": ["string", "object"],
           "examples": [
-            "{COMMAND} is locked to test servers only and this server is not one."
+            "El comando {COMMAND} solo funciona en servidores de prueba y este no es uno."
           ],
           "description": "\"{COMMAND}\" represents the command that was used",
           "properties": {
@@ -2252,7 +2252,7 @@
         "TOO_MANY_ARGS": {
           "type": ["string", "object"],
           "examples": [
-            "Invalid Arguments [Too Many Arguments]; Please use {USAGE} instead"
+            "Argumentos invalidos [Muchos Argumentos]; Porfavor utilice {USAGE}."
           ],
           "description": "\"{USAGE}\" represents the correct usage of the command",
           "properties": {
@@ -2264,7 +2264,7 @@
         "TOO_FEW_ARGS": {
           "type": ["string", "object"],
           "examples": [
-            "Invalid Arguments [Too Few Arguments]; Please use {USAGE} instead"
+            "Argumentos invalidos [Pocos argumentos]; Porfavor utilice {USAGE}."
           ],
           "description": "\"{USAGE}\" represents the correct usage of the command",
           "properties": {
@@ -2276,7 +2276,7 @@
         "GLOBAL_COOLDOWN": {
           "type": ["string", "object"],
           "examples": [
-            "{COMMAND} is on global cooldown! Please wait {COOLDOWN} before using it again."
+            "El comando {COMMAND} esta en un cooldown global! Porfavor espere {COOLDOWN} antes de usar el comando {COMMAND} denuevo."
           ],
           "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
           "properties": {
@@ -2288,7 +2288,7 @@
         "USER_COOLDOWN": {
           "type": ["string", "object"],
           "examples": [
-            "You are on cooldown! Please wait {COOLDOWN} before using {COMMAND} again."
+            "Hey espera un poco! Porfavor espere {COOLDOWN} antes de usar el comando {COMMAND} denuevo."
           ],
           "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
           "properties": {
@@ -2302,7 +2302,7 @@
           "properties": {
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
-              "examples": ["Invalid Arguments! Please use {USAGE} instead."],
+              "examples": ["Argumentos invalidos! Porfavor utilice {USAGE}."],
               "description": "\"{USAGE}\" represents the correct usage of the command",
               "properties": {
                 "embed": {
@@ -2312,7 +2312,7 @@
             },
             "NON_EXISTANT_CATEGORY": {
               "type": ["string", "object"],
-              "examples": ["That category does not exist."],
+              "examples": ["Esa categoria no existe."],
               "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2322,7 +2322,7 @@
             },
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
-              "examples": ["That category is already enabled."],
+              "examples": ["Esa categoria ya estaba habilitada."],
               "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2332,7 +2332,7 @@
             },
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
-              "examples": ["That category is already disabled."],
+              "examples": ["Esa categoria ya estaba deshabilitada."],
               "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2342,7 +2342,7 @@
             },
             "SUCCESS": {
               "type": ["string", "object"],
-              "examples": ["Successfully {ACTION} the {CATEGORY} category."],
+              "examples": ["Se ha {ACTION} a la categoria {CATEGORY}."],
               "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2357,7 +2357,7 @@
           "properties": {
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
-              "examples": ["Invalid Arguments! Please use {USAGE} instead."],
+              "examples": ["Argumentos invalidos! Porfavor utilice {USAGE}."],
               "description": "\"{USAGE}\" represents the correct usage of the command",
               "properties": {
                 "embed": {
@@ -2367,7 +2367,7 @@
             },
             "NON_EXISTANT_COMMAND": {
               "type": ["string", "object"],
-              "examples": ["That command does not exist."],
+              "examples": ["Ese comando no existe."],
               "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2377,7 +2377,7 @@
             },
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
-              "examples": ["That command is already enabled."],
+              "examples": ["Ese comando ya estaba habilitado."],
               "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2387,7 +2387,7 @@
             },
             "NO_DISABLE": {
               "type": ["string", "object"],
-              "examples": ["{COMMAND} can not be disabled"],
+              "examples": ["El comando {COMMAND} no puede ser deshabilitado."],
               "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2397,7 +2397,7 @@
             },
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
-              "examples": ["That command is already disabled."],
+              "examples": ["Ese comando ya estaba deshabilitado."],
               "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2407,7 +2407,7 @@
             },
             "SUCCESS": {
               "type": ["string", "object"],
-              "examples": ["Successfully {ACTION} the {COMMAND} command."],
+              "examples": ["Se ha {ACTION} el comando {COMMAND}."],
               "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable",
               "properties": {
                 "embed": {
@@ -2423,7 +2423,7 @@
             "INVALID_COMMAND_CATEGORY": {
               "type": ["string", "object"],
               "examples": [
-                "{COMMAND_CATEGORY} is not a valid command or category. Use {PREFIX}help to view all command categories."
+                "{COMMAND_CATEGORY} no es un comando valido o categoria valida. Utilice {PREFIX}help para ver todas las categorias de comandos."
               ],
               "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix",
               "properties": {
@@ -2439,7 +2439,7 @@
           "properties": {
             "INVALID_ARGUMENTS": {
               "type": ["string", "object"],
-              "examples": ["Invalid Arguments! Please use {USAGE} instead."],
+              "examples": ["Argumentos invalidos! Porfavor utilice {USAGE}."],
               "description": "\"{USAGE}\" represents the correct usage of the command.",
               "properties": {
                 "embed": {
@@ -2449,7 +2449,7 @@
             },
             "INVALID_ROLE": {
               "type": ["string", "object"],
-              "examples": ["Please provide a valid role to {ACTION}."],
+              "examples": ["Porfavor de un rol valido para {ACTION}."],
               "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\"",
               "properties": {
                 "embed": {
@@ -2460,7 +2460,7 @@
             "INVALID_COMMAND": {
               "type": ["string", "object"],
               "examples": [
-                "That command does not exist. Please provide a valid command."
+                "Ese comando no existe. Porfavor de un comando valido."
               ],
               "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to.",
               "properties": {
@@ -2472,7 +2472,7 @@
             "ALREADY_ADDED": {
               "type": ["string", "object"],
               "examples": [
-                "{ROLE} is already on the required roles list of {COMMAND}"
+                "El rol {ROLE} ya estaba en la lista de roles requeridos para el comando {COMMAND}."
               ],
               "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to.",
               "properties": {
@@ -2484,7 +2484,7 @@
             "ALREADY_REMOVED": {
               "type": ["string", "object"],
               "examples": [
-                "{ROLE} is not on the required roles list for {COMMAND}"
+                "El rol {ROLE} no estaba en la lista de roles requeridos para el comando {COMMAND}."
               ],
               "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
               "properties": {
@@ -2496,7 +2496,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": [
-                "Successfully {ACTION} {ROLE} to/from the required roles list of {COMMAND}"
+                "Se ha {ACTION} el rol {ROLE} de la lista de roles requeridos del comando {COMMAND}."
               ],
               "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
               "properties": {
@@ -2512,7 +2512,7 @@
           "properties": {
             "SAME_PREFIX": {
               "type": ["string", "object"],
-              "examples": ["Please choose a **new** prefix to set."],
+              "examples": ["Porfavor escoja un **nuevo** prefijo."],
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -2522,7 +2522,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": [
-                "Successfully updated {GUILD_NAME}'s prefix to {PREFIX}"
+                "Se ha cambiado con exito el prefijo de {GUILD_NAME} a {PREFIX}."
               ],
               "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix.",
               "properties": {
@@ -2539,7 +2539,7 @@
             "INVALID_ISO_CODE": {
               "type": ["string", "object"],
               "examples": [
-                "Please provide a valid ISO 639-1 Code, `{ISO_CODE}` is invalid. Visit [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to learn more."
+                "Porfavor de un codigo ISO 639-1 valido, `{ISO_CODE}` es invalido. Visita [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) para aprender mas."
               ],
               "description": "\"{ISO_CODE}\" represents the invalid ISO Code that was provided.",
               "properties": {
@@ -2551,7 +2551,7 @@
             "UNPROVIDED_LANGUAGE": {
               "type": ["string", "object"],
               "examples": [
-                "The language **{ISO_CODE}** is not provided for by the bot owner, please select from one of the following: **{PROVIDED_CODES}**"
+                "**{ISO_CODE}** no esta implementado por el dueño del bot, Porfavor escoja uno de los siguientes codigos: **{PROVIDED_CODES}**"
               ],
               "description": "\"{ISO_CODE}\" represents the language code that was attempted to be used. \"{PROVIDED_CODES}\" represents the language codes that the bot creator has translated to.",
               "properties": {
@@ -2563,7 +2563,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": [
-                "Successfully updated {USER_GUILD}'s language to {ISO_CODE}"
+                "Se ha actualizado con exito el lenguaje de {USER_GUILD} a {ISO_CODE}."
               ],
               "description": "\"{USER_GUILD}\" represents either the user or guild that is updating the language. \"{ISO_CODE}\" represents the ISO Code that was updated to.",
               "properties": {
@@ -2663,7 +2663,7 @@
         }
       }
     },
-    "en": {
+    "pt": {
       "type": "object",
       "properties": {
         "GUILD_ONLY": {
