@@ -60,8 +60,8 @@ client.on("ready", () => {
     mongoURI: "URI_HERE",
     // How frequently the cache will update the database (default: 90 seconds)
     cacheUpdateSpeed: 60000 * 5,
-    // Whether or not you want to make your own help command (default: false)
-    customHelpCommand: false,
+    // What default commands you want to "disable" or not load (default: [])
+    disabledDefaultCommands: [],
     // Whether or not you want to make your own message event (default: false)
     customMessageEvent: false,
   });
@@ -77,6 +77,7 @@ As long as you set everything up correctly, this should be all you technically n
 # Creating a Basic Command
 
 > Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encoutners. Note: _Commands **must** be an instance of the Command class, or they will not be loaded._ A bonus of using the class is that you get powerful intellisense both while setting up your command and while creating your "run" function!<br>
+> Note: There are six commands that are loaded by default, and these can be picked to not load in the main class under the "disabledDefaultCommands" property. Although, this is not recommended as it will remove some of the bots basic functionality, unless of course, you want to make your own versions of the command. <br>
 
 To create a command, all you need is a new file in your commands dirrectory and the Commands class from the package, then all you need to do is export a new instance of the class and you're done! New command!
 
