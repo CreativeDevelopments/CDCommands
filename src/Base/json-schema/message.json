@@ -2227,6 +2227,451 @@
           }
         }
       }
+    },
+    
+    "pt": {
+      "type": "object",
+      "properties": {
+        "GUILD_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["{COMMAND} só pode ser utilizado num servidor específico."],
+          "description": "\"{COMMAND}\" representa o comando que foi utilixado.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DM_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["{COMMAND} só pode ser utilizado nos meus DMs."],
+          "description": "\"{COMMAND}\" representa o comando que foi utilixado.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "NSFW_ONLY": {
+          "type": ["string", "object"],
+          "examples": ["Este comando só pode ser utilizado em canais NSFW 🔞!"],
+          "description": "\"{COMMAND}\" representa o comando que foi utilixado.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DISABLED_COMMAND": {
+          "type": ["string", "object"],
+          "examples": [
+            "O comando {COMMAND} está desabilitado neste servidor. Não podes usá-lo aqui."
+          ],
+          "description": "\"{COMMAND}\" representa o comando que está desabilitado.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DISABLED_CATEGORY": {
+          "type": ["string", "object"],
+          "examples": [
+            "A categoria {CATEGORY} está desabilitada neste servidor. Não podes utilizar comandos desta categoria aqui."
+          ],
+          "description": "\"{CATEGORY\" representa a categoria que está desabilitada",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "MISSING_CLIENT_PERMISSION": {
+          "type": ["string", "object"],
+          "examples": [
+            "Woah! Eu não tenho {CLIENT_PERMISSIONS}! Dá-me essa permissão para poderes utilizar esse comando!"
+          ],
+          "description": "\"{CLIENT_PERMISSIONS}\" representa a falta de permissões do Client.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "MISSING_MEMBER_PERMISSION": {
+          "type": ["string", "object"],
+          "examples": [
+            "Woah! Tu precisas de {MEMBER_PERMISSIONS} para utilizar este comando!"
+          ],
+          "description": "\"{MEMBER_PERMISSIONS}\" representa a falta de permissões do membro.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "MISSING_ROLES": {
+          "type": ["string", "object"],
+          "examples": [
+            "Parece que precisas do cargo {ROLES} para utilizar o comando {COMMAND}."
+          ],
+          "description": "\"{ROLES}\" representa a falta de cargos necessários para a execução deste comando. \"{COMMAND}\" representa o comando que foi utilixado.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "DEVELOPER_ONLY": {
+          "type": ["string", "object"],
+          "examples": [
+            "O comando {COMMAND} só está disponível para os desenvolvedores deste bot."
+          ],
+          "description": "\"{COMMAND}\" representa o comando que foi utilixado.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "TEST_SERVER": {
+          "type": ["string", "object"],
+          "examples": [
+            "{COMMAND} só pode ser utilizado em servidores específicos."
+          ],
+          "description": "\"{COMMAND}\" representa o comando que foi utilixado.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "TOO_MANY_ARGS": {
+          "type": ["string", "object"],
+          "examples": [
+            "Syntaxe incorreta! Use {USAGE}"
+          ],
+          "description": "\"{USAGE}\" representa a utilização deste comando.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "TOO_FEW_ARGS": {
+          "type": ["string", "object"],
+          "examples": [
+            "Syntaxe incorreta! Use {USAGE}"
+          ],
+          "description": "\"{USAGE}\" representa a utilização deste comando.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "GLOBAL_COOLDOWN": {
+          "type": ["string", "object"],
+          "examples": [
+            "{COMMAND} está numa cooldown! Por favor espera {COOLDOWN} para executares este comando de novo."
+          ],
+          "description": "\"{COMMAND}\" representa o comando que foi utilixado. \"{COOLDOWN}\" representa o tempo restante da cooldown.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "USER_COOLDOWN": {
+          "type": ["string", "object"],
+          "examples": [
+            "Estás numa cooldown! Espera {COOLDOWN} para executares {COMMAND} de novo."
+          ],
+          "description": "\"{COMMAND}\" representa o comando que foi utilixado. \"{COOLDOWN}\" representa o tempo restante da cooldown.",
+          "properties": {
+            "embed": {
+              "$ref": "embed.json#/definitions/embed"
+            }
+          }
+        },
+        "CATEGORY_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGS_ERROR": {
+              "type": ["string", "object"],
+              "examples": ["Syntaxe incorreta! Use {USAGE}"],
+              "description": "\"{USAGE}\" representa a utilização deste comando.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "NON_EXISTANT_CATEGORY": {
+              "type": ["string", "object"],
+              "examples": ["Essa categoria não existe."],
+              "description": "\"{CATEGORY}\" representa a categoria que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_ENABLED": {
+              "type": ["string", "object"],
+              "examples": ["Esta categoria já estava ativada."],
+              "description": "\"{CATEGORY}\" representa a categoria que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_DISABLED": {
+              "type": ["string", "object"],
+              "examples": ["Esta categoria já estava desativada."],
+              "description": "\"{CATEGORY}\" representa a categoria que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": ["Sucesso! {ACTION} a categoria {CATEGORY}."],
+              "description": "\"{ACTION}\" representa uma ação, pode ser \"enabled\" (ativado) or \"disabled (desativado)\". \"{CATEGORY}\" representa a categoria que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "COMMANDS_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGS_ERROR": {
+              "type": ["string", "object"],
+              "examples": ["Syntaxe incorreta! Use {USAGE}."],
+              "description": "\"{USAGE}\" representa a utilização deste comando.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "NON_EXISTANT_COMMAND": {
+              "type": ["string", "object"],
+              "examples": ["Esse comando não existe."],
+              "description": "\"{COMMAND}\" representa o comando que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_ENABLED": {
+              "type": ["string", "object"],
+              "examples": ["Esse comando já estava ativado."],
+              "description": "\"{COMMAND}\" representa o comando que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "NO_DISABLE": {
+              "type": ["string", "object"],
+              "examples": ["{COMMAND} não pode ser desativado"],
+              "description": "\"{COMMAND}\" representa o comando que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_DISABLED": {
+              "type": ["string", "object"],
+              "examples": ["Esse comando já estava desativado."],
+              "description": "\"{COMMAND}\" representa o comando que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": ["Sucesso! {ACTION} o comando {COMMAND}."],
+              "description": "\"{ACTION}\" representa uma ação, pode ser \"enabled\" (ativado) or \"disabled (desativado)\". \"{COMMAND}\" representa o comando que o user tentou ativar ou desativar.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "HELP_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_COMMAND_CATEGORY": {
+              "type": ["string", "object"],
+              "examples": [
+                "{COMMAND_CATEGORY} não é um comando válido nem uma categoria válida. Use {PREFIX}help para ver todos os comandos de categoria."
+              ],
+              "description": "\"{COMMAND_CATEGORY}\" representa o comando/categoria que o user tentou visualizar. \"{PREFIX}\" representa o prefixo.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "ROLES_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ARGUMENTS": {
+              "type": ["string", "object"],
+              "examples": ["Syntaxe incorreta! Use {USAGE}."],
+              "description": "\"{USAGE}\" representa a utilização deste comando.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "INVALID_ROLE": {
+              "type": ["string", "object"],
+              "examples": ["Forneça um cargo válido para {ACTION}."],
+              "description": "\"{ACTION}\" representa a ação realizada no cargo, \"add\" or \"remove\".",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "INVALID_COMMAND": {
+              "type": ["string", "object"],
+              "examples": [
+                "Esse comando não existe."
+              ],
+              "description": "\"{COMMAND}\" representa o comando que foi tentado para ter os cargos necessários.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_ADDED": {
+              "type": ["string", "object"],
+              "examples": [
+                "{ROLE} já estava na lista de \"required roles\" para {COMMAND}"
+              ],
+              "description": "\"{ROLE}\" representa o cargo que foi adicionado à \"required roles list\". \"{COMMAND}\" representa o comando que foi tentado para ter os cargos necessários.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "ALREADY_REMOVED": {
+              "type": ["string", "object"],
+              "examples": [
+                "{ROLE} não está na lista de \"required roles\" para {COMMAND}"
+              ],
+              "description": "\"{ROLE}\" representa o cargo que foi removido da \"required roles list\". \"{COMMAND}\" representa o comando que foi tentado para remover os cargos necessários.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Sucesso! {ACTION} {ROLE} para a lista de \"required roles\" do comando {COMMAND}"
+              ],
+              "description": "\"{ACTION}\" representa a ação realizada no cargo, \"add\" or \"remove\". \"{ROLE}\" representa o cargo que foi removido da \"required roles list\". \"{COMMAND}\" representa o comando que foi tentado para remover os cargos necessários.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "PREFIX_COMMAND": {
+          "type": "object",
+          "properties": {
+            "SAME_PREFIX": {
+              "type": ["string", "object"],
+              "examples": ["Envia o **novo** prefixo."],
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "{GUILD_NAME} prefixo trocado para {PREFIX}"
+              ],
+              "description": "\"{GUILD_NAME}\" representa o nome do servidor. \"{PREFIX}\" representa o novo prefixo.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        },
+        "LANGUAGE_COMMAND": {
+          "type": "object",
+          "properties": {
+            "INVALID_ISO_CODE": {
+              "type": ["string", "object"],
+              "examples": [
+                "Envia um código ISO 639-1 válido, `{ISO_CODE}` é inválido. Mais informações [aqui](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)."
+              ],
+              "description": "\"{ISO_CODE}\" representa o código ISO inválido.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "UNPROVIDED_LANGUAGE": {
+              "type": ["string", "object"],
+              "examples": [
+                "**{ISO_CODE}** não foi especificado pelo dono do bot, seleciona uma: **{PROVIDED_CODES}**"
+              ],
+              "description": "\"{ISO_CODE}\" representa a linguagem que foi tentado para ser usado. \"{PROVIDED_CODES}\" representa o idioma que o desenvolvedor do bot traduziu.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            },
+            "SUCCESS": {
+              "type": ["string", "object"],
+              "examples": [
+                "Trocado {USER_GUILD} idioma para {ISO_CODE}"
+              ],
+              "description": "\"{USER_GUILD}\" representa o usuário ou o servidor que está a atualizar o idioma. \"{ISO_CODE}\" representa o código ISO que foi atualizado.",
+              "properties": {
+                "embed": {
+                  "$ref": "embed.json#/definitions/embed"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
