@@ -19,6 +19,9 @@
 - [Creating an Event](#creating-an-event)
 - [Creating a Feature](#creating-a-feature)
 - [Default Responses](#default-responses)
+  - [Fetching Values](#fetching-values)
+  - [Embeds](#embeds)
+  - [Replacers](#replacers)
   - [Language Support](#language-support)
 - [Client Utils](#client-utils)
 
@@ -80,7 +83,7 @@ As long as you set everything up correctly, this should be all you technically n
 > Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encoutners. Note: _Commands **must** be an instance of the Command class, or they will not be loaded._ A bonus of using the class is that you get powerful intellisense both while setting up your command and while creating your "run" function!<br>
 > Note: There are six commands that are loaded by default, and these can be picked to not load in the main class under the "disabledDefaultCommands" property. Although, this is not recommended as it will remove some of the bots basic functionality, unless of course, you want to make your own versions of the command. <br>
 
-To create a command, all you need is a new file in your commands dirrectory and the Commands class from the package, then all you need to do is export a new instance of the class and you're done! New command!
+To create a command, all you need is a new file in your commands directory and the Commands class from the package, then all you need to do is export a new instance of the class and you're done! New command!
 
 ```js
 // ./commands/Ping.js
@@ -239,7 +242,7 @@ The onSuccess function is optional, and will execute before the command is run l
 
 # Creating an Event
 
-To create a new event for your bot to listen to, all you need to do is create a new file in your events dirrectory, which in this case is "events", and import the class named "Event" from the module. After that, all you need to do is export a new instance of the class and there you have it! A new event file!
+To create a new event for your bot to listen to, all you need to do is create a new file in your events directory, which in this case is "events", and import the class named "Event" from the module. After that, all you need to do is export a new instance of the class and there you have it! A new event file!
 
 ```js
 // ./events/messageDelete.js
@@ -269,7 +272,7 @@ The above event, once your bot logs in, should log a message along the lines of 
 
 # Creating a Feature
 
-Features are quite simple, they are loaded and run one time before your bot starts, but after all your commands and events load in. As of now there is no way to re-run features after startup, but there may be sometime in the future. Creating a Feature is extremely simple, just like everything else so far. All you need to do is create a new file in your features dirrectory, in this case it will be "features". This file can have whatever name you like, and all you need to do is import the "Feature" class from the module, and export a new instance of the class.
+Features are quite simple, they are loaded and run one time before your bot starts, but after all your commands and events load in. As of now there is no way to re-run features after startup, but there may be sometime in the future. Creating a Feature is extremely simple, just like everything else so far. All you need to do is create a new file in your features directory, in this case it will be "features". This file can have whatever name you like, and all you need to do is import the "Feature" class from the module, and export a new instance of the class.
 
 ```js
 // ./features/file_name.js
@@ -296,6 +299,156 @@ The above feature is extremely basic, and doesn't really do much for you in term
 > Note: Features will not be run if they are not created with the "Feature" class.
 
 # Default Responses
+
+At this point, you should have a very basic, barebones bot up and running, and the first time you started your bot, you should have noticed something that was console logged that said something along the lines of `[Success] .vscode/settings.json has been initialized, you can now use intellisense with your message.json file!`. All this message is saying is that now that your project has been run, the handler has had a chance to initialize your ability to use intellisense with any message.json file that you create in your project directory.
+
+## What does a message.json file do?
+
+Your message.json file is completely optional, as one is used by default in the module folder, but it allows you to create your own responses for commands that can be fetched throughout your code. These responses can be whatever you wish, and if you don't want to make your own responses, you can either exclude the "MessageJSONPath" property from the CDCommands class, or get the default message.json file from [here](Put-ghlink-here). This file will include all of the defaul command responses and any permission check responses that are triggered in the message event.
+
+## Fetching Values
+
+To fetch these responses in your code, a convenient property has been added to your client object, the "defaultResponses" property. This property only has one method, which consists of **defaultResponses#getValue**. For the example below, say we setup a new message.json file with extra properties as follows...
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "TEST_COMMAND": "This is a response from the message.json file!"
+  }
+}
+```
+
+To fetch this value from our code inside of a command, all we need to do is call the getValue method with the appropriate information. For now we can ignore the ISO codes, as we will talk more about them in [Language Support](#language-support). For this example we will just continue to use the Ping.js command we made earlier.
+
+```js
+// ./commands/Ping.js
+const { Command, Validator } = require("cdcommands");
+
+module.exports = new Command({
+  ...commandOptions,
+  run: ({ message, args, client, prefix, language }) => {
+    const message_json_response = client.defaultResponses.getValue(
+      "en",
+      "TEST_COMMAND",
+      "",
+      [],
+    );
+    return message.channel.send(message_json_response);
+  },
+});
+```
+
+The above code, when run with **?ping** or **?pong**, should respond with the content as `This is a response from the message.json file!`, meaning it successfully read from your message.json file! But you may be asking, what is that extra empty string doing there? What is that empty array there for? What is "en" doing there? Don't worry, these will all be answered, for now we can focus on the second empty string. Why is it there? This secondary string, or key in the context of the message.json file, will read values inside of an object in the message.json file. With this, you have the ability to setup responses under a main category of responses. To do this, all you need to change is the "TEST_COMMAND" property in your message.json file to an object. In this example we will add two values to the object.
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "TEST_COMMAND": {
+      "TEST_VALUE_ONE": "This is the first test value under \"TEST_COMMAND\"",
+      "TEST_VALUE_TWO": "This is the second test value under \"TEST_COMMAND\""
+    }
+  }
+}
+```
+
+To access the two values in TEST_COMMAND now, we will use an almost identical format for the getValue method, only adding one extra value in the place of where the extra string was.
+
+```js
+// ./commands/Ping.js
+const { Command, Validator } = require("cdcommands");
+
+module.exports = new Command({
+  ...commandOptions,
+  run: ({ message, args, client, prefix, language }) => {
+    const json_response_v_one = client.defaultResponses.getValue(
+      "en",
+      "TEST_COMMAND",
+      "TEST_VALUE_ONE",
+      [],
+    );
+    const json_response_v_two = client.defaultResponses.getValue(
+      "en",
+      "TEST_COMMAND",
+      "TEST_VALUE_TWO",
+      [],
+    );
+
+    message.channel.send(json_response_v_one);
+    message.channel.send(json_response_v_two);
+  },
+});
+```
+
+The above code snippet should respond with first the message `This is the first test value under "TEST_COMMAND"` then the message `This is the second test value under "TEST_COMMAND"`. The first string acts as the language that you want to look into in your message.json file, which you can find more information for under [Language Support](#language-support), the second string is the first key that you are getting values by, then depending on if the value recieved by the first key is an object or a string, the second key will either be the next property you want to get or an empty string respectively, as shown in the last two examples. The last value can either be an object or an array of objects, which will act as your replacers. More information on replacers can be found under [Replacers](#replacers).
+
+## Embeds
+
+The next concept that we would like to cover about your message.json file, is adding embeds directly in your file. To do this, it should be quite simple if you have run your project at least once to allow intellisense in the file to be setup, but we shall give you an example of adding embeds to your file. To do so, we need to set the value as an object, and add the property of "embed", and set its value to an object. For this example we will use the same initial value as above.
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "TEST_COMMAND": {
+      "embed": {}
+    }
+  }
+}
+```
+
+If you were to leave the value as an empty object, then you would get an empty embed in return when getting this value. To actually add values, we need to add actual message embed properties to the object. We will provide a simple example for every property.
+
+> Note: All properties supported in the embed consist of "author", "color", "description", "fields", "footer", "image", "thumbnail", "timestamp", "title", and "url".
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "TEST_COMMAND": {
+      "embed": {
+        "author": {
+          "name": "Author Name",
+          "iconURL": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "color": "RED",
+        "description": "This is an embed description from message.json",
+        "fields": [
+          // Supports from 1 to 25 fields inclusive
+          {
+            "name": "Field Name",
+            "value": "Field Value",
+            "inline": false
+          }
+        ],
+        "footer": {
+          "text": "This is the footer text",
+          "iconURL": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "image": {
+          "url": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "thumbnail": {
+          "url": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "timestamp": 343245323523,
+        "title": "This is a title that goes to google.com",
+        "url": "https://www.google.com"
+      }
+    }
+  }
+}
+```
+
+The above snippet from your message.json file should return a message similar to the one shown in this image <br>
+![](./images/embed.png)
+
+## Replacers
 
 - TODO: Add information about default message.json responses, how to get the default message.json file, how to configure your own, how to fetch responses, embed support in message.json, setting up embeds in message.json, replacers and how they work, difference between replacers in embeds and strings, general discussion
 
