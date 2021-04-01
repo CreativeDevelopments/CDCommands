@@ -273,6 +273,23 @@ const { Feature } = require("cdcommands");
 module.exports = new Feature();
 ```
 
+Just like with your commands and your events, a feature set up in this way will do nothing for you. All we need to do to set it up is add a single callback function as a parameter in the class. This callback function will have a single parameter in it, which will be the client as CDClient.
+
+```js
+// ./features/file_name.js
+const { Feature } = require("cdcommands");
+
+module.exports = new Feature((client) => {
+  console.log(
+    `This is ${client.user.username} from "./features/file_name.js"!`,
+  );
+});
+```
+
+The above feature is extremely basic, and doesn't really do much for you in terms of functionallity, but it should log something along the lines of `This is Application Name from "./features/file_name.js"!` in your console. You can do whatever you want in this file, and it will be run along with your bot starting up. You can add your own listeners here, although we would recommend using an Event instead, or you could start an Interval for updating mutes in your servers.
+
+> Note: Features will not be run if they are not created with the "Feature" class.
+
 # Default Responses
 
 ## Language Support
