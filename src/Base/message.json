@@ -235,6 +235,7 @@
         }
       }
     },
+    
     "de": {
       "GUILD_ONLY": {
         "embed": {
@@ -1182,5 +1183,242 @@
             }
           }
         }
-     }
+     },
+
+     "pt": {
+      "GUILD_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} só pode ser utilizado num servidor específico."
+        }
+      },
+      "DM_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} só pode ser utilizado nos meus DMs."
+        }
+      },
+      "NSFW_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Este comando só pode ser utilizado em canais NSFW 🔞! "
+        }
+      },
+      "DISABLED_COMMAND": {
+        "embed": {
+          "color": "#C93131",
+          "description": "O comando {COMMAND} está desabilitado neste servidor. Não podes usá-lo aqui."
+        }
+      },
+      "DISABLED_CATEGORY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "A categoria {CATEGORY} está desabilitada neste servidor. Não podes utilizar comandos desta categoria aqui."
+        }
+      },
+      "MISSING_CLIENT_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Woah! Eu não tenho {CLIENT_PERMISSIONS}! Dá-me essa permissão para poderes utilizar esse comando!"
+        }
+      },
+      "MISSING_MEMBER_PERMISSION": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Woah! Tu precisas de {MEMBER_PERMISSIONS} para utilizar este comando!"
+        }
+      },
+      "MISSING_ROLES": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Parece que precisas do cargo {ROLES} para utilizar o comando {COMMAND}."
+        }
+      },
+      "DEVELOPER_ONLY": {
+        "embed": {
+          "color": "#C93131",
+          "description": "O comando {COMMAND} só está disponível para os desenvolvedores deste bot."
+        }
+      },
+      "TEST_SERVER": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} só pode ser utilizado em servidores específicos."
+        }
+      },
+      "TOO_FEW_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Syntaxe incorreta! Use {USAGE}"
+        }
+      },
+      "TOO_MANY_ARGS": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Syntaxe incorreta! Use {USAGE}"
+        }
+      },
+      "GLOBAL_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "{COMMAND} está numa cooldown! Por favor espera {COOLDOWN} para executares este comando de novo."
+        }
+      },
+      "USER_COOLDOWN": {
+        "embed": {
+          "color": "#C93131",
+          "description": "Estás numa cooldown! Espera {COOLDOWN} para executares {COMMAND} de novo."
+        }
+      },
+      "CATEGORY_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Esta categoria já estava desativada."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Esta categoria já estava ativada."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Syntaxe incorreta! Use {USAGE}"
+          }
+        },
+        "NON_EXISTANT_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Essa categoria não existe."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Sucesso! {ACTION} a categoria {CATEGORY}."
+          }
+        }
+      },
+      "COMMANDS_COMMAND": {
+        "ALREADY_DISABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Esse comando já estava desativado."
+          }
+        },
+        "ALREADY_ENABLED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Esse comando já estava ativado."
+          }
+        },
+        "INVALID_ARGS_ERROR": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Syntaxe incorreta! Use {USAGE}."
+          }
+        },
+        "NO_DISABLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND} não pode ser desativado"
+          }
+        },
+        "NON_EXISTANT_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Esse comando não existe."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Sucesso! {ACTION} o comando {COMMAND}."
+          }
+        }
+      },
+      "HELP_COMMAND": {
+        "INVALID_COMMAND_CATEGORY": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{COMMAND_CATEGORY} não é um comando válido nem uma categoria válida. Use {PREFIX}help para ver todos os comandos de categoria."
+          }
+        }
+      },
+      "PREFIX_COMMAND": {
+        "SAME_PREFIX": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Envia o **novo** prefixo."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "{GUILD_NAME} prefixo trocado para {PREFIX}"
+          }
+        }
+      },
+      "ROLES_COMMAND": {
+        "ALREADY_ADDED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} já estava na lista de \"required roles\" para {COMMAND}"
+          }
+        },
+        "ALREADY_REMOVED": {
+          "embed": {
+            "color": "#C93131",
+            "description": "{ROLE} não está na lista de \"required roles\" para {COMMAND}"
+          }
+        },
+        "INVALID_ARGUMENTS": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Syntaxe incorreta! Use {USAGE}."
+          }
+        },
+        "INVALID_COMMAND": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Esse comando não existe."
+          }
+        },
+        "INVALID_ROLE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Forneça um cargo válido para {ACTION}."
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Sucesso! {ACTION} {ROLE} para a lista de \"required roles\" do comando {COMMAND}"
+          }
+        }
+      },
+      "LANGUAGE_COMMAND": {
+        "INVALID_ISO_CODE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "Envia um código ISO 639-1 válido, `{ISO_CODE}` é inválido. Mais informações [aqui](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)."
+          }
+        },
+        "UNPROVIDED_LANGUAGE": {
+          "embed": {
+            "color": "#C93131",
+            "description": "**{ISO_CODE}** não foi especificado pelo dono do bot, seleciona uma: **{PROVIDED_CODES}**"
+          }
+        },
+        "SUCCESS": {
+          "embed": {
+            "color": "#2FDD2C",
+            "description": "Trocado {USER_GUILD} idioma para {ISO_CODE}"
+          }
+        }
+      }
+    }
   }
