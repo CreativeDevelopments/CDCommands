@@ -22,6 +22,8 @@
   - [Fetching Values](#fetching-values)
   - [Embeds](#embeds)
   - [Replacers](#replacers)
+    - [String Replacers](#string-replacers)
+    - [Embed Replacers](#embed-replacers)
   - [Language Support](#language-support)
 - [Client Utils](#client-utils)
 
@@ -334,7 +336,8 @@ module.exports = new Command({
       "TEST_COMMAND",
       "",
       [],
-    );
+    ); // In this example, getValue will return a string.
+    // getValue can also return a MessageEmbed more information in Embeds.
     return message.channel.send(message_json_response);
   },
 });
@@ -404,6 +407,7 @@ The next concept that we would like to cover about your message.json file, is ad
 If you were to leave the value as an empty object, then you would get an empty embed in return when getting this value. To actually add values, we need to add actual message embed properties to the object. We will provide a simple example for every property.
 
 > Note: All properties supported in the embed consist of "author", "color", "description", "fields", "footer", "image", "thumbnail", "timestamp", "title", and "url".
+> Important: The "fields" value will only support from 1 to 25 field objects.
 
 ```json
 // ./message.json
@@ -419,7 +423,6 @@ If you were to leave the value as an empty object, then you would get an empty e
         "color": "RED",
         "description": "This is an embed description from message.json",
         "fields": [
-          // Supports from 1 to 25 fields inclusive
           {
             "name": "Field Name",
             "value": "Field Value",
@@ -445,12 +448,192 @@ If you were to leave the value as an empty object, then you would get an empty e
 }
 ```
 
-The above snippet from your message.json file should return a message similar to the one shown in this image <br>
+To fetch this data from your message.json file, you would need to use the same method as shown first, except for the fact that the [replacer parameter](#replacers) will need to be an object instead of an array of objects. More information in [Replacers](#replacers).
+
+```js
+// ./commands/Ping.js
+const { Command, Validator } = require("cdcommands");
+
+module.exports = new Command({
+  ...commandOptions,
+  run: ({ message, args, client, prefix, language }) => {
+    const message_json_response = client.defaultResponses.getValue(
+      "en",
+      "TEST_COMMAND",
+      "",
+      {},
+    ); // getValue will now return a MessageEmbed, so you will need to handle it correctly
+    // depending on how you have your message.json file setup
+    return message.channel.send({ embed: message_json_response });
+  },
+});
+```
+
+The above snippet should return a message similar to the one shown in this image. <br>
 ![](./images/embed.png)
 
 ## Replacers
 
-- TODO: Add information about default message.json responses, how to get the default message.json file, how to configure your own, how to fetch responses, embed support in message.json, setting up embeds in message.json, replacers and how they work, difference between replacers in embeds and strings, general discussion
+The final thing we need to cover in the getValue method provided by the defaultResponses is the replacers parameter. This parameter can be either an array of objects or an object with embed values in them. We will provide two examples, one of each, to provide as much information as possible. Replacers in your message.json file are identified by brackets. Any value inbetween `{}` will be treated as a replacer. In general, replacers are only needed if you have a dynamic value that will change from time to time, say if a different user uses the command, or you want to provide a random response.
+
+### String Replacers
+
+If the value fetched in the getValue method is a string, you should use an array to list the replacers you want to use. Say we have the message.json key value pair below. The replacer in the example will be `REPLACER`.
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "SOME_VALUE": "This is a replacer value from message.json. Replace here -> {REPLACER}"
+  }
+}
+```
+
+We can go ahead and fetch this value just like before, but instead of leaving an empty array as the last parameter, we can fill it out with the information needed to replace the value with a different value.
+
+```js
+// ./commands/Ping.js
+const { Command, Validator } = require("cdcommands");
+
+module.exports = new Command({
+  ...commandOptions,
+  run: ({ message, args, client, prefix, language }) => {
+    const message_json_response = client.defaultResponses.getValue(
+      "en",
+      "SOME_VALUE",
+      "",
+      [
+        {
+          key: "REPLACER",
+          replace: "This is the replaced value!",
+        },
+      ],
+    );
+    return message.channel.send(message_json_response);
+  },
+});
+```
+
+The above snippet of code should respond with something along the lines of `This is a replacer value from message.json. Replace here -> This is the replaced value!`. You are allowed to include as many replacers as needed, but usually only one is needed. There are some provided replacers that intellisense will try to recommend to you, none of them are required to be used, you can use whatever replacer value you want to.
+
+### Embed Replacers
+
+Embed replacers are slightly different as you need to provide replacers for every value that you have replacers setup in the embed in your message.json. The parameter if the message.json value is an embed will instead be an object instead of an array of objects. For the example below we will need to add a replacer for all the text values.
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "SOME_VALUE": {
+      "embed": {
+        "author": {
+          "name": "{AUTHOR_REPLACER}",
+          "iconURL": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "color": "{COLOR_DYNAMIC}",
+        "description": "This is an embed description from message.json, {REPLACE_ME}",
+        "fields": [
+          {
+            "name": "{DYNAMIC_FIELD_NAME}",
+            "value": "This is a test! {VALUE}",
+            "inline": false
+          }
+        ],
+        "footer": {
+          "text": "This is the footer text! {EXTRA_TEXT}",
+          "iconURL": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "image": {
+          "url": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "thumbnail": {
+          "url": "https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+        },
+        "timestamp": 343245323523,
+        "title": "This is a title that goes to google.com, {MORE_TITLE}",
+        "url": "https://www.google.com"
+      }
+    }
+  }
+}
+```
+
+```js
+// ./commands/Ping.js
+const { Command, Validator } = require("cdcommands");
+
+module.exports = new Command({
+  ...commandOptions,
+  run: ({ message, args, client, prefix, language }) => {
+    const message_json_response = client.defaultResponses.getValue(
+      "en",
+      "SOME_VALUE",
+      "",
+      {
+        author_name: [
+          {
+            key: "AUTHOR_REPLACER",
+            replace: message.author.username,
+          },
+        ],
+        color: [
+          {
+            key: "COLOR_DYNAMIC",
+            replace: "#FFFFFF",
+          },
+        ],
+        description: [
+          {
+            key: "REPLACE_ME",
+            replace: "I have been replaced!",
+          },
+        ],
+        fields: [
+          /* The fields array is slightly different from the rest
+             as it has you use replacers for each value of each field
+             for name, value, and inline (none of which are "required").
+            */
+          {
+            name: [
+              {
+                key: "DYNAMIC_FIELD_NAME",
+                replace: "Some dynamic value!",
+              },
+            ],
+            value: [
+              {
+                key: "VALUE",
+                replace: "Hey!",
+              },
+            ],
+          },
+        ],
+        footer_text: [
+          {
+            key: "EXTRA_TEXT",
+            replace: "This is extra text",
+          },
+        ],
+        title: [
+          {
+            key: "MORE_TITLE",
+            replace: "This is more title",
+          },
+        ],
+      },
+    );
+    return message.channel.send({ embed: message_json_response });
+  },
+});
+```
+
+As you can see from the above code, replacing values in every single field can get extremely space inefficient, so for that reason, it isn't recommended unless you need to do so. The option is just there if you need to use it. Using this feature would also be more efficient if you had dynamic values that needed to be different on every single run, so you could replace part of the message to the updated value. Now, if you were to run the above snippet of code, you should see a new embed that is sent that somewhat resembles the image below. <br>
+![](./images/embed_2.png)
+<br>
+
+> Note: In general, this feature is only recommended to be used if you want to use multiple languages for your bot, more information [here](#language-support), or you need a dynamic value that also has constant text in it.
 
 ## Language Support
 
