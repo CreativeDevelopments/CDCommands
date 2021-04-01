@@ -304,7 +304,7 @@ At this point, you should have a very basic, barebones bot up and running, and t
 
 ## What does a message.json file do?
 
-Your message.json file is completely optional, as one is used by default in the module folder, but it allows you to create your own responses for commands that can be fetched throughout your code. These responses can be whatever you wish, and if you don't want to make your own responses, you can either exclude the "MessageJSONPath" property from the CDCommands class, or get the default message.json file from [here](Put-ghlink-here). This file will include all of the default command responses and any permission check responses that are triggered in the message event.
+Your message.json file is completely optional, as one is used by default in the module folder, but it allows you to create your own responses for commands that can be fetched throughout your code. These responses can be whatever you wish, and if you don't want to make your own responses, you can either exclude the "MessageJSONPath" property from the CDCommands class, or get the default message.json file from [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/message.json). This file will include all of the default command responses and any permission check responses that are triggered in the message event.
 
 ## Fetching Values
 
