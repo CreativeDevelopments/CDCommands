@@ -15,6 +15,7 @@
       - [Validate](#the-validate-function)
       - [On Error](#the-onerror-function)
       - [On Success](#the-onsuccess-function)
+  - [Default Commands](#default-commands)
 - [Creating an Event](#creating-an-event)
 - [Creating a Feature](#creating-a-feature)
 - [Default Responses](#default-responses)
@@ -232,6 +233,10 @@ The onSuccess function is optional, and will execute before the command is run l
 
 - `message: import("discord.js").Message`
 
+## Default Commands
+
+- TODO: Add discussion about default cmds, help, setprefix, language, requiredroles, commands, categories
+
 # Creating an Event
 
 To create a new event for your bot to listen to, all you need to do is create a new file in your events dirrectory, which in this case is "events", and import the class named "Event" from the module. After that, all you need to do is export a new instance of the class and there you have it! A new event file!
@@ -292,6 +297,14 @@ The above feature is extremely basic, and doesn't really do much for you in term
 
 # Default Responses
 
+- TODO: Add information about default message.json responses, how to get the default message.json file, how to configure your own, how to fetch responses, embed support in message.json, setting up embeds in message.json, replacers and how they work, difference between replacers in embeds and strings, general discussion
+
 ## Language Support
 
+- TODO: Information about adding new languages to your message.json file. Discussion about what languages are already supported in the default message.json file.
+
 # Client Utils
+
+- TODO: Different utils that the CDClient object has that you can use, "getLanguage", "databaseCache", "defaultResponses". All the different embed options, load, error, success, info + all the console log types, logReady, logInfo, logError, logWarn, logDatabase.
+
+##
