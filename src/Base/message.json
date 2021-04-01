@@ -233,53 +233,8 @@
             "description": "Successfully updated {USER_GUILD}'s language to {ISO_CODE}"
           }
         }
-      },
-      "TICKET_COMMAND": {
-        "CLAIM_SETTING": {
-          "embed": {
-            "color": "#C93131",
-            "description": "This guild's settings already have claiming set to {ON_OFF}. If you want to change this please choose a different setting."
-          }
-        },
-        "INVALID_ARGUMENTS": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Invalid Arguments! Please use {USAGE} instead"
-          }
-        },
-        "INVALID_CATEGORY": {
-          "embed": {
-            "color": "#C93131",
-            "description": "I failed to find a category with that ID or name, please try again!"
-          }
-        },
-        "INVALID_CATEGORY_TYPE": {
-          "embed": {
-            "color": "#C93131",
-            "description": "The category ID or name provided is not a cateogry. Please make sure you are using the ID or name of a **category**!"
-          }
-        },
-        "MAX_TICKERTS": {
-          "embed": {
-            "color": "#C93131",
-            "description": "The max tickets a user can have is already set to {MAX_NUMBER}, please choose a new number to set."
-          }
-        },
-        "NOT_CONFIGURED": {
-          "embed": {
-            "color": "#C93131",
-            "description": "This guild has not configured the ticket settings! You can do this with the `{PREFIX}ticketconfig` command!"
-          }
-        },
-        "SUCCESS": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Successfully {ACTION} to {UPDATE}"
-          }
-        }
       }
     },
-  
     "de": {
       "GUILD_ONLY": {
         "embed": {
@@ -512,50 +467,6 @@
           "embed": {
             "color": "#2FDD2C",
             "description": "Erfolgreich die Sprache von {USER_GUILD} zu {ISO_CODE} geupdatet."
-          }
-        }
-      },
-      "TICKET_COMMAND": {
-        "CLAIM_SETTING": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Die Einstellungen dieser Gilde haben das Beanspruchen bereits auf {ON_OFF} gesetzt. Falls du dies ändern möchtest wähle bitte eine andere Einstellung."
-          }
-        },
-        "INVALID_ARGUMENTS": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Ungültige Argumente! Bitte benutze stattdessen {USAGE}."
-          }
-        },
-        "INVALID_CATEGORY": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Ich konnte keine Kategorie mit diesem Namen oder ID finden, bitte versuche es erneut!"
-          }
-        },
-        "INVALID_CATEGORY_TYPE": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Der bereitgestellte Kategorie-Name bzw. -ID ist keine Kategorie. Bitte stelle sicher, dass du den Namen bzw. die ID einer **Kategorie** benutzt."
-          }
-        },
-        "MAX_TICKERTS": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Die maximale Anzahl an Tickets, die ein Benutzer haben kann, ist bereits auf {MAX_NUMBER} gesetzt, bitte wähle eine neue Zahl aus."
-          }
-        },
-        "NOT_CONFIGURED": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Diese Gilde hat noch keine Ticket-Einstellungen. Du kannst dies mit dem `{PREFIX}ticketconfig`-Befehl erledigen."
-          }
-        },
-        "SUCCESS": {
-          "embed": {
-            "color": "#C93131",
-            "description": "Erfolgreich {ACTION} von {UPDATE}"
           }
         }
       }
