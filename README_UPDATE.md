@@ -16,6 +16,12 @@
       - [On Error](#the-onerror-function)
       - [On Success](#the-onsuccess-function)
   - [Default Commands](#default-commands)
+    - [The Help Command](#the-help-command)
+    - [The Prefix Command](#the-prefix-command)
+    - [The Language Command](#the-language-command)
+    - [The Roles Command](#the-roles-command)
+    - [The Commands Command](#the-commands-command)
+    - [The Categories Command](#the-categories-command)
 - [Creating an Event](#creating-an-event)
 - [Creating a Feature](#creating-a-feature)
 - [Default Responses](#default-responses)
@@ -241,6 +247,34 @@ The onSuccess function is optional, and will execute before the command is run l
 - `message: import("discord.js").Message`
 
 ## Default Commands
+
+In CDCommands, six default commands come premade for your bots convenience, these commands consist of help, setprefix, language, requiredroles, command, and category commands. These can all be turned off or specific ones of your choosing using the "disabledDefaultCommands" property in the CDCommands class and adding each command you wish to disable to the array as a string.
+
+> Note: It is not recommended that you disable any commands unless you know what you're doing. The command will be completely unusable if you do so. <br>
+
+### The Help Command
+
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Help.js) in our github repository, and by default, the help command will be dynamic, and if necessary, partially reaction based. The default help command is decently basic, so if you wish to create your own, feel free to disable the command and style your own command to your own liking. The command is only there for convenience. The command is an ordinary help command, providing you with all the information you need to understand how to use the commands in your bot. The command will pull information from the properties set while creating each command.
+
+### The Prefix Command
+
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/SetPrefix.js)
+
+### The Language Command
+
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Language.js)
+
+### The Roles Command
+
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/RequiredRoles.js)
+
+### The Commands Command
+
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Commands.js)
+
+### The Categories Command
+
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Categories.js)
 
 - TODO: Add discussion about default cmds, help, setprefix, language, requiredroles, commands, categories
 
