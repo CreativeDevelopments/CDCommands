@@ -673,7 +673,7 @@ As you can see from the above code, replacing values in every single field can g
 
 ## Language Support
 
-In your message.json, you probably noticed that the initial property is the ISO code for English, along with other default supported languages ISO codes. This allows you to create multiple versions of the same default responses to allow your bot to support multiple languages. To support multiple languages, the handler will store guild based and user based preferences about the language the bot should use, which can be changed with `{prefix}language <ISO_CODE>`. By default, the default message.json file supports the languages shown [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/SUPPORTED_LANGS.md), but you can add any language that you wish to.
+In your message.json, you probably noticed that the initial property is the ISO code for English, along with other default supported languages ISO codes. This allows you to create multiple versions of the same default responses to allow your bot to support multiple languages. To support multiple languages, the handler will store guild based and user based preferences about the language the bot should use, which can be changed with the [language command](#the-language-command) . By default, the default message.json file supports the languages shown [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/SUPPORTED_LANGS.md), but you can add any language that you wish to.
 
 ### Changing Your Language
 
