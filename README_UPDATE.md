@@ -90,8 +90,9 @@ As long as you set everything up correctly, this should be all you technically n
 
 # Creating a Basic Command
 
-> Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encoutners. Note: _Commands **must** be an instance of the Command class, or they will not be loaded._ A bonus of using the class is that you get powerful intellisense both while setting up your command and while creating your "run" function!<br>
-> Note: There are six commands that are loaded by default, and these can be picked to not load in the main class under the "disabledDefaultCommands" property. Although, this is not recommended as it will remove some of the bots basic functionality, unless of course, you want to make your own versions of the command. <br>
+Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encoutners. There are six commands that are loaded by default, and these can be picked to not load in the main class under the "disabledDefaultCommands" property. Although, this is not recommended as it will remove some of the bots basic functionality, unless of course, you want to make your own versions of the command. More information about each command under [Default Commands](#default-commands) <br>
+
+> Note: _Commands **must** be an instance of the Command class, or they will not be loaded._ A bonus of using the class is that you get powerful intellisense both while setting up your command and while creating your "run" function!
 
 To create a command, all you need is a new file in your commands directory and the Commands class from the package, then all you need to do is export a new instance of the class and you're done! New command!
 
@@ -673,13 +674,43 @@ As you can see from the above code, replacing values in every single field can g
 
 ## Language Support
 
-In your message.json, you probably noticed that the initial property is the ISO code for English, along with other default supported languages ISO codes. This allows you to create multiple versions of the same default responses to allow your bot to support multiple languages. To support multiple languages, the handler will store guild based and user based preferences about the language the bot should use, which can be changed with the [language command](#the-language-command) . By default, the default message.json file supports the languages shown [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/SUPPORTED_LANGS.md), but you can add any language that you wish to.
+In your message.json, you probably noticed that the initial property is the ISO code for English, along with other default supported languages ISO codes. This allows you to create multiple versions of the same default responses to allow your bot to support multiple languages. To support multiple languages, the handler will store guild based and user based preferences about the language the bot should use, which can be changed with the [language command](#the-language-command). By default, the default message.json file supports the languages shown [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/SUPPORTED_LANGS.md), but you can add any language that you wish to.
 
 ### Changing Your Language
 
+To change your language, either for your server, or for yourself, its quite simple. All you need to do is run the [language command](#the-language-command) with a valid ISO code. If you are the guild owner, the command will automatically change the server wide preferences, but if you are just a member of the server, then it will change your specific user preferences. Specific user language preferences, if they exists, will override server language preferences. You can change your language to any valid [ISO 639-1 Code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) that is currently supported by the bot developer. As in, only if the code provided is a valid code that also exists in the bot developers message.json file.
+
 ### Adding a New Language
 
-- TODO: Information about adding new languages to your message.json file. Discussion about what languages are already supported in the default message.json file.
+Adding a new language to your message.json file should be a simple process, as long as you have someone that can translate for you. If needed, our [default message.json](https://github.com/CreativeDevelopments/CDCommands/blob/main/SUPPORTED_LANGS.md) file already supports the languages that have a :white_check_mark: beside them. You can get the file [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/message.json). If you wish to add your own languages instead, we will now show you how to! First we need to go to our message.json file, then we can now take a look at the primary property. "en". What is that? Well, it's an ISO 639-1 Code, like mentioned before. It's the standard way to list languages in a two character format. Each new language that you add will be a new ISO code in your message.json file.
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "TESTING": "This is a response from the message.json file!"
+  }
+}
+```
+
+So we have our values all stored in our message.json file like shown above, pretty simple layout, and only one extra property. Now, when creating a new language, it is recommended that you translate all of the same values from one language to the other language, or else you will most likely encounter errors or unwanted behavior. To add the new language it's as easy as adding a new property to the file like so.
+
+```json
+// ./message.json
+{
+  "en": {
+    ...defaultValues,
+    "TESTING": "This is a response from the message.json file!"
+  },
+  "es": {
+    ...defaultValues_translated,
+    "TESTING": "¡Esta es una respuesta del archivo message.json!"
+  }
+}
+```
+
+The above translation was done using Google Translate, so it may not be entirely accurate, but you should get the idea. We added a new language, in this case Spanish (es), and added all of the properties that English had and translated them into Spanish. You can add as many language codes as you want as long as you can translate every property value into the other language.
 
 # Client Utils
 
