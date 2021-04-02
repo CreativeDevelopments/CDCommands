@@ -20,7 +20,7 @@ module.exports = new Command({
   noDisable: true,
   nsfw: false,
   testOnly: false,
-  usage: "{prefix}category <enable/disable> <category>",
+  usage: "{prefix}category [enable/disable] [category]",
   userPermissions: ["MANAGE_GUILD"],
   category: "configuration",
   validator: new ArgumentValidator({

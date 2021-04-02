@@ -19,7 +19,7 @@ module.exports = new Command({
   noDisable: true,
   nsfw: false,
   testOnly: false,
-  usage: "{prefix}setprefix <new prefix>",
+  usage: "{prefix}setprefix [new_prefix]",
   userPermissions: ["MANAGE_GUILD"],
   category: "configuration",
   validator: new ArgumentValidator({
@@ -32,8 +32,8 @@ module.exports = new Command({
           language,
           "PREFIX_COMMAND",
           "SAME_PREFIX",
-          client.defaultResponses.fileData[language].PREFIX_COMMAND
-            .SAME_PREFIX.embed
+          client.defaultResponses.fileData[language].PREFIX_COMMAND.SAME_PREFIX
+            .embed
             ? {
                 description: [],
               }
@@ -65,8 +65,7 @@ module.exports = new Command({
       language,
       "PREFIX_COMMAND",
       "SUCCESS",
-      client.defaultResponses.fileData[language].PREFIX_COMMAND
-        .SUCCESS.embed
+      client.defaultResponses.fileData[language].PREFIX_COMMAND.SUCCESS.embed
         ? {
             description: [
               {
