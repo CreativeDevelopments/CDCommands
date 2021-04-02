@@ -452,6 +452,7 @@
         }
       }
     },
+
     "de": {
       "type": "object",
       "properties": {
@@ -896,13 +897,14 @@
         }
       }
     },
+
     "hi": {
       "type": "object",
       "properties": {
         "GUILD_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} सिर्फ सर्वर में इस्तमाल किया जा सकता है।"],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता ",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -912,7 +914,7 @@
         "DM_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} सिर्फ dm में इस्तमाल किया जा सकता है।"],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता ",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -922,7 +924,7 @@
         "NSFW_ONLY": {
           "type": ["string", "object"],
           "examples": ["यह कमांड NSFW चैनल्स में ही इस्तमाल किया जा सकता है।"],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता ",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -934,7 +936,7 @@
           "examples": [
             "यह {COMMAND} कमांड इस सर्वर में बंद है। आप इस कमांड का इस्तमाल नही कर सकते।"
           ],
-          "description": "\"{COMMAND}\" represents the command that is disabled",
+          "description": "\"{COMMAND}\" बंद किए हुए कमांड को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -946,7 +948,7 @@
           "examples": [
             "यह {CATEGORY} कैटेगरी इस सर्वर में बंद है। आप इसका इस्तमाल नही कर सकते।"
           ],
-          "description": "\"{CATEGORY}\" represents the category that is disabled",
+          "description": "\"{CATEGORY}\" बंद किए हुए कैटेगरी को दर्शा",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -958,7 +960,7 @@
           "examples": [
             "मेरे पास {CLIENT_PERMISSIONS} की अनुमति नही है। कृपया मुझे कमांड इस्तमाल करने से पहले वह अनुमति देदीजिए।"
           ],
-          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions",
+          "description": "\"{CLIENT_PERMISSIONS}\" क्लाइंट परमिशन को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -970,7 +972,7 @@
           "examples": [
             "आपके पास {MEMBER_PERMISSIONS} की अनुमति नही है। कृपया आप कमांड का इस्तमाल करने से पहले वह अनुमति लेलिजिए।"
           ],
-          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions",
+          "description": "\"{MEMBER_PERMISSIONS}\" मेंबर परमिशन को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -982,7 +984,7 @@
           "examples": [
             "ऐसा लगता है की आपके पास {ROLES} रोल नहीं है। कृपया आप {COMMAND} कमांड डालने के पूर्व वह रोल लेलिजिये।"
           ],
-          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used",
+          "description": "\"{ROLES}\" मिसिंग रोल्स को दर्शाता है को कमांड के लिए जर. \"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -994,7 +996,7 @@
           "examples": [
             "आप वह {COMMAND} कमांड का इस्तमाल नही कर सकते। वह कमांड निर्माता के लिए है।"
           ],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1006,7 +1008,7 @@
           "examples": [
             "{COMMAND} कमांड सिर्फ टेस्ट सर्वर के लिए ही उपलब है।"
           ],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1018,7 +1020,7 @@
           "examples": [
             "अमान्य आर्गुमेंट [बोहोत ज्यादा आर्गुमेंट है]। कृपया का {USAGE} इस्तमाल कीजिए।"
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "description": "\"{USAGE}\" कमांड के यूसेज को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1030,7 +1032,7 @@
           "examples": [
             "अमान्य आर्गुमेंट [बोहोत काम आर्गुमेंट है]। कृपया {USAGE} का इस्तमाल कीजिए।"
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "description": "\"{USAGE}\" कमांड के यूसेज को दर्शाता",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1042,7 +1044,7 @@
           "examples": [
             "{COMMAND} वैश्विक कूलडाउन पर है। कृपया {COOLDOWN} देर रुक जाए।"
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "description": "\"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता. \"{COOLDOWN}\" बचे हुए कूलडाउन को दर्शाता ",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1054,7 +1056,7 @@
           "examples": [
             "आप कूलडोन पर है। कृपया कमांड का इस्तमाल करने से पहले {COOLDOWN} देर रुक जाए।"
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "description": "\"{COMMAND}\" इस्तमाल किए हुए कमांड को दर्शाता \"{COOLDOWN}\" बचे हुए कूलडाउन को दर्शाता ",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1067,7 +1069,7 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["अमान्य आर्गुमेंट। कृपया {USAGE} का इस्तमाल कीजिए।"],
-              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "description": "\"{USAGE}\" कमांड के यूसेज को दर्शाता ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1077,7 +1079,7 @@
             "NON_EXISTANT_CATEGORY": {
               "type": ["string", "object"],
               "examples": ["यह कैटेगरी मौजूद नहीं है।"],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" कैटेगरी को चालू/बंद करने की कोशिश को दर्शाता ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1087,7 +1089,7 @@
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["यह कैटेगरी पहले से ही चालू है।"],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" कैटेगरी को चालू/बंद करने की कोशिश को दर्शाता ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1097,7 +1099,7 @@
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["यह कैटेगरी पहले से ही बंद है।"],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" कैटेगरी को चालू/बंद करने की कोशिश को दर्शाता ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1107,7 +1109,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["सफलतापूर्वक आपने {CATEGORY} कैटेगरी को {ACTION} करदिया।"],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{ACTION}\" चालू/बंद करने के कार्य को दर्श. \"{CATEGORY}\" कैटेगरी को चालू/बंद करने की कोशिश को दर्शाता",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1122,7 +1124,7 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["अमान्य आर्गुमेंट। कृपया का {USAGE} इस्तमाल कीजिए।"],
-              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "description": "\"{USAGE}\" कमांड के यूसेज को दर्शाता ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1132,7 +1134,7 @@
             "NON_EXISTANT_COMMAND": {
               "type": ["string", "object"],
               "examples": ["यह कमांड मौजूद नहीं है।"],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" यह दर्शाता है की यूजर ने कमांड को चालू/बंद करने की कोशिश की ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1142,7 +1144,7 @@
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["यह कमांड पहले से चालू है।"],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" यह दर्शाता है की यूजर ने कमांड को चालू/बंद करने की कोशिश की ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1152,7 +1154,7 @@
             "NO_DISABLE": {
               "type": ["string", "object"],
               "examples": ["यह {COMMAND} कमांड बंद नहीं किया जा सकता।"],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" यह दर्शाता है की यूजर ने कमांड को चालू/बंद करने की कोशिश की ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1162,7 +1164,7 @@
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["यह कमांड पहले से बंद है।"],
-              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" यह दर्शाता है की यूजर ने कमांड को चालू/बंद करने की कोशिश की ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1172,7 +1174,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["सफलतापूर्वफ आपने {COMMAND} कमांड को {ACTION} करडिया।"],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{ACTION}\" चालू/बंद करने के कार्य को दर्शा. \"{COMMAND}\" यह दर्शाता है की यूजर ने कमांड को चालू/बंद करने की कोशिश की ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1189,7 +1191,7 @@
               "examples": [
                 "{COMMAND_CATEGORY} वैध कमांड या कैटेगरी नही है। {PREFIX}help का इस्तमाल करे ताकि आप सब कमांड कैटेगरी देख सको।"
               ],
-              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix",
+              "description": "\"{COMMAND_CATEGORY}\" कमांड/कैटेगरी को दर्शाता है जो यूजर ने देखने की कोशिश क. \"{PREFIX}\" इस सर्वर के प्रीफिक्स को दर्श",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1204,7 +1206,7 @@
             "INVALID_ARGUMENTS": {
               "type": ["string", "object"],
               "examples": ["अमान्य आर्गुमेंट। कृपया {USAGE} का इस्तमाल कीजिए।"],
-              "description": "\"{USAGE}\" represents the correct usage of the command.",
+              "description": "\"{USAGE}\" कमांड के यूसेज को दर्शाता ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1214,7 +1216,7 @@
             "INVALID_ROLE": {
               "type": ["string", "object"],
               "examples": ["कृपया सही रोल दीजिए ताकि हम {ACTION} करसके।"],
-              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\"",
+              "description": "\"{ACTION}\" यह रोल पर लिए गए कार्य को दर्शाता है। डालना/निका",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1226,7 +1228,7 @@
               "examples": [
                 "यह कमांड मौजूद नही करता। कृपया सही कमांड दीजिए।"
               ],
-              "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "description": "\"{COMMAND}\" दर्शाता है की कमांड में जरूरी रोल्स डालने की प्रयत्न क",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1238,7 +1240,7 @@
               "examples": [
                 "{ROLE} यह रोल पहले से ही {COMMAND} कमांड की जरूरी रोल्स की लिस्ट मैं है।"
               ],
-              "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "description": "\"{ROLE}\" दर्शाता है की रोल को जरूरी रोल्स की लिस्ट डालने की प्रयत्न को. \"{COMMAND}\" दर्शाता है की कमांड में जरूरी रोल्स डालने की प्रयत्न क",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1250,7 +1252,7 @@
               "examples": [
                 "{ROLE} यह रोल {COMMAND} कमांड की जरूरी रोल्स की लिस्ट में नही है।"
               ],
-              "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "description": "\"{ROLE}\" दर्शाता है की रोल को जरूरी रोल्स की लिस्ट निकलने की प्रयत्न को. \"{COMMAND}\" दर्शाता है की कमांड में जरूरी रोल्स निकलने की प्रयत्न क",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1262,7 +1264,7 @@
               "examples": [
                 "सफलतापूर्वक आपने {ACTION} विधि इस {COMMAND} कमांड की जरूरी {ROLES} रोल की लिस्ट पर करदी।"
               ],
-              "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "description": "\"{ACTION}\" यह रोल पर लिए गए कार्य को दर्शाता है। डालना/निका. \"{ROLE}\" दर्शाता है की रोल को जरूरी रोल्स की लिस्ट निकलने की प्रयत्न को . \"{COMMAND}\" दर्शाता है की कमांड में जरूरी रोल्स निकलने की प्रयत्न क",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1288,7 +1290,7 @@
               "examples": [
                 "हमने सफलतापूर्वक {GUILD_NAME} का {PREFIX} prefix रख लिया है।"
               ],
-              "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix.",
+              "description": "\"{GUILD_NAME}\" करेंट सर्वर के नाम को दर्शात. \"{PREFIX}\" नए प्रीफिक को दर्शाता ",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1305,7 +1307,7 @@
               "examples": [
                 "कृपया सही ISO कोड दीजिए। यह iso कोड गलत है। ज्यादा जानकारी के लिए इसे देखे [लिंक](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)"
               ],
-              "description": "\"{ISO_CODE}\" represents the invalid ISO Code that was provided.",
+              "description": "\"{ISO_CODE}\" गलत दिए गए iso code को दर्शाता है",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1317,7 +1319,7 @@
               "examples": [
                 "यह {ISO_CODE} भाषा bot के ऑनर की तरफ से नही दी गई है। कृपया इस में से किसी {PROVIDED_CODES} का इस्तमाल करे।"
               ],
-              "description": "\"{ISO_CODE}\" represents the language code that was attempted to be used. \"{PROVIDED_CODES}\" represents the language codes that the bot creator has translated to.",
+              "description": "\"{ISO_CODE}\" भाषा के बदलने के लिए इस्तमाल किया गए कोड को दर्शाता. \"{PROVIDED_CODES}\" बोट क्रिएटर के द्वारा दिए जाने वाले भाषा को दर.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1329,7 +1331,7 @@
               "examples": [
                 "आपने सफलतापूर्वक {USER_GUILD} अपनी भाषा को {ISO_CODE} बना लिया है।"
               ],
-              "description": "\"{USER_GUILD}\" represents either the user or guild that is updating the language. \"{ISO_CODE}\" represents the ISO Code that was updated to.",
+              "description": "\"{USER_GUILD}\" उपयोगकर्ता फिर गिल्ड जो भाषा को बादल राहा है usko दर्शात. \"{ISO_CODE}\" अपडेटेड iso code को दर्शाता ह.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1340,6 +1342,7 @@
         }
       }
     },
+
     "hr": {
       "type": "object",
       "properties": {
@@ -1784,6 +1787,7 @@
         }
       }
     },
+    
     "es": {
       "type": "object",
       "properties": {
