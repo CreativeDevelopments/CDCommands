@@ -25,6 +25,8 @@
     - [String Replacers](#string-replacers)
     - [Embed Replacers](#embed-replacers)
   - [Language Support](#language-support)
+    - [Changing Your Language](#changing-your-language)
+    - [Adding a New Language](#adding-a-new-language)
 - [Client Utils](#client-utils)
 
 # Installation
@@ -474,7 +476,7 @@ The above snippet should return a message similar to the one shown in this image
 
 ## Replacers
 
-The final thing we need to cover in the getValue method provided by the defaultResponses is the replacers parameter. This parameter can be either an array of objects or an object with embed values in them. We will provide two examples, one of each, to provide as much information as possible. Replacers in your message.json file are identified by brackets. Any value inbetween `{}` will be treated as a replacer. In general, replacers are only needed if you have a dynamic value that will change from time to time, say if a different user uses the command, or you want to provide a random response.
+The final thing we need to cover in the getValue method, provided by the defaultResponses, is the replacers parameter. This parameter can be either an array of objects or an object with embed values in them. We will provide two examples, one of each, to provide as much information as possible. Replacers in your message.json file are identified by brackets. Any value inbetween `{}` will be treated as a replacer. In general, replacers are only needed if you have a dynamic value that will change from time to time, say if a different user uses the command, or you want to provide a random response.
 
 ### String Replacers
 
@@ -637,10 +639,14 @@ As you can see from the above code, replacing values in every single field can g
 
 ## Language Support
 
+In your message.json, you probably noticed that the initial property is the ISO code for English, along with other default supported languages ISO codes. This allows you to create multiple versions of the same default responses to allow your bot to support multiple languages. To support multiple languages, the handler will store guild based and user based preferences about the language the bot should use, which can be changed with `{prefix}language <ISO_CODE>`. By default, the default message.json file supports the languages shown [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/SUPPORTED_LANGS.md), but you can add any language that you wish to.
+
+### Changing Your Language
+
+### Adding a New Language
+
 - TODO: Information about adding new languages to your message.json file. Discussion about what languages are already supported in the default message.json file.
 
 # Client Utils
 
 - TODO: Different utils that the CDClient object has that you can use, "getLanguage", "databaseCache", "defaultResponses". All the different embed options, load, error, success, info + all the console log types, logReady, logInfo, logError, logWarn, logDatabase.
-
-##
