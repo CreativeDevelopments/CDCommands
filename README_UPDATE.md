@@ -33,6 +33,7 @@
   - [Language Support](#language-support)
     - [Changing Your Language](#changing-your-language)
     - [Adding a New Language](#adding-a-new-language)
+    - [Dynamic Language Support](#dynamic-language-support)
 - [Client Utils](#client-utils)
 
 # Installation
@@ -711,6 +712,50 @@ So we have our values all stored in our message.json file like shown above, pret
 ```
 
 The above translation was done using Google Translate, so it may not be entirely accurate, but you should get the idea. We added a new language, in this case Spanish (es), and added all of the properties that English had and translated them into Spanish. You can add as many language codes as you want as long as you can translate every property value into the other language.
+
+### Dynamic Language Support
+
+Now to actually use these languages, you can either hard type the language that you want to use, or you can use the language command to setup which language you or your guild would like to use, then use the "language" parameter that is passed into all of your commands "run" methods.
+
+```js
+// ./commands/Ping.js
+const { Command, Validator } = require("cdcommands");
+
+module.exports = new Command({
+  ...commandOptions,
+  run: ({ message, args, client, prefix, language }) => {
+    const message_json_response = client.defaultResponses.getValue(
+      "es",
+      "TESTING",
+      "",
+      [],
+    );
+    return message.channel.send(message_json_response);
+  },
+});
+```
+
+The above snippet of code will only ever return the Spanish translation of the json value. If you wish to dynamically get a users language, all you need to do is use the language parameter shown below! All of the database work is done for you behind the scenes!
+
+```js
+// ./commands/Ping.js
+const { Command, Validator } = require("cdcommands");
+
+module.exports = new Command({
+  ...commandOptions,
+  run: ({ message, args, client, prefix, language }) => {
+    const message_json_response = client.defaultResponses.getValue(
+      language, // The only value that needs to change
+      "TESTING",
+      "",
+      [],
+    );
+    return message.channel.send(message_json_response);
+  },
+});
+```
+
+Now with the above code, you should get a different response depending on what the server/user language preference is set to! Easy as that.
 
 # Client Utils
 
