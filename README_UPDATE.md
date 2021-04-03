@@ -290,8 +290,6 @@ This command can be found [here](https://github.com/CreativeDevelopments/CDComma
 
 > Usage: **?category [enable/disable] [category]**
 
-- TODO: Add discussion about default cmds, help, setprefix, language, requiredroles, commands, categories
-
 # Creating an Event
 
 To create a new event for your bot to listen to, all you need to do is create a new file in your events directory, which in this case is "events", and import the class named "Event" from the module. After that, all you need to do is export a new instance of the class and there you have it! A new event file!
