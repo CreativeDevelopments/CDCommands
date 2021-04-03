@@ -771,15 +771,15 @@ Now with the above code, you should get a different response depending on what t
 
 This is a general list of most of the added functionality to the "CDClient" client by CDCommands. This is not a complete list, but most of the properties/methods that exist on the client that aren't mentioned here don't need to be messed with.
 
-### getLanguage
+### #getLanguage()
 
 This basic method accepts one parameter as an object with a users ID and guild ID, which will return the corresponding language to be used. If neither the guild or user have a language set, "en" is used and returned by default. This method doesn't really need to be used, as most of the place that you would need it, the language is passed to.
 
-### databaseCache
+### #databaseCache
 
 The database cache is a system created for the models and documents that are required for CDCommands to function correctly, this allows us to cache database information, allowing us to fetch it faster and call the database less. The database is updated every x amount of time, specified by the "cacheUpdateSpeed" property. This is not normally needed for end user use, but is there if you need it. (It is recommended to use this instead of requiring the models from the module)
 
-### defaultResponses
+### #defaultResponses
 
 This is talked about in more detail under [Default Responses](#default-responses). This property allows you to set up a message.json file and use responses from the file, allowing you to set up a multi-lingual bot. The property allows for easy fetching and replacing of values in the response.
 
@@ -787,19 +787,19 @@ This is talked about in more detail under [Default Responses](#default-responses
 
 > Note: The below methods have no functionallity other than returning a MessageEmbed as a convenience method.
 
-### load
+### #load()
 
 The load method will return a message [#00DCFF](https://www.google.com/search?q=%2300dcff) color and the description set to the provided string.
 
-### error
+### #error()
 
 The error method will return a message [#C93131](https://www.google.com/search?q=%23C93131) color and the description set to the provided string.
 
-### success
+### #success()
 
 The success method will return a message [#2FDD2C](https://www.google.com/search?q=%232FDD2C) color and the description set to the provided string.
 
-### info
+### #info()
 
 The info method will return a message [#00DCFF](https://www.google.com/search?q=%2300dcff) color and the description set to the provided string.
 
@@ -807,22 +807,22 @@ The info method will return a message [#00DCFF](https://www.google.com/search?q=
 
 > Note: The below methods provide no functionallity other than logging messages to your terminal with adjusted colors.
 
-### logReady
+### #logReady()
 
 The logReady method will log your message with an appended "[READY]" at the start of your message colored in green.
 
-### logInfo
+### #logInfo()
 
 The logInfo method will log your message with an appended "[INFO]" at the start of your message colored in cyan.
 
-### logError
+### #logError()
 
 The logError method will log your message with an appended "[ERROR]" at the start of your message colored in red.
 
-### logWarn
+### #logWarn()
 
 The logWarn method will log your message with an appended "[WARN]" at the start of your message colored in yellow.
 
-### logDatabase
+### #logDatabase()
 
 The logDatabase method will log your message with an appended "[DATABASE]" at the start of your message colored in green.
