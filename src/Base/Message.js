@@ -106,156 +106,27 @@ module.exports = new Event("message", async (client, message) => {
         return message.channel.send({ embed: res });
       else return message.channel.send(res);
     }
-    // Category/Command Disabled
-    const DisabledDoc = client.databaseCache.getDocument(
-      "disabledcommands",
-      message.guild.id,
-    );
-    if (DisabledDoc && DisabledDoc.commands.includes(command.name)) {
-      const res = client.defaultResponses.getValue(
-        language,
-        "DISABLED_COMMAND",
-        "",
-        client.defaultResponses.fileData[language].DISABLED_COMMAND.embed
-          ? {
-              description: [
-                {
-                  key: "COMMAND",
-                  replace: ProperCase(command.name),
-                },
-              ],
-            }
-          : [
-              {
-                key: "COMMAND",
-                replace: command.name,
-              },
-            ],
+    if (message.guild !== null) {
+      // Category/Command Disabled
+      const DisabledDoc = client.databaseCache.getDocument(
+        "disabledcommands",
+        message.guild.id,
       );
-      if (res instanceof MessageEmbed)
-        return message.channel.send({ embed: res });
-      else return message.channel.send(res);
-    } else if (
-      DisabledDoc &&
-      DisabledDoc.categories.includes(command.category) &&
-      !command.noDisable
-    ) {
-      const res = client.defaultResponses.getValue(
-        language,
-        "DISABLED_CATEGORY",
-        "",
-        client.defaultResponses.fileData[language].DISABLED_CATEGORY.embed
-          ? {
-              description: [
-                {
-                  key: "CATEGORY",
-                  replace: command.category,
-                },
-              ],
-            }
-          : [
-              {
-                key: "CATEGORY",
-                replace: command.category,
-              },
-            ],
-      );
-      if (res instanceof MessageEmbed)
-        return message.channel.send({ embed: res });
-      else return message.channel.send(res);
-    }
-    const memberPermCheck = ValidatePermissions(
-      message.member.permissions.toArray(),
-      command.userPermissions,
-    );
-    const clientPermCheck = ValidatePermissions(
-      message.guild.me.permissions.toArray(),
-      command.botPermissions,
-    );
-    // Client Permissions
-    if (clientPermCheck.perms !== null) {
-      const res = client.defaultResponses.getValue(
-        language,
-        "MISSING_CLIENT_PERMISSION",
-        "",
-        client.defaultResponses.fileData[language].MISSING_CLIENT_PERMISSION
-          .embed
-          ? {
-              description: [
-                {
-                  key: "CLIENT_PERMISSIONS",
-                  replace: clientPermCheck.perms,
-                },
-              ],
-            }
-          : [
-              {
-                key: "CLIENT_PERMISSIONS",
-                replace: clientPermCheck.perms,
-              },
-            ],
-      );
-      if (res instanceof MessageEmbed)
-        return message.channel.send({ embed: res });
-      else return message.channel.send(res);
-    }
-    // Member Permissions
-    if (memberPermCheck.perms !== null) {
-      const res = client.defaultResponses.getValue(
-        language,
-        "MISSING_MEMBER_PERMISSION",
-        "",
-        client.defaultResponses.fileData[language].MISSING_MEMBER_PERMISSION
-          .embed
-          ? {
-              description: [
-                {
-                  key: "MEMBER_PERMISSIONS",
-                  replace: memberPermCheck.perms,
-                },
-              ],
-            }
-          : [
-              {
-                key: "MEMBER_PERMISSIONS",
-                replace: memberPermCheck.perms,
-              },
-            ],
-      );
-      if (res instanceof MessageEmbed)
-        return message.channel.send({ embed: res });
-      else return message.channel.send(res);
-    }
-    // Required Roles
-    const reqRolesDoc = client.databaseCache.getDocument(
-      "requriedroles",
-      message.guild.id,
-    );
-    if (reqRolesDoc) {
-      const rolesRes = ValidateRoles(reqRolesDoc, message.member, command);
-      if (rolesRes && !message.member.permissions.has("ADMINISTRATOR")) {
+      if (DisabledDoc && DisabledDoc.commands.includes(command.name)) {
         const res = client.defaultResponses.getValue(
           language,
-          "MISSING_ROLES",
+          "DISABLED_COMMAND",
           "",
-          client.defaultResponses.fileData[language].MISSING_ROLES.embed
+          client.defaultResponses.fileData[language].DISABLED_COMMAND.embed
             ? {
                 description: [
                   {
-                    key: "ROLES",
-                    replace: `**${rolesRes.roles}**`,
-                  },
-                  {
                     key: "COMMAND",
-                    replace: command.name,
+                    replace: ProperCase(command.name),
                   },
                 ],
               }
             : [
-                {
-                  key: "ROLES",
-                  replace: `**${rolesRes.roles}**`,
-                },
                 {
                   key: "COMMAND",
                   replace: command.name,
@@ -265,6 +136,142 @@ module.exports = new Event("message", async (client, message) => {
         if (res instanceof MessageEmbed)
           return message.channel.send({ embed: res });
         else return message.channel.send(res);
+      } else if (
+        DisabledDoc &&
+        DisabledDoc.categories.includes(command.category) &&
+        !command.noDisable
+      ) {
+        const res = client.defaultResponses.getValue(
+          language,
+          "DISABLED_CATEGORY",
+          "",
+          client.defaultResponses.fileData[language].DISABLED_CATEGORY.embed
+            ? {
+                description: [
+                  {
+                    key: "CATEGORY",
+                    replace: command.category,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "CATEGORY",
+                  replace: command.category,
+                },
+              ],
+        );
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res);
+      }
+    }
+
+    if (message.guild !== null) {
+      const memberPermCheck = ValidatePermissions(
+        message.member.permissions.toArray(),
+        command.userPermissions,
+      );
+      const clientPermCheck = ValidatePermissions(
+        message.guild.me.permissions.toArray(),
+        command.botPermissions,
+      );
+      // Client Permissions
+      if (clientPermCheck.perms !== null) {
+        const res = client.defaultResponses.getValue(
+          language,
+          "MISSING_CLIENT_PERMISSION",
+          "",
+          client.defaultResponses.fileData[language].MISSING_CLIENT_PERMISSION
+            .embed
+            ? {
+                description: [
+                  {
+                    key: "CLIENT_PERMISSIONS",
+                    replace: clientPermCheck.perms,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "CLIENT_PERMISSIONS",
+                  replace: clientPermCheck.perms,
+                },
+              ],
+        );
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res);
+      }
+      // Member Permissions
+      if (memberPermCheck.perms !== null) {
+        const res = client.defaultResponses.getValue(
+          language,
+          "MISSING_MEMBER_PERMISSION",
+          "",
+          client.defaultResponses.fileData[language].MISSING_MEMBER_PERMISSION
+            .embed
+            ? {
+                description: [
+                  {
+                    key: "MEMBER_PERMISSIONS",
+                    replace: memberPermCheck.perms,
+                  },
+                ],
+              }
+            : [
+                {
+                  key: "MEMBER_PERMISSIONS",
+                  replace: memberPermCheck.perms,
+                },
+              ],
+        );
+        if (res instanceof MessageEmbed)
+          return message.channel.send({ embed: res });
+        else return message.channel.send(res);
+      }
+    }
+    if (message.guild !== null) {
+      // Required Roles
+      const reqRolesDoc = client.databaseCache.getDocument(
+        "requriedroles",
+        message.guild.id,
+      );
+      if (reqRolesDoc) {
+        const rolesRes = ValidateRoles(reqRolesDoc, message.member, command);
+        if (rolesRes && !message.member.permissions.has("ADMINISTRATOR")) {
+          const res = client.defaultResponses.getValue(
+            language,
+            "MISSING_ROLES",
+            "",
+            client.defaultResponses.fileData[language].MISSING_ROLES.embed
+              ? {
+                  description: [
+                    {
+                      key: "ROLES",
+                      replace: `**${rolesRes.roles}**`,
+                    },
+                    {
+                      key: "COMMAND",
+                      replace: command.name,
+                    },
+                  ],
+                }
+              : [
+                  {
+                    key: "ROLES",
+                    replace: `**${rolesRes.roles}**`,
+                  },
+                  {
+                    key: "COMMAND",
+                    replace: command.name,
+                  },
+                ],
+          );
+          if (res instanceof MessageEmbed)
+            return message.channel.send({ embed: res });
+          else return message.channel.send(res);
+        }
       }
     }
     // Developer only
@@ -294,7 +301,11 @@ module.exports = new Event("message", async (client, message) => {
       else return message.channel.send(res);
     }
     // Test Server only
-    if (command.testOnly && !client.testservers.includes(message.guild.id)) {
+    if (
+      command.testOnly &&
+      message.guild &&
+      !client.testservers.includes(message.guild.id)
+    ) {
       const res = client.defaultResponses.getValue(
         language,
         "TEST_SERVER",
