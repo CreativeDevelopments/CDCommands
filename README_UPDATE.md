@@ -274,7 +274,7 @@ This command can be found [here](https://github.com/CreativeDevelopments/CDComma
 
 ### Roles Command
 
-This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/RequiredRoles.js) in our github repository. The roles command, or ""
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/RequiredRoles.js) in our github repository. The roles command, or "requiredroles" allows you to set roles in your server that a member requires to be able to use said command.
 
 > Usage: **{prefix}requiredroles [add/remove] [role] [command]**
 
