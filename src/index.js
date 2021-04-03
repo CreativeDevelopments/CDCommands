@@ -209,10 +209,7 @@ class CDCommands {
     this._init();
   }
 
-  /**
-   * @private
-   * @param {{ [key: string]: { model: Model<any>; getBy: string } }} models
-   */
+  /** @private */
   async _init() {
     if (this._mongoURI) await database(this._mongoURI);
     else
