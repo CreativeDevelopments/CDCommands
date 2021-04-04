@@ -15,7 +15,7 @@ module.exports = new Command({
   devOnly: false,
   dmOnly: false,
   guildOnly: true,
-  usage: "{prefix}language [ISO 639-1 Code]",
+  usage: "{prefix}language <ISO 639-1 Code>",
   maxArgs: 1,
   minArgs: 1,
   noDisable: true,

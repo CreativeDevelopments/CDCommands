@@ -19,7 +19,7 @@ module.exports = new Command({
   noDisable: true,
   nsfw: false,
   testOnly: false,
-  usage: "{prefix}requiredroles [add/remove] [role] [command]",
+  usage: "{prefix}requiredroles <add/remove> <role> <command>",
   userPermissions: ["MANAGE_ROLES"],
   botPermissions: ["SEND_MESSAGES"],
   category: "configuration",

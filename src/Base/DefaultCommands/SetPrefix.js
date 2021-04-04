@@ -19,7 +19,7 @@ module.exports = new Command({
   noDisable: true,
   nsfw: false,
   testOnly: false,
-  usage: "{prefix}setprefix [new_prefix]",
+  usage: "{prefix}setprefix <new_prefix>",
   userPermissions: ["MANAGE_GUILD"],
   category: "configuration",
   validator: new ArgumentValidator({
