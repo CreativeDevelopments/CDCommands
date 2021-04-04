@@ -259,37 +259,37 @@ In CDCommands, six default commands come premade for your bots convenience, thes
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Help.js) in our github repository, and by default, the help command will be dynamic, and if necessary, partially reaction based. The default help command is decently basic, so if you wish to create your own, feel free to disable the command and style your own command to your own liking. The command is only there for convenience. The command is an ordinary help command, providing you with all the information you need to understand how to use the commands in your bot. The command will pull information from the properties set while creating each command.
 
-> Usage: **?help [category/command]**
+> Usage: **?help \<category/command\>**
 
 ### Prefix Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/SetPrefix.js) in our github repository. The prefix command, or "setprefix" is a default command that allows members with the necessary permissions to change the servers prefix that the bot will respond to. The prefix is initially stored in cache, which is used to update the database every so often. Once the prefix is updated, the bot will stop responding to the old prefix and will only respond to the new prefix. This new prefix will be passed through each command in the run parameters just like before.
 
-> Usage: **?setprefix <new_prefix>**
+> Usage: **?setprefix \<new_prefix\>**
 
 ### Language Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Language.js) in our github repository. The language allows you to change either your own language preference, or if you are the server owner, your whole servers language preference. More about languages can be found [here](#language-support). Your personal user preference on which language you want the bot to use will override the server default, and if neither are set, the bot will default to using the English responses.
 
-> Usage: **?language <[ISO 639-1 Code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)>**
+> Usage: **?language \<[ISO 639-1 Code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)\>**
 
 ### Roles Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/RequiredRoles.js) in our github repository. The roles command, or "requiredroles" allows you to set roles in your server that a member requires to be able to use said command. Required roles can be set for any command, but if they are set on a command that has the property "dmOnly" set to true, they will have to affect on the command. If a member doesn't have the correct roles that you have set for the command, the command execution will terminate before the command is run.
 
-> Usage: **?requiredroles <add/remove> <role> <command>**
+> Usage: **?requiredroles \<add/remove\> \<role\> \<command\>**
 
 ### Commands Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Commands.js) in our github repository. The commands command, though its name might be slightly confusing, is quite simple, allowing you to disable and enable different commands. Any command with the property "noDisable" set to true, will not be able to be disabled by anyone, not even bot developers. This is to prevent dumb issues like disabling the command that allows you to re-enable the same command. Disabled commands will not be able to be used by anyone.
 
-> Usage: **?command <enable/disable> <command>**
+> Usage: **?command \<enable/disable\> \<command\>**
 
 ### Categories Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Categories.js) in our github repository. Similarly to the commands command, the category command allows you to enable and disable entire categories instead of just certain commands. Just like the commands command again, if a command is inside of a disabled category, but has the "noDisable" property set to true, the command will still work, as it is not capable of being disabled. Any command in a disabled category otherwise will not be able to be used by anyone.
 
-> Usage: **?category <enable/disable> <category>**
+> Usage: **?category \<enable/disable\> \<category\>**
 
 # Creating an Event
 
