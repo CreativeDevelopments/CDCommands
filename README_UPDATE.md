@@ -35,6 +35,7 @@
     - [Adding a New Language](#adding-a-new-language)
     - [Dynamic Language Support](#dynamic-language-support)
 - [Client Utils](#client-utils)
+- [Other](#other)
 
 # Installation
 
@@ -91,7 +92,7 @@ As long as you set everything up correctly, this should be all you technically n
 
 # Creating a Basic Command
 
-Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encoutners. There are six commands that are loaded by default, and these can be picked to not load in the main class under the "disabledDefaultCommands" property. Although, this is not recommended as it will remove some of the bots basic functionality, unless of course, you want to make your own versions of the command. More information about each command under [Default Commands](#default-commands) <br>
+Your commands folder, in this documentations case is "commands", may have as many subfolders as you wish, the handler will search through each folder and load any command that it encounters. There are six commands that are loaded by default, and these can be picked to not load in the main class under the "disabledDefaultCommands" property. Although, this is not recommended as it will remove some of the bots basic functionality, unless of course, you want to make your own versions of the command. More information about each command under [Default Commands](#default-commands) <br>
 
 > Note: _Commands **must** be an instance of the Command class, or they will not be loaded._ A bonus of using the class is that you get powerful intellisense both while setting up your command and while creating your "run" function!
 
@@ -231,7 +232,7 @@ The validate function does exactly what it sounds like it will do. It validates 
 
 ### The onError function
 
-The onError function will execute before the command is run, and terminate execution of the command. It will send whatever you wish, based of errors created in the "validate" function. You can send whatever message you want for each error type, or just log something to your terminal. Whatever it is, it will happen before the command executes and will terminate any further execution.<br>
+The onError function will execute before the command is run, and terminate execution of the command. It will send whatever you wish, based on the errors created in the "validate" function. You can send whatever message you want for each error type, or just log something to your terminal. Whatever it is, it will happen before the command executes and will terminate any further execution.<br>
 **Parameter Types**
 
 - `error: string`
@@ -264,31 +265,31 @@ This command can be found [here](https://github.com/CreativeDevelopments/CDComma
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/SetPrefix.js) in our github repository. The prefix command, or "setprefix" is a default command that allows members with the necessary permissions to change the servers prefix that the bot will respond to. The prefix is initially stored in cache, which is used to update the database every so often. Once the prefix is updated, the bot will stop responding to the old prefix and will only respond to the new prefix. This new prefix will be passed through each command in the run parameters just like before.
 
-> Usage: **?setprefix [new_prefix]**
+> Usage: **?setprefix <new_prefix>**
 
 ### Language Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Language.js) in our github repository. The language allows you to change either your own language preference, or if you are the server owner, your whole servers language preference. More about languages can be found [here](#language-support). Your personal user preference on which language you want the bot to use will override the server default, and if neither are set, the bot will default to using the English responses.
 
-> Usage: **?language [[ISO 639-1 Code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)]**
+> Usage: **?language <[ISO 639-1 Code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)>**
 
 ### Roles Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/RequiredRoles.js) in our github repository. The roles command, or "requiredroles" allows you to set roles in your server that a member requires to be able to use said command. Required roles can be set for any command, but if they are set on a command that has the property "dmOnly" set to true, they will have to affect on the command. If a member doesn't have the correct roles that you have set for the command, the command execution will terminate before the command is run.
 
-> Usage: **?requiredroles [add/remove] [role] [command]**
+> Usage: **?requiredroles <add/remove> <role> <command>**
 
 ### Commands Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Commands.js) in our github repository. The commands command, though its name might be slightly confusing, is quite simple, allowing you to disable and enable different commands. Any command with the property "noDisable" set to true, will not be able to be disabled by anyone, not even bot developers. This is to prevent dumb issues like disabling the command that allows you to re-enable the same command. Disabled commands will not be able to be used by anyone.
 
-> Usage: **?command [enable/disable] [command]**
+> Usage: **?command <enable/disable> <command>**
 
 ### Categories Command
 
 This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Categories.js) in our github repository. Similarly to the commands command, the category command allows you to enable and disable entire categories instead of just certain commands. Just like the commands command again, if a command is inside of a disabled category, but has the "noDisable" property set to true, the command will still work, as it is not capable of being disabled. Any command in a disabled category otherwise will not be able to be used by anyone.
 
-> Usage: **?category [enable/disable] [category]**
+> Usage: **?category <enable/disable> <category>**
 
 # Creating an Event
 
@@ -318,7 +319,7 @@ module.exports = new Event("messageDelete", (client, message) => {
 
 The above event, once your bot logs in, should log a message along the lines of `Application Name saw User delete Test` every time a user that the bot has access to deletes a message from any channel the bot can see. Since we are using the "messageDelete" event in this example, the parameters in the callback function are expected to be first your client, then followed by the message object that was deleted.
 
-> Note: A message event file is loaded by default to allow all the different checks for permissions and others to work. The loading of this event can be disabled by setting the "customMessageEvent" property to **true** in the CDCommands class, though it is not recommended as it will break a lot of your commands functionality.
+> Note: A message event file is loaded by default to allow all the different checks for permissions and others to work. The loading of this event can be disabled by setting the "customMessageEvent" property to **true** in the CDCommands class, though it is not recommended as it will break a lot of your commands functionality. If you want to make your own message event you can use this template [here](https://sourceb.in/XpAciGMZsM)
 
 # Creating a Feature
 
@@ -826,3 +827,7 @@ The logWarn method will log your message with an appended "[WARN]" at the start 
 ### #logDatabase()
 
 The logDatabase method will log your message with an appended "[DATABASE]" at the start of your message colored in green.
+
+# Other
+If you have any suggestions, bugs or need some help setting it up please join our [Support Server](https://discord.com/invite/jUNbV5u).  
+You can see what we are adding next on the [to do list](https://github.com/CreativeDevelopments/CDCommands/blob/main/TODO.md) on our GitHub repository.
