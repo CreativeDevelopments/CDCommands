@@ -71,11 +71,18 @@ class CDCommands {
    * @type {boolean}
    */
   _customMessageEvent;
+  // /**
+  //  * @private
+  //  * @type {boolean}
+  //  */
+  // _customHelpCommand;
+
   /**
    * @private
-   * @type {boolean}
+   * @type {(keyof {"help", "command", "category", "language", "requiredroles", "setprefix"})[]}
    */
-  _customHelpCommand;
+  _disabledDefaultCommands;
+
   /** @private */
   _cacheUpdateSpeed = 90 * 1000;
 
@@ -87,7 +94,7 @@ class CDCommands {
    * featuresDir?: string;
    * testServers?: string[];
    * customMessageEvent?: boolean;
-   * customHelpCommand?: boolean;
+   * disabledDefaultCommands?: (keyof {"help", "command", "category", "language", "requiredroles", "setprefix"})[];
    * devs?: string[];
    * defaultPrefix: string;
    * mongoURI: string;
@@ -126,6 +133,7 @@ class CDCommands {
     if (!options.featuresDir) options.featuresDir = "features";
     if (!options.testServers) options.testServers = [];
     if (!options.devs) options.devs = [];
+    if (!options.disabledDefaultCommands) options.disabledDefaultCommands = [];
     if (!options.MessageJSONPath) options.MessageJSONPath = "";
 
     this._client = client;
@@ -136,7 +144,7 @@ class CDCommands {
     this._defaultPrefix = options.defaultPrefix;
     this._mongoURI = options.mongoURI;
     this._customMessageEvent = options.customMessageEvent;
-    this._customHelpCommand = options.customHelpCommand;
+    this._disabledDefaultCommands = options.disabledDefaultCommands;
     this._devs = options.devs;
     if (options.cacheUpdateSpeed && options.cacheUpdateSpeed > 0)
       this._cacheUpdateSpeed = options.cacheUpdateSpeed;
@@ -201,10 +209,7 @@ class CDCommands {
     this._init();
   }
 
-  /**
-   * @private
-   * @param {{ [key: string]: { model: Model<any>; getBy: string } }} models
-   */
+  /** @private */
   async _init() {
     if (this._mongoURI) await database(this._mongoURI);
     else
@@ -295,14 +300,9 @@ class CDCommands {
 
     for (const command of customCommands) {
       if (
-        command.name === "help" &&
-        !this._customHelpCommand &&
-        !this._client.commands.get("help")
+        !this._disabledDefaultCommands.includes(command.name) &&
+        !this._client.commands.get(command.name)
       ) {
-        this._client.commands.set(command.name, command);
-        for (const alias of command.aliases)
-          this._client.aliases.set(alias, command.name);
-      } else if (!this._client.commands.get(command.name)) {
         this._client.commands.set(command.name, command);
         for (const alias of command.aliases)
           this._client.aliases.set(alias, command.name);
