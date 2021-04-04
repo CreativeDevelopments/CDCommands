@@ -13,13 +13,16 @@ const {
 } = require("./Base/DefaultCommands");
 const Commands = require("./registry/Commands");
 const Events = require("./registry/Events");
-const database = require("./Database/database");
-const cooldown = require("./Database/models/cooldown");
-const prefixes = require("./Database/models/prefixes");
-const disabledCommands = require("./Database/models/disabled-commands");
-const requiredRoles = require("./Database/models/required-roles");
-const guildLanguage = require("./Database/models/guildLanguage");
-const userLanguage = require("./Database/models/userLanguage");
+const {
+  database,
+  cooldown,
+  disabledCommands,
+  guildLanguage,
+  prefixes,
+  requiredRoles,
+  userLanguage,
+} = require("./Database/models");
+
 const Cooldowns = require("./Base/Handling/CooldownHandler");
 const MessageJSON = require("./Base/Handling/MessageJSON");
 const FeatureHandler = require("./Base/Handling/FeatureHandler");
