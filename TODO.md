@@ -20,10 +20,7 @@
 ## Low Priority
 
 <ul>
-    <li>Remake the README.md or make a proper Wiki/Doc (Anyone)</li>
     <li>Add support for more Databases (Max)</li>
-    <li>Add a color param for the default embeds (Anyone)</li> 
-    <li>Add an option to not load default commands</li>
 </ul>
 
 <br>
