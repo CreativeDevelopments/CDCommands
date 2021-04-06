@@ -47,6 +47,8 @@ function Commands(commandsDir, client, customHelpCommand) {
             });
           client.aliases.set(alias, command.name);
         }
+
+      if (command.init !== undefined) command.init(client);
     }
   }
   return client;
