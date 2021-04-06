@@ -60,6 +60,9 @@ module.exports = class Command {
   /** @type {string} */
   category;
 
+  /** @type {(client: CDClient) => Promise<unknown> | unknown} */
+  init;
+
   /** @type {({ message, args, client, prefix, language }: { message: Message, args: string[]; client: CDClient; prefix: string; language: keyof import("./Handling/Languages.json")}) => Promise<unknown>;} */
   run;
 
@@ -72,11 +75,11 @@ module.exports = class Command {
    * minArgs: number;
    * maxArgs: number;
    * usage: string;
-   * guildOnly: boolean;
-   * testOnly: boolean;
-   * dmOnly: boolean;
-   * nsfw: boolean;
-   * devOnly: boolean;
+   * guildOnly?: boolean;
+   * testOnly?: boolean;
+   * dmOnly?: boolean;
+   * nsfw?: boolean;
+   * devOnly?: boolean;
    * validator?: Validator;
    * cooldown?: string | number;
    * globalCooldown?: string | number;
@@ -84,6 +87,7 @@ module.exports = class Command {
    * userPermissions?: import("discord.js").PermissionResolvable[];
    * botPermissions?: import("discord.js").PermissionResolvable[];
    * category: string;
+   * init?: (client: CDClient) => Promise<unknown> | unknown;
    * run: ({ message, args, client, prefix, language }: { message: Message, args: string[]; client: CDClient; prefix: string; language: keyof import("./Handling/Languages.json")}) => Promise<unknown>;
    *}} CommandOptions
    */
@@ -107,8 +111,14 @@ module.exports = class Command {
     userPermissions,
     botPermissions,
     category,
+    init,
     run,
   }) {
+    if (!guildOnly) guildOnly = false;
+    if (!testOnly) testOnly = false;
+    if (!dmOnly) dmOnly = false;
+    if (!nsfw) nsfw = false;
+    if (!devOnly) devOnly = false;
     if (!aliases) aliases = [];
     if (!userPermissions) userPermissions = [];
     if (!botPermissions) botPermissions = [];
@@ -134,6 +144,7 @@ module.exports = class Command {
     this.nsfw = nsfw;
     this.noDisable = noDisable;
     this.userPermissions = userPermissions;
+    this.init = init;
     this.run = run;
   }
 };
