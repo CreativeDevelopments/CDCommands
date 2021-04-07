@@ -198,4 +198,12 @@ export const Models: {
     gId: string;
     requiredRoles: object[];
   }>;
+  guildLanguage: Model<{
+    gId: string;
+    language: string;
+  }>;
+  userLanguage: Model<{
+    uId: string;
+    language: string;
+  }>;
 };
