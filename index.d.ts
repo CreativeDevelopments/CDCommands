@@ -75,7 +75,7 @@ export default class CDCommands {
       testServers?: string[];
       customMessageEvent?: boolean;
       MessageJSONPath?: string;
-      disabledDefaultCommands: Array<
+      disabledDefaultCommands?: Array<
         | "help"
         | "command"
         | "category"
