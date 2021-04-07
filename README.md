@@ -139,8 +139,8 @@ module.exports = new Command({
   maxArgs: Infinity,
   // The expected usage of the command. Has no functionality other than
   // being displayed in the help menu. (type: string)
-  // Tip: Use ? to display the current guild prefix
-  usage: "?ping",
+  // Tip: Use {prefix} to display the current guild prefix
+  usage: "{prefix}ping",
   // Whether or not the command can be used only in a guild or not.
   // (type: boolean)
   guildOnly: false,
