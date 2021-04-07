@@ -4,6 +4,7 @@ import {
   PermissionResolvable,
   MessageEmbed,
   Collection,
+  Message,
 } from "discord.js";
 import { Model } from "mongoose";
 import Cache from "./src/Base/Handling/CacheHandler";
@@ -141,6 +142,40 @@ export class Command {
 
 export class Feature {
   constructor(run: (client: CDClient) => unknown | Promise<unknown>);
+}
+
+export class Validator {
+  constructor(options: {
+    validate: ({
+      message,
+      args,
+      client,
+      prefix,
+      language,
+    }: {
+      message: Message;
+      args: string[];
+      client: CDClient;
+      prefix: string;
+      language: keyof typeof import("./src/Base/Handling/Languages.json");
+    }) => boolean | string | Promise<boolean | string>;
+    onError: ({
+      error,
+      client,
+      message,
+      prefix,
+      args,
+      language,
+    }: {
+      error: string;
+      client: CDClient;
+      message: Message;
+      prefix: string;
+      args: string[];
+      language: keyof typeof import("./src/Base/Handling/Languages.json");
+    }) => void | Promise<void>;
+    onSuccess?: (message: Message) => void | Promise<void>;
+  });
 }
 
 export const Models: {
