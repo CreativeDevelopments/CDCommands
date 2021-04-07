@@ -143,7 +143,9 @@ export class Command {
   });
 }
 
-export class Feature {}
+export class Feature {
+  constructor(run: (client: CDClient) => unknown | Promise<unknown>);
+}
 
 export const Models: {
   cooldown: Model<{
