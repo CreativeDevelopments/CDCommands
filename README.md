@@ -177,10 +177,11 @@ module.exports = new Command({
   botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
   // More information will be provided below. (type: Validator)
   validate: new Validator(),
+  init: (client) => {},
   // The function that you want run when the command is used.
   // 5 different parameters are passed along for you to use.
   // message, args, client, prefix, and language
-  /* (type: ({ message, args, client, prefix, language }: 
+  /* (type: ({ message, args, client, prefix, language }:
   { message: Message, args: string[], client: CDClient, prefix: string, language: string }) => Promise<unknown>) */
   run: ({ message, args, client, prefix, language }) => {
     return message.channel.send(`My latency is **${client.ws.ping}ms**!`);
