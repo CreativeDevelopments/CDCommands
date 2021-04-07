@@ -42,7 +42,7 @@ class CDClient extends Client {
       getBy: string;
     };
   }>;
-  defaultResponses: MessageJSON<import("./src/Base/message.json")>;
+  defaultResponses: MessageJSON<typeof import("./src/Base/message.json")>;
   cooldowns: Cooldowns;
   developers: string[];
   testservers: string[];
@@ -52,16 +52,16 @@ class CDClient extends Client {
   }: {
     guildId: string;
     authorId: string;
-  }) => keyof import("./Handling/Languages.json");
+  }) => keyof typeof import("./src/Base/Handling/Languages.json");
   error: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
   load: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
   success: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
   info: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
-  logReady: ({ data }: { data: string }) => console.log;
-  logInfo: ({ data }: { data: string }) => console.log;
-  logError: ({ data }: { data: string }) => console.log;
-  logWarn: ({ data }: { data: string }) => console.log;
-  logDatabase: ({ data }: { data: string }) => console.log;
+  logReady: ({ data }: { data: string }) => void;
+  logInfo: ({ data }: { data: string }) => void;
+  logError: ({ data }: { data: string }) => void;
+  logWarn: ({ data }: { data: string }) => void;
+  logDatabase: ({ data }: { data: string }) => void;
 }
 
 export default class CDCommands {
@@ -88,10 +88,6 @@ export default class CDCommands {
       cacheUpdateSpeed?: number;
     },
   );
-
-  private _init(): Promise<void>;
-  private _commands(): Promise<void>;
-  private _events(): Promise<void>;
 
   public readonly defaultPrefix: string;
   public readonly testServers: string[];

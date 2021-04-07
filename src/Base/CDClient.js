@@ -63,15 +63,15 @@ class CDClient extends Client {
   success;
   /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
   info;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logReady;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logInfo;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logError;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logWarn;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logDatabase;
 }
 
