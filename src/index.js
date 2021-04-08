@@ -74,18 +74,11 @@ class CDCommands {
    * @type {boolean}
    */
   _customMessageEvent;
-  // /**
-  //  * @private
-  //  * @type {boolean}
-  //  */
-  // _customHelpCommand;
-
   /**
    * @private
    * @type {(keyof {"help", "command", "category", "language", "requiredroles", "setprefix"})[]}
    */
   _disabledDefaultCommands;
-
   /** @private */
   _cacheUpdateSpeed = 90 * 1000;
 

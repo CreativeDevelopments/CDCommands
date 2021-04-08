@@ -9,12 +9,12 @@ module.exports = class ArgumentValidator {
   _validate;
   /**
    * @private
-   * @type {({ error, client, message, prefix, args, language }: { error: string; client: CDClient; message: Message, prefix: string; args: string[]; language: keyof import("./Languages.json") }) => void | Promise<void>}
+   * @type {({ error, client, message, prefix, args, language }: { error: string; client: CDClient; message: Message, prefix: string; args: string[]; language: keyof import("./Languages.json") }) => unknown | Promise<unknown>}
    */
   _onError;
   /**
    * @private
-   * @type {(message: Message) => void | Promise<void>}
+   * @type {(message: Message) => unknown | Promise<unknown>}
    */
   _onSuccess;
 
@@ -22,8 +22,8 @@ module.exports = class ArgumentValidator {
    * @public
    * @param {Object} param0
    * @param {({ message, args, client, prefix, language }: { message: Message; args: string[]; client: CDClient, prefix: string; language: keyof import("./Languages.json") }) => boolean | string | Promise<boolean | string>} param0.validate
-   * @param {({ error, client, message, prefix, args, language }: { error: string; client: CDClient; message: Message, prefix: string; args: string[]; language: keyof import("./Languages.json") }) => void | Promise<void>} param0.onError
-   * @param {(message: Message) => void | Promise<void>=} param0.onSuccess
+   * @param {({ error, client, message, prefix, args, language }: { error: string; client: CDClient; message: Message, prefix: string; args: string[]; language: keyof import("./Languages.json") }) => unknown | Promise<unknown>} param0.onError
+   * @param {(message: Message) => unknown | Promise<unknown>=} param0.onSuccess
    */
   constructor({ validate, onError, onSuccess }) {
     this._onError = onError;
