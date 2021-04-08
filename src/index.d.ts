@@ -18,15 +18,15 @@ import { Parsed } from "parse-ms";
 type MessageJSONEmbedArgs = [
   {
     key:
-      | keyof typeof import("./src/Base/json-schema/replacers.json")["EMBED"]
-      | keyof typeof import("./src/Base/json-schema/replacers.json");
+      | keyof typeof import("./Base/json-schema/replacers.json")["EMBED"]
+      | keyof typeof import("./Base/json-schema/replacers.json");
     replace: string;
   },
 ];
 
 type MessageJSONStringArgs = [
   {
-    key: keyof typeof import("./src/Base/json-schema/replacers.json");
+    key: keyof typeof import("./Base/json-schema/replacers.json");
     replace: string;
   },
 ];
@@ -80,7 +80,7 @@ class Cache<
   public async deleteDocument(type: keyof T, findBy: string): Promise<void>;
 }
 
-class MessageJSON<T extends typeof import("./src/Base/message.json")> {
+class MessageJSON<T extends typeof import("./Base/message.json")> {
   private _path: string = "../message.json";
   private _fileData: T;
 
@@ -129,7 +129,7 @@ class Cooldowns {
 }
 
 class CDClient extends Client {
-  public commands: Collection<string, import("./src/Base/Command")>;
+  public commands: Collection<string, import("./Base/Command")>;
   public aliases: Collection<string, string>;
   public defaultPrefix: string;
   public databaseCache: Cache<{
@@ -179,9 +179,7 @@ class CDClient extends Client {
       getBy: string;
     };
   }>;
-  public defaultResponses: MessageJSON<
-    typeof import("./src/Base/message.json")
-  >;
+  public defaultResponses: MessageJSON<typeof import("./Base/message.json")>;
   public cooldowns: Cooldowns;
   public developers: string[];
   public testservers: string[];
@@ -191,7 +189,7 @@ class CDClient extends Client {
   }: {
     guildId: string;
     authorId: string;
-  }) => keyof typeof import("./src/Base/Handling/Languages.json");
+  }) => keyof typeof import("./Base/Handling/Languages.json");
   public error: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
   public load: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
   public success: ({
@@ -307,7 +305,7 @@ export class Command {
     args: string[];
     client: CDClient;
     prefix: string;
-    language: keyof typeof import("./src/Base/Handling/Languages.json");
+    language: keyof typeof import("./Base/Handling/Languages.json");
   }) => Promise<unknown> | unknown;
 
   constructor(options: {
