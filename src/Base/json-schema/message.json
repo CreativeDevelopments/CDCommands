@@ -1349,7 +1349,7 @@
         "GUILD_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} se moze koristiti samo u serveru."],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je upotrijebljena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1359,7 +1359,7 @@
         "DM_ONLY": {
           "type": ["string", "object"],
           "examples": ["{COMMAND} se moze koristiti samo u mojim privatnim porukama."],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je upotrijebljena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1369,7 +1369,7 @@
         "NSFW_ONLY": {
           "type": ["string", "object"],
           "examples": ["Ova komanda je samo za NSFW kanale!"],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je upotrijebljena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1381,7 +1381,7 @@
           "examples": [
             "{COMMAND} komanda je trenunto iskljucena u ovom serveru. Ne mozes je koristiti."
           ],
-          "description": "\"{COMMAND}\" represents the command that is disabled",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je iskljucena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1393,7 +1393,7 @@
           "examples": [
             "{CATEGORY} kategorija je trenutno iskljucena u ovom serveru. Ne mozes koristiti komande iz ove kategorije."
           ],
-          "description": "\"{CATEGORY}\" represents the category that is disabled",
+          "description": "\"{CATEGORY}\" predstavlja kategoriju koja je iskljucena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1405,7 +1405,7 @@
           "examples": [
             "Polako! Nemam {CLIENT_PERMISSIONS} permisije! Daj mi permisiju prije koristenja te komande!"
           ],
-          "description": "\"{CLIENT_PERMISSIONS}\" represents the missing client permissions",
+          "description": "\"{CLIENT_PERMISSIONS}\" predstavlja kako klijent nema  permisije.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1417,7 +1417,7 @@
           "examples": [
             "Polako! Nemas {MEMBER_PERMISSIONS} permisije! Dobi permisiju prije koristenja te komande!"
           ],
-          "description": "\"{MEMBER_PERMISSIONS}\" represents the missing member permissions",
+          "description": "\"{MEMBER_PERMISSIONS}\" predstavlja kako member nema permisiju.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1429,7 +1429,7 @@
           "examples": [
             "Izgleda da ti fali rola {ROLES}! Dobi rolu prije koristenja komande {COMMAND}."
           ],
-          "description": "\"{ROLES}\" represents the missing roles required for the command. \"{COMMAND}\" represents the command that was used",
+          "description": "\"{ROLES}\" predstavlja koje role su potrebne za komandu. \"{COMMAND}\" predstavlja komandu koja je upotrijebljena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1441,7 +1441,7 @@
           "examples": [
             "Ne mozes koristiti {COMMAND}. Komanda je iskljucivo za developere."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je upotrijebljena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1453,7 +1453,7 @@
           "examples": [
             "{COMMAND} je iskljucivo za test servere, a ovo nije jedan od njih."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je upotrijebljena.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1465,7 +1465,7 @@
           "examples": [
             "Kriva Upotreba [Previse argumenata]; Koristi {USAGE}."
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "description": "\"{USAGE}\" predstavlja ispravno koristenje komande.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1477,7 +1477,7 @@
           "examples": [
             "Kriva Upotreba [Nedovoljno argumenata]; Koristi {USAGE}."
           ],
-          "description": "\"{USAGE}\" represents the correct usage of the command",
+          "description": "\"{USAGE}\" predstavlja ispravno koristenje komande.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1489,7 +1489,7 @@
           "examples": [
             "{COMMAND} je na globalnom cooldownu! Pricekaj {COOLDOWN} prije ponovne upotrebe."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je upotrijebljena. \"{COOLDOWN}\" predstavlja ostatak cooldown-a.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1501,7 +1501,7 @@
           "examples": [
             "Ohladi malo! Pricekaj {COOLDOWN} prije ponovne upotrebe {COMMAND}."
           ],
-          "description": "\"{COMMAND}\" represents the command that was used. \"{COOLDOWN}\" represents the remaining cooldown",
+          "description": "\"{COMMAND}\" predstavlja komandu koja je upotrijebljena. \"{COOLDOWN}\" predstavlja ostatak cooldown-a.",
           "properties": {
             "embed": {
               "$ref": "embed.json#/definitions/embed"
@@ -1514,7 +1514,7 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["Kriva Upotreba! Koristi {USAGE}."],
-              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "description": "\"{USAGE}\" predstavlja ispravno koristenje komande.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1524,7 +1524,7 @@
             "NON_EXISTANT_CATEGORY": {
               "type": ["string", "object"],
               "examples": ["Ta kategorija ne postoji."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" predstavlja kategoriju koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1534,7 +1534,7 @@
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["Ta kategorija je vec ukljucena."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" predstavlja kategoriju koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1544,7 +1544,7 @@
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["Ta kategorija ja vec iskljucena."],
-              "description": "\"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{CATEGORY}\" predstavlja kategoriju koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1554,7 +1554,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["Uspjesno {ACTION} {CATEGORY} kategorija."],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{CATEGORY}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{ACTION}\" predstavlja sto je poduzeto, ili \"ukljuceno\" ili \"iskljuceno\". \"{CATEGORY}\" predstavlja kategoriju koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1569,7 +1569,7 @@
             "INVALID_ARGS_ERROR": {
               "type": ["string", "object"],
               "examples": ["Kriva Upotreba! Koristi {USAGE}"],
-              "description": "\"{USAGE}\" represents the correct usage of the command",
+              "description": "\"{USAGE}\" predstavlja ispravno koristenje komande.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1579,7 +1579,7 @@
             "NON_EXISTANT_COMMAND": {
               "type": ["string", "object"],
               "examples": ["Komanda ne postoji."],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" predstavlja komandu koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1589,7 +1589,7 @@
             "ALREADY_ENABLED": {
               "type": ["string", "object"],
               "examples": ["Ta komanda je vec ukljucena."],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" predstavlja komandu koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1599,7 +1599,7 @@
             "NO_DISABLE": {
               "type": ["string", "object"],
               "examples": ["Kriva Upotreba! Koristi {USAGE}"],
-              "description": "\"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" predstavlja komandu koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1609,7 +1609,7 @@
             "ALREADY_DISABLED": {
               "type": ["string", "object"],
               "examples": ["Ta komanda je vec iskljucena."],
-              "description": "\"{COMMAND}\" represents the category that the user attempted to disable/enable",
+              "description": "\"{COMMAND}\" predstavlja komandu koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1619,7 +1619,7 @@
             "SUCCESS": {
               "type": ["string", "object"],
               "examples": ["Uspjesno {ACTION} {COMMAND} komanda."],
-              "description": "\"{ACTION}\" represents the action taken, either \"enabled\" or \"disabled\". \"{COMMAND}\" represents the command that the user attempted to disable/enable",
+              "description": "\"{ACTION}\" predstavlja sto je poduzeto, ili \"ukljuceno\" ili \"iskljuceno\". \"{COMMAND}\" predstavlja komandu koju je korisnik pokusao iskljuciti/ukljuciti.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1636,7 +1636,7 @@
               "examples": [
                 "{COMMAND_CATEGORY} nije komanda ni kategorija. Koristi {PREFIX}help da vidis sve komande i kategorije."
               ],
-              "description": "\"{COMMAND_CATEGORY}\" represents the command/category the user attempted to view. \"{PREFIX}\" represents the current servers prefix",
+              "description": "\"{COMMAND_CATEGORY}\" predstavlja komandu/kategoriju koju je korisnik pokusao vidjeti. \"{PREFIX}\" predstavlja trenutni server prefix.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1651,7 +1651,7 @@
             "INVALID_ARGUMENTS": {
               "type": ["string", "object"],
               "examples": ["Kriva Upotreba! Koristi {USAGE}"],
-              "description": "\"{USAGE}\" represents the correct usage of the command.",
+              "description": "\"{USAGE}\" predstavlja ispravno koristenje komande.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1661,7 +1661,7 @@
             "INVALID_ROLE": {
               "type": ["string", "object"],
               "examples": ["Upisi ispravnu rolu za {ACTION}."],
-              "description": "\"{ACTION}\" represents the action taken on the role, \"add\" or \"remove\"",
+              "description": "\"{ACTION}\" predstavlja radnju poduzetu na roli, \"add\" ili \"remove\".",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1673,7 +1673,7 @@
               "examples": [
                 "Komanda ne postoji. Upisi postojecu komandu."
               ],
-              "description": "\"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "description": "\"{COMMAND}\" predstavlja komandu koja je pokusana da se dodaju potrebne role.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1685,7 +1685,7 @@
               "examples": [
                 "{ROLE} je vec na na listi potrebnih rola za {COMMAND}"
               ],
-              "description": "\"{ROLE}\" represents the role that was attempted to be added to the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles added to.",
+              "description": "\"{ROLE}\" predstavlja rolu koja je pokusana da se doda na listu potrebnih rola. \"{COMMAND}\" predstavlja komandu koja je pokusana da se dodaju potrebne role.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1697,7 +1697,7 @@
               "examples": [
                 "{ROLE} nije na listi potrebnih rola za {COMMAND}"
               ],
-              "description": "\"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "description": "\"{ROLE}\" predstavlja rolu koja je pokusana da se makne sa liste potrebnih rola. \"{COMMAND}\" predstavlja komandu koja je pokusana se maknu potrebne role.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1709,7 +1709,7 @@
               "examples": [
                 "Uspjesno {ACTION} {ROLE} u/iz liste potrebnih rola za {COMMAND}"
               ],
-              "description": "\"{ACTION}\" represents the action taken, \"added\" or \"removed\". \"{ROLE}\" represents the role that was attempted to be removed from the required roles list. \"{COMMAND}\" represents the command that was attempted to have required roles removed from.",
+              "description": "\"{ACTION}\" predstavlja radnju poduzetu na roli, \"added\" ili \"removed\". \"{ROLE}\" predstavlja rolu koja je pokusana da se makne sa liste potrebnih rola. \"{COMMAND}\" predstavlja komandu koja je pokusana se maknu potrebne role.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1735,7 +1735,7 @@
               "examples": [
                 "Uspjesno azuriran {GUILD_NAME} prefix na {PREFIX}"
               ],
-              "description": "\"{GUILD_NAME}\" represents the current servers name. \"{PREFIX}\" represents the new prefix.",
+              "description": "\"{GUILD_NAME}\" predstavlja trenutno ime servera. \"{PREFIX}\" predstavlja novi prefix.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1752,7 +1752,7 @@
               "examples": [
                 "Upisi ispravan ISO 639-1 kod, `{ISO_CODE}` je neispravan. Posjeti [here](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) da saznas vise."
               ],
-              "description": "\"{ISO_CODE}\" represents the invalid ISO Code that was provided.",
+              "description": "\"{ISO_CODE}\" predstavlja neispravni ISO kod.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1764,7 +1764,7 @@
               "examples": [
                 "**{ISO_CODE}** nije dostupan od strane vlasnika, izaberi iz sljedecih: **{PROVIDED_CODES}**"
               ],
-              "description": "\"{ISO_CODE}\" represents the language code that was attempted to be used. \"{PROVIDED_CODES}\" represents the language codes that the bot creator has translated to.",
+              "description": "\"{ISO_CODE}\" predstavlja jezicni kod koji se pokusao koristiti. \"{PROVIDED_CODES}\" predstavlja jezicne kodove na koje je vlasnik preveo.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
@@ -1776,7 +1776,7 @@
               "examples": [
                 "Uspjesno promijenjen {USER_GUILD} jezik na {ISO_CODE}"
               ],
-              "description": "\"{USER_GUILD}\" represents either the user or guild that is updating the language. \"{ISO_CODE}\" represents the ISO Code that was updated to.",
+              "description": "\"{USER_GUILD}\" predstavlja korisnika ili server koji azurira jezik. \"{ISO_CODE}\" predstavlja ISO kod na koji je azurirano.",
               "properties": {
                 "embed": {
                   "$ref": "embed.json#/definitions/embed"
