@@ -13,6 +13,45 @@ import { Model, Document } from "mongoose";
 // import Event from "./src/Base/Event";
 // import ArgumentValidator from "./src/Base/Handling/ArgumentValidator";
 
+type MessageJSONEmbedArgs = [
+  {
+    key:
+      | keyof typeof import("./src/Base/json-schema/replacers.json")["EMBED"]
+      | keyof typeof import("./src/Base/json-schema/replacers.json");
+    replace: string;
+  },
+];
+
+type MessageJSONStringArgs = [
+  {
+    key: keyof typeof import("./src/Base/json-schema/replacers.json");
+    replace: string;
+  },
+];
+
+type MessageJSONArgs =
+  | {
+      title?: MessageJSONEmbedArgs;
+      url?: MessageJSONEmbedArgs;
+      author_name?: MessageJSONEmbedArgs;
+      author_iconURL?: MessageJSONEmbedArgs;
+      color?: MessageJSONEmbedArgs;
+      fields?: [
+        {
+          name?: MessageJSONEmbedArgs;
+          value?: MessageJSONEmbedArgs;
+          inline?: MessageJSONEmbedArgs;
+        },
+      ];
+      footer_text?: MessageJSONEmbedArgs;
+      footer_iconURL?: MessageJSONEmbedArgs;
+      timestamp?: MessageJSONEmbedArgs;
+      thumbnail_url?: MessageJSONEmbedArgs;
+      description?: MessageJSONEmbedArgs;
+      image_url?: MessageJSONEmbedArgs;
+    }
+  | MessageJSONStringArgs;
+
 class Cache<
   T extends {
     [key: string]: {
@@ -39,7 +78,21 @@ class Cache<
   public async deleteDocument(type: keyof T, findBy: string): Promise<void>;
 }
 
-class MessageJSON {}
+class MessageJSON<T extends typeof import("./src/Base/message.json")> {
+  private _path: string = "../message.json";
+  private _fileData: T;
+
+  public constructor(messagePath?: string);
+
+  public getValue<
+    V extends keyof T["en"],
+    S extends keyof T["en"][V] extends "embed"
+      ? ""
+      : T["en"][V] extends string
+      ? ""
+      : keyof T["en"][V]
+  >(key: V, secondary_key: S, args: MessageJSONArgs): MessageEmbed | string;
+}
 class Cooldowns {}
 class ArgumentValidator {}
 
