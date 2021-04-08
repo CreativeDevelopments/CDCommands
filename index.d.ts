@@ -136,7 +136,7 @@ export class Command {
       args: string[];
       client: CDClient;
       prefix: string;
-    }) => Promise<any>;
+    }) => Promise<unknonw> | unknown;
   });
 }
 
