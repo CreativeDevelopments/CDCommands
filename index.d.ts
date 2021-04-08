@@ -131,12 +131,14 @@ export class Command {
       args,
       client,
       prefix,
+      language,
     }: {
       message: Message;
       args: string[];
       client: CDClient;
       prefix: string;
-    }) => Promise<unknonw> | unknown;
+      language: keyof typeof import("./src/Base/Handling/Languages.json");
+    }) => Promise<unknown> | unknown;
   });
 }
 
