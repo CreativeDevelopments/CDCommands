@@ -5,8 +5,10 @@ import {
   MessageEmbed,
   Collection,
   Message,
+  User,
 } from "discord.js";
 import { Model, Document } from "mongoose";
+import { Parsed } from "parse-ms";
 // import Cache from "./src/Base/Handling/CacheHandler";
 // import MessageJSON from "./src/Base/Handling/MessageJSON";
 // import Cooldowns from "./src/Base/Handling/CooldownHandler";
@@ -93,7 +95,37 @@ class MessageJSON<T extends typeof import("./src/Base/message.json")> {
       : keyof T["en"][V]
   >(key: V, secondary_key: S, args: MessageJSONArgs): MessageEmbed | string;
 }
-class Cooldowns {}
+class Cooldowns {
+  private _client: CDClient;
+  private _cooldowns: Collection<
+    string,
+    Collection<string, Date>
+  > = new Collection();
+  private _globalCoolDowns: Collection<string, Date> = new Collection();
+
+  public constructor(dbCooldowns: Array<Document<any>>, client: CDClient);
+
+  private _init(DBcooldowns: Array<Document<any>>): void;
+
+  public setCooldown(
+    user: User,
+    command: string,
+    cooldown: Date,
+    type: "global" | "local",
+  ): void;
+
+  public getRemainingCooldown(
+    user: User,
+    command: string,
+    type: "global" | "local",
+  ): Parsed;
+
+  public isOnCooldown(
+    user: User,
+    command: string,
+    type: "global" | "local",
+  ): boolean;
+}
 class ArgumentValidator {}
 
 class CDClient extends Client {
