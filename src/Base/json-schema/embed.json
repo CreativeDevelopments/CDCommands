@@ -45,7 +45,7 @@
                 "description": "Usable replacers: \"{FIELD_VALUE}\""
               },
               "inline": {
-                "type": "boolean",
+                "type": ["boolean", "string"],
                 "description": "Usabled replacers: \"{FIELD_INLINE}\""
               }
             }
@@ -65,7 +65,7 @@
           }
         },
         "timestamp": {
-          "type": "number",
+          "type": ["number", "string"],
           "description": "Usabled replacers: \"{TIMESTAMP}\""
         },
         "thumbnail": {
