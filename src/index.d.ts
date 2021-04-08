@@ -9,11 +9,6 @@ import {
 } from "discord.js";
 import { Model, Document } from "mongoose";
 import { Parsed } from "parse-ms";
-// import Cache from "./src/Base/Handling/CacheHandler";
-// import MessageJSON from "./src/Base/Handling/MessageJSON";
-// import Cooldowns from "./src/Base/Handling/CooldownHandler";
-// import Event from "./src/Base/Event";
-// import ArgumentValidator from "./src/Base/Handling/ArgumentValidator";
 
 type MessageJSONEmbedArgs = [
   {
@@ -77,7 +72,11 @@ class Cache<
   public getDocument(type: keyof T, findBy: string): Document<any>;
   public insertDocument(type: keyof T, doc: Document<any>): void;
   public updateDocument(type: keyof T, update: Document<any>): void;
-  public async deleteDocument(type: keyof T, findBy: string): Promise<void>;
+  public async deleteDocument(
+    type: keyof T,
+    findBy: string,
+    document: Document<any>,
+  ): Promise<void>;
 }
 
 class MessageJSON<T extends typeof import("./Base/message.json")> {
@@ -124,6 +123,7 @@ class Cooldowns {
   public isOnCooldown(
     user: User,
     command: string,
+    cooldown: Date,
     type: "global" | "local",
   ): boolean;
 }
