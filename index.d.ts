@@ -95,6 +95,7 @@ class MessageJSON<T extends typeof import("./src/Base/message.json")> {
       : keyof T["en"][V]
   >(key: V, secondary_key: S, args: MessageJSONArgs): MessageEmbed | string;
 }
+
 class Cooldowns {
   private _client: CDClient;
   private _cooldowns: Collection<
@@ -126,7 +127,6 @@ class Cooldowns {
     type: "global" | "local",
   ): boolean;
 }
-class ArgumentValidator {}
 
 class CDClient extends Client {
   public commands: Collection<string, import("./src/Base/Command")>;
@@ -293,7 +293,7 @@ export class Command {
   public userPermissions: PermissionResolvable[] = [];
   public botPermissions: PermissionResolvable[] = [];
   public category: string;
-  public validator: ArgumentValidator | undefined = undefined;
+  public validator: Validator | undefined = undefined;
 
   public init: (client: CDClient) => Promise<unknown> | unknown;
   public run: ({
@@ -329,21 +329,9 @@ export class Command {
     userPermissions?: PermissionResolvable[];
     botPermissions?: PermissionResolvable[];
     category: string;
-    validator?: ArgumentValidator | undefined;
-    init?: (client: CDClient) => Promise<unknown> | unknown;
-    run: ({
-      message,
-      args,
-      client,
-      prefix,
-      language,
-    }: {
-      message: Message;
-      args: string[];
-      client: CDClient;
-      prefix: string;
-      language: keyof typeof import("./src/Base/Handling/Languages.json");
-    }) => Promise<unknown> | unknown;
+    validator?: Validator | undefined;
+    init?: Command["init"];
+    run: Command["run"];
   });
 }
 
