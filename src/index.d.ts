@@ -2,212 +2,13 @@ import {
   Client,
   ClientEvents,
   PermissionResolvable,
-  MessageEmbed,
-  Collection,
   Message,
-  User,
 } from "discord.js";
 import { Model, Document } from "mongoose";
-import { Parsed } from "parse-ms";
 
-type MessageJSONEmbedArgs = [
-  {
-    key:
-      | keyof typeof import("./Base/json-schema/replacers.json")["EMBED"]
-      | keyof typeof import("./Base/json-schema/replacers.json");
-    replace: string;
-  },
-];
+import { CDClient } from "./types/helper.types";
 
-type MessageJSONStringArgs = [
-  {
-    key: keyof typeof import("./Base/json-schema/replacers.json");
-    replace: string;
-  },
-];
-
-type MessageJSONArgs =
-  | {
-      title?: MessageJSONEmbedArgs;
-      url?: MessageJSONEmbedArgs;
-      author_name?: MessageJSONEmbedArgs;
-      author_iconURL?: MessageJSONEmbedArgs;
-      color?: MessageJSONEmbedArgs;
-      fields?: [
-        {
-          name?: MessageJSONEmbedArgs;
-          value?: MessageJSONEmbedArgs;
-          inline?: MessageJSONEmbedArgs;
-        },
-      ];
-      footer_text?: MessageJSONEmbedArgs;
-      footer_iconURL?: MessageJSONEmbedArgs;
-      timestamp?: MessageJSONEmbedArgs;
-      thumbnail_url?: MessageJSONEmbedArgs;
-      description?: MessageJSONEmbedArgs;
-      image_url?: MessageJSONEmbedArgs;
-    }
-  | MessageJSONStringArgs;
-
-class Cache<
-  T extends {
-    [key: string]: {
-      model: Model<any>;
-      getBy: string;
-    };
-  }
-> {
-  private _cache: Collection<
-    string,
-    Collection<string, Document<any>>
-  > = new Collection();
-  private _updateSpeed: number;
-  private _options: { models: T; updateSpeed: number };
-
-  public constructor(options: { models: T; updateSpeed: number });
-
-  private async _init(): Promise<void>;
-  private _startUpdateCycle(): void;
-
-  public getDocument(type: keyof T, findBy: string): Document<any>;
-  public insertDocument(type: keyof T, doc: Document<any>): void;
-  public updateDocument(type: keyof T, update: Document<any>): void;
-  public async deleteDocument(
-    type: keyof T,
-    findBy: string,
-    document: Document<any>,
-  ): Promise<void>;
-}
-
-class MessageJSON<T extends typeof import("./Base/message.json")> {
-  private _path: string = "../message.json";
-  private _fileData: T;
-
-  public constructor(messagePath?: string);
-
-  public getValue<
-    V extends keyof T["en"],
-    S extends keyof T["en"][V] extends "embed"
-      ? ""
-      : T["en"][V] extends string
-      ? ""
-      : keyof T["en"][V]
-  >(key: V, secondary_key: S, args: MessageJSONArgs): MessageEmbed | string;
-}
-
-class Cooldowns {
-  private _client: CDClient;
-  private _cooldowns: Collection<
-    string,
-    Collection<string, Date>
-  > = new Collection();
-  private _globalCoolDowns: Collection<string, Date> = new Collection();
-
-  public constructor(dbCooldowns: Array<Document<any>>, client: CDClient);
-
-  private _init(DBcooldowns: Array<Document<any>>): void;
-
-  public setCooldown(
-    user: User,
-    command: string,
-    cooldown: Date,
-    type: "global" | "local",
-  ): void;
-
-  public getRemainingCooldown(
-    user: User,
-    command: string,
-    type: "global" | "local",
-  ): Parsed;
-
-  public isOnCooldown(
-    user: User,
-    command: string,
-    cooldown: Date,
-    type: "global" | "local",
-  ): boolean;
-}
-
-class CDClient extends Client {
-  public commands: Collection<string, import("./Base/Command")>;
-  public aliases: Collection<string, string>;
-  public defaultPrefix: string;
-  public databaseCache: Cache<{
-    cooldowns: {
-      model: Model<{
-        uId: string;
-        type: string;
-        name: string;
-        cooldown: string;
-      }>;
-      getBy: string;
-    };
-    disabledcommands: {
-      model: Model<{
-        gId: string;
-        commands: string[];
-        categories: string[];
-      }>;
-      getBy: string;
-    };
-    prefixes: {
-      model: Model<{
-        gId: string;
-        prefix: string;
-      }>;
-      getBy: string;
-    };
-    requriedroles: {
-      model: Model<{
-        gId: string;
-        requiredRoles: object[];
-      }>;
-      getBy: string;
-    };
-    guildLanguage: {
-      model: Model<{
-        gId: string;
-        language: string;
-      }>;
-      getBy: string;
-    };
-    userLanguage: {
-      model: Model<{
-        uId: string;
-        language: string;
-      }>;
-      getBy: string;
-    };
-  }>;
-  public defaultResponses: MessageJSON<typeof import("./Base/message.json")>;
-  public cooldowns: Cooldowns;
-  public developers: string[];
-  public testservers: string[];
-  public getLanguage: ({
-    guildId,
-    authorId,
-  }: {
-    guildId: string;
-    authorId: string;
-  }) => keyof typeof import("./Base/Handling/Languages.json");
-  public error: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
-  public load: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
-  public success: ({
-    msg,
-    data,
-  }: {
-    msg: Message;
-    data: string;
-  }) => MessageEmbed;
-  public info: ({ msg, data }: { msg: Message; data: string }) => MessageEmbed;
-  public logReady: ({ data }: { data: string }) => void;
-  public logInfo: ({ data }: { data: string }) => void;
-  public logError: ({ data }: { data: string }) => void;
-  public logWarn: ({ data }: { data: string }) => void;
-  public logDatabase: ({ data }: { data: string }) => void;
-  constructor();
-}
-
+// declare module "cdcommands" {
 export default class CDCommands {
   private _client: CDClient;
   private _commandsDir: string;
@@ -226,7 +27,7 @@ export default class CDCommands {
     | "requiredroles"
     | "setprefix"
   )[];
-  private _cacheUpdateSpeed: number = 90 * 1000;
+  private _cacheUpdateSpeed: number;
 
   public constructor(
     client: Client,
@@ -274,24 +75,24 @@ export class Event<T extends keyof ClientEvents> {
 
 export class Command {
   public name: string;
-  public aliases: string = [];
+  public aliases: string;
   public description: string;
   public details: string;
   public minArgs: number;
   public maxArgs: number;
   public usage: string;
-  public guildOnly: boolean = false;
-  public testOnly: boolean = false;
-  public dmOnly: boolean = false;
-  public nsfw: boolean = false;
-  public devOnly: boolean = false;
-  public cooldown: string | number = 0;
-  public globalCooldown: string | number = 0;
-  public noDisable: boolean = false;
-  public userPermissions: PermissionResolvable[] = [];
-  public botPermissions: PermissionResolvable[] = [];
+  public guildOnly: boolean;
+  public testOnly: boolean;
+  public dmOnly: boolean;
+  public nsfw: boolean;
+  public devOnly: boolean;
+  public cooldown: string | number;
+  public globalCooldown: string | number;
+  public noDisable: boolean;
+  public userPermissions: PermissionResolvable[];
+  public botPermissions: PermissionResolvable[];
   public category: string;
-  public validator: Validator | undefined = undefined;
+  public validator: Validator | undefined;
 
   public init: (client: CDClient) => Promise<unknown> | unknown;
   public run: ({
@@ -349,7 +150,7 @@ export class Validator {
     args: string[];
     client: CDClient;
     prefix: string;
-    language: keyof import("./Languages.json");
+    language: keyof typeof import("./Base/Handling/Languages.json");
   }) => boolean | string | Promise<boolean | string>;
   private _onError: ({
     error,
@@ -364,7 +165,7 @@ export class Validator {
     message: Message;
     prefix: string;
     args: string[];
-    language: keyof import("./Languages.json");
+    language: keyof typeof import("./Base/Handling/Languages.json");
   }) => unknown | Promise<unknown>;
   private _onSuccess: (message: Message) => unknown | Promise<unknown>;
 
@@ -380,31 +181,44 @@ export class Validator {
 }
 
 export const Models: {
-  cooldown: Model<{
-    uId: string;
-    type: string;
-    name: string;
-    cooldown: string;
-  }>;
-  disabledCommands: Model<{
-    gId: string;
-    commands: string[];
-    categories: string[];
-  }>;
-  prefixes: Model<{
-    gId: string;
-    prefix: string;
-  }>;
-  requiredRoles: Model<{
-    gId: string;
-    requiredRoles: object[];
-  }>;
-  guildLanguage: Model<{
-    gId: string;
-    language: string;
-  }>;
-  userLanguage: Model<{
-    uId: string;
-    language: string;
-  }>;
+  cooldown: Model<
+    Document<{
+      uId: string;
+      type: string;
+      name: string;
+      cooldown: string;
+    }>
+  >;
+  disabledCommands: Model<
+    Document<{
+      gId: string;
+      commands: string[];
+      categories: string[];
+    }>
+  >;
+  prefixes: Model<
+    Document<{
+      gId: string;
+      prefix: string;
+    }>
+  >;
+  requiredRoles: Model<
+    Document<{
+      gId: string;
+      requiredRoles: object[];
+    }>
+  >;
+  guildLanguage: Model<
+    Document<{
+      gId: string;
+      language: string;
+    }>
+  >;
+  userLanguage: Model<
+    Document<{
+      uId: string;
+      language: string;
+    }>
+  >;
 };
+// }
