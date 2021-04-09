@@ -7,9 +7,7 @@ import {
 import { Model, Document } from "mongoose";
 
 import { CDClient } from "./types/helper.types";
-
-// declare module "cdcommands" {
-export default class CDCommands {
+export class CDCommands {
   private _client: CDClient;
   private _commandsDir: string;
   private _eventsDir: string;
@@ -221,4 +219,3 @@ export const Models: {
     }>
   >;
 };
-// }

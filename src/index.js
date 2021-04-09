@@ -341,7 +341,7 @@ class CDCommands {
   }
 }
 
-module.exports = CDCommands;
+module.exports.CDCommands = CDCommands;
 module.exports.Event = require("./Base/Event");
 module.exports.Command = require("./Base/Command");
 module.exports.Validator = require("./Base/Handling/ArgumentValidator");
