@@ -9,6 +9,7 @@
 
 - [Installation](#installation)
 - [Initial Setup](#initial-setup)
+  - [TypeScript Support](#typescript-support)
 - [Creating a Basic Command](#creating-a-basic-command)
   - [Command Properties](#command-properties)
     - [Argument Validation](#argument-validation)
@@ -51,8 +52,10 @@ $ npm install cdcommands
 To setup your bot project with CDCommands, all you need to do is initialize the main class inside of your client ready event!
 
 ```js
+// ./index.js
 const { Client } = require("discord.js");
-const CDCommands = require("cdcommands");
+const { CDCommands } = require("cdcommands");
+// Note: CDCommands was changed to a named export in v4.1.0
 
 const client = new Client();
 
@@ -89,6 +92,50 @@ client.login("BOT_TOKEN");
 ```
 
 As long as you set everything up correctly, this should be all you technically need to get a barebones bot up and running.
+
+# TypeScript Support
+
+New in v4.1.0, CDCommands has gained support for TypeScript! You can now use one of the best command handlers with one of the best high level languages! To use CDCommands in your TypeScript project, it's as simple as changing your ES2015 imports, (require/module.exports) to use ES2016 imports and exports (import x from x/export default). For example, initialzing your project in your main `index.ts` file.
+
+```ts
+// ./index.ts
+import { Client } from "discord.js";
+import { CDCommands } from "cdcommands";
+// Note: CDCommands was changed to a named export in v4.1.0
+
+const client = new Client();
+
+client.on("ready", () => {
+  new CDCommands(client, {
+    // Path to your commands folder (default: "commands")
+    commandsDir: "commands",
+    // Path to your events folder (default: "events")
+    eventsDir: "events",
+    // Path to your features folder (default: "features")
+    featuresDir: "features",
+    // Path to message.json file (default: inside node_modules folder)
+    MessageJSONPath: "message.json",
+    // An array of your test servers (default: [])
+    testServers: [],
+    // Array of bot developers (default: [])
+    devs: [],
+    // The default prefix you wish to set
+    defaultPrefix: "?",
+    // Your mongodb connection uri
+    mongoURI: "URI_HERE",
+    // How frequently the cache will update the database (default: 90 seconds)
+    cacheUpdateSpeed: 60000 * 5,
+    // What default commands you want to "disable" or not load (default: [])
+    disabledDefaultCommands: [],
+    // Whether or not you want to make your own message event (default: false)
+    customMessageEvent: false,
+  });
+
+  console.log(`${client.user.username} has logged in!`);
+});
+
+client.login("BOT_TOKEN");
+```
 
 # Creating a Basic Command
 
