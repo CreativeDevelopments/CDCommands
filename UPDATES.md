@@ -95,3 +95,7 @@ All updates to the package will be put here.
 ✔️ Fixed category being case sensitive for the help command
 
 ➖ Removed 'customHelpCommand' (Replaced with 'disabledDefaultCommands')
+
+### 4.1.0
+
+➕ Added init method to commands.

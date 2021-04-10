@@ -41,29 +41,59 @@ module.exports = class FeatureHandler {
   _init() {
     const files = readdirSync(this._dir);
     for (const file of files) {
-      /** @type {Feature} */
-      const feature = require(join(this._dir, file));
-      if (!(feature instanceof Feature)) {
-        this._client.logError({
-          data: `Feature at path ${join(
-            this._dir,
-            file,
-          )} is not a valid feature. Please make sure it is set up correctly.`,
-        });
-        continue;
-      }
+      if (require.main.filename.endsWith(".js") && file.endsWith(".js")) {
+        /** @type {Feature} */
+        const feature = require(join(this._dir, file));
+        if (!(feature instanceof Feature)) {
+          this._client.logError({
+            data: `Feature at path ${join(
+              this._dir,
+              file,
+            )} is not a valid feature. Please make sure it is set up correctly.`,
+          });
+          continue;
+        }
 
-      if (!feature.run || typeof feature.run !== "function") {
-        this._client.logError({
-          data: `Feature at path ${join(
-            this._dir,
-            file,
-          )} does not have a valid "run" function. Please make sure it is set up correctly.`,
-        });
-        continue;
-      }
+        if (!feature.run || typeof feature.run !== "function") {
+          this._client.logError({
+            data: `Feature at path ${join(
+              this._dir,
+              file,
+            )} does not have a valid "run" function. Please make sure it is set up correctly.`,
+          });
+          continue;
+        }
 
-      feature.run(this._client);
+        feature.run(this._client);
+      } else if (
+        require.main.filename.endsWith(".ts") &&
+        file.endsWith(".ts") &&
+        !file.endsWith(".d.ts")
+      ) {
+        /** @type {Feature} */
+        const feature = require(join(this._dir, file)).default;
+        if (!(feature instanceof Feature)) {
+          this._client.logError({
+            data: `Feature at path ${join(
+              this._dir,
+              file,
+            )} is not a valid feature. Please make sure it is set up correctly.`,
+          });
+          continue;
+        }
+
+        if (!feature.run || typeof feature.run !== "function") {
+          this._client.logError({
+            data: `Feature at path ${join(
+              this._dir,
+              file,
+            )} does not have a valid "run" function. Please make sure it is set up correctly.`,
+          });
+          continue;
+        }
+
+        feature.run(this._client);
+      }
     }
   }
 };

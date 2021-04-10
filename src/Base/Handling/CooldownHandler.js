@@ -113,10 +113,11 @@ module.exports = class Cooldowns {
    * @public
    * @param {User} user
    * @param {string} command
+   * @param {Date} cooldown
    * @param {"global" | "local"} type
    * @returns {boolean}
    */
-  isOnCooldown(user, command, type) {
+  isOnCooldown(user, command, cooldown, type) {
     if (type === "local") {
       if (
         this._cooldowns.get(user.id) !== undefined &&
@@ -128,10 +129,25 @@ module.exports = class Cooldowns {
           this._cooldowns.get(user.id).delete(command);
           cooldownDoc
             .findOne({ uId: user.id, name: command, type: "local" })
-            .then((c) => {
+            .then(async (c) => {
               if (c !== null)
-                this._client.databaseCache.deleteDocument("cooldowns", c);
+                await this._client.databaseCache.deleteDocument(
+                  "cooldowns",
+                  command,
+                  c,
+                );
+              this.setCooldown(user, command, cooldown, "local");
+              this._client.databaseCache.insertDocument(
+                "cooldowns",
+                new cooldownDoc({
+                  uId: user.id,
+                  name: command,
+                  cooldown,
+                  type: "local",
+                }),
+              );
             });
+
           return false;
         }
       }
@@ -141,10 +157,26 @@ module.exports = class Cooldowns {
         if (date.valueOf() > Date.now()) return true;
         else {
           this._globalCoolDowns.delete(command);
-          cooldownDoc.findOne({ name: command, type: "global" }).then((c) => {
-            if (c !== null)
-              this._client.databaseCache.deleteDocument("cooldowns", c);
-          });
+          cooldownDoc
+            .findOne({ name: command, type: "global" })
+            .then(async (c) => {
+              if (c !== null)
+                await this._client.databaseCache.deleteDocument(
+                  "cooldowns",
+                  command,
+                  c,
+                );
+              this.setCooldown(user, command, cooldown, "global");
+              this._client.databaseCache.insertDocument(
+                "cooldowns",
+                new cooldownDoc({
+                  name: command,
+                  cooldown,
+                  type: "global",
+                }),
+              );
+            });
+
           return false;
         }
       }

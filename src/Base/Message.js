@@ -407,7 +407,14 @@ module.exports = new Event("message", async (client, message) => {
     }
 
     // Global Cooldown
-    if (client.cooldowns.isOnCooldown(message.author, commandName, "global")) {
+    if (
+      client.cooldowns.isOnCooldown(
+        message.author,
+        commandName,
+        new Date(Date.now() + command.globalCooldown),
+        "global",
+      )
+    ) {
       const remainingTime = client.cooldowns.getRemainingCooldown(
         message.author,
         commandName,
@@ -418,7 +425,7 @@ module.exports = new Event("message", async (client, message) => {
           language,
           "GLOBAL_COOLDOWN",
           "",
-          client.defaultResponses.fileData[langauge].GLOBAL_COOLDOWN.embed
+          client.defaultResponses.fileData[language].GLOBAL_COOLDOWN.embed
             ? {
                 description: [
                   {
@@ -448,7 +455,14 @@ module.exports = new Event("message", async (client, message) => {
       }
     }
     // Cooldown
-    if (client.cooldowns.isOnCooldown(message.author, commandName, "local")) {
+    if (
+      client.cooldowns.isOnCooldown(
+        message.author,
+        commandName,
+        new Date(Date.now() + command.cooldown),
+        "local",
+      )
+    ) {
       const remainingTime = client.cooldowns.getRemainingCooldown(
         message.author,
         commandName,

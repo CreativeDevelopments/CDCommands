@@ -16,30 +16,51 @@ class CDClient extends Client {
   defaultPrefix;
   /**
    * @type {Cache<{
-   * cooldowns: {
-   *   model: Model<any>,
-   *   getBy: string,
-   * };
-   * disabledcommands: {
-   *   model: Model<any>,
-   *   getBy: string,
-   * };
-   * prefixes: {
-   *   model: Model<any>,
-   *   getBy: string,
-   * };
-   * requriedroles: {
-   *   model: Model<any>,
-   *   getBy: string,
-   * };
-   * guildLanguage: {
-   *   model: Model<any>,
-   *   getBy: string,
-   * };
-   * userLanguage: {
-   *   model: Model<any>,
-   *   getBy: string,
-   * }
+   *   cooldowns: {
+   *     model: Model<{
+   *       uId: string;
+   *       type: string;
+   *       name: string;
+   *       cooldown: string;
+   *     }>;
+   *     getBy: string;
+   *   };
+   *   disabledcommands: {
+   *     model: Model<{
+   *       gId: string;
+   *       commands: string[];
+   *       categories: string[];
+   *     }>;
+   *     getBy: string;
+   *   };
+   *   prefixes: {
+   *     model: Model<{
+   *       gId: string;
+   *       prefix: string;
+   *     }>;
+   *     getBy: string;
+   *   };
+   *   requriedroles: {
+   *     model: Model<{
+   *       gId: string;
+   *       requiredRoles: object[];
+   *     }>;
+   *     getBy: string;
+   *   };
+   *   guildLanguage: {
+   *     model: Model<{
+   *       gId: string;
+   *       language: string;
+   *     }>;
+   *     getBy: string;
+   *   };
+   *   userLanguage: {
+   *     model: Model<{
+   *       uId: string;
+   *       language: string;
+   *     }>;
+   *     getBy: string;
+   *   };
    * }>}
    */
   databaseCache;
@@ -63,15 +84,15 @@ class CDClient extends Client {
   success;
   /** @type {({ msg, data }: { msg: Message; data: string }) => MessageEmbed;} */
   info;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logReady;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logInfo;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logError;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logWarn;
-  /** @type {({ data }: { data: string }) => console.log;} */
+  /** @type {({ data }: { data: string }) => void;} */
   logDatabase;
 }
 

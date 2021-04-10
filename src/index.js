@@ -74,18 +74,11 @@ class CDCommands {
    * @type {boolean}
    */
   _customMessageEvent;
-  // /**
-  //  * @private
-  //  * @type {boolean}
-  //  */
-  // _customHelpCommand;
-
   /**
    * @private
    * @type {(keyof {"help", "command", "category", "language", "requiredroles", "setprefix"})[]}
    */
   _disabledDefaultCommands;
-
   /** @private */
   _cacheUpdateSpeed = 90 * 1000;
 
@@ -285,11 +278,11 @@ class CDCommands {
   }
 
   /** @private */
-  _commands() {
-    this._client = Commands(
+  async _commands() {
+    await Commands(
       this._commandsDir,
       this._client,
-      this._customHelpCommand,
+      this._disabledDefaultCommands.includes("help"),
     );
 
     const customCommands = [
@@ -318,8 +311,8 @@ class CDCommands {
   }
 
   /** @private */
-  _events() {
-    let totalEvents = Events(
+  async _events() {
+    let totalEvents = await Events(
       this._eventsDir,
       this._client,
       this._customMessageEvent,
@@ -348,7 +341,7 @@ class CDCommands {
   }
 }
 
-module.exports = CDCommands;
+module.exports.CDCommands = CDCommands;
 module.exports.Event = require("./Base/Event");
 module.exports.Command = require("./Base/Command");
 module.exports.Validator = require("./Base/Handling/ArgumentValidator");

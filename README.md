@@ -177,10 +177,19 @@ module.exports = new Command({
   botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
   // More information will be provided below. (type: Validator)
   validate: new Validator(),
+  /* (type: (client: CDClient) => Promise<unknown> | unknown)
+    The init method will run one time once the command is loaded.
+    This can be used for many different things, maybe fetching some data
+    from an API, or making sure some global variable is setup correctly.
+    Whatever it may be, it runs once on start up.
+  */
+  init(client) {
+    console.log(`${client.user.username} from command ${this.name}.`);
+  },
   // The function that you want run when the command is used.
   // 5 different parameters are passed along for you to use.
   // message, args, client, prefix, and language
-  /* (type: ({ message, args, client, prefix, language }: 
+  /* (type: ({ message, args, client, prefix, language }:
   { message: Message, args: string[], client: CDClient, prefix: string, language: string }) => Promise<unknown>) */
   run: ({ message, args, client, prefix, language }) => {
     return message.channel.send(`My latency is **${client.ws.ping}ms**!`);
