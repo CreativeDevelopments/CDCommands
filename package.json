@@ -1,7 +1,7 @@
 {
   "name": "cdcommands",
   "version": "4.1.0",
-  "description": "Advanced command handler made by That Duck Max#6669 and Exxon#0293",
+  "description": "An advanced handler for Discord.js Bots with TypeScript and JavaScript support.",
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
