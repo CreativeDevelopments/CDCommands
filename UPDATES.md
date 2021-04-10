@@ -11,7 +11,7 @@ All updates to the package will be put here.
 - [v1](#v1)
 - [v2](#v2)
 - [v3](#v3)
-- [v4](#4)
+- [v4](#v4)
 
 <br>
 
