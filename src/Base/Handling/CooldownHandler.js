@@ -58,6 +58,7 @@ module.exports = class Cooldowns {
     if (type === "local") {
       if (this._cooldowns.get(user.id) === undefined)
         this._cooldowns.set(user.id, new Collection().set(command, cooldown));
+      else this._cooldowns.get(user.id).set(command, cooldown);
       if (Math.ceil(cooldown.valueOf() - Date.now()) / 1000 / 60 >= 5)
         this._client.databaseCache.insertDocument(
           "cooldowns",
@@ -68,7 +69,6 @@ module.exports = class Cooldowns {
             type: "local",
           }),
         );
-      else this._cooldowns.get(user.id).set(command, cooldown);
     } else if (type === "global") {
       this._globalCoolDowns.set(command, cooldown);
       if (Math.ceil(cooldown.valueOf() - Date.now()) / 1000 / 60 >= 5)
