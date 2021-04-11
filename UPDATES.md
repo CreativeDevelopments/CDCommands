@@ -92,9 +92,9 @@ All updates to the package will be put here.
 ➕ Added an option to not load selected default commands ('disabledDefaultCommands: []')<br>
 ➕ Added 'language' as a default command<br>
 
-✔️ Fixed category being case sensitive for the help command
+✔️ Fixed category being case sensitive for the help command<br>
 
-➖ Removed 'customHelpCommand' (Replaced with 'disabledDefaultCommands')
+➖ Removed 'customHelpCommand' (Replaced with 'disabledDefaultCommands')<br>
 
 ### 4.1.0
 
@@ -107,3 +107,7 @@ All updates to the package will be put here.
 ➕ Croatian added to the json-schema/message.json<br>
 ➕ Allowed for replacers for timestamp / inline<br>
 ➕ Fixed broken cooldown handling<br>
+
+### 4.1.1
+
+➕ Actually fixed broken cooldown handling this time<br>
