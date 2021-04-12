@@ -408,7 +408,7 @@ module.exports = new Event("message", async (client, message) => {
 
     // Global Cooldown
     if (
-      client.cooldowns.isOnCooldown(
+      await client.cooldowns.isOnCooldown(
         message.author,
         commandName,
         new Date(Date.now() + command.globalCooldown),
@@ -456,7 +456,7 @@ module.exports = new Event("message", async (client, message) => {
     }
     // Cooldown
     if (
-      client.cooldowns.isOnCooldown(
+      await client.cooldowns.isOnCooldown(
         message.author,
         commandName,
         new Date(Date.now() + command.cooldown),
@@ -502,19 +502,22 @@ module.exports = new Event("message", async (client, message) => {
         else return message.channel.send(res);
       }
     }
-
-    client.cooldowns.setCooldown(
-      message.author,
-      commandName,
-      new Date(Date.now() + command.globalCooldown),
-      "global",
-    );
-    client.cooldowns.setCooldown(
-      message.author,
-      commandName,
-      new Date(Date.now() + command.cooldown),
-      "local",
-    );
+    if (command.globalCooldown > 0) {
+      client.cooldowns.setCooldown(
+        message.author,
+        commandName,
+        new Date(Date.now() + command.globalCooldown),
+        "global",
+      );
+    }
+    if (command.cooldown > 0) {
+      client.cooldowns.setCooldown(
+        message.author,
+        commandName,
+        new Date(Date.now() + command.cooldown),
+        "local",
+      );
+    }
 
     return command.run({ message, args, client, prefix, language });
   }

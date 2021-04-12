@@ -38,11 +38,14 @@ module.exports = class Cooldowns {
     for (const cldwn of DBcooldowns) {
       if (cldwn.type === "global")
         this._globalCoolDowns.set(cldwn.name, cldwn.cooldown);
-      else
-        this._cooldowns.set(
-          cldwn.uId,
-          new Collection().set(cldwn.name, cldwn.cooldown),
-        );
+      else {
+        if (!this._cooldowns.get(cldwn.uId)) {
+          this._cooldowns.set(
+            cldwn.uId,
+            new Collection().set(cldwn.name, cldwn.cooldown),
+          );
+        } else this._cooldowns.get(cldwn.uId).set(cldwn.name, cldwn.cooldown);
+      }
     }
   }
 
@@ -115,9 +118,9 @@ module.exports = class Cooldowns {
    * @param {string} command
    * @param {Date} cooldown
    * @param {"global" | "local"} type
-   * @returns {boolean}
+   * @returns {Promise<boolean>}
    */
-  isOnCooldown(user, command, cooldown, type) {
+  async isOnCooldown(user, command, cooldown, type) {
     if (type === "local") {
       if (
         this._cooldowns.get(user.id) !== undefined &&
@@ -127,26 +130,18 @@ module.exports = class Cooldowns {
         if (date.valueOf() > Date.now()) return true;
         else {
           this._cooldowns.get(user.id).delete(command);
-          cooldownDoc
-            .findOne({ uId: user.id, name: command, type: "local" })
-            .then(async (c) => {
-              if (c !== null)
-                await this._client.databaseCache.deleteDocument(
-                  "cooldowns",
-                  command,
-                  c,
-                );
-              this.setCooldown(user, command, cooldown, "local");
-              this._client.databaseCache.insertDocument(
-                "cooldowns",
-                new cooldownDoc({
-                  uId: user.id,
-                  name: command,
-                  cooldown,
-                  type: "local",
-                }),
-              );
-            });
+          const c = await cooldownDoc.findOne({
+            uId: user.id,
+            name: command,
+            type: "local",
+          });
+
+          if (c !== null)
+            await this._client.databaseCache.deleteDocument(
+              "cooldowns",
+              command,
+              c,
+            );
 
           return false;
         }
@@ -157,26 +152,17 @@ module.exports = class Cooldowns {
         if (date.valueOf() > Date.now()) return true;
         else {
           this._globalCoolDowns.delete(command);
-          cooldownDoc
-            .findOne({ name: command, type: "global" })
-            .then(async (c) => {
-              if (c !== null)
-                await this._client.databaseCache.deleteDocument(
-                  "cooldowns",
-                  command,
-                  c,
-                );
-              this.setCooldown(user, command, cooldown, "global");
-              this._client.databaseCache.insertDocument(
-                "cooldowns",
-                new cooldownDoc({
-                  name: command,
-                  cooldown,
-                  type: "global",
-                }),
-              );
-            });
+          const c = await cooldownDoc.findOne({
+            name: command,
+            type: "global",
+          });
 
+          if (c !== null)
+            await this._client.databaseCache.deleteDocument(
+              "cooldowns",
+              command,
+              c,
+            );
           return false;
         }
       }

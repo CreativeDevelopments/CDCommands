@@ -1,4 +1,4 @@
-const { Collection } = require("discord.js");
+const { Collection, User } = require("discord.js");
 const { Document, Model } = require("mongoose");
 const prefixes = require("../../Database/models/prefixes");
 const cooldown = require("../../Database/models/cooldown");
@@ -59,20 +59,42 @@ module.exports = class Cache {
    */
   async _init() {
     for (const [modelName, model] of this._models) {
-      const data = await model.find();
+      const data = [...(await model.find())];
       for (const doc of data) {
-        if (!this._cache.get(modelName))
-          this._cache.set(
-            modelName,
-            new Collection().set(
-              doc[this._options.models[modelName].getBy] || doc.name,
-              doc,
-            ),
-          );
-        else
-          this._cache
-            .get(modelName)
-            .set(doc[this._options.models[modelName].getBy] || doc.name, doc);
+        if (modelName === "cooldowns") {
+          if (!this._cache.get(modelName)) {
+            this._cache.set(
+              modelName,
+              new Collection().set(
+                doc.type === "local" ? doc.uId : doc.name,
+                doc.type === "local"
+                  ? new Collection().set(doc.name, doc)
+                  : doc,
+              ),
+            );
+          } else {
+            if (doc.type === "local") {
+              if (!this._cache.get(modelName).get(doc.uId))
+                this._cache
+                  .get(modelName)
+                  .set(doc.uId, new Collection().set(doc.name, doc));
+              else this._cache.get(modelName).get(doc.uId).set(doc.name, doc);
+            } else this._cache.get(modelName).set(doc.name, doc);
+          }
+        } else {
+          if (!this._cache.get(modelName))
+            this._cache.set(
+              modelName,
+              new Collection().set(
+                doc[this._options.models[modelName].getBy] || doc.name,
+                doc,
+              ),
+            );
+          else
+            this._cache
+              .get(modelName)
+              .set(doc[this._options.models[modelName].getBy] || doc.name, doc);
+        }
       }
     }
     this._startUpdateCycle();
@@ -82,10 +104,14 @@ module.exports = class Cache {
    * @public
    * @param {keyof T} type
    * @param {string} findBy
+   * @param {string=} command
    */
-  getDocument(type, findBy) {
+  getDocument(type, findBy, command) {
     if (!this._cache.get(type)) return undefined;
-    else return this._cache.get(type).get(findBy);
+    if (type === "cooldown") {
+      if (!this._cache.get(type).get(findBy)) return undefined;
+      else return this._cache.get(type).get(findBy).get(command);
+    } else return this._cache.get(type).get(findBy);
   }
 
   /**
@@ -94,18 +120,31 @@ module.exports = class Cache {
    * @param {Document<any>} doc
    */
   insertDocument(type, doc) {
-    if (!this._cache.get(type))
-      this._cache.set(
-        type,
-        new Collection().set(
-          doc[this._options.models[type].getBy] || doc.name,
-          doc,
-        ),
-      );
-    else
-      this._cache
-        .get(type)
-        .set(doc[this._options.models[type].getBy] || doc.name, doc);
+    if (type === "cooldowns") {
+      if (!this._cache.get(type)) this._cache.set(type, new Collection());
+
+      if (doc.type === "local") {
+        if (!this._cache.get(type).get(doc.uId)) {
+          this._cache
+            .get(type)
+            .set(doc.uId, new Collection().set(doc.name, doc));
+        } else this._cache.get(type).get(doc.uId).set(doc.name, doc);
+      } else this._cache.get(type).set(doc.name, doc);
+    } else {
+      if (!this._cache.get(type)) {
+        this._cache.set(
+          type,
+          new Collection().set(
+            doc[this._options.models[type].getBy] || doc.name,
+            doc,
+          ),
+        );
+      } else {
+        this._cache
+          .get(type)
+          .set(doc[this._options.models[type].getBy] || doc.name, doc);
+      }
+    }
   }
 
   /**
@@ -126,24 +165,55 @@ module.exports = class Cache {
    * @param {Document<any>} document
    */
   async deleteDocument(type, findBy, document) {
-    this._cache.get(type).delete(findBy);
-    const query = {};
-    query[this._options.models[type].getBy] = findBy;
-
-    await document.delete();
+    if (type === "cooldown") {
+      if (document.uId) {
+        this._cache.get(type).get(document.uId).delete(findBy);
+        await document.delete();
+      } else {
+        this._cache.get(type).delete(findBy);
+        await document.delete();
+      }
+    } else {
+      this._cache.get(type).delete(findBy);
+      await document.delete();
+    }
   }
 
   /** @private */
   _startUpdateCycle() {
     setInterval(async () => {
       for (const [docName, collection] of this._cache) {
-        for (const [key, document] of collection) {
+        if (docName === "cooldowns") {
           const model = this._models.get(docName);
-          const query = {};
-          query[this._options.models[docName].getBy || "name"] = key;
-          if (await model.findOne(query))
-            await model.findOneAndUpdate(query, document);
-          else await model.create(document);
+          for (const [key, doc_or_collection] of collection) {
+            if (!isNaN(parseInt(key)) && key.length === 18) {
+              for (const [command, doc] of doc_or_collection) {
+                const query = {};
+                query["uId"] = doc.uId;
+                query["name"] = command;
+                query["type"] = "local";
+                if (await model.findOne(query))
+                  await model.findOneAndUpdate(query, doc);
+                else await model.create(doc);
+              }
+            } else {
+              const query = {};
+              query["name"] = key;
+              query["type"] = "global";
+              if (await model.findOne(query))
+                await model.findOneAndUpdate(query, doc_or_collection);
+              else await model.create(doc_or_collection);
+            }
+          }
+        } else {
+          const model = this._models.get(docName);
+          for (const [key, document] of collection) {
+            const query = {};
+            query[this._options.models[docName].getBy] = key;
+            if (await model.findOne(query))
+              await model.findOneAndUpdate(query, document);
+            else await model.create(document);
+          }
         }
       }
     }, this._updateSpeed);

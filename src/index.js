@@ -244,7 +244,13 @@ class CDCommands {
       updateSpeed: this._cacheUpdateSpeed,
     });
 
-    this._client.cooldowns = new Cooldowns(await cooldown.find(), this._client);
+    // const t = [...(await cooldown.find())];
+    // console.log(t);
+
+    this._client.cooldowns = new Cooldowns(
+      [...(await cooldown.find())],
+      this._client,
+    );
 
     this._client.getLanguage = ({ authorId, guildId }) => {
       if (!authorId || typeof authorId !== "string")
