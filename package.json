@@ -1,6 +1,6 @@
 {
   "name": "cdcommands",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "An advanced handler for Discord.js Bots with TypeScript and JavaScript support.",
   "main": "./src/index.js",
   "scripts": {
