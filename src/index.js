@@ -1,7 +1,6 @@
 const { Client, Collection, MessageEmbed } = require("discord.js");
 const colors = require("colors");
 const { mkdirSync, writeFileSync } = require("fs");
-const { Model } = require("mongoose");
 const { CDClient } = require("./Base/CDClient");
 const {
   categories,
@@ -73,6 +72,11 @@ class CDCommands {
    * @private
    * @type {boolean}
    */
+  _ignoreBots;
+  /**
+   * @private
+   * @type {boolean}
+   */
   _customMessageEvent;
   /**
    * @private
@@ -94,6 +98,7 @@ class CDCommands {
    * devs?: string[];
    * defaultPrefix: string;
    * mongoURI: string;
+   * ignoreBots?: boolean;
    * cacheUpdateSpeed?: number;
    * MessageJSONPath?: string;
    * }} options
@@ -131,6 +136,7 @@ class CDCommands {
     if (!options.devs) options.devs = [];
     if (!options.disabledDefaultCommands) options.disabledDefaultCommands = [];
     if (!options.MessageJSONPath) options.MessageJSONPath = "";
+    if (options.ignoreBots === undefined) options.ignoreBots = true;
 
     this._client = client;
     this._commandsDir = options.commandsDir;
@@ -139,6 +145,7 @@ class CDCommands {
     this._testServers = options.testServers;
     this._defaultPrefix = options.defaultPrefix;
     this._mongoURI = options.mongoURI;
+    this._ignoreBots = options.ignoreBots;
     this._customMessageEvent = options.customMessageEvent;
     this._disabledDefaultCommands = options.disabledDefaultCommands;
     this._devs = options.devs;
@@ -150,6 +157,7 @@ class CDCommands {
     this._client.defaultPrefix = options.defaultPrefix;
     this._client.developers = this._devs;
     this._client.testservers = this._testServers;
+    this._client.ignoreBots = this._ignoreBots;
     this._client.defaultResponses = new MessageJSON(options.MessageJSONPath);
 
     this._client.success = ({ msg, data }) => {

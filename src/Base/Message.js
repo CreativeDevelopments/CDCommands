@@ -18,7 +18,8 @@ module.exports = new Event("message", async (client, message) => {
   const commandName = args.shift().toLowerCase();
 
   if (!message.content.startsWith(prefix)) return;
-
+  if (client.ignoreBots && message.author.bot) return;
+  
   const command =
     client.commands.get(commandName) ||
     client.commands.get(client.aliases.get(commandName));

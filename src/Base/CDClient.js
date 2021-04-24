@@ -72,6 +72,8 @@ class CDClient extends Client {
   developers;
   /** @type {string[]} */
   testservers;
+  /** @type {boolean} */
+  ignoreBots;
 
   /** @type {({ guildId, authorId }: { guildId: string, authorId: string }) => keyof import("./Handling/Languages.json"))} */
   getLanguage;

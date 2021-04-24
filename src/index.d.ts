@@ -15,6 +15,7 @@ export class CDCommands {
   private _testServers: string[];
   private _devs: string[];
   private _defaultPrefix: string;
+  private _ignoreBots: string;
   private _mongoURI: string;
   private _customMessageEvent: boolean;
   private _disabledDefaultCommands: (
@@ -47,6 +48,7 @@ export class CDCommands {
       devs?: string[];
       defaultPrefix: string;
       mongoURI: string;
+      ignoreBots?: boolean;
       cacheUpdateSpeed?: number;
     },
   );
