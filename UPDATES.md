@@ -116,3 +116,8 @@ All updates to the package will be put here.
 
 ➖ [v4.1.1](#4.1.1) was a lie
 ➕ This time, cooldowns are actually fixed, this makes me think they never actually worked. Now, cooldowns are successfully loaded on start (from the db... cooldowns > 5min) Cooldowns don't interfere with each other, global cooldowns actually work, it just works now... knock on wood.
+
+### 4.1.3
+
+➕ Fixed broken types
+➕ Fixed "minut" in cooldown message
