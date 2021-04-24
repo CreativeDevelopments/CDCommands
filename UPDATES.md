@@ -121,3 +121,7 @@ All updates to the package will be put here.
 
 ➕ Fixed broken types
 ➕ Fixed "minut" in cooldown message
+
+### 4.2.0 && 4.2.1 (Forgot to update README etc)
+
+➕ Added `ignoreBots?: boolean`.

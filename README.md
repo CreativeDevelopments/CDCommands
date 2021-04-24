@@ -77,6 +77,8 @@ client.on("ready", () => {
     defaultPrefix: "?",
     // Your mongodb connection uri
     mongoURI: "URI_HERE",
+    // If you want the bot to let other bots run commands (default: true)
+    ignoreBots: true
     // How frequently the cache will update the database (default: 90 seconds)
     cacheUpdateSpeed: 60000 * 5,
     // What default commands you want to "disable" or not load (default: [])
@@ -123,6 +125,8 @@ client.on("ready", () => {
     defaultPrefix: "?",
     // Your mongodb connection uri
     mongoURI: "URI_HERE",
+    // If you want the bot to let other bots run commands (default: true)
+    ignoreBots: true
     // How frequently the cache will update the database (default: 90 seconds)
     cacheUpdateSpeed: 60000 * 5,
     // What default commands you want to "disable" or not load (default: [])
