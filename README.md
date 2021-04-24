@@ -4,6 +4,7 @@
 [![](https://img.shields.io/npm/dm/cdcommands.svg?style=color=blue)](https://www.npmjs.com/package/cdcommands)
 [![](https://img.shields.io/npm/v/cdcommands.svg?style=color=blue)](https://www.npmjs.com/package/cdcommands)
 [![](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat-square)](https://github.com/CreativeDevelopments/CDCommands)
+[![](https://img.shields.io/github/stars/CreativeDevelopments/CDCommands?style=social)](https://github.com/CreativeDevelopments/CDCommands)
 
 # Table of Contents
 
