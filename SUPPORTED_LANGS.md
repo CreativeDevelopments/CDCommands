@@ -4,7 +4,7 @@
 - Spanish :white_check_mark:
 - German :white_check_mark:
 - Portuguese :white_check_mark:
-- Croatian :x: (Just need json-schema/message.json finishing)
+- Croatian :white_check_mark:
 - Turkish :x:
 - Hindi :white_check_mark:
 - Swedish :x:

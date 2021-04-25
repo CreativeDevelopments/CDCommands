@@ -61,7 +61,7 @@ All updates to the package will be put here.
 
 ### 2.0.4
 
-✔️ Fixed 'collection is not interable'<br>
+✔️ Fixed 'collection is not interable<br>
 
 <br>
 
@@ -125,3 +125,7 @@ All updates to the package will be put here.
 ### 4.2.0 && 4.2.1 (Forgot to update README etc)
 
 ➕ Added `ignoreBots?: boolean`.
+
+### 4.2.2
+
+➕ Added [GitBook](https://docs.creativedevelopments.org/cdcommands) for Documentation

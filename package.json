@@ -6,23 +6,31 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CreativeDevelopments/CDCommands"
+  },
   "keywords": [
     "discord.js",
     "handler",
     "eventhandler",
     "commandhandler"
   ],
-  "author": "Exxon#0293 and That Duck Max#6669",
+  "author": "CreativeDevelopments",
   "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/CreativeDevelopments/CDCommands/issues"
+  },
+  "homepage": "https://docs.creativedevelopments.org/cdcommands",
+  "funding": {
+    "type": "patreon",
+    "url": "https://patreon.com/_CreativeDevelopments"
+  },
   "dependencies": {
     "colors": "^1.4.0",
     "discord.js": "^12.5.3",
     "mongoose": "^5.11.15",
     "parse-ms": "^2.1.0",
     "ramda": "^0.27.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CreativeDevelopments/CDCommands"
   }
 }

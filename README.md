@@ -6,6 +6,13 @@
 [![](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat-square)](https://github.com/CreativeDevelopments/CDCommands)
 [![](https://img.shields.io/github/stars/CreativeDevelopments/CDCommands?style=social)](https://github.com/CreativeDevelopments/CDCommands)
 
+# We have now moved this over to our new [Guide](https://docs.creativedevelopments.org/cdcommands).
+
+It's recommended to use the guide rather than this README since it is the first to get updated and although we'll try to remember to update all  
+the `.md` files in the repository, we may forget. You can view the [guide, here.](https://docs.creativedevelopments.org/cdcommands)
+
+<br>
+
 # Table of Contents
 
 - [Installation](#installation)
@@ -98,7 +105,7 @@ As long as you set everything up correctly, this should be all you technically n
 
 # TypeScript Support
 
-New in v4.1.0, CDCommands has gained support for TypeScript! You can now use one of the best command handlers with one of the best high level languages! To use CDCommands in your TypeScript project, it's as simple as changing your ES2015 imports, (require/module.exports) to use ES2016 imports and exports (import x from x/export default). For example, initialzing your project in your main `index.ts` file.
+New in v4.1.0, CDCommands has gained support for TypeScript! You can now use one of the best command handlers with one of the best high level languages! To use CDCommands in your TypeScript project, it's as simple as changing your ES2015 imports, (require/module.exports) to use ES2016 imports and exports (import x from x/export default). For example, initializing your project in your main `index.ts` file.
 
 ```ts
 // ./index.ts
@@ -318,37 +325,37 @@ In CDCommands, six default commands come premade for your bots convenience, thes
 
 ### Help Command
 
-This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Help.js) in our github repository, and by default, the help command will be dynamic, and if necessary, partially reaction based. The default help command is decently basic, so if you wish to create your own, feel free to disable the command and style your own command to your own liking. The command is only there for convenience. The command is an ordinary help command, providing you with all the information you need to understand how to use the commands in your bot. The command will pull information from the properties set while creating each command.
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Help.js) in our GitHub repository, and by default, the help command will be dynamic, and if necessary, partially reaction based. The default help command is decently basic, so if you wish to create your own, feel free to disable the command and style your own command to your own liking. The command is only there for convenience. The command is an ordinary help command, providing you with all the information you need to understand how to use the commands in your bot. The command will pull information from the properties set while creating each command.
 
 > Usage: **?help \<category/command\>**
 
 ### Prefix Command
 
-This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/SetPrefix.js) in our github repository. The prefix command, or "setprefix" is a default command that allows members with the necessary permissions to change the servers prefix that the bot will respond to. The prefix is initially stored in cache, which is used to update the database every so often. Once the prefix is updated, the bot will stop responding to the old prefix and will only respond to the new prefix. This new prefix will be passed through each command in the run parameters just like before.
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/SetPrefix.js) in our GitHub repository. The prefix command, or "setprefix" is a default command that allows members with the necessary permissions to change the servers prefix that the bot will respond to. The prefix is initially stored in cache, which is used to update the database every so often. Once the prefix is updated, the bot will stop responding to the old prefix and will only respond to the new prefix. This new prefix will be passed through each command in the run parameters just like before.
 
 > Usage: **?setprefix \<new_prefix\>**
 
 ### Language Command
 
-This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Language.js) in our github repository. The language allows you to change either your own language preference, or if you are the server owner, your whole servers language preference. More about languages can be found [here](#language-support). Your personal user preference on which language you want the bot to use will override the server default, and if neither are set, the bot will default to using the English responses.
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Language.js) in our GitHub repository. The language allows you to change either your own language preference, or if you are the server owner, your whole servers language preference. More about languages can be found [here](#language-support). Your personal user preference on which language you want the bot to use will override the server default, and if neither are set, the bot will default to using the English responses.
 
 > Usage: **?language \<[ISO 639-1 Code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)\>**
 
 ### Roles Command
 
-This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/RequiredRoles.js) in our github repository. The roles command, or "requiredroles" allows you to set roles in your server that a member requires to be able to use said command. Required roles can be set for any command, but if they are set on a command that has the property "dmOnly" set to true, they will have to affect on the command. If a member doesn't have the correct roles that you have set for the command, the command execution will terminate before the command is run.
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/RequiredRoles.js) in our GitHub repository. The roles command, or "requiredroles" allows you to set roles in your server that a member requires to be able to use said command. Required roles can be set for any command, but if they are set on a command that has the property "dmOnly" set to true, they will have to affect on the command. If a member doesn't have the correct roles that you have set for the command, the command execution will terminate before the command is run.
 
 > Usage: **?requiredroles \<add/remove\> \<role\> \<command\>**
 
 ### Commands Command
 
-This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Commands.js) in our github repository. The commands command, though its name might be slightly confusing, is quite simple, allowing you to disable and enable different commands. Any command with the property "noDisable" set to true, will not be able to be disabled by anyone, not even bot developers. This is to prevent dumb issues like disabling the command that allows you to re-enable the same command. Disabled commands will not be able to be used by anyone.
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Commands.js) in our GitHub repository. The commands command, though its name might be slightly confusing, is quite simple, allowing you to disable and enable different commands. Any command with the property "noDisable" set to true, will not be able to be disabled by anyone, not even bot developers. This is to prevent dumb issues like disabling the command that allows you to re-enable the same command. Disabled commands will not be able to be used by anyone.
 
 > Usage: **?command \<enable/disable\> \<command\>**
 
 ### Categories Command
 
-This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Categories.js) in our github repository. Similarly to the commands command, the category command allows you to enable and disable entire categories instead of just certain commands. Just like the commands command again, if a command is inside of a disabled category, but has the "noDisable" property set to true, the command will still work, as it is not capable of being disabled. Any command in a disabled category otherwise will not be able to be used by anyone.
+This command can be found [here](https://github.com/CreativeDevelopments/CDCommands/blob/main/src/Base/DefaultCommands/Categories.js) in our GitHub repository. Similarly to the commands command, the category command allows you to enable and disable entire categories instead of just certain commands. Just like the commands command again, if a command is inside of a disabled category, but has the "noDisable" property set to true, the command will still work, as it is not capable of being disabled. Any command in a disabled category otherwise will not be able to be used by anyone.
 
 > Usage: **?category \<enable/disable\> \<category\>**
 
@@ -380,7 +387,7 @@ module.exports = new Event("messageDelete", (client, message) => {
 
 The above event, once your bot logs in, should log a message along the lines of `Application Name saw User delete Test` every time a user that the bot has access to deletes a message from any channel the bot can see. Since we are using the "messageDelete" event in this example, the parameters in the callback function are expected to be first your client, then followed by the message object that was deleted.
 
-> Note: A message event file is loaded by default to allow all the different checks for permissions and others to work. The loading of this event can be disabled by setting the "customMessageEvent" property to **true** in the CDCommands class, though it is not recommended as it will break a lot of your commands functionality. If you want to make your own message event you can use this template [here](https://sourceb.in/XpAciGMZsM)
+> Note: A message event file is loaded by default to allow all the different checks for permissions and others to work. The loading of this event can be disabled by setting the "customMessageEvent" property to **true** in the CDCommands class, though it is not recommended as it will break a lot of your commands functionality. If you want to make your own message event you can use this template [here](https://sourceb.in/CHesdx5xJa)
 
 # Creating a Feature
 
@@ -496,7 +503,7 @@ module.exports = new Command({
 });
 ```
 
-The above code snippet should respond with first the message `This is the first test value under "TEST_COMMAND"` then the message `This is the second test value under "TEST_COMMAND"`. The first string acts as the language that you want to look into in your message.json file, which you can find more information for under [Language Support](#language-support), the second string is the first key that you are getting values by, then depending on if the value recieved by the first key is an object or a string, the second key will either be the next property you want to get or an empty string respectively, as shown in the last two examples. The last value can either be an object or an array of objects, which will act as your replacers. More information on replacers can be found under [Replacers](#replacers).
+The above code snippet should respond with first the message `This is the first test value under "TEST_COMMAND"` then the message `This is the second test value under "TEST_COMMAND"`. The first string acts as the language that you want to look into in your message.json file, which you can find more information for under [Language Support](#language-support), the second string is the first key that you are getting values by, then depending on if the value received by the first key is an object or a string, the second key will either be the next property you want to get or an empty string respectively, as shown in the last two examples. The last value can either be an object or an array of objects, which will act as your replacers. More information on replacers can be found under [Replacers](#replacers).
 
 ## Embeds
 
@@ -584,7 +591,7 @@ The above snippet should return a message similar to the one shown in this image
 
 ## Replacers
 
-The final thing we need to cover in the getValue method, provided by the defaultResponses, is the replacers parameter. This parameter can be either an array of objects or an object with embed values in them. We will provide two examples, one of each, to provide as much information as possible. Replacers in your message.json file are identified by brackets. Any value inbetween `{}` will be treated as a replacer. In general, replacers are only needed if you have a dynamic value that will change from time to time, say if a different user uses the command, or you want to provide a random response.
+The final thing we need to cover in the getValue method, provided by the defaultResponses, is the replacers parameter. This parameter can be either an array of objects or an object with embed values in them. We will provide two examples, one of each, to provide as much information as possible. Replacers in your message.json file are identified by brackets. Any value in-between `{}` will be treated as a replacer. In general, replacers are only needed if you have a dynamic value that will change from time to time, say if a different user uses the command, or you want to provide a random response.
 
 ### String Replacers
 
@@ -767,7 +774,7 @@ Adding a new language to your message.json file should be a simple process, as l
 }
 ```
 
-So we have our values all stored in our message.json file like shown above, pretty simple layout, and only one extra property. Now, when creating a new language, it is recommended that you translate all of the same values from one language to the other language, or else you will most likely encounter errors or unwanted behavior. To add the new language it's as easy as adding a new property to the file like so.
+So we have our values all stored in our message.json file like shown above, pretty simple layout, and only one extra property. Now, when creating a new language, it is recommended that you translate all of the same values from one language to the other language, or else you will most likely encounter errors or unwanted behaviour. To add the new language it's as easy as adding a new property to the file like so.
 
 ```json
 // ./message.json
@@ -847,7 +854,7 @@ This is talked about in more detail under [Default Responses](#default-responses
 
 ---
 
-> Note: The below methods have no functionallity other than returning a MessageEmbed as a convenience method.
+> Note: The below methods have no functionality other than returning a MessageEmbed as a convenience method.
 
 ### #load()
 
@@ -867,7 +874,7 @@ The info method will return a message [#00DCFF](https://www.google.com/search?q=
 
 ---
 
-> Note: The below methods provide no functionallity other than logging messages to your terminal with adjusted colors.
+> Note: The below methods provide no functionality other than logging messages to your terminal with adjusted colors.
 
 ### #logReady()
 
