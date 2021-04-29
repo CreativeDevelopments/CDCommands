@@ -6,7 +6,4 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
   ignore:
-  - dependency-name: mongoose
-    versions:
-    - 5.12.2
-    - 5.12.3
+  - dependency-name: parse-ms
