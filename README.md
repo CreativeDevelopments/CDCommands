@@ -38,7 +38,7 @@
   </a>
 </p>
 
-<br>
+---
 
 # We have now moved this over to our new [Guide](https://docs.creativedevelopments.org/cdcommands).
 
