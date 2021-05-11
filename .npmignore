@@ -1,5 +1,12 @@
+# Directories
+.github/
 images/
 test/
-TODO.md
+
+# Files
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+OLD-README.md
 SUPPORTED_LANGS.md
+TODO.md
 UPDATES.md
