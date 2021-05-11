@@ -1,10 +1,42 @@
-[![](./images/cdcommands.png)](https://discord.gg/jUNbV5u)
-[![](https://img.shields.io/discord/769710808435261490.svg)](https://discord.gg/jUNbV5u)
-[![](https://img.shields.io/npm/dt/cdcommands.svg)](https://www.npmjs.com/package/cdcommands)
-[![](https://img.shields.io/npm/dm/cdcommands.svg?style=color=blue)](https://www.npmjs.com/package/cdcommands)
-[![](https://img.shields.io/npm/v/cdcommands.svg?style=color=blue)](https://www.npmjs.com/package/cdcommands)
-[![](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat-square)](https://github.com/CreativeDevelopments/CDCommands)
-[![](https://img.shields.io/github/stars/CreativeDevelopments/CDCommands?style=social)](https://github.com/CreativeDevelopments/CDCommands)
+<!-- Logo -->
+<h1 align="center">
+  <a href="https://discord.gg/jUNbV5u" target="_blank">
+    <img src="./images/cdcommands.png" alt="Logo">
+  </a>
+</h1>
+
+<!-- Title -->
+<div align="center">
+  <h3>CDCommands</h3>
+  <h4>An advanced handler for Discord.js Bots with TypeScript and JavaScript support!</h4>
+</div>
+
+<br>
+
+<!-- Badges -->
+<p align="center">
+  <a href="https://discord.gg/jUNbV5u" target="_blank">
+    <img src="https://img.shields.io/discord/769710808435261490.svg?logo=discord" alt="Discord Server">
+  </a>
+  <a href="https://www.npmjs.com/package/cdcommands" target="_blank">
+    <img src="https://img.shields.io/npm/dt/cdcommands.svg?logo=npm" alt="Downloads">
+  </a>
+  <a href="https://www.npmjs.com/package/cdcommands" target="_blank">
+    <img src="https://img.shields.io/npm/dm/cdcommands.svg?logo=npm" alt="Monthly Downloads">
+  </a>
+  <a href="https://www.npmjs.com/package/cdcommands" target="_blank">
+    <img src="https://img.shields.io/npm/v/cdcommands.svg?style=color=blue&logo=npm" alt="Version">
+  </a>
+  <a href="https://github.com/CreativeDevelopments/CDCommands/blob/main/LICENSE" target="_blank">
+    <img src="https://img.shields.io/badge/license-Apache%202-blue.svg?logo=apache" alt="License">
+  </a>
+  <a href="https://patreon.com/_CreativeDevelopments" target="_blank">
+    <img src="https://img.shields.io/badge/Patreon-__CreativeDevelopments-blue.svg?logo=patreon" alt="Patreon">
+  </a>
+  <a href="https://github.com/CreativeDevelopments/CDCommands" target="_blank">
+    <img src="https://img.shields.io/github/stars/CreativeDevelopments/CDCommands?style=social&logo=github" alt="Stars">
+  </a>
+</p>
 
 <br>
 
