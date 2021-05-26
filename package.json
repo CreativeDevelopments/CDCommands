@@ -1,8 +1,9 @@
 {
   "name": "cdcommands",
-  "version": "4.2.4",
+  "version": "4.2.5",
   "description": "An advanced handler for Discord.js Bots with TypeScript and JavaScript support.",
   "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
